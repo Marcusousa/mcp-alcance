@@ -1,0 +1,17 @@
+.alc-user {
+  @apply flex;
+}
+
+.alc-user__image {
+  @apply h-14 w-14 rounded-full mr-[--alc-spacing-05] object-cover;
+}
+
+.alc-user__image--icon {
+  /* Necessário porque não temos esse tamanho de fonte na lista */
+  font-size: theme('spacing.14');
+  line-height: 1;
+}
+
+.alc-user__name {
+  @apply text-lg font-bold mt-[--alc-spacing-03];
+}

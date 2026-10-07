@@ -1,0 +1,36 @@
+.alc-card {
+    @apply flex relative flex-col min-w-0 break-words;
+    @apply border border-[--alc-color-border] rounded-[--alc-radius-default];
+    @apply mb-[--alc-spacing-05];
+    @apply bg-[--alc-color-surface];
+}
+
+.alc-card__body {
+    @apply text-base p-[--alc-spacing-05] gap-[--alc-spacing-04];
+}
+
+.alc-card__header {
+    @apply py-[--alc-spacing-05] px-[--alc-spacing-05] mb-0;
+    @apply border-b border-b-[--alc-color-border];
+}
+
+.alc-card__header:first-child {
+    border-radius: var(--alc-radius-default) var(--alc-radius-default) 0 0;
+}
+
+.alc-card__footer {
+    @apply py-[--alc-spacing-05] px-[--alc-spacing-05];
+    @apply border-t border-t-[--alc-color-border];
+}
+
+.alc-card__footer:last-child {
+    border-radius: 0 0 var(--alc-radius-default) var(--alc-radius-default);
+}
+
+.alc-card__title {
+    @apply font-semibold text-xl mt-0 mb-0;
+}
+
+.alc-card__subtitle {
+    @apply text-sm mt-0 mb-0;
+}

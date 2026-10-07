@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Expander</title>
+
+    <script type="module" src="/build/alcance.esm.js"></script>
+    <script nomodule src="/build/alcance.js"></script>
+    <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <alc-theme></alc-theme>
+        <hr class="mb-2">
+
+        <!-- Exemplo com label visível -->
+        <alc-expander open="true">
+            <span slot="label">
+              <strong>Mais Detalhes</strong>
+              <alc-icon name="calendar3" label=""></alc-icon>
+            </span>
+            <div>
+                <alc-menu>
+                    <alc-menu-item>Item</alc-menu-item>
+                    <alc-menu-item type="radio">Radio</alc-menu-item>
+                    <alc-menu-item type="radio" checked>Radio checked</alc-menu-item>
+                    <alc-menu-item type="checkbox">Checkbox</alc-menu-item>
+                    <alc-menu-item type="checkbox" checked>Checkbox checked</alc-menu-item>
+                    <alc-menu-item disabled>Disabled</alc-menu-item>
+                    <alc-menu-item>
+                      Prefix Icon
+                      <alc-icon name="gift" label="" slot="prefix"></alc-icon>
+                    </alc-menu-item>
+                    <alc-menu-item>
+                      Suffix Icon
+                      <alc-icon name="gift" label="" slot="suffix"></alc-icon>
+                    </alc-menu-item>
+                  </alc-menu>
+            </div>
+          </alc-expander>
+
+        <!-- Exemplo com slot label (possibilitando HTML personalizado) -->
+        <alc-expander label="Conteúdo Secreto" open="false" hide-label="true">
+            <div>
+                <alc-menu>
+                    <alc-menu-item>Item</alc-menu-item>
+                    <alc-menu-item type="radio">Radio</alc-menu-item>
+                    <alc-menu-item type="radio" checked>Radio checked</alc-menu-item>
+                    <alc-menu-item type="checkbox">Checkbox</alc-menu-item>
+                    <alc-menu-item type="checkbox" checked>Checkbox checked</alc-menu-item>
+                    <alc-menu-item disabled>Disabled</alc-menu-item>
+                    <alc-menu-item>
+                      Prefix Icon
+                      <alc-icon name="gift" label="" slot="prefix"></alc-icon>
+                    </alc-menu-item>
+                    <alc-menu-item>
+                      Suffix Icon
+                      <alc-icon name="gift" label="" slot="suffix"></alc-icon>
+                    </alc-menu-item>
+                  </alc-menu>
+            </div>
+        </alc-expander>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Nav Menu</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+  <body class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <h1>Nav</h1>
+
+    <h2>Completo, com label, com método</h2>
+    <alc-nav class="border border-red-cool-40 border-dotted" id="nav01">
+
+      <div slot="header">
+        <div class="mx-5">
+          <alc-user name="Machado de Assis" registration-number="P_00000"></alc-user>
+        </div>
+      </div>
+
+      <span data-alc-label>
+        Lista de itens no nível 1
+      </span>
+      <ul>
+        <li data-alc-selected><a href="#">Institucional</a></li>
+        <li>
+          <span>Aplicações</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="#">Gabinete Digital</a></li>
+              <li><a href="#">Liderança Digital</a></li>
+              <li><a href="#">Processo Legislativo Digital</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Serviços</a></li>
+        <li>
+          <span>Documentação digital</span>
+          <div data-alc-panel>
+            <span data-alc-label>
+              eDoc
+            </span>
+            <ul>
+              <li><a href="#">eDoc</a></li>
+              <li><a href="#">eDoc Forms</a></li>
+            </ul>
+
+            <span data-alc-label>
+              Legado
+            </span>
+            <ul>
+              <li><a href="#">Sigmas</a></li>
+              <li><a href="#">SisDoc</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Equipe técnica</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+
+      <!-- <span data-alc-label>
+        Nova categoria
+      </span> -->
+      <ul>
+        <li>
+          <a href="#">Algo mais</a>
+        </li>
+        <li>
+          <a href="#">Algo mais 2</a>
+        </li>
+      </ul>
+
+      <div slot="footer">
+
+        <span data-alc-label>
+          Sistema
+        </span>
+
+        <ul>
+          <li>
+            <a href="#"><alc-icon name="info-circle" label=""></alc-icon> Informações do sistema</a>
+          </li>
+          <li>
+            <a href="#"> <alc-icon name="gear" label=""></alc-icon> Configurações</a>
+          </li>
+        </ul>
+      </div>
+        
+    </alc-nav>
+
+
+    <h2>Completo, sem label</h2>
+    <alc-nav class="border border-red-cool-40 border-dotted">
+
+      <div slot="header">
+        <div class="mx-5">
+          <alc-user name="Machado de Assis" registration-number="P_00000"></alc-user>
+        </div>
+      </div>
+
+      <ul>
+        <li><a href="#">Institucional</a></li>
+        <li>
+          <span>Aplicações</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="#">Gabinete Digital</a></li>
+              <li><a href="#">Liderança Digital</a></li>
+              <li><a href="#">Processo Legislativo Digital</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Serviços</a></li>
+        <li>
+          <span>Documentação digital</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="#">eDoc</a></li>
+              <li><a href="#">eDoc Forms</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Equipe técnica</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+
+      <ul>
+        <li>
+          <a href="#">Algo mais</a>
+        </li>
+      </ul>
+
+      <div slot="footer">
+        <ul>
+          <li>
+            <a href="#"><alc-icon name="info-circle" label=""></alc-icon> Informações do sistema</a>
+          </li>
+          <li>
+            <a href="#"> <alc-icon name="gear" label=""></alc-icon> Configurações</a>
+          </li>
+        </ul>
+      </div>
+        
+    </alc-nav>
+
+
+    <h2>
+      Exemplo hipotético (vindo do Figma)
+    </h2>
+    <alc-nav class="border border-red-cool-40 border-dotted">
+
+      <div slot="header">
+        <div class="mx-5">
+          <alc-user name="Machado de Assis" registration-number="P_00000"></alc-user>
+        </div>
+      </div>
+
+      <ul>
+        <li><a href="#">Institucional</a></li>
+        <li>
+          <span>Aplicações</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="#">Gabinete Digital</a></li>
+              <li><a href="#">Liderança Digital</a></li>
+              <li><a href="#">Processo Legislativo Digital</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Serviços</a></li>
+        <li>
+          <span>Documentação digital</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="#">eDoc</a></li>
+              <li><a href="#">eDoc Forms</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Equipe técnica</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+
+      <div slot="footer">
+        <ul>
+          <li>
+            <a href="#"><alc-icon name="info-circle" label=""></alc-icon> Informações do sistema</a>
+          </li>
+          <li>
+            <a href="#"> <alc-icon name="gear" label=""></alc-icon> Configurações</a>
+          </li>
+        </ul>
+      </div>
+        
+    </alc-nav>
+
+    <h2>Exemplo simples descritivo</h2>
+
+    <alc-nav class="border border-red-cool-40 border-dotted">
+
+      <span data-alc-label>
+        Lista de itens no nível 1
+      </span>
+      <ul>
+        <li>
+          <a href="#">Opção nível 1 - A</a>
+        </li>
+        <li>
+          <span>Opção nível 1 - B (tem submenu)</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="#">Opção nível 2 - Ba</a></li>
+              <li><a href="#">Opção nível 2 - Bb</a></li>
+            </ul>
+
+            <span data-alc-label>
+              Lista de itens no nível 2
+            </span>
+            <ul>
+              <li><a href="#">Opção nível 2 - Bc</a></li>
+              <li><a href="#">Opção nível 2 - Bd</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="#">Opção nível 1 - C</a>
+        </li>
+      </ul>
+
+
+      <span data-alc-label>
+        Outra lista de itens no nível 1
+      </span>
+      <ul>
+        <li>
+          <a href="#">Opção nível 1 - D</a>
+        </li>
+        <li>
+          <a href="#">Opção nível 1 - E</a>
+        </li>
+      </ul>
+
+    </alc-nav>
+
+    <h2>Inspirado no eDoc Forms</h2>
+
+    <alc-nav class="border border-red-cool-40 border-dotted">
+
+      <ul>
+        <li>
+          <span>Secret&aacute;rios Parlamentares</span>
+          <div data-alc-panel>
+
+            <ul>
+              <li><a href="/alteracaoNivelSP"> Altera&ccedil;&atilde;o de N&iacute;vel - Secret&aacute;rio Parlamentar
+                </a></li>
+
+              <li>
+                <span>Afastamentos</span>
+                <div data-alc-panel>
+                  <ul>
+                    <li><a href="/cancelamentoAlteracaoFeriasSP"> Cancelamento ou Altera&ccedil;&atilde;o de
+                        f&eacute;rias de
+                        Secret&aacute;rio Parlamentar </a></li>
+                    <li><a href="/solicitacaoFerias"> Solicita&ccedil;&atilde;o de F&eacute;rias SP cedido de outro
+                        &oacute;rg&atilde;o </a></li>
+                    <li><a href="/comunicadoCovid19"> Comunicado de Acometimento por Covid-19 </a></li>
+                    <li><a href="/justificativaDeAusencia"> Justificativa de Aus&ecirc;ncia </a></li>
+                    <li><a href="/cessaoProrrogacaoServidorEmpregadoSP"> Cess&atilde;o/Prorroga&ccedil;&atilde;o de
+                        Cess&atilde;o - SP </a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li><a href="/alteracaoContaBancaria"> Altera&ccedil;&atilde;o/Inclus&atilde;o de Conta Banc&aacute;ria
+                </a></li>
+              <li><a href="/alteracaoEnderecoDadosCadastrais"> Atualiza&ccedil;&atilde;o de endere&ccedil;o e de dados
+                  cadastrais </a></li>
+              <li><a href="/auxilioTransporte"> Aux&iacute;lio Transporte </a></li>
+              <li><a href="/comunicadoEstadoGestacional"> Comunicado Estado Gestacional </a></li>
+              <li><a href="/copiaProcesso"> C&oacute;pia de Processo </a></li>
+              <li><a href="/declaracaoNaoCumulativaBeneficio"> Declara&ccedil;&atilde;o de N&atilde;o Cumulatividade de
+                  Benef&iacute;cio </a></li>
+              <li><a href="/renovacaoCadastroDependente"> Envio semestral de comprovante de matr&iacute;cula -
+                  dependente estudante </a></li>
+              <li><a href="/exoneracaoApedidoSP"> Exonera&ccedil;&atilde;o a Pedido do Secretario Parlamentar </a></li>
+              <li><a href="/exoneracaoDeSP"> Exonera&ccedil;&atilde;o de Secret&aacute;rio(a) Parlamentar </a></li>
+              <li><a href="/Dependentes"> Inclus&atilde;o/Cancelamento de Dependentes(DAS, Pr&oacute;-sa&uacute;de,
+                  Imposto de Renda e Aux&iacute;lio Pr&eacute;-Escolar) </a></li>
+              <li><a href="/mudancaGabineteParlamentar"> Mudan&ccedil;a de Gabinete Parlamentar -
+                  Indica&ccedil;&atilde;o </a></li>
+              <li><a href="/prioridadeTramitacao"> Prioridade de Tramita&ccedil;&atilde;o </a></li>
+              <li><a href="/segundaViaCracha"> Segunda Via Crach&aacute; Funcional </a></li>
+              <li><a href="/solicitacaoDocumentos"> Solicita&ccedil;&atilde;o Documento </a></li>
+              <li><a href="/CopiaProntuarioMedicoTerceiros"> Solicita&ccedil;&atilde;o de C&oacute;pia de
+                  Prontu&aacute;rio M&eacute;dico - Pedido de Terceiros </a></li>
+              <li><a href="/CopiaProntuarioMedico"> Solicita&ccedil;&atilde;o de C&oacute;pia de Prontu&aacute;rio
+                  M&eacute;dico Pr&oacute;prio </a></li>
+              <li><a href="/UtilizacaoTransporteColetivoSeletivoEspecial"> Utiliza&ccedil;&atilde;o de transporte
+                  coletivo seletivo ou especial </a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span>Servidores Efetivos</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="/requerimentoAbonoPermanencia">Abono Perman&ecirc;ncia</a></li>
+              <li><a href="/alteracaoContaBancaria">Altera&ccedil;&atilde;o/Inclus&atilde;o de Conta Banc&aacute;ria</a>
+              </li>
+              <li><a href="/alteracaoEnderecoDadosCadastrais">Atualiza&ccedil;&atilde;o de endere&ccedil;o e de dados
+                  cadastrais</a></li>
+              <li><a href="/auxilioTransporte">Aux&iacute;lio Transporte</a></li>
+              <li><a href="/averbacaoTempoServico">Averba&ccedil;&atilde;o de Tempo de Contribui&ccedil;&atilde;o</a>
+              </li>
+              <li><a href="/cancelamentoGozoFeriasRecesso">Cancelamento ou Gozo de F&eacute;rias/Recesso</a></li>
+              <li><a href="/ConcessaoAdicionalInsalubridade">Concess&atilde;o de Adicional de Insalubridade,
+                  Periculosidade e Gratifica&ccedil;&atilde;o de Raios X</a></li>
+              <li><a href="/copiaProcesso">C&oacute;pia de Processo</a></li>
+              <li><a href="/designacaoAutorizadoresEPonto">Designa&ccedil;&atilde;o de respons&aacute;vel pelo controle
+                  da frequ&ecirc;ncia no ePonto</a></li>
+              <li><a href="/dispensaPontoExame">Dispensa de ponto referente ao exame m&eacute;dico peri&oacute;dico</a>
+              </li>
+              <li><a href="/renovacaoCadastroDependente">Envio semestral de comprovante de matr&iacute;cula - dependente
+                  estudante</a></li>
+              <li><a href="/Dependentes">Inclus&atilde;o/Cancelamento de Dependentes(DAS, Pr&oacute;-sa&uacute;de,
+                  Imposto de Renda e Aux&iacute;lio Pr&eacute;-Escolar)</a></li>
+              <li><a href="/isencaoImpostoRendaAposentado">Isen&ccedil;&atilde;o de Imposto de Renda para Aposentado e
+                  Pensionista</a></li>
+              <li><a href="/justificativaDeAusencia">Justificativa de Aus&ecirc;ncia</a></li>
+              <li><a href="/prioridadeTramitacao">Prioridade de Tramita&ccedil;&atilde;o</a></li>
+              <li><a href="/reducaoJornadaTrabalhoServidoraLactante">Redu&ccedil;&atilde;o de Jornada de Trabalho -
+                  Lactante</a></li>
+              <li><a href="/licencaArmaDeFogo">Renova&ccedil;&atilde;o de registro de arma de fogo</a></li>
+              <li><a href="/requerimentoReducaoJornadaTrabalho">Requerimento Redu&ccedil;&atilde;o Jornada de
+                  Trabalho</a></li>
+              <li><a href="/requerimentoTratamentoSaude">Requerimento tratamento de sa&uacute;de habitual</a></li>
+              <li><a href="/segundaViaCracha">Segunda Via Crach&aacute; Funcional</a></li>
+              <li><a href="/UtilizacaoTransporteColetivoSeletivoEspecial">Utiliza&ccedil;&atilde;o de transporte
+                  coletivo seletivo ou especial</a></li>
+            </ul>
+
+            <span data-alc-label>
+              Comunicados
+            </span>
+            <ul>
+              <li><a href="/comunicadoEstadoGestacional">Comunicado Estado Gestacional</a></li>
+              <li><a href="/comunicadoCovid19">Comunicado de Acometimento por Covid-19</a></li>
+              <li><a href="/comunicacaoMensalFrequenciaEstagiario">Comunica&ccedil;&atilde;o Mensal de Frequ&ecirc;ncia
+                  - Estagi&aacute;rio</a></li>
+              <li><a href="/substituicaoFuncaoComissionada">Comunica&ccedil;&atilde;o de Substitui&ccedil;&atilde;o de
+                  Fun&ccedil;&atilde;o Comissionada</a></li>
+            </ul>
+
+            <span data-alc-label>
+              Licenças
+            </span>
+            <ul>
+              <li><a href="/licencaAtividadePolitica">Licen&ccedil;a para Atividade Pol&iacute;tica</a></li>
+              <li><a href="/licencaTratarInteressesParticulares">Licen&ccedil;a para Tratar Interesses Particulares</a>
+              </li>
+              <li><a href="/licencaMotivoAfastamentoConjuge">Licen&ccedil;a por motivo de afastamento do
+                  c&ocirc;njuge</a></li>
+              <li><a href="/licencaPremio">Licen&ccedil;a-Pr&ecirc;mio</a></li>
+            </ul>
+
+            <span data-alc-label>
+              Solicitações
+            </span>
+            <ul>
+              <li><a href="/CopiaProntuarioMedicoTerceiros">Solicita&ccedil;&atilde;o de C&oacute;pia de
+                  Prontu&aacute;rio M&eacute;dico - Pedido de Terceiros</a></li>
+              <li><a href="/CopiaProntuarioMedico">Solicita&ccedil;&atilde;o de C&oacute;pia de Prontu&aacute;rio
+                  M&eacute;dico Pr&oacute;prio</a></li>
+              <li><a href="/solicitacaoDocumentos">Solicita&ccedil;&atilde;o de Documentos Funcionais</a></li>
+            </ul>
+
+          </div>
+        </li>
+        <li>
+          <span>CNE</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="/exercicioAtividadeTemporaria">Altera&ccedil;&atilde;o tempor&aacute;ria de
+                  lota&ccedil;&atilde;o</a></li>
+              <li><a href="/alteracaoContaBancaria">Altera&ccedil;&atilde;o/Inclus&atilde;o de Conta Banc&aacute;ria</a>
+              </li>
+              <li><a href="/alteracaoEnderecoDadosCadastrais">Atualiza&ccedil;&atilde;o de endere&ccedil;o e de dados
+                  cadastrais</a></li>
+              <li><a href="/auxilioTransporte">Aux&iacute;lio Transporte</a></li>
+              <li><a href="/cancelamentoAuxilioAlimentacaoCNE">Cancelamento do Aux&iacute;lio-Alimenta&ccedil;&atilde;o
+                  - CNE Requisitado</a></li>
+              <li><a href="/cancelamentoGozoFeriasRecesso">Cancelamento ou Gozo de F&eacute;rias/Recesso</a></li>
+              <li><a href="/cessaoProrrogacaoServidorEmpregado">Cess&atilde;o/Prorroga&ccedil;&atilde;o de Cess&atilde;o
+                  - CNE</a></li>
+              <li><a href="/comunicadoEstadoGestacional">Comunicado Estado Gestacional</a></li>
+              <li><a href="/comunicadoCovid19">Comunicado de Acometimento por Covid-19</a></li>
+              <li><a href="/comunicacaoMensalFrequenciaCNE">Comunica&ccedil;&atilde;o Mensal de Frequ&ecirc;ncia -
+                  CNE</a></li>
+              <li><a href="/copiaProcesso">C&oacute;pia de Processo</a></li>
+              <li><a href="/declaracaoNaoCumulativaBeneficio">Declara&ccedil;&atilde;o de N&atilde;o Cumulatividade de
+                  Benef&iacute;cio</a></li>
+              <li><a href="/designacaoAutorizadoresEPonto">Designa&ccedil;&atilde;o de respons&aacute;vel pelo controle
+                  da frequ&ecirc;ncia no ePonto</a></li>
+              <li><a href="/renovacaoCadastroDependente">Envio semestral de comprovante de matr&iacute;cula - dependente
+                  estudante</a></li>
+              <li><a href="/exoneracaoPedidoServidorCNE">Exonera&ccedil;&atilde;o a pedido do servidor</a></li>
+              <li><a href="/Dependentes">Inclus&atilde;o/Cancelamento de Dependentes(DAS, Pr&oacute;-sa&uacute;de,
+                  Imposto de Renda e Aux&iacute;lio Pr&eacute;-Escolar)</a></li>
+              <li><a href="/justificativaDeAusencia">Justificativa de Aus&ecirc;ncia</a></li>
+              <li><a href="/nomeacaoExoneracao">Nomea&ccedil;&atilde;o/Exonera&ccedil;&atilde;o/Nomea&ccedil;&atilde;o
+                  sem efeito</a></li>
+              <li><a href="/opcaoPelaFolhaPonto">Op&ccedil;&atilde;o pela Folha de Ponto</a></li>
+              <li><a href="/opcaoComunicacaoMensalFrequenciaCNE">Op&ccedil;&atilde;o pela comunica&ccedil;&atilde;o
+                  mensal de frequ&ecirc;ncia</a></li>
+              <li><a href="/opcaoAuxilioAlimentacao">Op&ccedil;&atilde;o pelo Aux&iacute;lio-Alimenta&ccedil;&atilde;o -
+                  CNE Requisitado</a></li>
+              <li><a href="/opcaoPeloRegistroEletronico">Op&ccedil;&atilde;o pelo Registro Eletr&ocirc;nico</a></li>
+              <li><a href="/termoOpcaoRemuneratoriaCNE">Op&ccedil;&atilde;o remunerat&oacute;ria - CNE requisitado</a>
+              </li>
+              <li><a href="/prioridadeTramitacao">Prioridade de Tramita&ccedil;&atilde;o</a></li>
+              <li><a href="/reducaoJornadaTrabalhoServidoraLactante">Redu&ccedil;&atilde;o de Jornada de Trabalho -
+                  Lactante</a></li>
+              <li><a href="/requerimentoReducaoJornadaTrabalho">Requerimento Redu&ccedil;&atilde;o Jornada de
+                  Trabalho</a></li>
+              <li><a href="/requerimentoTratamentoSaude">Requerimento tratamento de sa&uacute;de habitual</a></li>
+              <li><a href="/retornoLotacaoOriginal">Retorno &agrave; lota&ccedil;&atilde;o original</a></li>
+              <li><a href="/segundaViaCracha">Segunda Via Crach&aacute; Funcional</a></li>
+              <li><a href="/CopiaProntuarioMedicoTerceiros">Solicita&ccedil;&atilde;o de C&oacute;pia de
+                  Prontu&aacute;rio M&eacute;dico - Pedido de Terceiros</a></li>
+              <li><a href="/CopiaProntuarioMedico">Solicita&ccedil;&atilde;o de C&oacute;pia de Prontu&aacute;rio
+                  M&eacute;dico Pr&oacute;prio</a></li>
+              <li><a href="/solicitacaoDocumentos">Solicita&ccedil;&atilde;o de Documentos Funcionais</a></li>
+              <li><a href="/UtilizacaoTransporteColetivoSeletivoEspecial">Utiliza&ccedil;&atilde;o de transporte
+                  coletivo seletivo ou especial</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span>CNE Requisitado</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="/cancelamentoAuxilioAlimentacaoCNE">Cancelamento do Aux&iacute;lio-Alimenta&ccedil;&atilde;o
+                  - CNE Requisitado</a></li>
+              <li><a href="/cessaoProrrogacaoServidorEmpregado">Cess&atilde;o/Prorroga&ccedil;&atilde;o de Cess&atilde;o
+                  - CNE</a></li>
+              <li><a href="/opcaoAuxilioAlimentacao">Op&ccedil;&atilde;o pelo Aux&iacute;lio-Alimenta&ccedil;&atilde;o -
+                  CNE Requisitado</a></li>
+              <li><a href="/termoOpcaoRemuneratoriaCNE">Op&ccedil;&atilde;o remunerat&oacute;ria - CNE requisitado</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span>Aposentado</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="/alteracaoEnderecoDadosCadastrais">Atualiza&ccedil;&atilde;o de endere&ccedil;o e de dados
+                  cadastrais</a></li>
+              <li><a href="/copiaProcesso">C&oacute;pia de Processo</a></li>
+              <li><a href="/renovacaoCadastroDependente">Envio semestral de comprovante de matr&iacute;cula - dependente
+                  estudante</a></li>
+              <li><a href="/Dependentes">Inclus&atilde;o de Dependente(s)</a></li>
+              <li><a href="/alteracaoContaBancaria">Inclus&atilde;o/Altera&ccedil;&atilde;o de Conta Banc&aacute;ria</a>
+              </li>
+              <li><a href="/isencaoImpostoRendaAposentado">Isen&ccedil;&atilde;o de Imposto de Renda</a></li>
+              <li><a href="/prioridadeTramitacao">Prioridade de Tramita&ccedil;&atilde;o</a></li>
+              <li><a href="/SobrestamentoProcessoAposentado">Sobrestamento de Processo</a></li>
+              <li><a href="/CopiaProntuarioMedicoTerceiros">Solicita&ccedil;&atilde;o de C&oacute;pia de
+                  Prontu&aacute;rio M&eacute;dico - Pedido de Terceiros</a></li>
+              <li><a href="/CopiaProntuarioMedico">Solicita&ccedil;&atilde;o de C&oacute;pia de Prontu&aacute;rio
+                  M&eacute;dico Pr&oacute;prio</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span>Estagi&aacute;rio</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="/comunicacaoMensalFrequenciaEstagiario">Comunica&ccedil;&atilde;o Mensal de Frequ&ecirc;ncia
+                  Estagi&aacute;rio</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span>Deputados</span>
+          <div data-alc-panel="">
+            <ul>
+              <li><a href="/alteracaoContaBancaria">Altera&ccedil;&atilde;o/Inclus&atilde;o de Conta Banc&aacute;ria</a>
+              </li>
+              <li><a href="/alteracaoEnderecoDadosCadastrais">Atualiza&ccedil;&atilde;o de endere&ccedil;o e de dados
+                  cadastrais</a></li>
+              <li><a href="/AverbacaoOnerosaMandatoEletivo">Averba&ccedil;&atilde;o Onerosa de Mandato Eletivo</a></li>
+              <li><a href="/copiaProcesso">C&oacute;pia de Processo</a></li>
+              <li><a href="/renovacaoCadastroDependente">Envio semestral de comprovante de matr&iacute;cula - dependente
+                  estudante</a></li>
+              <li><a href="/Dependentes">Inclus&atilde;o/altera&ccedil;&atilde;o de dependente(s)</a></li>
+              <li><a href="/JustificativaAusenciaSessao">Justificativa de Aus&ecirc;ncia &agrave; Sess&atilde;o</a></li>
+              <li><a href="/missaoNacionalGabinete">Miss&atilde;o Nacional</a></li>
+              <li><a href="/OpcaoPrevidenciariaRegimeProprio">Op&ccedil;&atilde;o Previdenci&aacute;ria pelo Regime
+                  Pr&oacute;prio</a></li>
+              <li><a href="/prioridadeTramitacao">Prioridade de Tramita&ccedil;&atilde;o</a></li>
+              <li><a href="/reembolsoDespesasAssistenciaSaude">Reembolso de Despesas de Assist&ecirc;ncia &agrave;
+                  Sa&uacute;de</a></li>
+              <li><a href="/CopiaProntuarioMedicoTerceiros">Solicita&ccedil;&atilde;o de C&oacute;pia de
+                  Prontu&aacute;rio M&eacute;dico - Pedido de Terceiros</a></li>
+              <li><a href="/CopiaProntuarioMedico">Solicita&ccedil;&atilde;o de C&oacute;pia de Prontu&aacute;rio
+                  M&eacute;dico Pr&oacute;prio</a></li>
+              <li><a href="/utilizacaoCotaAtividadeParlamentar">Utiliza&ccedil;&atilde;o de Cota Parlamentar para
+                  Deslocamento em Miss&atilde;o Oficial</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span>Gabinete</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="/acessoGabineteParlamentar">Acesso ao Gabinete Parlamentar</a></li>
+              <li><a href="/chavesFechaduras">Chaves e Fechaduras</a></li>
+              <li><a href="/confeccaoCarimbos">Confec&ccedil;&atilde;o de Carimbos</a></li>
+              <li><a href="/curriculosGabinetesParlamentares">Curr&iacute;culos para Gabinetes Parlamentares</a></li>
+              <li><a href="/ManutencaoPequenosReparosGabinete">Manuten&ccedil;&atilde;o de Pequenos Reparos no
+                  Gabinete</a></li>
+              <li><a href="/naoRealizacaoProcedimentoFormatacaoHD">N&atilde;o Realiza&ccedil;&atilde;o de Procedimento
+                  de Formata&ccedil;&atilde;o de HDs</a></li>
+              <li><a href="/recolhimentoMaterialPermanente">Recolhimento de material permanente de gabinete
+                  parlamentar</a></li>
+              <li><a href="/solicitacaoExemplaresConstituicao">Solicita&ccedil;&atilde;o de exemplares da
+                  Constitui&ccedil;&atilde;o Federal</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+    </alc-nav>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const alcNav = document.querySelector('#nav01');
+  
+        alcNav.querySelectorAll('li').forEach(item => {
+          item.addEventListener('click', () => {
+            alcNav.setSelectedItem(item);
+          });
+        });
+      });
+    </script>
+  </body>
+
+</html>

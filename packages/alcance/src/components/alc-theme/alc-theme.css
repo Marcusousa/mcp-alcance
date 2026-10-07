@@ -1,0 +1,25 @@
+/* Definição das variáveis - Setup dos temas*/
+
+
+/* CSS COMUM a todos os temas */
+alc-theme {
+  display: block;
+}
+
+.alc-theme__label {
+  @apply sr-only;
+}
+
+/*
+  Não tem problema em usar .alc-field__core aqui porque:
+  1. alc-theme está usando o componente alc-field, ou seja, um componente já "conhece" o outro, porque depende dele.
+  2. A classe alc-field__core faz parte da API pública de alc-field.
+ */
+.alc-field__core .alc-theme__select {
+  /*
+    Isso foi feito para manter o visual adotado desde o início com o seletor de tema,
+    que não ocupa 100% da largura disponível, como acontece por padrão para os
+    campos de entrada usando o componente alc-field.
+  */
+  @apply w-auto;
+}

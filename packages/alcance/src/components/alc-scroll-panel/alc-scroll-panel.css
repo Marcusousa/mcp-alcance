@@ -1,0 +1,106 @@
+/* Definição das variáveis - Setup dos temas*/
+
+/* DARK */
+[data-alc-theme="dark"] alc-scroll-panel {
+  --border-color: var(--alc-color-border);
+  --shadow-color:  theme('colors.gray.30');
+  --outline-color: var(--alc-color-action-30);
+}
+
+[data-alc-theme="dark"] .alc-scroll-panel__button {
+  --text-color: var(--alc-color-link-text);
+  --bg-color: theme('colors.transparent');
+}
+
+[data-alc-theme="dark"] .alc-scroll-panel__button:hover {
+  --text-color: var(--alc-color-text-0);
+  --bg-color: var(--alc-color-action-50);
+}
+
+[data-alc-theme="dark"] .alc-scroll-panel__button:active {
+  --text-color: var(--alc-color-text-0);
+  --bg-color: var(--alc-color-action-70);
+}
+
+[data-alc-theme="dark"] .alc-scroll-panel__button:disabled {
+  --text-color: var(--alc-color-neutral-60);
+  --bg-color: theme('colors.transparent');
+}
+
+
+/* LIGHT */
+[data-alc-theme="light"] alc-scroll-panel {
+  --border-color: var(--alc-color-border);
+  --shadow-color:  theme('colors.gray.30');
+  --outline-color: var(--alc-color-action-60);
+}
+
+[data-alc-theme="light"] .alc-scroll-panel__button {
+  --text-color: var(--alc-color-link-text);
+  --bg-color: theme('colors.transparent');
+}
+
+[data-alc-theme="light"] .alc-scroll-panel__button:hover {
+  --text-color: var(--alc-color-text-contrast);
+  --bg-color: var(--alc-color-action-50);
+}
+
+[data-alc-theme="light"] .alc-scroll-panel__button:active {
+  --text-color: var(--alc-color-text-contrast);
+  --bg-color: var(--alc-color-action-70);
+}
+
+[data-alc-theme="light"] .alc-scroll-panel__button:disabled {
+  --text-color: var(--alc-color-neutral-30);
+  --bg-color: theme('colors.transparent');
+}
+
+alc-scroll-panel {
+  @apply block;
+}
+
+.alc-scroll-panel {
+  @apply flex flex-row items-stretch;
+}
+
+.alc-scroll-panel__button {
+  --border-width: var(--alc-border-width);
+  
+  /* Borda top para deixar o elemento centralizado */
+  border-width: var(--border-width) 0;
+  @apply border-b-[--border-color] border-t-transparent;
+  @apply w-10 h-full text-[--text-color] bg-[--bg-color] transition-colors;
+}
+
+.alc-scroll-panel__wrapper-content {
+  @apply overflow-hidden relative;
+}
+
+.alc-scroll-panel__content {
+  @apply overflow-auto whitespace-nowrap;
+}
+
+.alc-scroll-panel__content::-webkit-scrollbar {
+  display: none;
+}
+
+
+.alc-scroll-panel__has-scroll-left::before,
+.alc-scroll-panel__has-scroll-right::after {
+  @apply block content-["\200C"];
+  @apply w-3 h-full absolute top-[--alc-spacing-none] z-10 pointer-events-none;
+}
+
+.alc-scroll-panel__has-scroll-left::before {  
+  @apply left-[--alc-spacing-none];
+  box-shadow: inset 8px 0px 8px -8px var(--shadow-color);
+}
+
+.alc-scroll-panel__has-scroll-right::after {
+  @apply right-[--alc-spacing-none];
+  box-shadow: inset -8px 0px 8px -8px var(--shadow-color);
+}
+
+.alc-scroll-panel__button:focus-visible, .alc-scroll-panel__button.active:focus-visible {
+  @apply outline outline-2 outline-[--outline-color] -outline-offset-[--alc-spacing-01];
+}

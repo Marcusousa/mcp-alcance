@@ -1,0 +1,26 @@
+{/* alc-user-menu.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-user-menu.stories';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.name}
+Por padrão, o componente exibe um ícone e o nome `Usuário` caso não seja definido essas propriedades.
+
+*Faça o resize da tela para ver a responsividade do componente.* 
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Completo.name}
+O componente possui as propriedades `img-src`, `name` e `registration-number` que permitem exibir a foto do usuário, o nome e a matrícula/ponto, respectivamente.
+<Canvas of={Stories.Completo} sourceState="shown" />
+<Controls of={Stories.Completo} />
+
+## {Stories.Slot.name}
+O componente permite usar o slot para exibir informações adicionais do usuário.
+<Canvas of={Stories.Slot} sourceState="shown" />
+<Controls of={Stories.Slot} />

@@ -1,0 +1,23 @@
+.images-examples__container {
+  display: flex;
+  gap: var(--alc-spacing-04);
+  justify-content: space-evenly;
+  margin-bottom: var(--alc-spacing-08);
+}
+
+.image-examples__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  word-break: break-word;
+  flex-grow: 1;
+  flex-basis: 50%;
+  text-align: center;
+} 
+
+.image-examples__text {
+  width: 70%;
+  color: var(--alc-color-text-secondary);
+  font-size: var(--alc-font-size-sm);
+  line-height: var(--alc-font-line-height-sm);
+} 

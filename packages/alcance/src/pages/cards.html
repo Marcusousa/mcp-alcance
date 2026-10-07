@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Cards</title>
+
+    <script type="module" src="/build/alcance.esm.js"></script>
+    <script nomodule src="/build/alcance.js"></script>
+    <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <!-- SURFACE -->
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem;">
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <span class="alc-card__title">Title</span>
+                        <p class="alc-card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="alc-card__footer">
+                        <button class="alc-button">Button</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem;">
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="">
+                        <div class="alc-card__container-title">
+                            <h1 class="alc-card__title">Title</h1>
+                            <h2 class="alc-card__subtitle">Subtitle</h2>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="alc-card__footer">
+                        <p>Text footer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem;">
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <div class="alc-card__container-title">
+                            <h1 class="alc-card__title">Title</h1>
+                            <h2 class="alc-card__subtitle">Subtitle</h2>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <div class="alc-container-link">
+                                <a href="#" class="alc-link">Link One</a>
+                                <a href="#" class="alc-link">Link Two</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem;">
+                    <div class="alc-card__header">
+                        Test Card
+                    </div>
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <div class="alc-card__container-title">
+                            <h1 class="alc-card__title">Title</h1>
+                            <h2 class="alc-card__subtitle">Subtitle</h2>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="alc-container-h-group">
+                            <a href="#" class="alc-link">Link One</a>
+                            <a href="#" class="alc-link">Link Two</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem; background-color: var(--alc-color-info-10); border-color: var(--alc-color-info-20); color: var(--alc-color-info-80)">
+                    <div class="alc-card__header" style="border-bottom-color: var(--alc-color-info-20);">
+                        Custom Card
+                    </div>
+                    <div class="alc-card__body">
+                        <div class="alc-card__container-title">
+                            <h1 class="alc-card__title">Title</h1>
+                            <h2 class="alc-card__subtitle">Subtitle</h2>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                        <div class="alc-container-h-group">
+                            <a href="#" class="alc-link">Link One</a>
+                            <a href="#" class="alc-link">Link Two</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LAYER A -->
+    <div class="container-fluid py-4" style="background-color: var(--alc-color-layer-a);">
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem; background-color: var(--alc-color-layer-b);">
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <span class="alc-card__title">Title</span>
+                        <p class="alc-card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="alc-card__footer">
+                        <button class="alc-button">Button</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem; background-color: var(--alc-color-layer-b);">
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <span class="alc-card__title">Title</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="alc-card__footer">
+                        <p>Text footer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem; background-color: var(--alc-color-layer-b);">
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <h1 class="alc-card__title">Title</h1>
+                        <h2 class="alc-card__subtitle">Subtitle</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="#" class="alc-link">Link One</a>
+                        <a href="#" class="alc-link">Link Two</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem; background-color: var(--alc-color-layer-b);">
+                    <div class="alc-card__header">
+                        Test Card
+                    </div>
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <h1 class="alc-card__title">Title</h1>
+                        <h2 class="alc-card__subtitle">Subtitle</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="#" class="alc-link">Link One</a>
+                        <a href="#" class="alc-link">Link Two</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LAYER B -->
+    <div class="container-fluid py-4" style="background-color: var(--alc-color-layer-b);">
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem; background-color: var(--alc-color-layer-c);">
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <span class="alc-card__title">Title</span>
+                        <p class="alc-card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="alc-card__footer">
+                        <button class="alc-button">Button</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem; background-color: var(--alc-color-layer-c);">
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <span class="alc-card__title">Title</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="alc-card__footer">
+                        <p>Text footer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem; background-color: var(--alc-color-layer-c);">
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <h1 class="alc-card__title">Title</h1>
+                        <h2 class="alc-card__subtitle">Subtitle</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="#" class="alc-link">Link One</a>
+                        <a href="#" class="alc-link">Link Two</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="alc-card" style="width: 18rem; background-color: var(--alc-color-layer-c);">
+                    <div class="alc-card__header">
+                        Test Card
+                    </div>
+                    <div class="alc-card__body">
+                        <img src="https://picsum.photos/300/200" alt="" >
+                        <h1 class="alc-card__title">Title</h1>
+                        <h2 class="alc-card__subtitle">Subtitle</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="#" class="alc-link">Link One</a>
+                        <a href="#" class="alc-link">Link Two</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

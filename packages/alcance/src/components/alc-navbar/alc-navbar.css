@@ -1,0 +1,50 @@
+/* top 72px definido inicialmente mas é alterado dinamicamente pelo componente */
+alc-navbar {
+  @apply block sticky top-[72px] z-[19];
+}
+
+[data-alc-theme="light"] alc-navbar {
+  --bg-color-hover: var(--alc-color-neutral-5);
+
+  /* 0F indica 6% de transparencia */
+  --color-drop-shadow: theme('colors.black')0F;
+  --outline-color: var(--alc-color-action-60);
+}
+
+[data-alc-theme="dark"] alc-navbar {
+  --bg-color-hover: var(--alc-color-neutral-80);
+
+  /* 0F indica 6% de transparencia */
+  --color-drop-shadow: theme('colors.white')0F;
+  --outline-color: var(--alc-color-neutral-0);
+}
+
+.alc-navbar__list {
+  @apply flex flex-wrap list-none px-[--alc-spacing-03] bg-[--alc-color-surface];
+  box-shadow: 0px 2px 2px 0px var(--color-drop-shadow), 0px 4px 4px 0px var(--color-drop-shadow);
+}
+
+.alc-navbar__item {
+  /* Quando o item está ativo aparece uma borda embaixo */
+  --border-width: 4px;
+  --padding-width: var(--alc-spacing-05); /* valor ajustado para o DS */
+
+  @apply flex flex-row items-center gap-[--alc-spacing-03] p-[--padding-width];
+  @apply bg-[--alc-color-surface] border-[--alc-color-surface];
+  @apply text-[--alc-color-link-text];
+  padding-bottom: calc(var(--padding-width) - var(--border-width));
+  border-bottom-width: var(--border-width);
+}
+
+.alc-navbar__item:hover {
+  @apply bg-[--bg-color-hover] border-[--bg-color-hover] text-[--alc-color-text-0];
+}
+
+.alc-navbar__item:focus-visible {
+  @apply outline outline-2 outline-[--outline-color] -outline-offset-[--alc-spacing-03];
+  @apply bg-[--bg-color-hover];
+}
+
+.alc-navbar__icon {
+  @apply text-[--alc-color-text-primary];
+}

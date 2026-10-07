@@ -1,0 +1,29 @@
+{/* alc-header-action.mdx */}
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-header-action.stories';
+import HeaderActionProps from './alc-header-action.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente `header-action` é utilizado para exibir ações no cabeçalho da aplicação, como botões ou links que redirecionam o usuário para outras páginas ou executam funções específicas, como por exemplo: ajuda, contato ou busca.
+
+Ele deve ser posicionado nos slots `support` e/ou `fixed` do componente alc-header, conforme a necessidade.
+
+## Responsividade
+- **Telas menores**: exibe apenas o ícone, otimizando o espaço e mantendo a interface limpa.
+- **Telas maiores**: exibe o ícone acompanhado do texto, facilitando o entendimento da ação.
+
+
+## Link
+Para que o comportamento de link (variant="link") funcione corretamente, é obrigatório definir a propriedade `url`.
+
+Caso queira controlar a navegação manualmente, você pode:
+- Ouvir o evento `alc-select`.
+- Aplicar `event.preventDefault()` para interromper o comportamento padrão do link.
+- Executar a navegação conforme sua necessidade. 
+
+
+
+<Markdown>{HeaderActionProps}</Markdown>

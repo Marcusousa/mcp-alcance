@@ -1,0 +1,30 @@
+{/* alc-badge.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-badge.stories';
+import BadgeProps from './alc-badge.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente `alc-badge` é utilizado para exibir um pequeno indicador visual, geralmente utilizado para mostrar quantidades, status ou notificações. Pode ser usado em ícones, botões, avatares, entre outros elementos, para chamar a atenção do usuário para novas mensagens, alertas ou informações relevantes.
+
+## Acessibilidade
+
+Para garantir conformidade com as recomendações de acessibilidade do W3C, recomenda-se o uso de uma mensagem de apoio no conteúdo focável. Isso significa que, caso o badge esteja associado a um elemento interativo (como um botão), deve-se incluir texto alternativo descritivo, que poderá ficar visível apenas para leitores de tela. Isso pode ser feito com a classe `sr-only` em um elemento textual dentro do conteúdo focável.
+
+Exemplo de texto alternativo (mensagem de apoio):  
+<CodeExample type="html">
+{`<alc-badge label="5" color="error" position="default">
+  <button class="alc-button alc-button-rounded">
+    <alc-icon name="chat-left-dots-fill" label="mensagens"></alc-icon>
+    {/* Texto alternativo para leitores de tela */}
+    <p class="sr-only">5 novas mensagens.</p>
+  </button>
+</alc-badge>`}
+</CodeExample>
+Isso garante que usuários de tecnologias assistivas entendam a funcionalidade do componente e o seu estado.
+
+<Markdown>{BadgeProps}</Markdown>

@@ -1,0 +1,29 @@
+{/* alc-skip-link.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-skip-link.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample type='html'>
+{`<template>
+  <div>
+    <alc-skip-link anchor='main-content'>conteúdo principal</alc-skip-link>
+    <div id="main-content">
+      <h1>Conteúdo principal</h1>
+      <p>Conteúdo principal da página.</p>
+    </div>
+  </div>
+</template>`}
+</CodeExample>

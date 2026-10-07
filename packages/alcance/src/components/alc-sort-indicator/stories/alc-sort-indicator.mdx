@@ -1,0 +1,15 @@
+{/* alc-sort-indicator.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-sort-indicator.stories';
+
+import SortIndicatorProps from './alc-sort-indicator.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente alc-sort-indicator é utilizado para exibir um ícone que indica o estado de ordenação (ascendente, descendente ou nenhum). Ele altera dinamicamente o ícone exibido com base no valor da propriedade sorting.
+
+<Markdown>{SortIndicatorProps}</Markdown>

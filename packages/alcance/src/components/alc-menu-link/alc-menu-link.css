@@ -1,0 +1,57 @@
+alc-menu-link {
+  --text-color: var(--alc-color-text-0);
+  --text-color-disabled: var(--alc-color-text-4);
+
+  --bg-color-active: var(--alc-color-surface-secondary);
+  --bg-color-hover: var(--alc-color-surface-tertiary);
+  --bg-color-focus: var(--alc-color-surface-secondary);
+}
+
+[data-alc-theme="dark"] alc-menu-link {
+  --text-color-active: var(--alc-color-text-0);
+
+  --outline-color: var(--alc-color-action-30);
+}
+
+[data-alc-theme="light"] alc-menu-link {
+  --text-color-active: var(--alc-color-text-contrast);
+
+  --outline-color: var(--alc-color-action-60);
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+.alc-menu-link > a {
+  -webkit-user-select: none;
+  -webkit-user-select: none;
+  @apply block pl-[--alc-spacing-07] pr-[--alc-spacing-06] py-[--alc-spacing-03] cursor-pointer;
+  @apply items-baseline;
+  @apply text-left text-base text-[color:--text-color];
+  @apply hover:bg-[color:--bg-color-hover];
+  @apply active:bg-[color:--bg-color-active];
+}
+
+.alc-menu-link > a:focus-visible {
+  @apply outline outline-2 outline-[--outline-color] -outline-offset-[--alc-spacing-03];
+  @apply bg-[color:--bg-color-focus];
+}
+
+.alc-menu-link > a.alc-menu-link--disabled {
+  @apply cursor-not-allowed text-[color:--text-color-disabled];
+  @apply hover:bg-[color:--bg-color-hover];
+  @apply focus-visible:bg-[color:--bg-color-focus];
+}
+
+.alc-menu-link__label {
+  @apply flex-1;
+}
+
+.alc-menu-link__prefix:not(:empty) {
+  @apply mr-[--alc-spacing-03];
+}
+
+.alc-menu-link__suffix:not(:empty) {
+  @apply ml-[--alc-spacing-03];
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Icon</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <h1>Ícones</h1>
+
+
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eligendi ipsum quos molestiae! Quia vero sed molestias pariatur ipsa minima illum eius rerum sit, nemo harum ullam cupiditate nihil reiciendis.
+
+    <h2>Utilização básica</h2>
+    <alc-icon name="heart" label=""></alc-icon>
+
+    <alc-icon name="heart" label="Coração"></alc-icon> Legal
+
+    <alc-icon name="neck" label=""></alc-icon>
+
+    ____
+
+    <alc-icon name="inexistente" label="__ Inexistente __ "></alc-icon>
+
+    <!-- Criar um arquivo svg com atributos "onchange", "onclick" e etc, para atestar o efeito. -->
+    <alc-icon src="../build/icons/sanitize.svg" label="Sanitize" sanitize="true"></alc-icon>
+
+
+
+    <h2>Alinhamento</h2>
+
+    <section class="mt-8">
+      <h3>Botões com e sem ícone tem que ter a mesma altura</h3>
+      <button class="alc-button">Salvar</button>
+      <button class="alc-button">
+        <alc-icon name="save" label=""></alc-icon>
+        Salvar
+      </button>
+      <button class="alc-button alc-button--secondary">Salvar</button>
+      <button class="alc-button alc-button--secondary">
+        <alc-icon name="save" label=""></alc-icon>
+        Salvar
+      </button>
+
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-3">
+            <button class="alc-button">Salvar as baleias é possível</button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-3">
+            <button class="alc-button">
+              <alc-icon name="save" label=""></alc-icon>
+              Salvar as baleias é possível
+            </button>
+          </div>
+          <div class="col-3">
+            <button class="alc-button">
+              <alc-icon name="save" label=""></alc-icon>
+              Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-3">
+            <button class="alc-button alc-button--secondary">Salvar as baleias é possível</button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-3">
+            <button class="alc-button alc-button--secondary">
+              <alc-icon name="save" label=""></alc-icon>
+              Salvar as baleias é possível
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+
+    <section class="mt-8">
+      <h3>Caixas com e sem ícone tem que ter a mesma altura</h3>
+      <div>
+        <span class="border p-1">Nuvem</span>
+        <span class="border p-1">
+          <alc-icon name="cloud" label=""></alc-icon>
+          Nuvem
+        </span>
+        <span class="border p-1">
+          <alc-icon name="cloud" label=""></alc-icon>
+        </span>
+      </div>
+      <div class="mt-4 text-2xl">
+        <span class="border p-1">Nuvem</span>
+        <span class="border p-1">
+          <alc-icon name="cloud" label=""></alc-icon>
+          Nuvem
+        </span>
+        <span class="border p-1">
+          <alc-icon name="cloud" label=""></alc-icon>
+        </span>
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h3>Quando os ícones aparecem em meio a texto corrente, têm que estar visualmente alinhados</h3>
+      <p>
+        <alc-icon name="align-middle" label=""></alc-icon>
+        Mostra como está o alinhamento com texto lado
+        <alc-icon name="arrow-bar-left" label=""></alc-icon>
+        a
+        <alc-icon name="arrow-bar-right" label=""></alc-icon>
+        lado.
+      </p>
+      <p class="text-6xl">
+        <alc-icon name="align-middle" label=""></alc-icon>
+        Mesmo se for maior
+        <alc-icon name="arrow-bar-left" label=""></alc-icon>
+        como
+        <alc-icon name="arrow-bar-right" label=""></alc-icon>
+        esse.
+      </p>
+
+    </section>
+
+    <section class="mt-8">
+      <h3>O "texto alternativo" (label), quando mostrado, também tem que se alinhar</h3>
+      <p>
+        Ícone ok: <alc-icon name="1-square" label="1"></alc-icon>
+        Ícone não mostrado 1: <alc-icon name="nome-errado" label="1"></alc-icon>
+      </p>
+    </section>
+
+
+    <section class="mt-8">
+      <h3>Mais botões</h3>
+
+      <div>
+
+        <button class="alc-button">
+          <alc-icon name="list" label="Menu"></alc-icon>
+          Menu
+        </button>
+
+        <button class="alc-button alc-button-rounded">
+          <alc-icon name="x" label="Fechar"></alc-icon>
+        </button>
+        <button class="alc-button alc-button-rounded">
+          <alc-icon name="x-lg" label="Fechar"></alc-icon>
+        </button>
+        <span style="font-size: 1.5em">
+          Testando
+        </span>
+        <button class="alc-button alc-button-rounded">
+          <alc-icon name="list" label="Menu"></alc-icon>
+        </button>
+
+        <button class="alc-button alc-button-rounded outline-dotted outline-1">
+          <alc-icon name="three-dots-vertical" label="Mais opções"></alc-icon>
+        </button>
+
+        <button class="alc-button">
+          <alc-icon name="three-dots-vertical" label="Mais opções"></alc-icon>
+        </button>
+
+        <button class="alc-button alc-button--secondary">
+          <alc-icon name="three-dots-vertical" label="Mais opções"></alc-icon>
+        </button>
+
+        <span>
+          <alc-icon name="arrow-bar-right" label=""></alc-icon>
+          Deveria estar
+
+          <span style="font-size: 1.5em">
+            Testando
+          </span>
+
+          tudo alinhado
+          <alc-icon name="arrow-bar-left" label=""></alc-icon>
+        </span>
+
+        <button class="alc-button alc-button-rounded outline-dotted outline-1">
+          <alc-icon name="x" label="Fechar"></alc-icon>
+        </button>
+      </div>
+
+      <p class="text-sm italic mt-2">
+        Colocamos "outline" em alguns botões para favorecer a visualização dos limites.
+      </p>
+
+
+    </section>
+
+    <section class="mt-8">
+      <h3>Aplicado aos alerts</h3>
+      <div class="row">
+        <div class="col-6">
+          <alc-alert>Mensagem</alc-alert>
+        </div>
+        <div class="col-6">
+          <alc-alert dismissible="false">Mensagem</alc-alert>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h3>Em uma tabela</h3>
+      <alc-table>
+        <table>
+          <tr>
+            <th>Nome</th>
+            <th>Pronúncia</th>
+            <th>Ação</th>
+          </tr>
+          <tr>
+            <td>Lion-O</td>
+            <td><i>láion</i>, [ˈlaɪ̯õ]</td>
+            <td class="text-center">
+              <button class="alc-button alc-button-rounded">
+                <alc-icon name="three-dots-vertical" label="Mais opções"></alc-icon>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Tygra</td>
+            <td><i>táigra</i>, [ˈtaɪ̯gɾə]</td>
+            <td class="text-center">
+              <button class="alc-button alc-button-rounded">
+                <alc-icon name="three-dots-vertical" label="Mais opções"></alc-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </alc-table>
+    </section>
+
+    <section class="mt-8">
+      <h3>Em uma tabela</h3>
+      <alc-table>
+        <table>
+          <tr>
+            <th>Nome</th>
+            <th>Pronúncia</th>
+            <th>Ação</th>
+          </tr>
+          <tr>
+            <td>Lion-O</td>
+            <td><i>láion</i>, [ˈlaɪ̯õ]</td>
+            <td class="text-center">
+              <button class="alc-button alc-button--secondary">
+                <alc-icon name="three-dots-vertical" label="Mais opções"></alc-icon>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Tygra</td>
+            <td><i>táigra</i>, [ˈtaɪ̯gɾə]</td>
+            <td class="text-center">
+              <button class="alc-button alc-button--secondary">
+                <alc-icon name="three-dots-vertical" label="Mais opções"></alc-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </alc-table>
+    </section>
+
+
+    <section class="mt-8">
+      <h3>Pagination</h3>
+      <alc-pagination total-pages="5"></alc-pagination>
+    </section>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+  </div>
+
+
+
+</body>
+
+
+</html>

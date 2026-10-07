@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-alc-theme="classical">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App com Alcance</title>
+
+  <!-- bundle.js contém todos os componentes do Alcance -->
+  <script type="module" src="dist/bundle.js"></script>
+  <!--
+    bundle.js contém apenas alguns componentes do Alcance
+    Caso o alc-theme não tenha sido incluído entre os componentes selecionados,
+    deve-se remover data-alc-theme do html para que faça sentido. Seria um cenário
+    do uso do Alcance sem tema.
+  -->
+  <!-- <script type="module" src="dist/bundle-selected.js"></script> -->
+</head>
+<body>
+
+  <alc-theme></alc-theme>
+
+  <h1>Testando</h1>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+    </div>
+  </div>
+
+  <alc-alert type="info">Usando o alc-alert.</alc-alert>
+
+  <alc-tabs>
+
+    <alc-tab tab="tab-1" label="Rótulo 1">
+      Conteúdo interno 1
+    </alc-tab>
+    <alc-tab tab="tab-2" label="Label 2">
+      Conteúdo interno 2
+    </alc-tab>
+  </alc-tabs>
+
+
+
+
+  <p>O Alcance agora suporta FontAwesome!</p>
+  <p>...e também é compatível com: </p>
+  <alc-icons type="fab" name="vuejs" size="medium"></alc-icons>
+  <alc-icons type="fab" name="angular" size="medium"></alc-icons>
+  <alc-icons type="fab" name="react" size="medium"></alc-icons>
+  <alc-icons type="fab" name="node-js" size="medium"></alc-icons>
+  <alc-icons type="fab" name="java" size="medium"></alc-icons>
+  <alc-icons type="fab" name="html5" size="medium"></alc-icons>
+
+
+
+</body>
+</html>

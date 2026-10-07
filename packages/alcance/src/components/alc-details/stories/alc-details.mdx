@@ -1,0 +1,95 @@
+{/* alc-details.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-details.stories';
+import DetailsProps from './alc-details.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente `alc-details` é um componente personalizado utilizado para criar elementos expansíveis de conteúdo em uma interface de usuário. Ele funciona de forma semelhante ao elemento HTML `<details>`, permitindo que os usuários revelem ou ocultem conteúdo adicional de maneira intuitiva e interativa.
+
+## Funcionalidades
+
+- **Expansão e Contração de Conteúdo**: O componente permite que os usuários cliquem em um resumo (`summary`) para expandir ou contrair o conteúdo detalhado associado.
+
+- **Estados Personalizáveis**: O componente suporta estados como desativado (`disabled`) e aberto por padrão (`opened`), permitindo controle fino sobre a interação e apresentação.
+
+- **Eventos Integrados**: Eventos como `alc-show` e `alc-close` são disparados quando o componente é aberto ou fechado, possibilitando a execução de ações adicionais em resposta a essas interações.
+
+## Uso Típico
+
+O `alc-details` é ideal para situações onde há a necessidade de mostrar informações adicionais que não precisam estar sempre visíveis, como FAQs, descrições detalhadas, ou especificações técnicas. Ele melhora a experiência do usuário ao organizar informações de forma acessível e economizar espaço na interface.
+
+## Exemplo de Implementação
+
+<CodeExample type="html">
+{`<alc-details summary="Mais informações">
+  <p>Este é o conteúdo adicional que pode ser expandido ou contraído.</p>
+</alc-details>`}
+</CodeExample>
+
+## Variável CSS: `--bg-color`
+
+A variável `--bg-color` define a cor de fundo aplicada ao componente `<alc-details>`. Essa variável permite personalizar a aparência do componente, adaptando-o ao tema visual desejado.
+
+### Uso
+
+A variável `--bg-color` deve ser definida diretamente no componente `<alc-details>`. Por padrão, essa variável está associada ao token `--alc-color-surface`, mas pode ser customizada conforme necessário.
+
+#### Exemplos de Implementação
+
+<CodeExample type="css">
+{`alc-details {
+  --bg-color: var(--alc-color-surface);
+}`}
+</CodeExample>
+
+<CodeExample type="css">
+{`alc-details {
+  --bg-color: var(--alc-color-layer-a);
+}`}
+</CodeExample>
+
+<CodeExample type="css">
+{`alc-details {
+  --bg-color: var(--alc-color-layer-b);
+}`}
+</CodeExample>
+
+<CodeExample type="css">
+{`alc-details {
+  --bg-color: var(--alc-color-layer-c);
+}`}
+</CodeExample>
+
+### Tokens Permitidos
+
+Abaixo estão os tokens de cores permitidos para a variável `--bg-color`:
+
+- `--alc-color-surface`: Cor padrão para superfícies principais.
+- `--alc-color-layer-a`: Primeira camada de superfície.
+- `--alc-color-layer-b`: Segunda camada de superfície.
+- `--alc-color-layer-c`: Terceira camada de superfície.
+
+Esses tokens representam as diferentes camadas de superfícies disponíveis no sistema de design, permitindo a personalização de acordo com as necessidades específicas do seu projeto.
+
+### Como Utilizar
+
+Para alterar a cor de fundo do `<alc-details>`, basta definir a variável `--bg-color` com um dos tokens permitidos. Isso garantirá que o componente se adapte ao estilo visual do seu aplicativo.
+
+<CodeExample type="html">
+{`<alc-details style="--bg-color: var(--alc-color-layer-a);">
+  <!-- Conteúdo do details -->
+</alc-details>`}
+</CodeExample>
+
+Essa configuração é útil para manter a consistência visual em todo o sistema, permitindo que o componente se integre perfeitamente ao design do tema.
+
+### Considerações Finais
+
+Não há verificações ou limitações impostas ao valor da variável `--bg-color`. No entanto, é recomendado utilizar os tokens de cores listados acima para garantir a coerência visual dentro do sistema de design. Escolher o token adequado permitirá que o componente tenha a aparência desejada e mantenha a harmonia com o restante da interface.
+
+<Markdown>{DetailsProps}</Markdown>

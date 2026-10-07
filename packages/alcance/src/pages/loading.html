@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Loading</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <alc-loading id="loading-1"></alc-loading>
+
+      <alc-theme></alc-theme>
+      <hr class="mb-2">
+
+      <alc-details summary="Loading dentro" id="details" class="mb-2"> 
+
+        <alc-loading variant="inline" id="loading-2"></alc-loading>
+        <button class="alc-button" onclick="save('loading-2')">Salvar</button>
+  
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, odit quod. Consequatur excepturi aspernatur maxime perferendis? Iste autem praesentium aut fugiat molestias soluta eaque, distinctio vitae, deleniti provident nihil enim?
+        </p>
+      </alc-details>
+
+      <alc-details summary="Loading dentro" id="details" class="mb-2"> 
+
+        <alc-loading variant="container" id="loading-3"></alc-loading>
+        <button class="alc-button" onclick="save('loading-3')">Salvar</button>
+  
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, odit quod. Consequatur excepturi aspernatur maxime perferendis? Iste autem praesentium aut fugiat molestias soluta eaque, distinctio vitae, deleniti provident nihil enim?
+        </p>
+      </alc-details>
+
+      <button class="alc-button alc-button-rounded mb-2" aria-label="Enviar" onclick="save('loading-4')">
+        <alc-loading variant="button" id="loading-4"></alc-loading>
+        >
+      </button>
+  
+      <button class="alc-button mb-2" onclick="save('loading-5')">
+        <alc-loading variant="button" id="loading-5"></alc-loading>
+        Aguarde
+      </button>
+
+      <button class="alc-button" onclick="save('loading-1')">Salvar</button>
+
+
+      <div class="alc-loading__container" style="height: 10rem; background-color: #f0f0f0; padding: 1rem;">
+        <p>Conteúdo do container</p>
+        <alc-loading variant="container" active></alc-loading>
+      </div>
+  
+  </div>
+
+  <script>
+    function save(id) {
+      const loading = document.querySelector(`#${id}`);
+      // loading.show();
+      loading.active = true;
+      setTimeout(function () {
+        // loading.hide();
+        loading.active = false;
+      }, 2000);
+    }
+  </script>
+
+</body>
+
+</html>

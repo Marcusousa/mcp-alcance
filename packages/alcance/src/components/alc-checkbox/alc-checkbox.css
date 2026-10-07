@@ -1,0 +1,38 @@
+[data-alc-theme="dark"] alc-checkbox {
+  --accent-color: var(--alc-color-action-40);
+  --outline-color: var(--alc-color-action-30);
+
+  --text-color: var(--alc-color-text-4);
+  --text-color-error: var(--alc-color-error-45);
+}
+
+[data-alc-theme="light"] alc-checkbox {
+  --accent-color: var(--alc-color-action-60);
+  --outline-color: var(--alc-color-action-60);
+
+  --text-color: var(--alc-color-text-4);
+  --text-color-error: var(--alc-color-error-50);
+}
+
+alc-checkbox {
+  @apply flex gap-[--alc-spacing-03] items-start;
+}
+
+alc-checkbox input[type='checkbox'] {
+  @apply mt-[--alc-spacing-px]; /* valor ajustado para o DS */
+  @apply focus:outline focus:outline-offset-[--alc-spacing-01] focus:outline-2;
+  @apply accent-[--accent-color];
+  @apply focus:outline-[--outline-color];
+}
+
+.alc-checkbox__label {
+  @apply flex flex-col text-sm font-medium;
+}
+
+.alc-checkbox__text {
+  @apply text-sm font-normal text-[--text-color];
+
+  &--error {
+    @apply text-[--text-color-error];
+  }
+}

@@ -1,0 +1,43 @@
+{/* alc-dropdown.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as DropdownStories from './alc-dropdown.stories';
+
+import DropdownProps from './alc-dropdown.props.md?raw';
+
+<Meta of={DropdownStories} name="Documentação" />
+
+<h1>{DropdownStories.default.name}</h1>
+
+Um dropdown é utilizado mostrar conteúdo dentro de um contexto, como uma área da interface, ou uma linha em uma tabela.
+
+Usualmente, o conteúdo mostrado pelo `dropdown` é um `menu`, que reúne as ações associadas a esse contexto.
+
+## Diretrizes
+
+Esta seção estabelece diretrizes para projetistas e desenvolvedores, visando uma experiência consistente e intuitiva para os usuários.
+
+### Disparador
+
+O disparador (slot `trigger`) é o elemento que vai abrir o `dropdown`. Esse elemento deve ser um botão.
+
+Consulte a [documentação de botões](/docs/estilos-botões--documentação) para seguir as recomendações de uso dos botões.
+
+### Rótulo do disparador
+
+O rótulo do disparador pode estar ou não visível. A escolha entre um ou outro deve considerar as necessidades do usuário da aplicação.
+
+O uso dos rótulos e ícones conforme indicado mantém a consistência visual do disparador do `dropdown`, favorecendo seu reconhecimento pelos usuários.
+
+[Veja nos exemplos como definir o rótulo](/docs/componentes-alfa-dropdown--exemplos)
+
+### Fechamento automatico
+
+A propriedade `hide-on` permite definir quais eventos provocarão o fechamento automático do `dropdown`.
+
+Tipicamente, usando um `menu` dentro do `dropdown`, deve-se configurar `hide-on="alc-select"` para que ele seja fechado quando o usuário selecionar uma opção do `menu`.
+
+[Veja o exemplo de fechamento automático](/docs/componentes-alfa-dropdown--exemplos#fechamento-automático)
+
+<Markdown>{DropdownProps}</Markdown>

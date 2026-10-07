@@ -1,0 +1,41 @@
+{/* alc-header.mdx */}
+
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-header-v1.stories';
+
+import HeaderProps from './alc-header-v1.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+  <span class="alc-alert__summary"> O componente `alc-header-v1` (antigo `alc-header`) foi descontinuado.</span>
+  Um novo componente está disponível em seu lugar: <a href="./?path=/docs/componentes-header--documentação" className="alc-link">alc-header</a>.
+  Visite o <a href="./?path=/docs/componentes-header-v1--guia-de-migração" className="alc-link">Guia de Migração</a> para instruções de como migrar para o novo componente.
+</alc-alert>
+</Unstyled>
+
+Esse componente é uma versão antiga de `alc-header`, que foi mantida com o novo nome `alc-header-v1`.
+
+Isso permite que uma aplicação siga usando, provisoriamente, o modelo antigo de header. É necessário usar
+o componente `alc-header-v1` onde antes se usava `alc-header`. É uma solução de contorno para que se tenha tempo
+para fazer a migração para o novo `alc-header` (recomendado).
+
+O novo componente `alc-header` não é compatível com o antigo.
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+  Este componente será removido da biblioteca em uma versão futura.
+</alc-alert>
+</Unstyled>
+
+
+---
+
+O componente `header` deve ser utilizado em todas as páginas do sistema. Contém os elementos que
+naturalmente se repetem em todas as páginas, como a identificação do ambiente, o nome do sistema etc.
+
+<Markdown>{HeaderProps}</Markdown>

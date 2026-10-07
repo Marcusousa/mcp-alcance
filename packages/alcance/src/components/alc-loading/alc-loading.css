@@ -1,0 +1,100 @@
+/* Definição das variáveis - Setup dos temas */
+[data-alc-theme="light"] alc-loading {
+  --bg-color-overlay: theme('colors.gray-cool.80')66; /* 66 = 40% */
+  --border-color-loading-default: theme('colors.gray-cool.10');
+  --border-color-loading: var(--alc-color-action-60);
+}
+
+[data-alc-theme="dark"] alc-loading {
+  --bg-color-overlay: theme('colors.gray-cool.60')66; /* 66 = 40% */
+  --border-color-loading-default: theme('colors.gray-cool.80');
+  --border-color-loading: var(--alc-color-action-40);
+}
+
+alc-loading {
+  --bg-color-card: var(--alc-color-surface);
+}
+
+/* Estilos para o modo full-screen (inalterado) */
+.alc-loading__overlay {
+  /* Posicionamento */
+  @apply z-[1090] w-full h-full top-[--alc-spacing-none] left-[--alc-spacing-none] fixed;
+  /* Cor */
+  @apply bg-[--bg-color-overlay];
+  /* Alinhamento do elemento interno */
+  @apply flex items-center justify-center flex-col gap-[--alc-spacing-03];
+}
+
+.alc-loading__card {
+  /* Estilização do cartão */
+  @apply rounded-[--alc-radius-default] bg-[--bg-color-card] p-[--alc-spacing-05] min-w-48;
+  /* Alinhamento dos elementos internos do cartão */
+  @apply flex justify-center flex-col items-center text-center text-nowrap;
+}
+
+/* Estilização do spinner no card */
+.alc-loading__card::before {
+  @apply block content-["\200C"];
+  @apply w-12 h-12 rounded-full animate-spin mb-[--alc-spacing-03];
+  @apply border-6 border-solid border-[--border-color-loading] border-r-[--border-color-loading-default];
+}
+
+/* Estilos para o modo container */
+.alc-loading__container {
+  @apply relative;
+}
+
+.alc-loading__card-container {
+  /* Estilização do cartão */
+  @apply rounded-[--alc-radius-default] bg-[--bg-color-card] p-[--alc-spacing-05] min-w-48 mb-[--alc-spacing-03] mt-[--alc-spacing-03];
+  /* Alinhamento dos elementos internos do cartão */
+  @apply flex justify-center flex-col items-center text-center text-nowrap;
+}
+
+.alc-loading__overlay-container {
+  @apply absolute inset-[--alc-spacing-none] flex items-center justify-center bg-[--bg-color-overlay];
+  @apply z-[50];
+}
+
+.alc-loading__spinner-container {
+  @apply w-10 h-10 rounded-full animate-spin;
+  @apply border-4 border-solid border-[--border-color-loading] border-r-[--border-color-loading-default];
+}
+
+/* Estilos para o modo inline */
+.alc-loading__inline {
+  @apply inline-block;
+}
+
+.alc-loading__spinner-inline,
+.alc-loading__label-inline {
+  @apply inline-flex align-sub;
+}
+
+.alc-loading__spinner-inline {
+  @apply flex-shrink-0 w-5 h-5 mr-[--alc-spacing-03] rounded-full animate-spin;
+  @apply border-2 border-solid border-[--border-color-loading] border-r-[--border-color-loading-default];
+}
+
+.alc-loading__label-inline {
+  @apply text-sm leading-none;
+}
+
+/* Estilos para o modo button */
+.alc-loading__button {
+  @apply inline-block;
+}
+
+.alc-loading__button-wrapper {
+  @apply inline-flex items-center;   
+}
+
+.alc-loading__spinner-button {
+  @apply w-4 h-4 rounded-full animate-spin -mt-[0.125em] top-[0.125em] relative;
+  @apply border-2 border-solid border-[--border-color-loading] border-r-[--border-color-loading-default];
+}
+
+.sr-only {
+  @apply absolute w-[1px] h-[1px] p-[--alc-spacing-none] m-[-1px] overflow-hidden whitespace-nowrap border-0;
+  clip: rect(0, 0, 0, 0);
+}

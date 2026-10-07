@@ -1,0 +1,21 @@
+{/* alc-popup.mdx */}
+
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-popup.stories';
+
+import PopupProps from './alc-popup.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente popup é um utilitário que permite ancorar elementos popup a outros componentes, utilizando a biblioteca <a href="https://floating-ui.com/" class="alc-link"> Floating UI </a> para funcionalidade de posicionamentos, distância e deslocamento.
+
+<Unstyled>
+<alc-alert dismissible="false">
+    O componente não aplica nenhum estilo, apenas posicionamento dos elementos. 
+</alc-alert>
+</Unstyled>
+
+<Markdown>{PopupProps}</Markdown>

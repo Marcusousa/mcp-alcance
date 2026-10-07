@@ -1,0 +1,12 @@
+/*
+  Manipulação direta no estilo de alc-badge,
+  para atender ao que foi especificado no Figma.
+ */
+.alc-header-notifications .alc-badge {
+  @apply rounded-[8px] py-[--alc-spacing-none] px-[--alc-spacing-01] bg-orange-warm-30v text-black;
+  line-height: 1em;
+}
+
+.alc-header-notifications__aria-live {
+  @apply sr-only;
+}

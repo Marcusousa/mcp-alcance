@@ -1,0 +1,19 @@
+{/* alc-header-action.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-header-action.stories';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Link.name}
+Quando o header-action leva o usuário para uma página específica, utilize o componente como `variant="link"` e adicione a url pela propriedade `url`.
+<Canvas of={Stories.Link} sourceState="shown" />
+<Controls of={Stories.Link} />
+

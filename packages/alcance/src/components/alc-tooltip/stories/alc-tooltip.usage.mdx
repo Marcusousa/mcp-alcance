@@ -1,0 +1,201 @@
+{/* alc-tooltip.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-tooltip.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Placement.name}
+Mude o `Placement` para ver os resultados de cada posição.
+<Canvas of={Stories.Placement} sourceState="shown" />
+<Controls of={Stories.Placement} />
+
+## Trigger
+Você pode definir como o tooltip vai abrir através da propriedade `trigger`. Os valores permitidos são: `click` , `hover` , `focus` e/ou `manual`. Pode adicionar mais de um separando com espaço, ex.: 'hover focus'
+
+### {Stories.Click.name}
+<Canvas of={Stories.Click} sourceState="shown" />
+<Controls of={Stories.Click} />
+
+### {Stories.Manual.name}
+Você pode acionar o tooltip através de um elemento externo ao componente utilizando `trigger="manual"` e definindo uma função para gerenciar a abertura do tooltip.
+<Canvas of={Stories.Manual} sourceState="shown" />
+<Controls of={Stories.Manual} />
+
+## {Stories.HTML.name}
+Caso seja necessário usar HTML ou customizar você pode usar o `slot default` do componente.
+<Canvas of={Stories.HTML} sourceState="shown" />
+<Controls of={Stories.HTML} />
+
+## {Stories.Strategy.name}
+Em alguns casos, o tooltip pode ser cortado, especialmente quando está dentro de um contêiner com overflow, como no exemplo abaixo. Para resolver esse problema, você pode utilizar a propriedade `strategy = 'fixed'`. Isso altera o posicionamento do tooltip de absoluto para fixo, permitindo que ele saia do contêiner e seja exibido corretamente.
+<Canvas of={Stories.Strategy} sourceState="shown" />
+<Controls of={Stories.Strategy} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `
+<template>
+  <div>
+    <h2>Exemplo Avançado do alc-tooltip (JavaScript)</h2>
+    <p>Este exemplo demonstra diferentes formas de ativar o tooltip, bem como o controle manual via métodos.</p>
+
+    <div style="margin-bottom:20px;">
+      <label for="username">Nome de Usuário</label>
+      <input id="username" type="text" class="alc-input" />
+      <!-- Tooltip ativado por hover e focus -->
+      <alc-tooltip ref="userTooltip" content="Informe um nome de usuário válido." trigger="hover focus" placement="right">
+        <button slot="trigger" class="alc-button alc-button--secondary alc-button-rounded" style="margin-left:10px;">
+          <alc-icon name="question-circle" label="Ajuda"></alc-icon>
+          <span class="sr-only">Ajuda sobre o campo Nome de Usuário</span>
+        </button>
+      </alc-tooltip>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <!-- Tooltip ativado por clique -->
+      <alc-tooltip ref="clickTooltip" content="Clique novamente para fechar" trigger="click" placement="top">
+        <button slot="trigger" class="alc-button">
+          Clique aqui
+        </button>
+      </alc-tooltip>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <p>Tooltip controlado manualmente:</p>
+      <alc-tooltip ref="manualTooltip" content="Este tooltip é controlado via métodos show/hide." trigger="manual" placement="bottom">
+        <button slot="trigger" class="alc-button alc-button--primary" @click="toggleManualTooltip">
+          Ajuda Manual
+        </button>
+      </alc-tooltip>
+      <button class="alc-button" style="margin-left:10px;" @click="showManualTooltip">Mostrar Tooltip</button>
+      <button class="alc-button" @click="hideManualTooltip">Ocultar Tooltip</button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'TooltipExampleJS',
+  methods: {
+    async showManualTooltip() {
+      const tooltip = this.$refs.manualTooltip;
+      if (tooltip && tooltip.show) {
+        await tooltip.show();
+      }
+    },
+    async hideManualTooltip() {
+      const tooltip = this.$refs.manualTooltip;
+      if (tooltip && tooltip.hide) {
+        await tooltip.hide();
+      }
+    },
+    async toggleManualTooltip() {
+      const tooltip = this.$refs.manualTooltip;
+      if (!tooltip) return;
+
+      // Verifica se o tooltip está ativo pela propriedade active
+      if (tooltip.active) {
+        await tooltip.hide();
+      } else {
+        await tooltip.show();
+      }
+    },
+  },
+};
+</script>
+    `,
+    typescript: `
+<template>
+  <div>
+    <h2>Exemplo Avançado do alc-tooltip (TypeScript)</h2>
+    <p>Este exemplo mostra diferentes gatilhos (hover, focus, click, manual) e o controle programático via métodos.</p>
+
+    <div style="margin-bottom:20px;">
+      <label for="email">E-mail</label>
+      <input id="email" type="email" class="alc-input" />
+      <!-- Tooltip ativado por hover e focus -->
+      <alc-tooltip ref="emailTooltip" content="Informe um e-mail válido." trigger="hover focus" placement="right">
+        <button slot="trigger" class="alc-button alc-button--secondary alc-button-rounded" style="margin-left:10px;">
+          <alc-icon name="info-circle" label="Ajuda"></alc-icon>
+          <span class="sr-only">Ajuda sobre o campo E-mail</span>
+        </button>
+      </alc-tooltip>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <!-- Tooltip ativado por clique -->
+      <alc-tooltip ref="clickTooltip" content="Clique para alternar o tooltip" trigger="click" placement="left">
+        <button slot="trigger" class="alc-button">
+          Botão com Click
+        </button>
+      </alc-tooltip>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <p>Tooltip controlado manualmente:</p>
+      <alc-tooltip ref="manualTooltip" content="Controlado via métodos show/hide." trigger="manual" placement="top">
+        <button slot="trigger" class="alc-button alc-button--primary" @click="toggleManualTooltip">
+          Mostrar/Ajuda Manual
+        </button>
+      </alc-tooltip>
+      <button class="alc-button" style="margin-left:10px;" @click="showManualTooltip">Mostrar Tooltip</button>
+      <button class="alc-button" @click="hideManualTooltip">Ocultar Tooltip</button>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'TooltipExampleTS',
+  setup() {
+    const manualTooltip = ref<HTMLElement | null>(null);
+
+    const showManualTooltip = async () => {
+      if (manualTooltip.value && (manualTooltip.value as any).show) {
+        await (manualTooltip.value as any).show();
+      }
+    };
+
+    const hideManualTooltip = async () => {
+      if (manualTooltip.value && (manualTooltip.value as any).hide) {
+        await (manualTooltip.value as any).hide();
+      }
+    };
+
+    const toggleManualTooltip = async () => {
+      if (!manualTooltip.value) return;
+
+      const tooltipElement = manualTooltip.value as any;
+      if (tooltipElement.active) {
+        await tooltipElement.hide();
+      } else {
+        await tooltipElement.show();
+      }
+    };
+
+    return {
+      manualTooltip,
+      showManualTooltip,
+      hideManualTooltip,
+      toggleManualTooltip,
+    };
+  },
+});
+</script>
+    `
+  }}
+/>

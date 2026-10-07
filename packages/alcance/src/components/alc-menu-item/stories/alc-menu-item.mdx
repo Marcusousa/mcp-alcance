@@ -1,0 +1,57 @@
+{/* alc-menu-item.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-menu-item.stories';
+import MenuItemProps from './alc-menu-item.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+<Meta of={Stories} name="Documentação" />
+
+<h1>{Stories.default.name}</h1>
+
+O componente menu-item representa uma ação ou opção que o usuário pode escolher dentro de um menu.
+
+## Tipos de menu-item
+
+Há três tipos possíveis de `menu-item`, definido pelo atributo `type`: *normal*, *radio* ou *checkbox*.
+
+Para cada tipo, há diferentes aspectos de interação com o usuário a se observar.
+
+### Tipo *normal* (default)
+É o mais genérico e representa uma ação a ser realizada.
+
+Quando o usuário seleciona o item, em regra, o menu deve ser fechado e a ação executada.
+
+### Tipo *radio*
+Ao usar `type=radio`, o item deve se comportar de maneira similar a um input do tipo rádio no HTML, ou seja, apenas um item do conjunto pode estar marcado (checked) por vez.
+
+Ao selecionar um item do tipo `radio`, a aplicação deve desmarcar os demais itens do mesmo conjunto, garantindo que apenas uma opção esteja selecionada em qualquer momento.
+
+### Tipo *checkbox*
+Ao usar `type=checkbox`, o item deve se comportar de maneira similar a um input do tipo checkbox no HTML, ou seja, o estado de seleção do item será alternado entre marcado e não marcado a cada acionamento.
+
+Ao selecionar um item do tipo `checkbox`, a aplicação deve fazer com que o estado se alterne entre marcado e não marcado.
+
+## Considerações de Usabilidade
+
+### Permanência do Menu
+
+Ao utilizar `type="checkbox"`, especialmente em conjuntos com múltiplas opções relacionadas, é importante considerar se o menu deve permanecer aberto após a seleção de um item. Esta decisão deve levar em conta a experiência do usuário e o contexto de uso do menu. Por exemplo, em um menu de seleção das colunas que serão mostradas em uma tabela, é conveniente que o menu permaneça aberto após a seleção de um item.
+
+<CodeExample type="html">
+{`<alc-menu>
+    <alc-menu-item value="col-1" type="checkbox" checked>
+        Personagem
+    </alc-menu-item>
+    <alc-menu-item value="col-2" type="checkbox">
+        Arma
+    </alc-menu-item>
+    <alc-menu-item value="col-3" type="checkbox" checked>
+        Descrição
+    </alc-menu-item>
+</alc-menu>`}
+</CodeExample>
+
+Neste caso, ao selecionar uma opção, pode ser útil manter o menu aberto, permitindo que o usuário faça múltiplas seleções sem a necessidade de reabrir o menu a cada vez.
+
+<Markdown>{MenuItemProps}</Markdown>

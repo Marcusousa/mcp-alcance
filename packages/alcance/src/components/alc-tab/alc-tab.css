@@ -1,0 +1,18 @@
+/* 
+  Definição das variáveis que estão no alc-tabs 
+    --bg-color
+    --border-color
+    --border-width
+    --outline-color
+*/
+
+.alc-tabs__tab:focus-visible {
+  @apply outline outline-2 outline-[--outline-color] -outline-offset-[--alc-spacing-03];
+} 
+
+.alc-tabs__tab--content {
+  @apply border-[--border-color] p-[--alc-spacing-04] bg-[--bg-color];
+  border-width: var(--border-width);
+  margin-top: calc(-1 * var(--border-width));
+}
+

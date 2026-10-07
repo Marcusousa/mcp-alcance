@@ -1,0 +1,43 @@
+{/* alc-autocomplete.mdx */}
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-autocomplete.stories';
+import AutocompleteProps from './alc-autocomplete.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente alc-autocomplete permite mostrar sugestões em tempo real automaticamente enquanto o usuário digita. Ele é útil para buscas em grandes conjuntos de dados ou para buscar informações de uma API.
+
+## Selecionar um item dinamicamente
+O método `setSelected()` define a seleção do alc-autocomplete. Recebe como parâmetro um objeto (item) da lista de itens.
+
+<CodeExample type="js" highlightedLines={[9]}>
+{`const items = [
+    { id: 1, nome: 'Lion-O', arma: 'Espada Justiceira' },
+    { id: 2, nome: 'Cheetara', arma: 'Bastão' },
+    { id: 3, nome: 'Panthro', arma: 'Nunchaku' },
+    { id: 4, nome: 'Tygra', arma: 'Chicote Retrátil' }
+];
+
+// Seleciona "Cheetara"
+await autocomplete.setSelected(items[1]);`}
+</CodeExample>
+
+## Pegar o valor selecionado
+O método `getSelected()` permite obter o item selecionado no alc-autocomplete. O valor retornado é o objeto do item selecionado.
+
+<CodeExample type="js">
+{`await autocomplete.getSelected();`}
+</CodeExample>
+
+## Limpar o campo
+O método `clearSelected()` permite limpar o campo do alc-autocomplete.
+
+<CodeExample type="js">
+{`await autocomplete.clearSelected();`}
+</CodeExample>
+
+<Markdown>{AutocompleteProps}</Markdown>

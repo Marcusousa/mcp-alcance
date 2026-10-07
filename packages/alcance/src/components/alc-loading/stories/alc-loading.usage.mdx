@@ -1,0 +1,156 @@
+{/* alc-loading.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-loading.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.TextoCustomizado.name}
+
+<Canvas of={Stories.TextoCustomizado} sourceState="shown" />
+<Controls of={Stories.TextoCustomizado} />
+
+## {Stories.Container.name}
+
+<Canvas of={Stories.Container} sourceState="shown" />
+<Controls of={Stories.Container} />
+
+## {Stories.Inline.name}
+
+<Canvas of={Stories.Inline} sourceState="shown" />
+<Controls of={Stories.Inline} />
+
+## {Stories.Button.name}
+
+<Canvas of={Stories.Button} sourceState="shown" />
+<Controls of={Stories.Button} />
+
+## {Stories.ControlandoLoading.name}
+
+<Canvas of={Stories.ControlandoLoading} sourceState="shown" />
+<Controls of={Stories.ControlandoLoading} />
+
+## {Stories.MetodosShowHide.name}
+
+<Canvas of={Stories.MetodosShowHide} sourceState="shown" />
+<Controls of={Stories.MetodosShowHide} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <button class="alc-button" @click="loadData">Carregar Dados</button>
+
+    <!-- Loading em tela cheia -->
+    <alc-loading
+      :active="isLoading"
+      label="Carregando dados..."
+      variant="full-screen"
+    ></alc-loading>
+
+    <!-- Conteúdo que será exibido após o carregamento -->
+    <div v-if="dataLoaded">
+      <p>Dados carregados com sucesso!</p>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'LoadingExample',
+  data() {
+    return {
+      isLoading: false,
+      dataLoaded: false,
+    };
+  },
+  methods: {
+    async loadData() {
+      this.isLoading = true;
+      this.dataLoaded = false;
+
+      // Simula uma operação assíncrona, como uma chamada de API
+      setTimeout(() => {
+        this.isLoading = false;
+        this.dataLoaded = true;
+      }, 3000);
+    },
+  },
+};
+</script>
+`,
+    typescript: `<template>
+  <div>
+    <!-- Formulário que será desabilitado durante o envio -->
+    <form @submit.prevent="submitForm">
+      <alc-field label="Nome">
+        <input type="text" v-model="name" :disabled="isSubmitting" />
+      </alc-field>
+      <alc-field label="E-mail">
+        <input type="email" v-model="email" :disabled="isSubmitting" />
+      </alc-field>
+      <button type="submit" class="alc-button" :disabled="isSubmitting">
+        <!-- Loading dentro do botão -->
+        <alc-loading
+          :active="isSubmitting"
+          label="Enviando..."
+          variant="button"
+        ></alc-loading>
+        Enviar
+      </button>
+    </form>
+
+    <!-- Mensagem após o envio -->
+    <div v-if="formSubmitted">
+      <p>Formulário enviado com sucesso!</p>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'LoadingExampleTS',
+  setup() {
+    const isSubmitting = ref(false);
+    const formSubmitted = ref(false);
+    const name = ref('');
+    const email = ref('');
+
+    const submitForm = async () => {
+      isSubmitting.value = true;
+      formSubmitted.value = false;
+
+      // Simula o envio do formulário
+      setTimeout(() => {
+        isSubmitting.value = false;
+        formSubmitted.value = true;
+        name.value = '';
+        email.value = '';
+      }, 3000);
+    };
+
+    return {
+      isSubmitting,
+      formSubmitted,
+      name,
+      email,
+      submitForm,
+    };
+  },
+});
+</script>`
+  }}
+/>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App com Alcance</title>
+
+  <script type="module" src="node_modules/alcance/dist/alcance/alcance.esm.js"></script>
+  <script nomodule src="node_modules/alcance/dist/alcance/alcance.js"></script>
+  <!-- <script type="module" src=local.js></script> -->
+
+  <link rel="stylesheet" href="node_modules/alcance/dist/alcance/alcance.css">
+
+  <style>
+
+    [data-alc-theme="classical"] {
+      --box-title-bg-color: var(--alc-color-info-light-3);
+    }
+
+    [data-alc-theme="alt"] {
+      --box-title-bg-color: var(--alc-color-info-dark-1);
+    }
+
+    .box-info {
+      border-color: var(--alc-color-info-dark-3);
+    }
+
+    .box-info__title {
+      background-color: var(--box-title-bg-color);
+    }
+  </style>
+
+
+</head>
+<body>
+
+  <!-- @TODO Definir o caminho de acordo com o que for feito na distribuição -->
+  <alc-theme></alc-theme>
+
+  <h1>Testando</h1>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+        <div class="col-sm">
+            One of three columns
+        </div>
+    </div>
+  </div>
+
+  <alc-alert type="info">Usando o alc-alert.</alc-alert>
+
+  <alc-tabs>
+    <alc-tab tab="tab-1" label="Tab 1">
+      Conteúdo da tab 1
+    </alc-tab>
+    <alc-tab tab="tab-2" label="Tab 2">
+      Conteúdo da tab 2
+    </alc-tab>
+    <alc-tab tab="tab-3" label="Tab 3">
+      Conteúdo da tab 3
+    </alc-tab>
+  </alc-tabs>
+
+  <button id="nova" class="button">Nova tab</button>
+
+  <h2>Elementos personalizados</h2>
+
+  <p>
+    Aqui vai <a href="#" class="alc-link">um link qualquer</a>.
+  </p>
+
+  <div class="box-info border my-2 border-l-4">
+    <div class="box-info__title p-2">Veja que interessante</div>
+    <div class="box-info__content p-2">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde hic recusandae ab quasi sint, perspiciatis similique quidem, quibusdam natus molestiae ea maiores nam placeat sequi sit vel repellat alias. Fugiat!
+      </p>
+    </div>
+  </div>
+
+  <h2>Novidades</h2>
+  <p>O Alcance agora suporta FontAwesome!</p>
+  <p>...e também é compatível com: </p>
+  <alc-icons type="fab" name="vuejs" size="medium"></alc-icons>
+  <alc-icons type="fab" name="angular" size="medium"></alc-icons>
+  <alc-icons type="fab" name="react" size="medium"></alc-icons>
+  <alc-icons type="fab" name="node-js" size="medium"></alc-icons>
+  <alc-icons type="fab" name="java" size="medium"></alc-icons>
+  <alc-icons type="fab" name="html5" size="medium"></alc-icons>
+
+  <script>
+
+    document.querySelector('#nova').addEventListener('click', () => {
+      let nova = document.createElement('alc-tab');
+
+      nova.setAttribute('tab', 'tab-4');
+      nova.setAttribute('label', 'tab 4');
+      nova.innerText = 'Conteúdo da tab 4';
+
+      document.querySelector('alc-tabs').appendChild(nova);
+    });
+
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* Definição das variáveis - Setup dos temas*/
+[data-alc-theme="light"] alc-table {
+  --bg-color-odd: theme('colors.gray.10');
+}
+
+[data-alc-theme="dark"] alc-table {
+  --bg-color-odd: theme('colors.gray.80');
+}
+
+/* CSS COMUM a todos os temas */
+.alc-table__header-row {
+  /* md */
+  @apply md:table-row;
+}
+
+.alc-table__row {
+  @apply border-gray-30 border-2;
+  /* md */
+  @apply md:table-row;
+}
+
+.alc-table__row:nth-child(2n + 1) {
+  background-color: var(--bg-color-odd);
+}
+
+.alc-table__cell {
+  @apply border-none mb-2;
+  /* md */
+  @apply md:flex-none;
+}
+
+.alc-table__inline-header {
+  /* md */
+  @apply md:hidden;
+}

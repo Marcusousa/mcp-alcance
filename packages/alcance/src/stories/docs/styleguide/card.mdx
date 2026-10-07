@@ -1,0 +1,432 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import CodeExample from "../../utils/codeExample";
+import './container-example.css';
+import css from './container-example.css?inline';
+
+<Meta title="Estilos/Cards" />
+# Cards
+
+O Card é utilizado para agrupar conteúdo relacionado de forma organizada e estilizada. A seguir, são apresentados os exemplos de uso do card utilizando apenas HTML e as classes CSS fornecidas.
+
+## Estrutura Básica
+
+A estrutura básica de um card é composta pela classe `alc-card`, que envolve todo o conteúdo, e pela classe `alc-card__body`, que representa o corpo do card.  
+Note que o container do corpo não impõe regras de layout (como `display: flex`), permitindo ao projetista organizar os elementos conforme a necessidade.
+
+<Unstyled>
+<div class="alc-card" style={{width: '18rem'}}>
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+</div>
+</Unstyled>
+<CodeExample type="html">
+{`<div class="alc-card" style="width: 18rem;">
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+</div>`}
+</CodeExample>
+
+
+<Unstyled>
+<alc-alert dismissible="false">
+Para mais informações sobre os tokens disponíveis, consulte a seção <a className="alc-link" href="./?path=/docs/estilos-tokens--documentação">Tokens</a>.
+</alc-alert>
+</Unstyled>
+
+### Card com Cabeçalho
+
+Para adicionar um cabeçalho ao card, utilize a classe `alc-card__header` em uma `div` antes do corpo (`alc-card__body`).
+
+<Unstyled>
+<div class="alc-card" style={{width: '18rem'}}>
+  <div class="alc-card__header">
+    ThunderCats
+  </div>
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+</div>
+</Unstyled>
+<CodeExample type="html">
+{`<div class="alc-card" style="width: 18rem;">
+  <div class="alc-card__header">
+    ThunderCats
+  </div>
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+</div>`}
+</CodeExample>
+
+### Card com Título e Subtítulo
+
+Agora, os elementos de título e subtítulo podem ser inseridos diretamente no corpo do card, sem a necessidade de um container específico. Basta utilizar as classes `alc-card__title` e `alc-card__subtitle` e posicioná-las conforme a conveniência do projetista.
+
+<Unstyled>
+<div class="alc-card" style={{width: '18rem'}}>
+  <div class="alc-card__body">
+    <p class="alc-card__title">ThunderCats</p>
+    <p class="alc-card__subtitle">Reino de Thundera</p>
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+</div>
+</Unstyled>
+<CodeExample type="html">
+{`<div class="alc-card" style="width: 18rem;">
+  <div class="alc-card__body">
+    <p class="alc-card__title">ThunderCats</p>
+    <p class="alc-card__subtitle">Reino de Thundera</p>
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+</div>`}
+</CodeExample>
+
+### Card com Rodapé
+
+Adicione um rodapé ao card utilizando a classe `alc-card__footer` em uma `div` posicionada após o conteúdo do corpo (`alc-card__body`).
+
+<Unstyled>
+<div class="alc-card" style={{width: '18rem'}}>
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+  <div class="alc-card__footer">
+    Capítulo 1.
+  </div>
+</div>
+</Unstyled>
+<CodeExample type="html">
+{`<div class="alc-card" style="width: 18rem;">
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+  <div class="alc-card__footer">
+    Capítulo 1.
+  </div>
+</div>`}
+</CodeExample>
+
+### Card Completo
+
+Um card completo com cabeçalho, corpo e rodapé. Note que os elementos de título e subtítulo agora ficam inseridos diretamente no corpo, sem container extra.
+
+<Unstyled>
+<div class="alc-card" style={{width: '18rem'}}>
+  <div class="alc-card__header">
+    ThunderCats
+  </div>
+  <div class="alc-card__body">
+    <p class="alc-card__title">Reino de Thundera</p>
+    <p class="alc-card__subtitle">Investida de Lion-O</p>
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+  <div class="alc-card__footer">
+    Capítulo 1.
+  </div>
+</div>
+</Unstyled>
+<CodeExample type="html">
+{`<div class="alc-card" style="width: 18rem;">
+  <div class="alc-card__header">
+    ThunderCats
+  </div>
+  <div class="alc-card__body">
+    <p class="alc-card__title">Reino de Thundera</p>
+    <p class="alc-card__subtitle">Investida de Lion-O</p>
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+  <div class="alc-card__footer">
+    Capítulo 1.
+  </div>
+</div>`}
+</CodeExample>
+
+### Card com Imagem
+
+As imagens podem ser incluídas diretamente no corpo do card.
+
+<Unstyled>
+<div class="alc-card" style={{width: '18rem'}}>
+  <div class="alc-card__body">
+    <img src="./static/thundercats.jpg" alt="Logo dos Thundercats com personagens ao fundo" />
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+</div>
+</Unstyled>
+<CodeExample type="html">
+{`<div class="alc-card" style="width: 18rem;">
+  <div class="alc-card__body">
+    <img src="./static/thundercats.jpg" alt="Logo dos Thundercats com personagens ao fundo" />
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+</div>`}
+</CodeExample>
+
+### Card com Links e com Botões
+
+Links e botões podem ser inseridos diretamente no corpo do card.
+
+Quando botões são colocados lado a lado, têm que respeitar o espaçamento lateral
+de `--alc-spacing-03`, conforme especificado em <a className="alc-link" href="./?path=/docs/estilos-botões--documentação#espaçamento-entre-botões">Botões</a>.
+
+O mesmo espaçamento pode ser aplicado quando há links lado a lado.
+
+A aplicação deve definir o CSS para isso, usando o token disponível. Nos exemplos desta página, definimos uma classe CSS da seguinte forma, que pode servir como modelo:
+
+<p>
+  <pre>
+    <code>
+      {css}
+    </code>
+  </pre>
+</p>
+
+#### Exemplo com links
+
+<Unstyled>
+<div class="alc-card" style={{width: '18rem'}}>
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera.
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal.
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+    <div class="container-example">
+      <a href="#" class="alc-link">Link 1</a>
+      <a href="#" class="alc-link">Link 2</a>
+    </div>
+  </div>
+</div>
+</Unstyled>
+<CodeExample type="html">
+{`<div class="alc-card" style="width: 18rem;">
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+    <div class="container-example">
+      <a href="#" class="alc-link">Link 1</a>
+      <a href="#" class="alc-link">Link 2</a>
+    </div>
+  </div>
+</div>`}
+</CodeExample>
+
+#### Exemplo com botões
+
+<Unstyled>
+<div class="alc-card" style={{width: '18rem'}}>
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+    <div class="container-example">
+      <button class="alc-button">Botão 1</button>
+      <button class="alc-button alc-button--secondary">Botão 2</button>
+    </div>
+  </div>
+</div>
+</Unstyled>
+<CodeExample type="html">
+{`<div class="alc-card" style="width: 18rem;">
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+    <div class="container-example">
+      <button class="alc-button">Botão 1</button>
+      <button class="alc-button alc-button--secondary">Botão 2</button>
+    </div>
+  </div>
+</div>`}
+</CodeExample>
+
+### Exemplo Avançado
+
+Neste exemplo avançado, combinamos todos os elementos para criar um card rico em conteúdo.  
+Note que não há container específico para título/subtítulo nem para o alinhamento dos links – a organização fica a critério da aplicação.
+
+<Unstyled>
+<div class="alc-card" style={{width: '18rem'}}>
+  <div class="alc-card__header">
+    ThunderCats
+  </div>
+  <div class="alc-card__body">
+    <img src="./static/thundercats.jpg" alt="Logo dos Thundercats com personagens ao fundo" />
+    <p class="alc-card__title">Reino de Thundera</p>
+    <p class="alc-card__subtitle">Investida de Lion-O</p>
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+    <div class="container-example">
+      <a href="#" class="alc-link">Link 1</a>
+      <a href="#" class="alc-link">Link 2</a>
+    </div>
+  </div>
+  <div class="alc-card__footer">
+    Capítulo 1.
+  </div>
+</div>
+</Unstyled>
+<CodeExample type="html">
+{`<div class="alc-card" style="width: 18rem;">
+  <div class="alc-card__header">
+    ThunderCats
+  </div>
+  <div class="alc-card__body">
+    <img src="./static/thundercats.jpg" alt="Logo dos Thundercats com personagens ao fundo" />
+    <p class="alc-card__title">Reino de Thundera</p>
+    <p class="alc-card__subtitle">Investida de Lion-O</p>
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+    <div class="container-example">
+      <a href="#" class="alc-link">Link 1</a>
+      <a href="#" class="alc-link">Link 2</a>
+    </div>
+  </div>
+  <div class="alc-card__footer">
+    Capítulo 1.
+  </div>
+</div>`}
+</CodeExample>
+
+## Variações de Uso
+
+### Variando a cor de fundo de acordo com a cor de fundo de onde o card está
+
+Em regra, os cards terão uma cor de fundo neutra.
+
+Os fundos dos cards podem ser definidos conforme o local onde estão posicionados:
+- Pode possuir a mesma cor de fundo do ambiente onde estão;
+- Ou a cor de fundo da camada imediatamente superior, ou seja:
+  - `layer-a` quando sobre a cor `surface`;
+  - `layer-b` quando sobre a cor `layer-a`;
+  - `layer-c` quando sobre a cor `layer-b`.
+
+<Unstyled>
+<div class="row">
+  <div class="col-12 col-sm-4" style={{backgroundColor: `var(--alc-color-surface)`}}>
+    <div class="alc-card" style={{backgroundColor: `var(--alc-color-layer-a)`}}>
+      <div class="alc-card__body">
+        <p>
+          <code>layer-a</code> sobre <code>surface</code>.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-4" style={{backgroundColor: `var(--alc-color-layer-a)`}}>
+    <div class="alc-card" style={{backgroundColor: `var(--alc-color-layer-b)`}}>
+      <div class="alc-card__body">
+        <p>
+          <code>layer-b</code> sobre <code>layer-a</code>.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-4" style={{backgroundColor: `var(--alc-color-layer-b)`}}>
+    <div class="alc-card" style={{backgroundColor: `var(--alc-color-layer-c)`}}>
+      <div class="alc-card__body">
+        <p>
+          <code>layer-c</code> sobre <code>layer-b</code>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</Unstyled>
+
+### Cores personalizadas
+
+Você pode combinar as classes para criar diferentes estilos de cards.  
+Confira o exemplo a seguir com uma cor personalizada:
+
+<Unstyled>
+<div class="alc-card" style={{width: '18rem', backgroundColor: 'var(--alc-color-info-10)', color: 'var(--alc-color-info-80)', borderColor: 'var(--alc-color-info-20)'}}>
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+</div>
+</Unstyled>
+<CodeExample type="html">
+{`<div class="alc-card" style="width: 18rem; background-color: var(--alc-color-info-10); 
+border-color: var(--alc-color-info-20); color: var(--alc-color-info-80)">
+  <div class="alc-card__body">
+    <p>
+      As aventuras de um grupo de humanoides felinos do planeta Thundera. 
+      Quando o planeta moribundo encontra seu fim, os ThunderCats são forçados a abandonar sua terra natal. 
+      Em seu novo planeta, eles precisam lutar contra Mumm-Ra para defender seu lar.
+    </p>
+  </div>
+</div>`}
+</CodeExample>
+
+<Unstyled>
+<alc-alert dismissible="false">
+Para mais informações sobre as cores disponíveis, consulte a seção <a className="alc-link" href="./?path=/docs/estilos-cores--documentação">Cores</a>. Utilize também nossa ferramenta de <a className="alc-link" href="./?path=/docs/estilos-cores--documentação#checagem-de-contraste-wcag">Checagem de Contraste</a> para garantir a acessibilidade do seu conteúdo.
+</alc-alert>
+</Unstyled>

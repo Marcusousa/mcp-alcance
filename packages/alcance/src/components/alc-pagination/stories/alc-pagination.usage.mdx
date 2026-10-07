@@ -1,0 +1,116 @@
+{/* alc-pagination.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-pagination.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Básico com conteúdo
+O `alc-pagination` pode ser usado para paginar qualquer tipo de conteúdo. Ele simplesmente fornece os controles de paginação.
+
+Aqui está um exemplo de uma aplicação típica do componente, com o código mínimo para realizar a paginação visualmente.
+
+<Canvas of={Stories.BasicoConteudo} sourceState="shown" />
+<Controls of={Stories.BasicoConteudo} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+Note que esse componente possui o recurso de modelo virtual (v-model), que permite
+criar um vínculo bidirecional entre uma variável da aplicação e o componente.
+
+O `v-model` refere-se ao atributo `current-page` do componente.
+
+<CodeExample
+  examples={{
+    javascript: `<template>
+  <div>
+    <!-- Conteúdo das páginas -->
+    <div v-for="(episode, index) in episodes" :key="index">
+      <div v-show="currentPage === index + 1">
+        {{ episode }}
+      </div>
+    </div>
+
+    <!-- Componente AlcPagination -->
+    <AlcPagination
+      v-model="currentPage"
+      :total-pages="totalPages"
+    ></AlcPagination>
+  </div>
+</template>
+
+<script>
+import { AlcPagination } from 'alcance-vue-library/lib/components';
+
+export default {
+  name: 'PaginationExample',
+  components: {
+    AlcPagination,
+  },
+  data() {
+    return {
+      currentPage: 1,
+      totalPages: 3,
+      episodes: [
+        'Episódio 1: Êxodo (Exodus). Lançado em 23 de janeiro de 1985.',
+        'Episódio 2: Aliança Profana (The Unholy Alliance). Lançado em 23 de janeiro de 1985.',
+        'Episódio 3: Berbils. Lançado em 11 de setembro de 1985.',
+      ],
+    };
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <!-- Conteúdo das páginas -->
+    <div v-for="(episode, index) in episodes" :key="index">
+      <div v-show="currentPage === index + 1">
+        {{ episode }}
+      </div>
+    </div>
+
+    <!-- Componente AlcPagination -->
+    <AlcPagination
+      v-model="currentPage"
+      :total-pages="totalPages"
+    ></AlcPagination>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import { AlcPagination } from 'alcance-vue-library/lib/components';
+
+export default defineComponent({
+  name: 'PaginationExampleTS',
+  components: {
+    AlcPagination,
+  },
+  setup() {
+    const currentPage = ref(1);
+    const totalPages = ref(3);
+    const episodes = ref<string[]>([
+      'Episódio 1: Êxodo (Exodus). Lançado em 23 de janeiro de 1985.',
+      'Episódio 2: Aliança Profana (The Unholy Alliance). Lançado em 23 de janeiro de 1985.',
+      'Episódio 3: Berbils. Lançado em 11 de setembro de 1985.',
+    ]);
+
+    return {
+      currentPage,
+      totalPages,
+      episodes,
+    };
+  },
+});
+</script>`
+  }}
+/>

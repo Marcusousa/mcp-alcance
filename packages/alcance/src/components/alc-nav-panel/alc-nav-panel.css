@@ -1,0 +1,106 @@
+:host {
+  display: block;
+}
+
+[data-alc-theme="light"] alc-nav-panel {
+  --color-button: theme('colors.mint-cool.5');
+  --color-button-hover: theme('colors.mint-cool.10');
+
+  /* 26 indica 15% de transparencia */
+  --color-drop-shadow: theme('colors.black')26;
+  --outline-color: var(--alc-color-action-60);
+}
+
+[data-alc-theme="dark"] alc-nav-panel {
+  --color-button: theme('colors.cyan.70');
+  --color-button-hover: theme('colors.cyan.60');
+
+  /* No modo dark ja tem contraste suficiente entre a borda e conteúdo,
+    por isso não precisa de sombra
+   */
+  --color-drop-shadow: theme('colors.transparent');
+  --outline-color: var(--alc-color-neutral-0);
+}
+
+
+alc-nav-panel {
+  --border-width: theme('borderWidth.8');
+
+  /* Largura padrão do conteúdo */
+  --content-width: 18rem;
+
+  /* O valor default é 72px, que seria a altura padrão em produção do header, em situação "normal" */
+  --height: calc(var(--offset-top, 72) * 1px);
+
+  /*  Valor do conteudo + borda direita */
+  --max-width: calc(var(--content-width) + var(--border-width));
+}
+
+.alc-nav-panel {
+  /* Define a largura minima (tamanho da borda) para centralizar o conteúdo */
+  @apply md:min-w-[--border-width] transition-all z-10;
+}
+
+.alc-nav-panel--opened {
+  /* Aqui é definido a largura para empurrar o conteúdo a partir do lg */
+  @apply lg:min-w-[--max-width];
+}
+
+.alc-nav-panel__container {
+  @apply flex fixed flex-row-reverse;
+  /* Altura do viewpoint - o offsetTop do nav-panel */
+  height: calc(100vh - var(--height));
+}
+
+.alc-nav-panel__content {
+  @apply bg-[--alc-color-surface] h-full w-0 opacity-0 transition-all overflow-x-hidden block z-0;
+}
+
+.alc-nav-panel__content--opened {
+  @apply block w-[--content-width] opacity-100;
+}
+
+.alc-nav-panel__button-container {
+  @apply border-[--color-button] -z-0 text-[--alc-color-text-primary];
+  border-left-width: var(--border-width);
+  /* Drop-shadow para o sombreamento contornar o botão svg */
+  filter: drop-shadow(0 4px 3px var(--color-drop-shadow)) drop-shadow(0 2px 2px var(--color-drop-shadow));
+}
+
+.alc-nav-panel__button {
+  @apply relative mt-[--alc-spacing-05] rounded -left-[--alc-spacing-03] pl-[--alc-spacing-03] grid items-center justify-items-start;
+}
+
+.alc-nav-panel__button:focus-visible {
+  @apply outline-none;
+}
+
+.alc-nav-panel__button:focus-visible .alc-nav-panel__button-icon {
+  @apply outline outline-2 outline-[--outline-color];
+}
+
+.alc-nav-panel__button-icon {
+  @apply row-start-1 col-start-1;
+}
+
+.alc-nav-panel__button-svg-container {
+  @apply row-start-1 col-start-1;
+}
+
+.alc-nav-panel__button-svg {
+  @apply fill-[--color-button];
+}
+
+/* Tratamento da cor do svg + borda quando o botão recebe foco */
+.alc-nav-panel__button:hover .alc-nav-panel__button-svg {
+  @apply fill-[--color-button-hover] transition-colors;
+}
+
+.alc-nav-panel__button-container:has(.alc-nav-panel__button:hover) {
+  @apply border-[--color-button-hover] transition-colors;
+}
+
+/* ******* */
+.alc-nav-panel--hidden {
+  @apply hidden;
+}

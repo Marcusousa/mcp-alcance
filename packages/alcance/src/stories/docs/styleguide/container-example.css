@@ -1,0 +1,5 @@
+.container-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--alc-spacing-03);
+}

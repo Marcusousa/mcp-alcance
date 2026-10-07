@@ -1,0 +1,15 @@
+{/* alc-view-more.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-view-more.stories';
+
+import ViewMoreProps from './alc-view-more.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+<h1>{Stories.default.name}</h1>
+
+O componente View More é utilizado quando se quer ocultar parte de um texto. Você pode configurá-lo para se ajustar o quanto desse texto será exibido, para que se encaixe de forma adequada ao seu layout.
+
+<Markdown>{ViewMoreProps}</Markdown>

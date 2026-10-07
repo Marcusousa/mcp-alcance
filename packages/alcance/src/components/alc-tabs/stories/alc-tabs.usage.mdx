@@ -1,0 +1,158 @@
+{/* alc-tabs.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-tabs.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `
+<template>
+  <div>
+    <h2>Exemplo de uso do alc-tabs, alc-tab-button e alc-tab (JavaScript)</h2>
+    <p>Navegue entre as abas clicando nos botões ou usando as setas do teclado:</p>
+    
+    <!-- Componente que engloba as abas -->
+    <alc-tabs ref="tabs" selected="tab-1" @alc-change="onTabChange">
+      
+      <!-- Botões das abas -->
+      <alc-tab-button slot="button" tab="tab-1">Lion-O</alc-tab-button>
+      <alc-tab-button slot="button" tab="tab-2">Panthro</alc-tab-button>
+      <alc-tab-button slot="button" tab="tab-3">Cheetara</alc-tab-button>
+
+      <!-- Conteúdo das abas -->
+      <alc-tab tab="tab-1">
+        <p>
+          É o líder dos ThunderCats que moram no terceiro mundo e lutam pela ordem e justiça.
+          Criado pelo desenhista Ted Wolf para a Telepictures Corporation.
+          No Brasil foi dublado por Newton da Matta.
+        </p>
+      </alc-tab>
+      <alc-tab tab="tab-2">
+        <p>
+          É um integrante dos ThunderCats, representando uma pantera negra na linhagem Thunderiana.
+          Panthro é o que possui a maior força física no grupo e é mestre em artes marciais,
+          além de ser também especialista em mecânica e tecnologia avançada.
+        </p>
+      </alc-tab>
+      <alc-tab tab="tab-3" content-focus="true">
+        <p>
+          Representando a chita, Cheetara é uma guerreira destemida.
+          Forte e decidida, não hesita em entrar em ação para combater os vilões.
+          Sua habilidade de luta é impressionante mas sem dúvida seu grande poder consiste na velocidade inigualável,
+          superior a qualquer veículo terrestre motorizado.
+        </p>
+        <a href="https://pt.wikipedia.org/wiki/ThunderCats" class="alc-link">Saiba mais sobre outros Thundercats</a>
+      </alc-tab>
+    </alc-tabs>
+
+    <!-- Botões para selecionar abas programaticamente -->
+    <button class="alc-button" @click="selectTab('tab-1')">Selecionar Aba "Lion-O"</button>
+    <button class="alc-button" @click="selectTab('tab-3')">Selecionar Aba "Cheetara"</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'TabsExampleJS',
+  methods: {
+    onTabChange(event) {
+      console.log('A aba selecionada mudou para:', event.detail.to);
+    },
+    selectTab(tabId) {
+      const tabs = this.$refs.tabs;
+      if (tabs && tabs.select) {
+        tabs.select(tabId);
+      }
+    },
+  },
+};
+</script>
+    `,
+    typescript: `
+<template>
+  <div>
+    <h2>Exemplo de uso do alc-tabs, alc-tab-button e alc-tab (TypeScript)</h2>
+    <p>Navegue entre as abas clicando nos botões ou usando as setas do teclado:</p>
+    
+    <!-- Componente que engloba as abas -->
+    <alc-tabs ref="tabs" selected="tab-1" @alc-change="handleTabChange">
+      
+      <!-- Botões das abas -->
+      <alc-tab-button slot="button" tab="tab-1">Lion-O</alc-tab-button>
+      <alc-tab-button slot="button" tab="tab-2">Panthro</alc-tab-button>
+      <alc-tab-button slot="button" tab="tab-3">Cheetara</alc-tab-button>
+
+      <!-- Conteúdo das abas -->
+      <alc-tab tab="tab-1">
+        <p>
+          É o líder dos ThunderCats que moram no terceiro mundo e lutam pela ordem e justiça.
+          Criado pelo desenhista Ted Wolf para a Telepictures Corporation.
+          No Brasil foi dublado por Newton da Matta.
+        </p>
+      </alc-tab>
+      <alc-tab tab="tab-2">
+        <p>
+          É um integrante dos ThunderCats, representando uma pantera negra na linhagem Thunderiana.
+          Panthro é o que possui a maior força física no grupo e é mestre em artes marciais,
+          além de ser também especialista em mecânica e tecnologia avançada.
+        </p>
+      </alc-tab>
+      <alc-tab tab="tab-3" content-focus="true">
+        <p>
+          Representando a chita, Cheetara é uma guerreira destemida.
+          Forte e decidida, não hesita em entrar em ação para combater os vilões.
+          Sua habilidade de luta é impressionante mas sem dúvida seu grande poder consiste na velocidade inigualável,
+          superior a qualquer veículo terrestre motorizado.
+        </p>
+        <a href="https://pt.wikipedia.org/wiki/ThunderCats" class="alc-link">Saiba mais sobre outros Thundercats</a>
+      </alc-tab>
+    </alc-tabs>
+
+    <!-- Botões para selecionar abas programaticamente -->
+    <button class="alc-button" @click="selectTab('tab-1')">Selecionar Aba "Lion-O"</button>
+    <button class="alc-button" @click="selectTab('tab-3')">Selecionar Aba "Cheetara"</button>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'TabsExampleTS',
+  setup() {
+    const tabs = ref<HTMLElement | null>(null);
+
+    const handleTabChange = (event: CustomEvent) => {
+      console.log('A aba selecionada mudou para:', event.detail.to);
+    };
+
+    const selectTab = (tabId: string) => {
+      if (tabs.value && (tabs.value as any).select) {
+        (tabs.value as any).select(tabId);
+      }
+    };
+
+    return {
+      tabs,
+      handleTabChange,
+      selectTab,
+    };
+  },
+});
+</script>
+    `
+  }}
+/>

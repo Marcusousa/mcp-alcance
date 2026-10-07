@@ -1,0 +1,87 @@
+#!/usr/bin/env groovy
+
+pipeline {
+    agent any
+    parameters {
+        string(name: 'AMBIENTE', defaultValue: 'prd', description: 'Ambiente de implantação')
+    }
+    environment {
+        ORGANIZACAO = 'seuso'
+        PROJETO = 'alcance'
+        PIPELINE = 'alcance-docs'
+        IMAGEM_DOCKER = "dockerhub.camara.leg.br/${ORGANIZACAO}/${PIPELINE}"
+        CREDENTIALS_ID = 'c34117dc-5fa1-46f8-8ebb-f1cf0b2254c4'
+        DOCKER_REGISTRY_URL = 'https://dockerhub.camara.leg.br/'
+    }
+    tools {
+        nodejs 'NodeJS22'
+    }
+    stages {
+        stage('Checkout SCM') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build Info') {
+            steps {
+                script {
+                    // Ler o arquivo package.json
+                    def packageJson = readJSON file: 'packages/alcance/package.json'
+                    def version = packageJson.version
+
+                    // Definir VERSAO como variável de ambiente
+                    env.VERSAO = "${version}"
+
+                    // Obter o hash do commit atual e definir GIT_COMMIT como variável de ambiente
+                    env.GIT_COMMIT = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
+
+                    // Definir IMAGEM_DOCKER_TAG como variável de ambiente
+                    if (env.VERSAO.contains('SNAPSHOT')) {
+                        env.IMAGEM_DOCKER_TAG = env.GIT_COMMIT.take(7)
+                    } else {
+                        env.IMAGEM_DOCKER_TAG = env.VERSAO
+                    }
+
+                    // Exibir as variáveis para depuração
+                    echo "VERSAO: ${env.VERSAO}"
+                    echo "GIT_COMMIT: ${env.GIT_COMMIT}"
+                    echo "IMAGEM_DOCKER_TAG: ${env.IMAGEM_DOCKER_TAG}"
+                }
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                echo "Tag da Imagem Docker: ${env.IMAGEM_DOCKER_TAG}"
+                withDockerRegistry([credentialsId: "${CREDENTIALS_ID}", url: "${DOCKER_REGISTRY_URL}"]) {
+                    script {
+                        def imagem = docker.build("${IMAGEM_DOCKER}:${env.IMAGEM_DOCKER_TAG}")
+                        imagem.push()
+                    }
+                }
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                patchKubernetes reponame: "kubernetes-${PROJETO}",
+                                branch: "master",
+                                path: "${params.AMBIENTE}",
+                                kind: "Deployment",
+                                file: "${PIPELINE}-deployment.yaml",
+                                container: "${PIPELINE}",
+                                image: "${IMAGEM_DOCKER}",
+                                tag: "${env.IMAGEM_DOCKER_TAG}"
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline finalizado.'
+        }
+        success {
+            echo 'Pipeline executado com sucesso.'
+        }
+        failure {
+            echo 'Pipeline falhou.'
+        }
+    }
+}

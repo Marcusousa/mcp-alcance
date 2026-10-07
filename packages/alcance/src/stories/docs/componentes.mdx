@@ -1,0 +1,369 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from '../utils/codeExample';
+
+<Meta title="Componentes/Componentes" />
+<h1> Componentes </h1>
+
+O Alcance oferece uma biblioteca de componentes prontos para uso.
+
+Eles são implementados como *custom elements*, usando o prefixo `alc-` como indicativo da biblioteca.
+
+Inclua um componente na página como se fosse uma tag HTML padrão:
+
+<CodeExample type="html">
+{`<!-- Exemplo de uso de um componente em seu código HTML -->
+<alc-alert>Olá</alc-alert>`}
+</CodeExample>
+
+## Propriedades
+
+As propriedades são informadas como atributos da tag do componente:
+
+<CodeExample type="html">
+{`<!-- Informando que o alert não pode ser fechado pelo usuário -->
+<alc-alert dismissible="false">Olá. Isso não pode ser fechado pelo usuário.</alc-alert>`}
+</CodeExample>
+
+Os componentes estão sendo projetados para que suas propriedades, em regra, reajam às mudanças de valores.
+
+Por exemplo, modificar dinamicamente o valor de `dismissible`:
+
+<CodeExample
+  examples={{
+    javascript: `// Obtém referência ao componente na página
+const alert = document.querySelector('alc-alert');
+// Alterna o valor de dismissible (true/false).
+// O componente é atualizado dinamicamente na página.
+alert.dismissible = !alert.dismissible;`,
+    typescript: `// Define uma interface para o elemento 'alc-alert'
+interface AlcAlertElement extends HTMLElement {
+  dismissible: boolean;
+}
+
+// Obtém referência ao componente na página
+const alert = document.querySelector('alc-alert') as AlcAlertElement | null;
+
+// Verifica se o elemento foi encontrado antes de acessá-lo
+if (alert) {
+  // Alterna o valor de 'dismissible' (true/false)
+  // O componente é atualizado dinamicamente na página
+  alert.dismissible = !alert.dismissible;
+}`,
+  }}
+/>
+
+## Métodos
+Alguns componentes possuem métodos para acionar um determinado comportamento.
+Todos os métodos são assíncronos. Isso significa que, se você precisar aguardar
+a execução dele para executar algo na sequência, ou se quiser utilizar algum valor
+eventualmente retornado pelo método, é preciso dar à chamada do método
+o devido tratamento.
+
+Os métodos dos componentes podem ser chamados obtendo uma referência a ele no Javascript:
+
+<CodeExample 
+  examples={{
+    javascript: `// Obtém referência ao componente na página
+const alert = document.querySelector('alc-alert');
+// Executa método - dismiss() será executado assincronamente.
+alert.dismiss();
+// Qualquer código colocado a seguir pode ser executado antes que dismiss() tenha concluído sua execução.`,
+    typescript: `// Define uma interface para o elemento 'alc-alert'
+interface AlcAlertElement extends HTMLElement {
+  dismiss(): Promise<void>;
+}
+
+// Obtém referência ao componente na página
+const alert = document.querySelector('alc-alert') as AlcAlertElement | null;
+
+// Verifica se o elemento foi encontrado antes de acessá-lo
+if (alert) {
+  // Executa o método - dismiss() será executado assincronamente.
+  alert.dismiss();
+  // Qualquer código colocado a seguir pode ser executado antes que dismiss() tenha concluído sua execução.
+}`
+  }}
+/>
+
+Pode-se obter o valor do retorno da seguinte maneira:
+
+<CodeExample
+examples={{
+javascript: `// Obtém referência ao componente na página
+const alert = document.querySelector('alc-alert');
+// Executa método e pega o valor do retorno do método
+alert.dismiss().then( dismissed => {
+  console.log(dismissed);
+});
+// Outra maneira de pegar o valor do retorno, usando a instrução await:
+const dismissed = await alert.dismiss();
+console.log(dismissed);`,
+typescript: `// Define uma interface para o elemento 'alc-alert'
+interface AlcAlertElement extends HTMLElement {
+  dismiss(): Promise<any>; // Substitua 'any' pelo tipo real se conhecido
+}
+
+// Obtém referência ao componente na página
+const alert = document.querySelector('alc-alert') as AlcAlertElement | null;
+
+// Verifica se o elemento foi encontrado antes de acessá-lo
+if (alert) {
+  // Executa o método e pega o valor do retorno usando then()
+  alert.dismiss().then(dismissed => {
+    console.log(dismissed);
+  });
+
+  // Outra maneira de pegar o valor do retorno, usando a instrução await dentro de uma função assíncrona
+  (async () => {
+    const dismissed = await alert.dismiss();
+    console.log(dismissed);
+  })();
+}`,
+}}
+/>
+
+*Consulte a documentação de um componente para obter uma lista completa de seus métodos.*
+
+### Métodos no Vue
+
+Há uma diferença na forma de chamar os eventos no Vue. Veja os exemplos a seguir.
+
+<CodeExample
+  examples={{
+    javascript: `// Usando Composition API
+<script setup>
+  import { ref } from 'vue';
+  import { AlcAlert } from 'alcance-vue-library';
+
+  const alert = ref(null);
+
+  const hideAlert = async () => {
+    // Chamada ao método \`hide()\` do alert. Note que é preciso usar $el aqui.
+    const result = alert.value.$el.hide();
+    // O retorno dos métodos dos componentes do Alcance será sempre uma Promise.
+    // Para obter o valor "útil" do método, portanto, é preciso aguardar a resolução da Promise.
+    console.log(await result);
+  }
+</script>
+
+<template>
+  <alc-alert ref="alert">Mostrando a chamada de métodos.</alc-alert>
+  <button @click="hideAlert" class="alc-button alc-button--primary">Ocultar o alert</button>
+</template>`,
+    typescript: `// Usando Composition API com TypeScript
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { AlcAlert } from 'alcance-vue-library';
+
+  // Define o tipo para a referência 'alert'
+  import type { ComponentPublicInstance } from 'vue';
+
+  // Tipo específico para o método 'hide' disponível em '$el'
+  interface AlcAlertElement extends HTMLElement {
+    hide(): Promise<any>; // Substitua 'any' pelo tipo de retorno real, se conhecido
+  }
+
+  const alert = ref<ComponentPublicInstance | null>(null);
+
+  const hideAlert = async () => {
+    // Verifica se 'alert.value' e 'alert.value.$el' estão definidos
+    if (alert.value && alert.value.$el) {
+      const result = (alert.value.$el as AlcAlertElement).hide();
+      // Aguarda a resolução da Promise
+      console.log(await result);
+    }
+  }
+</script>
+
+<template>
+  <alc-alert ref="alert">Mostrando a chamada de métodos.</alc-alert>
+  <button @click="hideAlert" class="alc-button alc-button--primary">Ocultar o alert</button>
+</template>`,
+  }}
+/>
+
+<CodeExample
+  examples={{
+    javascript: `// Usando options API
+<script>
+  import { AlcAlert } from 'alcance-vue-library';
+
+  export default {
+    components: {
+      AlcAlert
+    },
+    methods: {
+      async hideAlert() {
+        // Chamada ao método \`hide()\` do alert. Note que é preciso usar $el aqui.
+        const result = this.$refs.alert.$el.hide();
+        // O retorno dos métodos dos componentes do Alcance será sempre uma Promise.
+        // Para obter o valor "útil" do método, portanto, é preciso aguardar a resolução da Promise.
+        console.log(await result);
+      }
+    }
+  }
+</script>
+
+<template>
+  <alc-alert ref="alert">Mostrando a chamada de métodos</alc-alert>
+  <button @click="hideAlert" class="alc-button alc-button--primary">Ocultar o alert</button>
+</template>`,
+    typescript: `// Usando options API com TypeScript
+<script lang="ts">
+  import { defineComponent } from 'vue';
+  import { AlcAlert } from 'alcance-vue-library';
+
+  // Importa o tipo para 'ComponentPublicInstance'
+  import type { ComponentPublicInstance } from 'vue';
+
+  // Interface para o elemento 'alc-alert'
+  interface AlcAlertElement extends HTMLElement {
+    hide(): Promise<any>; // Substitua 'any' pelo tipo real se conhecido
+  }
+
+  export default defineComponent({
+    components: {
+      AlcAlert
+    },
+    methods: {
+      async hideAlert() {
+        // Verifica se 'this.$refs.alert' está definido
+        const alertComponent = this.$refs.alert as ComponentPublicInstance | undefined;
+        if (alertComponent && alertComponent.$el) {
+          // Chamada ao método \`hide()\` do alert. Note que é preciso usar $el aqui.
+          const alertEl = alertComponent.$el as AlcAlertElement;
+          const result = alertEl.hide();
+          // Aguarda a resolução da Promise
+          console.log(await result);
+        }
+      }
+    }
+  });
+</script>
+
+<template>
+  <alc-alert ref="alert">Mostrando a chamada de métodos</alc-alert>
+  <button @click="hideAlert" class="alc-button alc-button--primary">Ocultar o alert</button>
+</template>`,
+  }}
+/>
+
+
+
+## Eventos
+Alguns componentes emitem eventos personalizados e funcionam da mesma maneira que os eventos nativos.
+Os eventos do Alcance possuem o prefixo `alc-` para evitar conflitos com outras bibliotecas ou eventos nativos.
+Você pode utilizar os eventos personalizados do componente da seguinte maneira no Javascript:
+<CodeExample
+  examples={{
+    javascript: `// Obtém referência ao componente na página
+const pagination = document.querySelector('alc-pagination');
+// Registra listener para evento
+pagination.addEventListener('alc-change', event => {
+  // Pega as informações do evento.
+  // Sempre que um evento fornecer alguma detalhe específico, essa informação estará
+  // disponível em um objeto contido na propriedade "detail" do evento.
+  console.log(event.detail);
+})`,
+    typescript: `// Define uma interface para o elemento 'alc-pagination', se necessário
+interface AlcPaginationElement extends HTMLElement {
+  // Adicione propriedades ou métodos específicos, se houver
+}
+
+// Obtém referência ao componente na página
+const pagination = document.querySelector('alc-pagination') as AlcPaginationElement | null;
+
+// Verifica se o elemento foi encontrado antes de usá-lo
+if (pagination) {
+  // Registra listener para evento
+  pagination.addEventListener('alc-change', (event: CustomEvent) => {
+    // Pega as informações do evento.
+    // Sempre que um evento fornecer algum detalhe específico, essa informação estará
+    // disponível em um objeto contido na propriedade "detail" do evento.
+    console.log(event.detail);
+  });
+}
+`,
+  }}
+/>
+
+*Consulte a documentação de um componente para obter uma lista completa de seus eventos personalizados.*
+
+### Eventos no Vue
+
+Os eventos disparados pelos componentes do Alcance são totalmente compatíveis com o Vue.
+
+Veja o exemplo a seguir.
+<CodeExample type="html">
+{`<template>
+  <alc-pagination total-pages="5" @alc-change="event => console.log(event.detail)"></alc-pagination>
+</template>`}
+</CodeExample>
+
+## Slot
+Certos componentes possuem slots para adicionar conteúdos dentro. Existem dois tipos de slots: default (padrão) e nomeados.
+
+O slot mais comum é o default que pode incluir qualquer conteúdo sem necessitar de configurações adicionais, que é o caso do alc-alert, mostrado no exemplo abaixo:
+
+<CodeExample type="html">
+{`<alc-alert>Aqui fica o slot padrão do alc-alert.</alc-alert>`}
+</CodeExample>
+
+Os slots nomeados, são utilizados adicionando um atributo "slot" nos elementos. Como é o caso do exemplo abaixo, observa-se que o elemento `span` possui o atributo `slot="summary"`.
+
+*Esse exemplo é somente ilustrativo, ainda não há componentes disponíveis com slot nomeado*
+
+<CodeExample type="html">
+{`<alc-alert>
+  <span slot="summary">Aqui fica o slot nomeado.</span>
+  Aqui fica o slot padrão.
+</alc-alert>`}
+</CodeExample>
+*Consulte a documentação de um componente para obter uma lista completa de slots.*
+
+## Propriedades de CSS Customizadas
+Alguns componentes possuem propriedades personalizadas de CSS. A modificação dos valores dessas variáveis permite alterar aspectos visuais dos componentes, de forma estruturada.
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+  <span class="alc-alert__summary">Seja cuidadoso ao fazer isso.</span>
+  A alteração desses valores é um recurso avançado para uso em situações bem específicas, como uma adequação da aparência de um componente em uma aplicação que não segue o tema do Alcance. Pode levar a inconsistências e trazer problemas de acessibilidade. Use somente se tiver certeza do que está fazendo.
+</alc-alert>
+</Unstyled>
+
+
+Você pode definir da seguinte maneira:
+
+<CodeExample type="css">
+{`[data-alc-theme="light"] alc-alert {
+  --bg-color-success: #c8e5e2;
+}
+
+[data-alc-theme="dark"] alc-alert {
+  --bg-color-success: #0b4a46;
+}`}
+</CodeExample>
+
+Caso queira customizar por uma classe, também é possível:
+
+<CodeExample type="css">
+{`[data-alc-theme="light"] alc-alert.sua-classe {
+  --bg-color-success: #c8e5e2;
+}
+
+[data-alc-theme="dark"] alc-alert.sua-classe {
+  --bg-color-success: #0b4a46;
+}`}
+</CodeExample>
+
+Também é possível na estilização inline:
+
+<CodeExample type="html">
+{`<!-- A mesma cor de fundo independentemente do tema do Alcance que o usuário tenha escolhido. -->
+<alc-alert type="success" style="--bg-color-success: #0b4a46;">
+  Essa mensagem de sucesso tem a mesma cor de fundo em qualquer tema.
+</alc-alert>`}
+</CodeExample>
+
+*Consulte a documentação de um componente para obter uma lista completa de suas propriedades de CSS customizadas.*

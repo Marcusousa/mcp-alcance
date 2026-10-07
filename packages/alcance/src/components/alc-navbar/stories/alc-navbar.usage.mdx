@@ -1,0 +1,26 @@
+{/* alc-navbar.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-navbar.stories';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Completo.name}
+
+<Canvas of={Stories.Completo} sourceState="shown" />
+<Controls of={Stories.Completo} />
+
+## {Stories.Header.name}
+
+Note que o `navbar` deve ser colocado logo após o `header`. É diferente do `nav-panel`, que fica na área de layout da página.
+
+<Canvas of={Stories.Header} sourceState="shown" />
+<Controls of={Stories.Header} />
+

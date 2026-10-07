@@ -1,0 +1,76 @@
+{/* alc-sidepanel.mdx */}
+
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-sidepanel.stories';
+import SidepanelProps from './alc-sidepanel.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+  <span class="alc-alert__summary"> O componente `alc-sidepanel` foi descontinuado.</span>
+  Um novo componente está disponível em seu lugar: <a href="./?path=/docs/componentes-nav-panel--documentação" className="alc-link">alc-nav-panel</a>.
+  Viste o <a href="./?path=/docs/componentes-header-v1--guia-de-migração" className="alc-link">Guia de Migração</a> para instruções de como migrar para o novo componente.
+</alc-alert>
+</Unstyled>
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+  Este componente será removido da biblioteca em uma versão futura.
+</alc-alert>
+</Unstyled>
+
+
+O Sidepanel foi projetado para exibir a navegação do sistema nas páginas que seguem o padrão do Alcance.
+
+Ele apresenta seu conteúdo exibindo de forma conveniente, permitindo ao usuário mostrar ou esconder seu conteúdo conforme necessário.
+Na interface visual, o Sidepanel inclui um botão de acionamento que o usuário pode usar para controlar a visibilidade do seu conteúdo.
+
+Em dispositivos móveis, o Sidepanel é exibido na lateral direita, sobreposto ao conteúdo.
+No modo desktop, o Sidepanel fica à esquerda do conteúdo da página, ocupando espaço de maneira eficiente e proporcionando fácil acesso às funcionalidades extras.
+
+Embora tenha sido projetado para exibir a navegação do sistema, outros conteúdos podem ser inseridos no Sidepanel. Nesse caso, o desenvolvedor deve estar ciente de que sua interface pode não estar consistente com a de outras aplicações usando o Alcance. Portanto, o uso do Sidepanel para outros conteúdos deve ser feito com bastante critério.
+
+<Unstyled>
+    <alc-alert type="info" dismissible="false">
+        O Sidepanel tem uma forte relação com a estrutura da página. É fundamental que o componente seja posicionado corretamente na estrutura 
+        definida pelo Alcance para sua correta exibição e funcionamento.
+    </alc-alert>
+</Unstyled>
+
+
+## Estados do Sidepanel
+O sidepanel precisa ter seu estado (aberto ou fechado) preservado enquanto o usuário navega pela aplicação. Ou seja, se o usuário fechou o sidepanel, ele tem que permanecer fechado enquanto o usuário não o abra novamente, independentemente das ações realizadas na aplicação.
+
+A responsabilidade por manter o estado é da aplicação. Para isso, você poderá utilizar o `sessionStorage`, por exemplo. Caso sua aplicação utilize outros métodos para manipular o estado, fique livre para utilizá-lo.
+
+Abaixo você encontra um exemplo de uso do `sessionStorage`:
+
+<CodeExample type="js">
+{`document.querySelector('alc-sidepanel').addEventListener('alc-state-request', e => {
+  console.log('O estado foi requisitado');
+    e.detail.state = JSON.parse(sessionStorage.getItem('app-sidepanel'));
+});
+
+document.querySelector('alc-sidepanel').addEventListener('alc-state-change', e => {
+  console.log('O estado foi modificado:', e.detail.state);
+    sessionStorage.setItem('app-sidepanel', JSON.stringify(e.detail.state) );
+});`}
+</CodeExample>
+
+<Unstyled>
+    <alc-alert dismissible="false">
+    <p className="alc-alert__summary">Sempre que o usuário "chegar" à aplicação (uma nova sessão de uso), o sidepanel deve estar visível.</p>
+    Esconder a navegação em desktop gera confusão e frustração no usuário, segundo pesquisas de usabilidade. Por isso o sidepanel deve estar inicialmente visível. O usuário sempre vai ter a possibilidade de, a seu critério, ocultá-lo.
+    </alc-alert>
+
+    <alc-alert dismissible="false">
+    <p className="alc-alert__summary">O estado não é utilizado em mobile.</p>
+    Em mobile, o sidepanel sempre inicia oculto, já que sobrepõe-se ao conteúdo da página. O estado é ignorado pelo componente nessa situação. A aplicação, portanto, precisa manter o estado mas não precisa preocupar-se em diferenciar desktop de mobile.
+    </alc-alert>
+</Unstyled>
+
+<Markdown>{SidepanelProps}</Markdown>

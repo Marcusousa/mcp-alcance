@@ -1,0 +1,75 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from "../../utils/codeExample"
+
+<Meta title="Estilos/Breakpoints" />
+<h1> Breakpoints </h1>
+
+## Mobile First
+
+No Alcance, sugerimos fortemente seguir a filosofia do *mobile-first*, o que significa que o design inicial é construído pensando nos dispositivos móveis em primeiro lugar.
+Isso garante uma boa experiência de usuário em dispositivos móveis, que são amplamente utilizados para acessar a web atualmente.
+
+
+## Breakpoints disponíveis
+Breakpoints são pontos específicos onde o layout de um website muda para se adaptar a diferentes tamanhos de tela. Eles são essenciais para criar designs responsivos que funcionem bem em uma variedade de dispositivos, desde celulares até desktops. Abaixo estão listados os breakpoints padrões que devem ser considerados ao usar o Alcance:
+
+| Breakpoint          | Dimensões 	|
+|-------------------	|-----------	|
+| Extra small       	| < 576px   	|
+| Small             	| ≥ 576px   	|
+| Medium            	| ≥ 768px   	|
+| Large             	| ≥ 992px   	|
+| Extra large       	| ≥ 1200px  	|
+| Double extra large 	| ≥ 1400px  	|
+
+
+## Uso de media queries com min-width
+
+Ao implementar CSS para adaptar sua aplicação a diferentes larguras de tela, utilize media queries com `min-width`. Isso significa criar os estilos para as telas mais estreitas e ir adaptando-os para telas mais largas. Essa forma de fazer alinha-se com a filosofia *mobile-first*, onde estilos adicionais são aplicados à medida que o tamanho da tela aumenta.
+
+### Exemplo de Uso
+
+<CodeExample type="css">
+{`/* Estilos padrão */
+.my-card {
+    width: 100%;
+}
+
+/* Estilos para telas a partir de 576px (Small) */
+@media (min-width: 576px) {
+  .my-card {
+    max-width: 540px;
+  }
+}
+
+/* Estilos para telas a partir de 768px (Medium) */
+@media (min-width: 768px) {
+  .my-card {
+    max-width: 720px;
+  }
+}
+
+/* Estilos para telas a partir de que 992px (Large) */
+@media (min-width: 992px) {
+  .my-card {
+    max-width: 960px;
+  }
+}
+
+/* Estilos para telas a partir de 1200px (Extra large) */
+@media (min-width: 1200px) {
+  .my-card {
+    max-width: 1140px;
+  }
+}
+
+/* Estilos para telas a partir de 1400px (Double extra large) */
+@media (min-width: 1400px) {
+  .my-card {
+    max-width: 1320px;
+  }
+}`}
+</CodeExample>
+
+*Para saber mais sobre media queries, acesse a <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS/Media_Queries/Using_media_queries" class="alc-link">documentação oficial</a>.*

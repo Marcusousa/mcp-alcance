@@ -1,0 +1,90 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from '../utils/codeExample';
+
+<Meta title="Instalação/Configuração do Tailwind" />
+<h1> Tailwind </h1>
+
+Forneceremos uma visão geral de como importar e configurar as definições de design do projeto Alcance utilizando o TailwindCSS. O arquivo de configuração disponível em nossos pacotes define tamanhos de tela e tamanhos de texto baseados no design system do Alcance.
+
+A principal razão para a existência deste arquivo de configuração é permitir que a aplicação utilize o TailwindCSS de forma que as classes utilitárias estejam consistentemente alinhadas com o design system do projeto Alcance. 
+Isso garante que os desenvolvedores possam aplicar estilos de maneira eficiente e coerente em toda a aplicação, mantendo a uniformidade visual e a responsividade esperada pelo design.
+
+## Definições de Configuração
+
+O arquivo de configuração define as seguintes constantes:
+
+### Tamanhos de Tela
+
+Os tamanhos de tela seguem o padrão do Bootstrap 5, proporcionando uma fácil adaptação para quem já está familiarizado com esse framework.
+
+<CodeExample title="tailwind.js" type='js'>
+ {`const screens = {
+  'sm': '576px',
+  'md': '768px',
+  'lg': '992px',
+  'xl': '1200px',
+  '2xl': '1400px',
+};`}
+</CodeExample>
+
+### Tamanhos de Texto
+
+Os tamanhos de texto foram cuidadosamente selecionados para garantir uma legibilidade ideal em diferentes contextos.
+
+<CodeExample title="tailwind.js" type='js'>
+{`const fontSize = {
+  'xs': ['0.75rem', '1rem'],    // 12/16
+  'sm': ['0.875rem', '1rem'],   // 14/16
+  'base': ['1rem', '1.5rem'],   // 16/24
+  'lg': ['1.125rem', '1.5rem'], // 18/24
+  'xl': ['1.25rem', '1.5rem'],  // 20/24
+  '2xl': ['1.375rem', '2rem'],  // 22/32
+  '3xl': ['1.625rem', '2rem'],  // 26/32
+  '4xl': ['2rem', '2.5rem'],    // 32/40
+  '5xl': ['2.5rem', '3rem'],    // 40/48
+  '6xl': ['3rem', '3.5rem'],    // 48/56
+};`}
+</CodeExample>
+
+## Localização dos Arquivos de Configuração
+
+Os arquivos de configuração estão disponíveis nos seguintes pacotes:
+
+- Pacote Vue: `alcance-vue-library/utils/tailwind.js`
+- Pacote React: `alcance-react-library/utils/tailwind.js`
+- Pacote WebComponents: `alcance/utils/tailwind.js`
+
+## Como Utilizar
+
+Para utilizar as configurações no seu projeto, siga os passos abaixo:
+
+Importe o arquivo de configuração no seu arquivo de configuração do TailwindCSS (tailwind.config.js):
+
+<CodeExample title="tailwind.config.js" type='js'>
+{`import { screens, fontSize } from 'caminho/do/pacote/utils/tailwind.js';`}
+</CodeExample>
+
+Adicione as configurações ao seu arquivo tailwind.config.js:
+
+<CodeExample title="tailwind.config.js" type='js'>
+{`module.exports = {
+  theme: {
+    fontSize: fontSize,
+    screens: screens,
+  },
+  plugins: [],
+};`}
+</CodeExample>
+
+Referencie as novas definições no seu CSS, como faria com qualquer outra configuração padrão do TailwindCSS:
+
+<CodeExample>
+{`<div class="text-3xl sm:text-5xl">
+  Título Responsivo
+</div>`}
+</CodeExample>
+
+## Referências
+
+Para mais detalhes sobre como personalizar o TailwindCSS e utilizar arquivos de configuração personalizados, consulte a <a href="https://tailwindcss.com/docs/configuration" class="alc-link" target="_blank">documentação oficial do TailwindCSS</a>.

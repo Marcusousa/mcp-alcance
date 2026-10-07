@@ -1,0 +1,238 @@
+
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from '../utils/codeExample';
+
+<Meta title="Instalação/Configuração no Vue 3 (Vite)" />
+<h1>Configuração no Vue 3 (Vite)</h1>
+
+<Unstyled>
+<alc-alert dismissible="false">
+
+Há duas formas de utilizar a biblioteca de componentes do Alcance em um projeto Vue 3: *custom elements* do HTML ou componentes Vue.
+
+</alc-alert>
+</Unstyled>
+
+Os mesmos componentes da biblioteca padrão do Alcance, que utiliza *custom elements*,
+são fornecidos em uma biblioteca de componentes do Vue. Use uma ou outra ou outra
+de acordo com sua necessidade.
+
+<TabsState
+  initial="alc">
+    <div id="alc" title="Custom elements">
+        <div>
+<br />
+## Configuração
+
+Copie a pasta `assets` do Alcance para pasta `public/assets/`, conforme o *exemplo* abaixo:
+
+<CodeExample type="js" title="scripts/process.js">
+{`var fs = require('fs');
+var fse = require('fs-extra');
+
+var sourceDir = './node_modules/alcance/dist/assets';
+var destDir = './public/assets';
+
+
+// se a pasta não existir crie-a
+if (!fs.existsSync(destDir)){
+    fs.mkdirSync(destDir, { recursive: true });
+}
+
+// copiar o conteúdo do diretório, incluindo subpastas
+fse.copy(sourceDir, destDir, function (err) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Assets copiados!");
+  }
+});`}
+</CodeExample>
+<Unstyled>
+<alc-alert dismissible="false">
+
+**Nota:** O *exemplo* acima deve ser executado juntamente com o projeto, ou seja, seve ser incorporado ao seu `package.json`.
+
+</alc-alert>
+</Unstyled>
+
+Adicione as seguintes linhas no arquivo `main.js` localizado na pasta `src` do seu projeto:
+
+<CodeExample type="js" title="src/main.js">
+{`import { createApp } from "vue";
+
+import App from "./App.vue";
+
+// Importe o Alcance e seu estilo
+import { applyPolyfills, defineCustomElements } from 'alcance/loader';
+import "alcance/dist/alcance/alcance.css";
+
+// Configure o diretório onde ficam os assets de seu projeto.
+// Isso é especialmente importante para componentes do Alcance que utilizam esse
+// recurso, como o <alc-icon>
+const resourcesUrl = \`\${new URL(window.location).origin}/\`;
+
+applyPolyfills().then(() => {
+  defineCustomElements(window, {
+    resourcesUrl: resourcesUrl
+  });
+});
+
+const app = createApp(App);
+
+app.mount("#app");`}
+</CodeExample>
+Essa configuração corresponde a importação dos componentes do Alcance, do arquivo de estilos e da definição para a pasta de resources que o Alcance irá utilizar.
+
+Agora defina os componentes começados com `alc-` para que o Vite os ignore. Abra o arquivo `vite.config.ts` e adicione a configuração abaixo:
+
+<CodeExample type="ts" title="vite.config.ts">
+{`import { fileURLToPath, URL } from "url";
+
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Trata todas as tages que contenham "alc-" como custom elements
+          isCustomElement: (tag) => tag.includes("alc-"),
+        },
+      },
+    }),
+  ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+});`}
+</CodeExample>
+
+## Exemplo de uso
+
+<CodeExample type="html" title="/src/components/HelloWorld.vue">
+{`<script setup lang="ts">
+defineProps<{
+  msg: string
+}>()
+</script>
+
+<template>
+  <div>
+    <h1>{{ msg }}</h1>
+  
+    <alc-alert>Alcance Vue 3 & Vite! <alc-icon name="hand-thumbs-up"></alc-icon></alc-alert>
+  </div>
+</template>`}
+</CodeExample>
+</div>
+</div>
+
+    <div id="alc-v" title="Componentes Vue">
+        <div>
+<br />
+## Configuração
+
+Faça a instalação do pacote Alcance Vue Library.
+
+
+<TabsState
+  initial="npm">
+    <div id="npm" title="NPM">
+        <div>
+            <CodeExample type="bash">
+            {`npm i alcance-vue-library`}
+            </CodeExample>
+        </div>
+    </div>
+    <div id="yarn" title="Yarn">
+        <div>
+            <CodeExample type="bash">
+            {`yarn add alcance-vue-library`}
+            </CodeExample>
+        </div>
+    </div>
+</TabsState>
+
+
+Adicione as seguintes linhas no arquivo `main.js` localizado na pasta `src` do seu projeto:
+
+<CodeExample type="js" title="src/main.js">
+{`import { createApp } from "vue";
+
+import App from "./App.vue";
+
+// Importação da biblioteca de componentes
+import { ComponentLibrary } from "alcance-vue-library";
+
+const app = createApp(App);
+
+app.use(ComponentLibrary);
+
+app.mount("#app");`}
+</CodeExample>
+<Unstyled>
+<alc-alert dismissible="false">
+
+Por padrão, o Alcance vai buscar os assets do seu projeto a partir da URL `${window.location.origin}/`.
+
+Caso seja necessário ajustar essa URL, informe o valor desejado, como demonstrado a seguir.
+
+</alc-alert>
+</Unstyled>
+
+<CodeExample type="js" title="src/main.js">
+{`import { createApp } from "vue";
+
+import App from "./App.vue";
+
+// Importação da biblioteca de componentes
+import { ComponentLibrary } from "alcance-vue-library";
+
+// Defina o endereço onde ficam os assets de seu projeto.
+const resourcesUrl = "https://cnd.meudominio.com.br/arquivos/";
+// Informe o valor do parâmetro resourcesUrl para o que o Alcance encontre os assets.
+app.use(ComponentLibrary, {
+  resourcesUrl: resourcesUrl
+});
+
+app.mount("#app");`}
+</CodeExample>
+
+## Exemplo de uso
+
+Em sua *página `.vue`*, adicione o componente que você deseja utilizar, como no exemplo abaixo:
+
+<CodeExample type="html" title="views/exemplo.vue">
+{`<template>
+  <div>
+    <alc-alert>Alcance Vue 3 & Vite! <alc-icon name="hand-thumbs-up"></alc-icon></alc-alert>
+  </div>
+</template>
+<script>
+import {AlcAlert, AlcIcon} from 'alcance-vue-library'
+export default {
+  components: {
+    AlcAlert, AlcIcon
+  }
+}
+</script>`}
+</CodeExample>
+</div>
+</div>
+</TabsState>
+
+### Projeto Exemplo
+<Unstyled>
+<a href="https://git.camara.gov.br/Seuso/alcance-vue-vite-sample" class="alc-link"><alc-icon name="git" label="Git"></alc-icon> git.camara.gov.br/Seuso/alcance-vue-vite-sample</a>
+</Unstyled>
+<CodeExample type="bash">
+{`git clone https://git.camara.gov.br/Seuso/alcance-vue-vite-sample.git`}
+</CodeExample>
+
+Agora você já pode utilizar os componentes do Alcance em seu projeto VueJS! 😉

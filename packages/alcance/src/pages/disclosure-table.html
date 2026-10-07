@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Disclosure table</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+  <style>
+    .table-content {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+  </div>
+
+
+  <!-- <div role="table" aria-label="Students" aria-describedby="students_table_desc">
+    <div id="students_table_desc">Students currently enrolled in WAI-ARIA 101 for the coming semester</div>
+    <div role="rowgroup">
+      <div role="row">
+        <span role="columnheader">First Name</span>
+        <span role="columnheader">Last Name</span>
+        <span role="columnheader">Company</span>
+        <span role="columnheader">Address</span>
+      </div>
+    </div>
+    <div role="rowgroup">
+      <div role="row">
+        <span role="cell">Fred</span>
+        <span role="cell">Jackson</span>
+        <span role="cell">Acme, Inc.</span>
+        <span role="cell">123 Broad St.</span>
+      </div>
+      <div role="row">
+        <span role="cell">Sara</span>
+        <span role="cell">James</span>
+        <span role="cell">Acme, Inc.</span>
+        <span role="cell">123 Broad St.</span>
+      </div>
+      <div role="row">
+        <span role="cell">Ralph</span>
+        <span role="cell">Jefferson</span>
+        <span role="cell">XYZ, Inc.</span>
+        <span role="cell">456 Main St.</span>
+      </div>
+      <div role="row">
+        <span role="cell">Nancy</span>
+        <span role="cell">Jensen</span>
+        <span role="cell">XYZ, Inc.</span>
+        <span role="cell">456 Main St.</span>
+      </div>
+    </div>
+  </div> -->
+<!--
+  <table aria-label="Students" aria-describedby="students_table_desc2">
+    <div id="students_table_desc2">Students currently enrolled in WAI-ARIA 101 for the coming semester</div>
+    <div role="rowgroup">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Company</th>
+        <th>Address</th>
+      </tr>
+    </div>
+    <div role="rowgroup">
+      <tr>
+        <td>Fred</td>
+        <td>Jackson</td>
+        <td>Acme, Inc.</td>
+        <td>123 Broad St.</td>
+      </tr>
+      <tr>
+        <td>Sara</td>
+        <td>James</td>
+        <td>Acme, Inc.</td>
+        <td>123 Broad St.</td>
+      </tr>
+      <tr>
+        <td>Ralph</td>
+        <td>Jefferson</td>
+        <td>XYZ, Inc.</td>
+        <td>456 Main St.</td>
+      </tr>
+      <tr>
+        <td>Nancy</td>
+        <td>Jensen</td>
+        <td>XYZ, Inc.</td>
+        <td>456 Main St.</td>
+      </tr>
+    </div>
+  </table> -->
+
+
+  <!--
+    #tkt-15511
+    Criado de forma experimental.
+
+    Seria preciso ter mais clareza sobre a estrutura dessa tabela.
+    Por exemplo, "João Silva" é cabeçalho ou conteúdo?
+    Com ficaria se houvesse outra pessoa?
+
+    O avanço nessa implementação depende de mais definições sobre
+    que solução adotaremos para tabelas responsivas.
+  -->
+  <div role="table" aria-label="estudantes" >
+    <h2>Estudantes</h2>
+    <div role="rowgroup">
+      <div role="row" onclick="handletable(this)" id="tabela" aria-expanded="false" tabindex="0">
+        <div role="rowheader">
+          João Silva
+          <alc-icon name="chevron-right" label=""></alc-icon>
+        </div>
+      </div>
+
+      <div role="rowgroup" class="table-content" aria-hidden="true">
+        <div role="row" >
+          <span role="rowheader" tabindex="0">Idade</span>
+          <span role="cell" tabindex="0">16</span>
+        </div>
+        <div role="row">
+          <span role="rowheader" tabindex="0">Colégio</span>
+          <span role="cell" tabindex="0">Visão</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script>
+    function handletable(el) {
+      const parentEl = el.parentElement.querySelector('.table-content');
+      const icon = el.querySelector('alc-icon')
+
+      if(!parentEl.style.display || parentEl.style.display == 'none') {
+        parentEl.style.display = 'block';
+        parentEl.open = true;
+        icon.name = "chevron-down"
+        el.ariaExpanded = 'true';
+        parentEl.ariaHidden = 'false';
+      } else {
+        parentEl.style.display = 'none';
+        parentEl.open = false;
+        icon.name = "chevron-right"
+        el.ariaExpanded = 'false';
+        parentEl.ariaHidden = 'true';
+      }
+    }
+
+    const tabela = document.getElementById('tabela');
+    tabela.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') {
+        handletable(tabela)
+      }
+    })
+
+  </script>
+</body>
+
+</html>

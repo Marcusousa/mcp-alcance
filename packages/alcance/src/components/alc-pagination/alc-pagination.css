@@ -1,0 +1,27 @@
+.alc-pagination {
+    @apply flex;
+}
+
+.alc-pagination__content {
+    @apply flex list-none items-center;
+}
+
+.alc-pagination__button--first,
+.alc-pagination__button--last {
+    @apply hidden sm:block;
+}
+
+.alc-pagination__item {
+    @apply flex items-center mx-[--alc-spacing-01];
+}
+
+.alc-pagination__select {
+    --border-width: theme('borderWidth.DEFAULT');
+
+    @apply mx-[--alc-spacing-02] py-[--alc-spacing-02];
+    border-width: var(--border-width);
+    padding-left: calc(var(--alc-spacing-02) - var(--border-width));
+    padding-right: calc(var(--alc-spacing-02) - var(--border-width));
+    max-height: 2rem;
+    min-width: 4rem;
+}

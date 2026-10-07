@@ -1,0 +1,88 @@
+{/* alc-header.mdx */}
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-header.stories';
+import HeaderProps from './alc-header.props.md?raw';
+
+<Meta of={Stories} name="Visão Geral" />
+
+# {Stories.default.name}
+
+Houve uma grande alteração nesse componente a partir da versão 0.16.0 da biblioteca. A versão antiga do componente foi mantida com o nome `alc-header-v1`.
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+  <span class="alc-alert__summary">O componente `alc-header` foi alterado
+  a partir da versão 0.16.0 da biblioteca.</span>
+  Visite o <a href="./?path=/docs/componentes-header-v1--guia-de-migração" className="alc-link">Guia de Migração</a> para instruções fazer a migração.
+</alc-alert>
+</Unstyled>
+
+Se você já usava o `alc-header` antes da versão 0.16.0, a recomendação é fazer a migração.
+Caso você queira seguir usando, provisoriamente, o modelo antigo do header, deve passar
+a usar `alc-header-v1` em vez de `alc-header`. É uma solução de contorno
+para que se tenha tempo para fazer a migração para o novo `alc-header` (recomendado).
+
+---
+
+O componente `header` deve ser utilizado em todas as páginas do sistema. Contém os elementos que
+naturalmente se repetem em todas as páginas, como a identificação do ambiente, o nome do sistema etc.
+
+## Atributos `name` e `description`
+
+O atributo `name` é obrigatório, e `description` é opcional.
+
+Há três formas principais de utilização desses atributos, descritas abaixo.
+
+Para outros casos diferentes desses indicados, deve ser avaliada a melhor forma de
+utilização dos atributos, considerando sempre `name` como uma informação principal e
+`description` como um complemento.
+
+### 1. Apenas nome, sem descrição.
+
+Para sistemas que não têm sigla e não precisam de descrição,
+utilize apenas o atributo `name`.
+
+Por exemplo: `name="Sistema de Delegações"`.
+
+### 2. Sigla (ou nome curto) e nome por extenso
+
+Para sistemas que possuem sigla (ou nome curto) e nome por extenso,
+utilize `name` para a sigla e `description` para o nome por extenso.
+
+Por exemplo: `name="Sigmas"`, `description="Sistema de Gestão de Material e Serviço"`.
+
+### 3. Nome e contexto ou módulo
+
+Para sistemas que possuem nome e necessitam de um contexto,
+ou indicação de nome de um módulo,
+utilize `name` para o nome e `description` para o contexto ou módulo.
+
+Por exemplo: `name="Infoleg"`, `description="Parlamentar"`.
+
+## Versão do sistema
+
+O atributo `version` serve para informar a versão do sistema.
+
+Se for informado, o header incluirá um botão com o rótulo "Sobre",
+que abrirá uma janela modal com as informações do sistema, incluindo a versão.
+
+O Alcance não define um formato específico para a versão.
+Deve ser informado o identificador da versão, sem a palavra "versão" ou "v".
+
+Por exemplo: `version="2.0.1"`, ou `version="2.0.1-beta+exp.5114f85"`.
+
+O atributo `version` é opcional.
+
+## Componentes que complementam o header
+
+Para que o header esteja completo, e para a inclusão de recursos adicionais
+relacionados a ele, veja também os seguintes componentes:
+
+* [Environment Label](/docs/componentes-environment-label--documentação)
+* [Header Action](/docs/componentes-header-action--documentação)
+* [Header Notifications](/docs/componentes-header-notifications--documentação)
+* [User Menu](/docs/componentes-user-menu--documentação)
+* [Skip Link](/docs/componentes-skip-link--documentação)
+* [Skip To Nav](/docs/componentes-skip-to-nav--documentação)
+
+<Markdown>{HeaderProps}</Markdown>

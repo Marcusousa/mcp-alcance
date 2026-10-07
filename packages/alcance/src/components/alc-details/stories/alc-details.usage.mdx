@@ -1,0 +1,115 @@
+{/* alc-details.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-details.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+## Exemplos
+
+### Básico
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+### Estilizado
+<Canvas of={Stories.Styled} sourceState="shown" />
+<Controls of={Stories.Styled} />
+
+### Desabilitado
+<Canvas of={Stories.Disabled} sourceState="shown" />
+<Controls of={Stories.Disabled} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <alc-details
+      summary="Detalhes do Produto"
+      :opened="isOpened"
+      :disabled="isDisabled"
+      @alc-show="handleShow"
+      @alc-close="handleClose"
+    >
+      <p>Este produto é feito de materiais de alta qualidade e é perfeito para uso diário.</p>
+    </alc-details>
+    <button class="alc-button" @click="toggleDetails">Alternar Detalhes</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'DetailsExample',
+  data() {
+    return {
+      isOpened: false,
+      isDisabled: false,
+    };
+  },
+  methods: {
+    handleShow() {
+      console.log('Detalhes abertos');
+      this.isOpened = true;
+    },
+    handleClose() {
+      console.log('Detalhes fechados');
+      this.isOpened = false;
+    },
+    toggleDetails() {
+      this.isOpened = !this.isOpened;
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <alc-details
+      summary="Informações Adicionais"
+      :opened="isOpened"
+      :disabled="isDisabled"
+      @alc-show="onShow"
+      @alc-close="onClose"
+    >
+      <p>Aqui você encontra mais detalhes sobre o assunto em questão.</p>
+    </alc-details>
+    <button class="alc-button" @click="disableDetails">Desativar Detalhes</button>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'DetailsExampleTS',
+  setup() {
+    const isOpened = ref(true);
+    const isDisabled = ref(false);
+
+    const onShow = () => {
+      console.log('Detalhes abertos');
+    };
+
+    const onClose = () => {
+      console.log('Detalhes fechados');
+    };
+
+    const disableDetails = () => {
+      isDisabled.value = true;
+    };
+
+    return {
+      isOpened,
+      isDisabled,
+      onShow,
+      onClose,
+      disableDetails,
+    };
+  },
+});
+</script>`
+  }}
+/>

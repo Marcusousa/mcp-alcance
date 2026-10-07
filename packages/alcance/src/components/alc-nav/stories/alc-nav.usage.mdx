@@ -1,0 +1,222 @@
+{/* alc-nav.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-nav.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+
+## Slots
+
+<Canvas of={Stories.Slots} sourceState="shown" />
+
+
+## Grupos
+
+<Canvas of={Stories.Grupos} sourceState="shown" />
+
+
+## Painéis
+
+<Canvas of={Stories.Paineis} sourceState="shown" />
+
+## Grupos e Painéis
+
+<Canvas of={Stories.GruposPaineis} sourceState="shown" />
+
+## Item selecionado
+
+<Canvas of={Stories.ItemSelecionado} sourceState="shown" />
+
+## Completo
+
+<Canvas of={Stories.Completo} sourceState="shown" />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <!-- Botão para alternar o painel -->
+    <button class="alc-button" @click="toggleSubmenu">
+      Alternar Submenu
+    </button>
+
+    <!-- Componente alc-nav -->
+    <alc-nav ref="navRef" id="nav01">
+      <!-- Slot do cabeçalho -->
+      <div slot="header">
+        <h2>Usuário: Lion-O</h2>
+      </div>
+
+      <!-- Conteúdo principal do nav -->
+      <span data-alc-label>
+        Lista de itens no nível 1
+      </span>
+      <ul>
+        <li>
+          <a href="#">Opção nível 1 - A</a>
+        </li>
+        <li>
+          <span>Opção nível 1 - B (tem submenu)</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="#">Opção nível 2 - Ba</a></li>
+              <li><a href="#">Opção nível 2 - Bb</a></li>
+            </ul>
+
+            <span data-alc-label>
+              Lista de itens no nível 2
+            </span>
+            <ul>
+              <li><a href="#">Opção nível 2 - Bc</a></li>
+              <li><a href="#">Opção nível 2 - Bd</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="#">Opção nível 1 - C</a>
+        </li>
+      </ul>
+
+      <!-- Slot do rodapé -->
+      <div slot="footer">
+        <button class="alc-button" @click="logout">Sair</button>
+      </div>
+    </alc-nav>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'NavExample',
+  mounted() {
+    const alcNav = this.$refs.navRef;
+    // Certifique-se de que alcNav está disponível
+    if (alcNav) {
+      alcNav.querySelectorAll('li').forEach((item) => {
+        item.addEventListener('click', () => {
+          alcNav.setSelectedItem(item);
+        });
+      });
+    }
+  },
+  methods: {
+    toggleSubmenu() {
+      const alcNav = this.$refs.navRef;
+      if (alcNav) {
+        const submenu = alcNav.querySelector('[data-alc-panel]');
+        if (submenu) {
+          alcNav.togglePanel(submenu);
+        } else {
+          console.error('Submenu não encontrado.');
+        }
+      } else {
+        console.error('alcNav não está definido.');
+      }
+    },
+    logout() {
+      alert('Você saiu do sistema.');
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <!-- Botão para alternar o painel -->
+    <button class="alc-button" @click="toggleSubmenu">
+      Alternar Submenu
+    </button>
+
+    <!-- Componente alc-nav -->
+    <alc-nav ref="navRef" id="nav01">
+      <!-- Slot do cabeçalho -->
+      <div slot="header">
+        <h2>Usuário: Cheetara</h2>
+      </div>
+
+      <!-- Conteúdo principal do nav -->
+      <span data-alc-label>
+        Menu Principal
+      </span>
+      <ul>
+        <li>
+          <a href="#">Início</a>
+        </li>
+        <li>
+          <span>Serviços</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="#">Consultoria</a></li>
+              <li><a href="#">Desenvolvimento</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="#">Contato</a>
+        </li>
+      </ul>
+
+      <!-- Slot do rodapé -->
+      <div slot="footer">
+        <button class="alc-button" @click="logout">Sair</button>
+      </div>
+    </alc-nav>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, onMounted } from 'vue';
+
+export default defineComponent({
+  name: 'NavExampleTS',
+  setup() {
+    const navRef = ref<HTMLElement | null>(null);
+
+    onMounted(() => {
+      const alcNav = navRef.value;
+      if (alcNav) {
+        alcNav.querySelectorAll('li').forEach((item) => {
+          item.addEventListener('click', () => {
+            alcNav.setSelectedItem(item);
+          });
+        });
+      }
+    });
+
+    const toggleSubmenu = () => {
+      const alcNav = navRef.value;
+      if (alcNav) {
+        const submenu = alcNav.querySelector('[data-alc-panel]');
+        if (submenu) {
+          alcNav.togglePanel(submenu);
+        } else {
+          console.error('Submenu não encontrado.');
+        }
+      } else {
+        console.error('alcNav não está definido.');
+      }
+    };
+
+    const logout = () => {
+      alert('Você saiu do sistema.');
+    };
+
+    return {
+      navRef,
+      toggleSubmenu,
+      logout,
+    };
+  },
+});
+</script>`
+  }}
+/>

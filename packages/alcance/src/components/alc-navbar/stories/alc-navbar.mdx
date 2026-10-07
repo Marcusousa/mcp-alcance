@@ -1,0 +1,25 @@
+{/* alc-navbar.mdx */}
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-navbar.stories';
+import NavbarProps from './alc-navbar.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+Use `navbar` para apresentar as funcionalidades da aplicação, ou seja, a navegação principal.
+
+Sua finalidade é a mesma do `nav`. Em mobile, eles são praticamente iguais. Em desktop, `navbar` é apresentado horizontalmente na interface, enquanto `nav` é vertical.
+
+O `navbar` é adequado para estruturas de navegação menores e mais simples. Se a navegação é complexa, pode ser mais adequado usar `nav`. Acima de tudo, a escolha por um ou outro deve considerar a experiência do usuário e a usabilidade da interface.
+
+## Recomendações de usabilidade
+
+<ul className="list-disc list-inside">
+  <li>Os itens de navegação devem ser dispostos em uma ordem que faça sentido para o usuário da aplicação.</li>
+  <li>Utilize rótulos sucintos. Não forme frases. Evite o uso de artigos; por exemplo, use "Adicionar a fila" em vez de "Adicionar a uma fila".</li>
+  <li>O título da página e o rótulo do link devem ser equivalentes. Por exemplo, se o título da página é "Lista de episódios", o link correspondente deve ter a mesma nomenclatura.</li>
+</ul>
+
+
+<Markdown>{NavbarProps}</Markdown>

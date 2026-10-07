@@ -1,0 +1,109 @@
+alc-user-menu {
+  /* "avatar" size usado tanto para foto (image) quanto para ícone (icon) */
+  --avatar-size: theme('size.10');
+  --avatar-size-mobile: theme('size.16');
+  --border-width: theme('borderWidth.2');
+}
+
+/* ==== ESTILOS COMUNS ==== */
+/* foto do usuário */
+.alc-user-menu__image {
+  @apply w-[--avatar-size] h-[--avatar-size] border-[calc(var(--border-width)*1)] border-cyan-60v dark:border-mint-cool-40 rounded-full object-cover mr-[--alc-spacing-03];
+}
+
+.alc-user-menu__icon {
+  @apply text-[calc(var(--avatar-size)-2*var(--border-width))]/none border-[calc(var(--border-width)*1)] border-cyan-60v dark:border-mint-cool-40 rounded-full object-cover mr-[--alc-spacing-03];
+}
+
+/* ==== MOBILE (variação 1) ==== */
+.alc-user-menu--mobile {
+  @apply flex flex-col;
+}
+
+.alc-user-menu--mobile__header {
+  @apply flex items-center pl-[--alc-spacing-06] pr-[--alc-spacing-09] pt-[--alc-spacing-06];
+}
+
+.alc-user-menu--mobile__header .alc-user-menu__image {
+  @apply w-[--avatar-size-mobile] h-[--avatar-size-mobile] mr-[--alc-spacing-05] border-none;
+}
+
+.alc-user-menu--mobile__header .alc-user-menu__icon {
+  @apply text-[calc(var(--avatar-size-mobile)*1)]/none bg-[--alc-color-layer-a];
+}
+
+.alc-user-menu--mobile .alc-user-menu__name {
+  @apply text-base font-medium;
+}
+
+
+/* ==== DESKTOP (variação 2) ==== */
+/* container principal */
+.alc-user-menu--desktop {
+  @apply flex items-center justify-between;
+}
+
+.alc-user-menu__info--external {
+  @apply flex flex-col mr-[--alc-spacing-03] ml-auto text-right;
+}
+
+.alc-user-menu__info--internal {
+  @apply pl-[--alc-spacing-05] pr-[--alc-spacing-05] pb-[--alc-spacing-03] pt-[--alc-spacing-05] text-[--alc-color-text-primary];
+}
+
+.alc-user-menu__info--internal:empty {
+  @apply p-[--alc-spacing-none];
+}
+
+/* bloco de informações (texto) */
+.alc-user-menu__info {
+  @apply flex flex-col mr-[--alc-spacing-03];
+}
+
+/* linha principal: nome + registration-number */
+.alc-user-menu__primary {
+  @apply items-center gap-[--alc-spacing-02];
+}
+
+.alc-user-menu__name {
+  @apply font-medium text-base/[--alc-font-line-height-base];
+}
+
+.alc-user-menu__reg {
+  @apply ml-[--alc-spacing-02] font-normal;
+}
+
+.alc-user-menu--mobile__reg {
+  @apply ml-[--alc-spacing-02] font-normal;
+}
+
+/* bloco dos acionadores */
+.alc-popup__content {
+  @apply max-w-64;
+}
+
+.alc-user-menu__trigger {
+  @apply flex items-center bg-transparent border-none p-[--alc-spacing-none] cursor-pointer;
+}
+
+.alc-user-menu__dropdown alc-popup {
+  @apply flex;
+}
+
+/* informação extra (slot default) */
+.alc-user-menu__secondary {
+  @apply font-normal text-sm text-[--alc-color-text-subtle];
+}
+
+.alc-user-menu__info--external .alc-user-menu__secondary {
+  @apply text-current;
+}
+
+.alc-user-menu__logout-icon {
+  @apply mr-[--alc-spacing-03];
+}
+
+/* separador */
+.alc-user-menu__info--separator {
+  @apply border-b border-[--alc-color-border];
+}

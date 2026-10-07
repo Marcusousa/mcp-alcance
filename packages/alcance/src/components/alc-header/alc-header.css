@@ -1,0 +1,94 @@
+[data-alc-theme="light"] alc-header {
+  --bg-color-gradient-from: theme('colors.mint-cool.50');
+  --bg-color-gradient-to: theme('colors.blue-cool.70v');
+  --bg-color-logo: theme('colors.cyan.60');
+}
+
+[data-alc-theme="dark"] alc-header {
+  --bg-color-gradient-from: theme('colors.mint-cool.80');
+  --bg-color-gradient-to: theme('colors.gray-cool.90');
+  --bg-color-logo: theme('colors.mint-cool.86');
+
+}
+
+/*
+  O ideal é deixar o mínimo de (ou nenhum) CSS aplicado diretamente à tag.
+  Entretanto, pela particularidade do posicionamento na página,
+  essa é uma solução razoável.
+*/
+alc-header {
+  @apply block sticky top-[--alc-spacing-none] z-20;
+}
+
+.alc-header {
+  transition: transform 0.3s ease;
+}
+
+.alc-header--scroll-down {
+  @apply -translate-y-full md:translate-y-0;
+}
+
+.alc-header__header {
+  @apply block w-full md:z-[1020];
+}
+
+.alc-header__id {
+  @apply flex gap-[--alc-spacing-05];
+}
+
+.alc-header__container {
+  @apply bg-gradient-to-r from-0% to-100% flex items-center justify-between gap-[--alc-spacing-05];
+  @apply p-[--alc-spacing-05];
+  @apply from-[--bg-color-gradient-from] to-[--bg-color-gradient-to];
+}
+
+.alc-header__logo {
+  @apply w-9 h-9 lg:w-10 lg:h-10;
+}
+
+.alc-header__panel {
+  @apply flex grow items-center;
+}
+
+.alc-header__support-wrapper {
+  @apply grow text-right whitespace-nowrap;
+}
+
+.alc-header__support {
+  @apply inline-block;
+}
+
+.alc-header__menu-separator {
+  /* Texto */
+  @apply text-[--alc-color-text-subtle] text-xs uppercase font-bold tracking-widest;
+  /* Espaçamento */
+  @apply py-[--alc-spacing-04] px-[--alc-spacing-05];
+  /* Borda */
+  @apply border-t border-[--alc-color-border];
+}
+
+.alc-header__user {
+  /* Estabelece os valores que serão usados */
+  --padding: var(--alc-spacing-05);
+  --margin: var(--alc-spacing-05);
+  --border-width: theme('borderWidth.DEFAULT');
+  /* O "blank space" corresponde à soma de margem, borda e padding.
+      Isso serve para manter a largura total ocupada pelo elemento invariável,
+      independentemente se há ou não uma borda (aplicada por alc-header__user--separator)
+      - Com separador >>>> MMM|PPP[ELEMENTO] (sendo: M-margin, |-borda, P-padding)
+      - Sem separador >>>> BBBBBBB[ELEMENTO] (sendo: B-blank space)
+  */
+  --blank-space: calc( var(--margin) + var(--border-width) + var(--padding));
+
+  @apply hidden md:block ml-[--blank-space] text-white;
+}
+
+.alc-header__user--separator {
+  /* Necessário "calc" em border-l-[] para que tailwind interprete como width e não como color
+                                                ⤵⤵⤵⤵ */
+  @apply pl-[--padding] ml-[--margin] border-l-[calc(var(--border-width)*1)] border-l-white;
+}
+
+.alc-header__drawer-nav {
+  @apply md:hidden;
+}

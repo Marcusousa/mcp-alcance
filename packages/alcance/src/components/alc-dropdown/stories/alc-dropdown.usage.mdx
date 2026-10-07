@@ -1,0 +1,165 @@
+{/* alc-dropdown.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-dropdown.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown"/>
+<Controls of={Stories.Basico}/>
+
+## {Stories.ComMenu.name}
+
+<Canvas of={Stories.ComMenu} sourceState="shown" />
+<Controls of={Stories.ComMenu}/>
+
+## Disparador com rótulo visível
+<ul className="list-disc list-inside">
+  <li>O botão deve ter o texto visível.</li>
+  <li>Deve utilizar o ícone "chevron-down" com `label=""`.</li>
+</ul>
+
+<Canvas of={Stories.RotuloVisivel} sourceState="shown" />
+<Controls of={Stories.RotuloVisivel}/>
+
+## Disparador com rótulo não visível
+
+Apesar de não estar visível, o rótulo deve ser definido e é necessário.
+
+<ul className="list-disc list-inside">
+  <li>O rótulo do botão deve ser colocado no atributo label de `alc-icon`.</li>
+  <li>Deve utilizar o ícone "three-dots-vertical".</li>
+</ul>
+
+<Canvas of={Stories.RotuloNaoVisivel} sourceState="shown" />
+<Controls of={Stories.RotuloNaoVisivel}/>
+
+## Fechamento automático
+
+Tipicamente, usando um `menu` dentro do `dropdown`, deve-se configurar `hide-on="alc-select"` para que ele seja fechado quando o usuário selecionar uma opção do `menu`, conforme mostra este exemplo.
+
+<Canvas of={Stories.FechamentoAutomatico} sourceState="shown"/>
+<Controls of={Stories.FechamentoAutomatico}/>
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <alc-dropdown ref="dropdown" :open="isOpen" @alc-show="onShow" @alc-hide="onHide">
+      <button slot="trigger" class="alc-button alc-button--secondary" @click="toggleDropdown">
+        <alc-icon name="three-dots-vertical" label="Ações..."></alc-icon>
+      </button>
+      <alc-menu>
+        <alc-menu-item value="excluir">Excluir</alc-menu-item>
+        <alc-menu-item value="prioritario">Marcar como prioritário</alc-menu-item>
+        <alc-menu-item value="adiar">Adiar</alc-menu-item>
+      </alc-menu>
+    </alc-dropdown>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'DropdownExample',
+  data() {
+    return {
+      isOpen: false,
+    };
+  },
+  methods: {
+    toggleDropdown() {
+      this.isOpen = !this.isOpen;
+    },
+    onShow() {
+      console.log('Dropdown vai abrir');
+    },
+    onHide() {
+      console.log('Dropdown vai fechar');
+    },
+    async openDropdown() {
+      const opened = await this.$refs.dropdown.show();
+      if (opened) {
+        console.log('Dropdown aberto');
+      }
+    },
+    async closeDropdown() {
+      const closed = await this.$refs.dropdown.hide();
+      if (closed) {
+        console.log('Dropdown fechado');
+      }
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <alc-dropdown ref="dropdown" :open="isDropdownOpen" @alc-show="handleShow" @alc-hide="handleHide">
+      <button slot="trigger" class="alc-button alc-button--primary" @click="toggleDropdown">
+        Menu de Opções
+      </button>
+      <alc-menu>
+        <alc-menu-item value="editar">Editar</alc-menu-item>
+        <alc-menu-item value="remover">Remover</alc-menu-item>
+        <alc-menu-item value="compartilhar">Compartilhar</alc-menu-item>
+      </alc-menu>
+    </alc-dropdown>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'DropdownExampleTS',
+  setup() {
+    const isDropdownOpen = ref(false);
+    const dropdown = ref(null);
+
+    const toggleDropdown = () => {
+      isDropdownOpen.value = !isDropdownOpen.value;
+    };
+
+    const handleShow = () => {
+      console.log('Dropdown está prestes a abrir');
+    };
+
+    const handleHide = () => {
+      console.log('Dropdown está prestes a fechar');
+    };
+
+    const openDropdown = async () => {
+      const opened = await dropdown.value.show();
+      if (opened) {
+        console.log('Dropdown aberto');
+      }
+    };
+
+    const closeDropdown = async () => {
+      const closed = await dropdown.value.hide();
+      if (closed) {
+        console.log('Dropdown fechado');
+      }
+    };
+
+    return {
+      isDropdownOpen,
+      dropdown,
+      toggleDropdown,
+      handleShow,
+      handleHide,
+      openDropdown,
+      closeDropdown,
+    };
+  },
+});
+</script>`
+  }}
+/>

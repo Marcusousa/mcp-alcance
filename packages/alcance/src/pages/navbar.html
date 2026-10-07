@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>NavBar</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <alc-header name="Gabinete Digital" description="Plataforma digital de trabalho do Deputado" home-url="#">
+    <alc-skip-link anchor="main-content">conteúdo principal</alc-skip-link>
+    <alc-skip-to-nav></alc-skip-to-nav>
+
+    <alc-environment-label env="prototype"></alc-environment-label>
+
+
+    <div slot="support">
+      <alc-header-action id="support-ajuda" icon-name="question-circle" variant="button">Ajuda</alc-header-action>
+      <alc-header-action id="support-contato" icon-name="envelope" variant="button">Contato</alc-header-action>
+      <alc-header-action id="support-link" icon-name="google" variant="link"
+        url="http://google.com">Google</alc-header-action>
+    </div>
+    <div slot="user">
+      <alc-user-menu variation="desktop" name="João Henrique Miranda Soares Catan" registration-number="P_5242"
+        img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242">
+        Revisor representando o Dep. Adail Filho (REPUBLICANOS-AM)
+      </alc-user-menu>
+    </div>
+  </alc-header>
+
+  <alc-navbar>
+    <ul>
+      <li>
+        <span>
+          Item 1
+        </span>
+        <alc-nav>
+          <ul>
+            <li><a href="#">Item 1.1</a></li>
+            <li><a href="#">Item 1.2</a></li>
+            <li>
+              <span>
+                Item 1.3
+              </span>
+              <div data-alc-panel>
+                <ul>
+                  <li><a href="#">Item 1.3.1</a></li>
+                  <li><a href="#">Item 1.3.2</a></li>
+                  <li><a href="#">Item 1.3.3</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </alc-nav>
+      </li>
+
+      <li><a href="#">Item 2</a></li>
+
+      <li>
+        <span>
+          Item 3
+        </span>
+        <alc-nav>
+          <ul>
+            <li><a href="#">Item 3.1</a></li>
+            <li><a href="#">Item 3.2</a></li>
+            <li>
+              <span>
+                Item 3.3
+              </span>
+              <div data-alc-panel>
+                <ul>
+                  <li>
+                    <span>
+                      Item 3.3.1
+                    </span>
+                    <div data-alc-panel>
+                      <ul>
+                        <li><a href="#">Item 3.3.1.1</a></li>
+                        <li><a href="#">Item 3.3.1.2</a></li>
+                        <li><a href="#">Item 3.3.3.3</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li><a href="#">Item 3.3.2</a></li>
+                  <li><a href="#">Item 3.3.3</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </alc-nav>
+      </li>
+
+      <li>
+        <span>
+          Item 4
+        </span>
+        <alc-nav>
+          <ul>
+            <li><a href="#">Item 4.1</a></li>
+            <li><a href="#">Item 4.2</a></li>
+            <li>
+              <span>
+                Item 4.3
+              </span>
+              <div data-alc-panel>
+                <ul>
+                  <li><a href="#">Item 4.3.1</a></li>
+                  <li><a href="#">Item 4.3.2</a></li>
+                  <li><a href="#">Item 4.3.3</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </alc-nav>
+      </li>
+    </ul>
+  </alc-navbar>
+
+  <!-- <alc-nav>
+    <ul>
+      <li>
+        <span>Item 1</span>
+        <div data-alc-panel>
+          <ul>
+            <li><a href="#">Item 1.1</a></li>
+            <li><a href="#">Item 1.2</a></li>
+            <li><a href="#">Item 1.3</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="#">Item 2</a></li>
+    </ul>
+  </alc-nav> -->
+
+  <div class="alc-layout">
+
+    <!-- <alc-nav>
+      <ul>
+        <li>
+          <span>Item 1</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="#">Item 1.1</a></li>
+              <li><a href="#">Item 1.2</a></li>
+              <li>
+                <span>
+                  Item 1.3
+                </span>
+                <div data-alc-panel>
+                  <ul>
+                    <li><a href="#">Item 1.3.1</a></li>
+                    <li><a href="#">Item 1.3.2</a></li>
+                    <li><a href="#">Item 1.3.3</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Item 2</a></li>
+      </ul>
+    </alc-nav> -->
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="main-content" class="alc-layout__content">
+
+      <div class="container">
+
+        <!-- TITULO DA PAGINA -->
+        <h1>NavBar</h1>
+        Conteúdo da página aqui.
+
+
+        <a href="#" class="alc-link">link qualquer</a>
+        <button class="alc-button">botão qualquer</button>
+
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aliquid quasi provident veniam
+          laudantium vero iste error quas obcaecati aliquam illum sit sapiente facilis, dicta adipisci odio,
+          optio numquam perspiciatis.
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>

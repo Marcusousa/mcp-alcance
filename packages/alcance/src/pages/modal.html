@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Form</title>
+
+    <script type="module" src="/build/alcance.esm.js"></script>
+    <script nomodule src="/build/alcance.js"></script>
+    <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <alc-theme></alc-theme>
+        <hr class="mb-2">
+
+        <script>
+            // Funções usadas em toda a página
+            async function showModal(selector) {
+                return await document.querySelector(selector).show();
+            }
+            async function hideModal(selector) {
+                return await document.querySelector(selector).hide();
+            }
+
+            async function changeOpen(selector, value) {
+                return (await document.querySelector(selector)).open = value;
+            }
+        </script>
+
+
+        <h2>Exemplo modal básico</h2>
+        <button class="alc-button" id="button" onclick="showModal('#modal')">Abrir modal</button>
+        <button type="button" class="alc-button alc-button--secondary" onclick="changeOpen('#modal', true)">Abrir por propriedade</button>
+
+
+        <alc-modal id="modal"  header-text="Modal básico">
+            <button id="sm" type="button" class="alc-button alc-button--secondary" onclick="changeModal('sm')">Small</button>
+            <button id="md" type="button" class="alc-button alc-button--secondary" onclick="changeModal('md')">Medium</button>
+            <button id="lg" type="button" class="alc-button alc-button--secondary" onclick="changeModal('lg')">Large</button>
+            <button id="xl" type="button" class="alc-button alc-button--secondary" onclick="changeModal('xl')">Extra Large</button>
+            <div id="content">
+                <alc-view-more>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed facilis voluptatibus consequuntur, labore numquam quisquam? Ullam harum dolor mollitia hic. Dolores, vel voluptatum deserunt alias praesentium nesciunt porro dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit laborum repudiandae, asperiores commodi velit, veniam, quo saepe ad dolores impedit repellat adipisci nobis alias. Natus quia modi praesentium facere sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum molestias minus natus nisi officiis aspernatur vel aliquid recusandae minima sed. Commodi molestias vel aliquam quisquam reprehenderit harum asperiores corrupti explicabo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex minima asperiores perspiciatis fuga nemo error iste reiciendis, quas, deserunt nihil vel corporis quibusdam. Debitis officiis iure aut eligendi, ea tempora. </p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed facilis voluptatibus consequuntur, labore numquam quisquam? Ullam harum dolor mollitia hic. Dolores, vel voluptatum deserunt alias praesentium nesciunt porro dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit laborum repudiandae, asperiores commodi velit, veniam, quo saepe ad dolores impedit repellat adipisci nobis alias. Natus quia modi praesentium facere sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum molestias minus natus nisi officiis aspernatur vel aliquid recusandae minima sed. Commodi molestias vel aliquam quisquam reprehenderit harum asperiores corrupti explicabo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex minima asperiores perspiciatis fuga nemo error iste reiciendis, quas, deserunt nihil vel corporis quibusdam. Debitis officiis iure aut eligendi, ea tempora. </p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed facilis voluptatibus consequuntur, labore numquam quisquam? Ullam harum dolor mollitia hic. Dolores, vel voluptatum deserunt alias praesentium nesciunt porro dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit laborum repudiandae, asperiores commodi velit, veniam, quo saepe ad dolores impedit repellat adipisci nobis alias. Natus quia modi praesentium facere sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum molestias minus natus nisi officiis aspernatur vel aliquid recusandae minima sed. Commodi molestias vel aliquam quisquam reprehenderit harum asperiores corrupti explicabo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex minima asperiores perspiciatis fuga nemo error iste reiciendis, quas, deserunt nihil vel corporis quibusdam. Debitis officiis iure aut eligendi, ea tempora. </p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed facilis voluptatibus consequuntur, labore numquam quisquam? Ullam harum dolor mollitia hic. Dolores, vel voluptatum deserunt alias praesentium nesciunt porro dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit laborum repudiandae, asperiores commodi velit, veniam, quo saepe ad dolores impedit repellat adipisci nobis alias. Natus quia modi praesentium facere sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum molestias minus natus nisi officiis aspernatur vel aliquid recusandae minima sed. Commodi molestias vel aliquam quisquam reprehenderit harum asperiores corrupti explicabo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex minima asperiores perspiciatis fuga nemo error iste reiciendis, quas, deserunt nihil vel corporis quibusdam. Debitis officiis iure aut eligendi, ea tempora. </p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed facilis voluptatibus consequuntur, labore numquam quisquam? Ullam harum dolor mollitia hic. Dolores, vel voluptatum deserunt alias praesentium nesciunt porro dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit laborum repudiandae, asperiores commodi velit, veniam, quo saepe ad dolores impedit repellat adipisci nobis alias. Natus quia modi praesentium facere sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum molestias minus natus nisi officiis aspernatur vel aliquid recusandae minima sed. Commodi molestias vel aliquam quisquam reprehenderit harum asperiores corrupti explicabo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex minima asperiores perspiciatis fuga nemo error iste reiciendis, quas, deserunt nihil vel corporis quibusdam. Debitis officiis iure aut eligendi, ea tempora. </p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed facilis voluptatibus consequuntur, labore numquam quisquam? Ullam harum dolor mollitia hic. Dolores, vel voluptatum deserunt alias praesentium nesciunt porro dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit laborum repudiandae, asperiores commodi velit, veniam, quo saepe ad dolores impedit repellat adipisci nobis alias. Natus quia modi praesentium facere sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum molestias minus natus nisi officiis aspernatur vel aliquid recusandae minima sed. Commodi molestias vel aliquam quisquam reprehenderit harum asperiores corrupti explicabo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex minima asperiores perspiciatis fuga nemo error iste reiciendis, quas, deserunt nihil vel corporis quibusdam. Debitis officiis iure aut eligendi, ea tempora. </p>
+                </alc-view-more>
+            </div>
+
+            <!-- Analisar os eventos disparados -->
+            <button type="button" class="alc-button alc-button--secondary" onclick="hideModal('#modal')">Fechar por método</button>
+            <button type="button" class="alc-button alc-button--secondary" onclick="changeOpen('#modal', false)">Fechar por propriedade</button>
+
+        </alc-modal>
+
+        <script>
+            // Modal 1
+            const modal = document.querySelector('#modal');
+            const button = document.querySelector('#button');
+
+            modal.addEventListener("alc-after-show", function (e) { console.log(`alc-after-show`)});
+
+            modal.addEventListener("alc-hide", function (e) {
+                // e.preventDefault();
+                console.log(`alc-hide`, e.detail)
+            });
+            modal.addEventListener("alc-after-hide", function (e) { console.log(`alc-after-hide`)});
+
+            modal.addEventListener("alc-focus-after-hide", function (e) { console.log(`alc-focus-after-hide`)});
+
+            function changeModal(size) {
+                modal.size = size;
+            }
+
+
+        </script>
+
+
+        <h2>Exemplo de modal que o botão some quando abre</h2>
+
+        <alc-dropdown hide-on="click">
+            <button slot="trigger" class="alc-button alc-button--secondary" id="trigger-dropdown">
+                <alc-icon name="three-dots-vertical" label="Ações..."></alc-icon>
+            </button>
+            <alc-menu id="menu-dropdown">
+                <alc-menu-item>
+                    Abrir modal
+                </alc-menu-item>
+            </alc-menu>
+        </alc-dropdown>
+
+
+        <alc-modal id="modal-dropdown" header-text="Exemplo de modal" size="sm">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed facilis voluptatibus consequuntur, labore numquam quisquam? Ullam harum dolor mollitia hic. Dolores, vel voluptatum deserunt alias praesentium nesciunt porro dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit laborum repudiandae, asperiores commodi velit, veniam, quo saepe ad dolores impedit repellat adipisci nobis alias. Natus quia modi praesentium facere sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum molestias minus natus nisi officiis aspernatur vel aliquid recusandae minima sed. Commodi molestias vel aliquam quisquam reprehenderit harum asperiores corrupti explicabo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex minima asperiores perspiciatis fuga nemo error iste reiciendis, quas, deserunt nihil vel corporis quibusdam. Debitis officiis iure aut eligendi, ea tempora. </p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed facilis voluptatibus consequuntur, labore numquam quisquam? Ullam harum dolor mollitia hic. Dolores, vel voluptatum deserunt alias praesentium nesciunt porro dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit laborum repudiandae, asperiores commodi velit, veniam, quo saepe ad dolores impedit repellat adipisci nobis alias. Natus quia modi praesentium facere sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum molestias minus natus nisi officiis aspernatur vel aliquid recusandae minima sed. Commodi molestias vel aliquam quisquam reprehenderit harum asperiores corrupti explicabo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex minima asperiores perspiciatis fuga nemo error iste reiciendis, quas, deserunt nihil vel corporis quibusdam. Debitis officiis iure aut eligendi, ea tempora. </p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed facilis voluptatibus consequuntur, labore numquam quisquam? Ullam harum dolor mollitia hic. Dolores, vel voluptatum deserunt alias praesentium nesciunt porro dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit laborum repudiandae, asperiores commodi velit, veniam, quo saepe ad dolores impedit repellat adipisci nobis alias. Natus quia modi praesentium facere sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum molestias minus natus nisi officiis aspernatur vel aliquid recusandae minima sed. Commodi molestias vel aliquam quisquam reprehenderit harum asperiores corrupti explicabo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex minima asperiores perspiciatis fuga nemo error iste reiciendis, quas, deserunt nihil vel corporis quibusdam. Debitis officiis iure aut eligendi, ea tempora. </p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium sed facilis voluptatibus consequuntur, labore numquam quisquam? Ullam harum dolor mollitia hic. Dolores, vel voluptatum deserunt alias praesentium nesciunt porro dolor. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit laborum repudiandae, asperiores commodi velit, veniam, quo saepe ad dolores impedit repellat adipisci nobis alias. Natus quia modi praesentium facere sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum molestias minus natus nisi officiis aspernatur vel aliquid recusandae minima sed. Commodi molestias vel aliquam quisquam reprehenderit harum asperiores corrupti explicabo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex minima asperiores perspiciatis fuga nemo error iste reiciendis, quas, deserunt nihil vel corporis quibusdam. Debitis officiis iure aut eligendi, ea tempora. </p>
+            <div slot="footer">
+                <button class="alc-button alc-button--secondary" onclick="changeOpen('#modal-dropdown', false)">Fechar propriedade open</button>
+                <button class="alc-button" onclick="hideModal('#modal-dropdown')">Fechar com método hide</button>
+            </div>
+        </alc-modal>
+
+        <script>
+            const modalDropdown = document.querySelector('#modal-dropdown');
+            const menuDropdown = document.querySelector('#menu-dropdown');
+            const triggerDropdown = document.querySelector('#trigger-dropdown');
+            
+            modalDropdown.addEventListener("alc-hide", function (e) { 
+                console.log(`alc-hide`)
+            });
+
+            modalDropdown.addEventListener("alc-after-hide", function (e) { 
+                console.log(`alc-after-hide`)
+            });
+
+            modalDropdown.addEventListener("alc-focus-after-hide", function (e) { 
+                console.log(`alc-focus-after-hide`)
+                e.preventDefault();
+                triggerDropdown.focus();
+            });
+
+            menuDropdown.addEventListener("alc-select", function (e) { 
+                changeOpen('#modal-dropdown', true)
+            });
+        </script>
+
+
+        <h2>Exemplo de modal usando slots header e footer, e tamanho sm</h2>
+        <button class="alc-button" onclick="showModal('#modal3')">Abrir modal</button>
+
+        <alc-modal id="modal3" size="sm" prevent-overlay-close="true">
+            <h2 slot="header" class="m-0">
+                <span class="text-sm italic font-normal block">Chamado do</span>
+                <strong>Olho de Thundera</strong> <alc-icon name="eye-fill" label=""></alc-icon>
+            </h2>
+            <p>Olho de Thundera avistado nos céus do Terceiro Mundo.</p>
+            <p>Deseja atender ao chamado?</p>
+
+            <div slot="footer">
+                <button
+                    class="alc-button"
+                    onclick="console.log('Vamos atender'); hideModal('#modal3')"
+                >
+                    Atender
+                </button>
+                <button
+                    class="alc-button alc-button--secondary"
+                    onclick="console.log('Vamos ignorar'); hideModal('#modal3')"
+                >
+                    Ignorar
+                </button>
+            </div>
+        </alc-modal>
+
+
+        <h2>Exemplos de modal com formulário</h2>
+        <h3>Form dentro da modal</h3>
+        <button class="alc-button" onclick="showModal('#modal4-1')">Abrir modal</button>
+
+        <alc-modal id="modal4-1" header-text="Pesquisa">
+            <form id="form-modal4-1">
+                <alc-field label="Quem é seu Thundercat favorito?">
+                    <select name="favorite-character">
+                        <option value="lion-o">Lion-O</option>
+                        <option value="cheetara">Cheetara</option>
+                        <option value="panthro">Panthro</option>
+                        <option value="tygra">Tygra</option>
+                    </select>
+                </alc-field>
+
+                <alc-field label="Se tivesse a Espada Justiceira, qual seria seu primeiro comando?" class="mt-4">
+                    <input type="text" name="sword">
+                </alc-field>
+            </form>
+
+            <div slot="footer">
+                <!-- A aplicação tem que programar os botões para fechar a modal, conforme necessário -->
+                <button class="alc-button" form="form-modal4-1" type="submit">Enviar</button>
+                <button class="alc-button alc-button--secondary" form="form-modal4-1" type="reset">Cancelar</button>
+            </div>
+        </alc-modal>
+
+        <h3>Modal dentro do form</h3>
+        <button class="alc-button" onclick="showModal('#modal4-2')">Abrir modal</button>
+
+        <form>
+            <alc-modal id="modal4-2" header-text="Pesquisa">
+                <alc-field label="Quem é seu Thundercat favorito?">
+                    <select name="favorite-character">
+                        <option value="lion-o">Lion-O</option>
+                        <option value="cheetara">Cheetara</option>
+                        <option value="panthro">Panthro</option>
+                        <option value="tygra">Tygra</option>
+                    </select>
+                </alc-field>
+
+                <alc-field label="Se tivesse a Espada Justiceira, qual seria seu primeiro comando?" class="mt-4">
+                    <input type="text" name="sword">
+                </alc-field>
+                <div slot="footer">
+                    <!-- A aplicação tem que programar os botões para fechar a modal, conforme necessário -->
+                    <button class="alc-button" type="submit">Enviar</button>
+                    <button class="alc-button alc-button--secondary" type="reset">Cancelar</button>
+                </div>
+            </alc-modal>
+        </form>
+
+    </div>
+
+</html>

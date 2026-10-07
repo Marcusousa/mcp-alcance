@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Popup</title>
+
+    <script type="module" src="/build/alcance.esm.js"></script>
+    <script nomodule src="/build/alcance.js"></script>
+    <link rel="stylesheet" href="/build/alcance.css">
+
+    <style>
+        .alc-popup-example {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: calc(100vh - 60px);
+        }
+
+        .alc-popup-example>div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tooltip [slot="anchor"] {
+            width: 50px;
+            height: 50px;
+            border: 1px solid gray;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tooltip .alc-popup__content {
+            background-color: black;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .tooltip-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <alc-theme></alc-theme>
+        <hr class="mb-2">
+
+
+
+        <div class="mb-40 mt-10">
+            <alc-popup active='true' arrow="true">
+              <div slot="anchor">Anchor do popup</div>
+              <div>Isto é um popup</div>
+            </alc-popup>
+          </div>
+
+
+          <div class="mb-40">
+            <alc-tooltip content='Isto é um tooltip' active="true" trigger="manual">
+              <div slot="trigger">Anchor do tooltip</div>
+            </alc-tooltip>
+          </div>
+      
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+        <div class="alc-popup-example">
+            <div>
+
+                <alc-dropdown>
+                    <button slot="trigger" class="alc-button">Dropdown button</button>
+                    <ul>
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                        <li>Item 5</li>
+                    </ul>
+                </alc-dropdown>
+
+                <alc-dropdown>
+                    <button slot="trigger" class="alc-button">
+                        SubMenu
+                        <alc-icon name="chevron-down" label=""></alc-icon>
+                    </button>
+                    <alc-menu>
+                        <alc-menu-item>Item</alc-menu-item>
+                        <alc-menu-item active>Active</alc-menu-item>
+                        <alc-menu-item>Item</alc-menu-item>
+                    </alc-menu>
+                </alc-dropdown>
+
+                <alc-dropdown>
+                    <button slot="trigger" class="alc-button">
+                        Menu
+                        <alc-icon name="chevron-down" label=""></alc-icon>
+                    </button>
+                    <alc-menu>
+                        <alc-menu-item>Item</alc-menu-item>
+                        <alc-menu-item active>Active</alc-menu-item>
+                    </alc-menu>
+                </alc-dropdown>
+            </div>
+
+            <div>
+                <alc-dropdown active="true">
+                    <button slot="trigger" class="alc-button">
+                        Menuuu
+                        <alc-icon name="chevron-down" label=""></alc-icon>
+                    </button>
+                    <alc-menu id="menu-example">
+                        <alc-menu-item>Item</alc-menu-item>
+                        <alc-menu-item type="radio" checked="true">radio checked</alc-menu-item>
+                        <alc-menu-item type="checkbox" checked="true">checkbox checked</alc-menu-item>
+                        <alc-menu-item>
+                            Prefix Icon
+                            <alc-icon name="gift" label="" slot="prefix"></alc-icon>
+                        </alc-menu-item>
+                        <alc-menu-item>
+                            Suffix Icon
+                            <alc-icon name="gift" label="" slot="suffix"></alc-icon>
+                        </alc-menu-item>
+                    </alc-menu>
+                </alc-dropdown>
+
+                
+                <script>
+
+                    const menu = document.getElementById('menu-example');
+                    menu.addEventListener('alc-select', e => {
+                        const target = e.target;
+                        if(target.type === "radio" || target.type === "checkbox" ){
+                            target.checked = !target.checked;
+                        }
+                    });
+
+                </script>
+
+                <alc-dropdown>
+                    <button slot="trigger" class="alc-button">
+                        Menu
+                        <alc-icon name="chevron-down" label=""></alc-icon>
+                    </button>
+                    <alc-menu>
+                        <alc-menu-item>Item</alc-menu-item>
+                        <alc-menu-item active>Active</alc-menu-item>
+                        <alc-menu-item checkable="checkbox">Checked</alc-menu-item>
+                        <alc-menu-item disabled>Disabled</alc-menu-item>
+                        <alc-menu-item>
+                            Prefix Icon
+                            <alc-icon name="gift" label="" slot="prefix"></alc-icon>
+                        </alc-menu-item>
+                        <alc-menu-item>
+                            Suffix Icon
+                            <alc-icon name="gift" label="" slot="suffix"></alc-icon>
+                        </alc-menu-item>
+                    </alc-menu>
+                </alc-dropdown>
+
+                <alc-dropdown>
+                    <button slot="trigger" class="alc-button">
+                        Menu
+                        <alc-icon name="chevron-down" label=""></alc-icon>
+                    </button>
+                    <alc-menu>
+                        <alc-menu-item>Item</alc-menu-item>
+                        <alc-menu-item active>Active</alc-menu-item>
+                    </alc-menu>
+                </alc-dropdown>
+            </div>
+
+            <div>
+
+                <alc-dropdown>
+                    <button slot="trigger" class="alc-button">
+                        Menu
+                        <alc-icon name="chevron-down" label=""></alc-icon>
+                    </button>
+                    <alc-menu>
+                        <alc-menu-item>Item</alc-menu-item>
+                        <alc-menu-item active>Active</alc-menu-item>
+                    </alc-menu>
+                </alc-dropdown>
+
+                <alc-dropdown>
+                    <button slot="trigger" class="alc-button">
+                        SubMenu
+                        <alc-icon name="chevron-down" label=""></alc-icon>
+                    </button>
+                    <alc-menu>
+                        <alc-menu-item>Item</alc-menu-item>
+                        <alc-menu-item active>Active</alc-menu-item>
+                        <alc-menu-item>Item</alc-menu-item>
+                    </alc-menu>
+                </alc-dropdown>
+
+                <alc-dropdown>
+                    <button slot="trigger" class="alc-button">
+                        Menu
+                        <alc-icon name="chevron-down" label=""></alc-icon>
+                    </button>
+                    <alc-menu>
+                        <alc-menu-item>Item</alc-menu-item>
+                        <alc-menu-item active>Active</alc-menu-item>
+                    </alc-menu>
+                </alc-dropdown>
+            </div>
+
+        </div>
+
+        <div class="tooltip-container">
+
+
+            <alc-popup class="tooltip" placement="top" flip="true" >
+                <div slot="anchor">
+                    <alc-icon name="heart" label=""></alc-icon>
+                </div>
+                Coração
+            </alc-popup>
+
+            <alc-popup class="tooltip" placement="top" flip="true">
+                <div slot="anchor">
+                    <alc-icon name="heart" label=""></alc-icon>
+                </div>
+                Coração
+            </alc-popup>
+
+            <alc-popup class="tooltip" placement="top" flip="true" shift="true">
+                <div slot="anchor">
+                    <alc-icon name="heart" label=""></alc-icon>
+                </div>
+                Coração Coração
+            </alc-popup>
+
+        </div>
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+
+        <p style="text-align: justify;">
+            Silvio Santos Ipsum Ma você, topa ou não topamm. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah você mora com o
+            papai ou com a mamãem?
+            Ma você está certo dissoam? Você veio da caravana de ondeammm? Mah você não consegue né Moisés? Você não
+            consegueam.
+            Vem pra lá, mah você vai pra cá. Agora vai, agora vem pra láamm. Ma vale dérreaisam? Ma você está certo
+            dissoam?
+            Eu só acreditoammmm.... Vendoammmm. É namoro ou amizadeemm? Estamos em ritmo de festamm.
+            Mah você mora com o papai ou com a mamãem? Boca sujuam... sem vergonhuamm.
+            O arriscam tuduam, valendo um milhão de reaisuam. Ma! Ao adquirir o carnê do Baú, você estará concorrendo a
+            um prêmio de cem mil reaisam.
+            Ma não existem mulher feiam, existem mulher que não conhece os produtos Jequitiamm. Mah é a porta da
+            esperançaam.
+        </p>
+
+    </div>
+
+    <script>
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(element => {
+            const anchor = element.querySelector('[slot="anchor"]');
+            anchor.addEventListener('mouseenter', () => element.active = true);
+            anchor.addEventListener('mouseleave', () => element.active = false);
+        });
+
+
+        //     onMouseEnter={() => setFocus(true)}
+        //   onMouseLeave={() => setFocus(false)}
+
+    </script>
+
+</body>
+
+
+</html>

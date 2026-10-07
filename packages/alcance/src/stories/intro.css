@@ -1,0 +1,60 @@
+.hero {
+    align-items: center;
+    display: flex;
+}
+
+.heroBanner {
+    overflow: hidden;
+    padding: 4rem 0;
+    position: relative;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 3rem;
+}
+
+.hero__subtitle {
+    font-size: 1.5rem;
+}
+
+.buttons_hero {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.images-features {
+    display: inline;
+    height: 120px;
+    width: 120px;
+    vertical-align: middle;
+}
+
+.highlights {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.highlight-item {
+    /* 3 itens por linha */
+    flex-basis: calc((100% / 3) - 20px);
+    flex-grow: 0;
+    text-align: center;
+}
+
+.git {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.git__icon {
+    display: inline;
+    vertical-align: middle;
+    max-height: 32px;
+}

@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+
+alc-popup {
+  @apply relative inline-block;
+}
+
+.alc-popup__content {
+  @apply w-max absolute top-[--alc-spacing-none] left-[--alc-spacing-none] hidden z-[1060];
+}
+
+.alc-popup__content--active {
+  @apply block;
+}
+
+.alc-popup__content--fixed {
+  @apply fixed;
+}
+
+.alc-popup__arrow {
+  /*
+    Sendo o componente alc-popup um utilitário para elementos flutuantes,
+    definindo posicionamento, distância, deslocamento, mas não cor, borda etc.,
+    quem for usar o alc-popup é que tem que definir esses aspectos visuais.
+    Para a seta (arrow), define-se portanto somente o posicionamento.
+  */
+  @apply absolute;
+}

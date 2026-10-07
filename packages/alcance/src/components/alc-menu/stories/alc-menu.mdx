@@ -1,0 +1,19 @@
+{/* alc-menu.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-menu.stories';
+
+import MenuProps from './alc-menu.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+Um menu é utilizado para reunir ações relevantes dentro de um contexto, como uma área da interface, ou uma linha em uma tabela.
+
+Não se confunde com a navegação da aplicação, que utiliza o componente `nav`.
+
+Usualmente, o `menu` é utilizado juntamente com o componente `dropdown`, que é responsável pela exibição do conteúdo sobreposto ao conteúdo da página, associado a um elemento responsável por esse acionamento.
+
+<Markdown>{MenuProps}</Markdown>

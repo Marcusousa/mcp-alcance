@@ -1,0 +1,23 @@
+{/* alc-skip-to-nav.mdx */}
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-skip-to-nav.stories';
+import SkipToNavProps from './alc-skip-to-nav.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O skip-to-nav é um atalho acessível que permite ao usuário pular diretamente para a `navegação` principal da aplicação.
+
+Ele é especialmente útil para usuários que utilizam teclado para navegação, pois evita que precisem percorrer todos os elementos anteriores manualmente.
+
+Este componente oferece uma lógica inteligente:
+
+- Se a navegação ainda não estiver visível, o foco será direcionado para o botão de abrir a navegação.
+- Se a navegação já estiver aberta, o foco será movido para o primeiro item interativo dentro da navegação.
+
+O skip-to-nav deve ser posicionado logo após o skip-link para o conteúdo principal (se houver), seguindo a ordem lógica de navegação da página.
+
+Assim como outros skip links, é importante manter a consistência do skip-to-nav em todas as páginas da aplicação, garantindo uma experiência previsível e acessível para todos os usuários.
+
+<Markdown>{SkipToNavProps}</Markdown>

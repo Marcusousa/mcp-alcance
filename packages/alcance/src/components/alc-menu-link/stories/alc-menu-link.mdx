@@ -1,0 +1,35 @@
+{/* alc-menu-link.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-menu-link.stories';
+import MenuLinkProps from './alc-menu-link.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+<Meta of={Stories} name="Documentação" />
+<h1>{Stories.default.name}</h1>
+
+O componente `menu-link` é utilizado para representar uma navegação a partir de um menu. Ele deve ser utilizado sempre que a ação esperada ao selecionar uma opção do menu for a navegação para outra página ou recurso, utilizando a tag `<a>` para esse propósito. Este componente é apropriado quando se deseja que a navegação seja realizada nativamente pelo navegador, sem a intervenção de JavaScript para realizar a navegação.
+
+## Uso Apropriado
+
+- **Quando usar `menu-link`**: Use o `menu-link` sempre que a seleção de uma opção de menu resultar em uma navegação para outra página ou recurso através de uma URL. A tag `<a>` passada dentro do componente deve conter o `href` que direciona o usuário para a nova página.
+
+- **Quando NÃO usar `menu-link`**: Se a ação esperada ao clicar em uma opção de menu é abrir uma modal, executar uma função JavaScript, ou qualquer outra ação que não envolva a navegação para outra página, então o `alc-menu-item` deve ser utilizado em vez de `alc-menu-link`.
+
+## Exemplo de Uso
+
+Imagine que você tenha um menu com a opção "Ver detalhes". A escolha entre usar `menu-item` ou `menu-link` depende do comportamento esperado dessa opção:
+
+- **Caso 1: Abrir uma Modal (usar `menu-item`)**:
+  - Se "Ver detalhes" abre uma modal para mostrar mais informações, use `menu-item` para esta opção.
+
+- **Caso 2: Navegação para Outra Página (usar `menu-link`)**:
+  - Se "Ver detalhes" leva o usuário para uma nova página que mostra detalhes em profundidade, use `menu-link`.
+
+<CodeExample type="html">
+{`<alc-menu-link>
+  <a href="https://example.com/details">Ver detalhes</a>
+</alc-menu-link>`}
+</CodeExample>
+
+<Markdown>{MenuLinkProps}</Markdown>

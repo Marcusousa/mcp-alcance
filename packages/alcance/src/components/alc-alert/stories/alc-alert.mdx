@@ -1,0 +1,15 @@
+{/* alc-alert.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as AlertStories from './alc-alert.stories';
+
+import AlertProps from './alc-alert.props.md?raw';
+
+<Meta of={AlertStories} name="Documentação" />
+
+<h1>{AlertStories.default.name}</h1>
+
+Um alerta chama atenção do usuário para algo que ele precisa considerar, e o mantém informado sobre o estado do sistema.
+
+<Markdown>{AlertProps}</Markdown>

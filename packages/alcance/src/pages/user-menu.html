@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>User menu</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+  <style>
+    .example {
+      border: 1px dotted gray;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="example">
+          <alc-user-menu
+            variation="mobile"
+            name="Mobile - name"
+            id="user-menu-mobile"
+            logout-url="#"
+          >
+          </alc-user-menu>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="example">
+          <alc-user-menu
+            variation="desktop"
+            name="Desktop - name"
+            id="user-menu-desktop"
+            logout-url="#"
+          >
+          </alc-user-menu>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const userMenuMobile = document.getElementById('user-menu-mobile');
+      const userMenuDesktop = document.getElementById('user-menu-desktop');
+
+      userMenuMobile.addEventListener('alc-logout', (e) => {
+        console.log('alc-logout', e);
+        e.preventDefault();
+      });
+
+      userMenuDesktop.addEventListener('alc-logout', (e) => {
+        console.log('alc-logout', e);
+        e.preventDefault();
+      });
+
+    </script>
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="example">
+          <alc-user-menu
+            variation="mobile"
+            name="Mobile - name, img"
+            img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242"
+            logout-url="#"
+          >
+          </alc-user-menu>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="example">
+          <alc-user-menu
+            variation="desktop"
+            name="Desktop - name, img"
+            img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242"
+            logout-url="#"
+          >
+          </alc-user-menu>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="example">
+          <alc-user-menu
+            variation="mobile"
+            name="Mobile - name, img, registration"
+            img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242"
+            registration-number="P_999999"
+            logout-url="#"
+          >
+          </alc-user-menu>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="example">
+          <alc-user-menu
+            variation="desktop"
+            name="Desktop - name, img, registration"
+            img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242"
+            registration-number="P_999999"
+            logout-url="#"
+          >
+          </alc-user-menu>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="example">
+          <alc-user-menu
+            variation="mobile"
+            name="Mobile - name, img-src, registration, slot"
+            img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242"
+            registration-number="P_999999"
+            logout-url="#"
+          >
+            Texto do slot default
+          </alc-user-menu>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="example">
+          <alc-user-menu
+            variation="desktop"
+            name="Desktop - name, img-src, registration, slot"
+            img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242"
+            registration-number="P_999999"
+            logout-url="#"
+          >
+            Texto do slot default
+          </alc-user-menu>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="example">
+          <alc-user-menu
+            variation="mobile"
+            name="Mobile - actions (slot)"
+            img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242"
+            registration-number="P_999999"
+            logout-url="#"
+          >
+            Texto do slot default
+            <div slot="actions">
+              <alc-menu-item>Ajuda</alc-menu-item>
+              <alc-menu-item>Contato</alc-menu-item>
+            </div>
+          </alc-user-menu>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="example">
+          <alc-user-menu
+            variation="desktop"
+            name="Desktop - actions (slot)"
+            img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242"
+            registration-number="P_999999"
+            logout-url="#"
+          >
+            Texto do slot default
+            <div slot="actions">
+              <alc-menu-item>Ajuda</alc-menu-item>
+              <alc-menu-item>Contato</alc-menu-item>
+            </div>
+          </alc-user-menu>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+</body>
+
+</html>

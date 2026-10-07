@@ -1,0 +1,15 @@
+{/* alc-radio.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-radio.stories';
+
+import RadioProps from './alc-radio.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente radio permite que o usuário selecione uma única opção.
+
+<Markdown>{RadioProps}</Markdown>

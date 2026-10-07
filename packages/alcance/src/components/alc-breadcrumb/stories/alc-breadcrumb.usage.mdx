@@ -1,0 +1,48 @@
+{/* alc-breadcrumb.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-breadcrumb.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Icone.name}
+
+<Canvas of={Stories.Icone} sourceState="shown" />
+<Controls of={Stories.Icone} />
+
+## {Stories.Slot.name}
+
+<Canvas of={Stories.Slot} sourceState="shown" />
+<Controls of={Stories.Slot} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample type="html">
+{`<template>
+  <div>
+    <alc-breadcrumb>
+      <alc-breadcrumb-item icon-name="home" label="Início" url="/"></alc-breadcrumb-item>
+      <alc-breadcrumb-item label="Seção">
+        <!-- Usando o slot default com router-link -->
+        <router-link to="/secao">Seção</router-link>
+      </alc-breadcrumb-item>
+      <alc-breadcrumb-item label="Artigo" url="/secao/artigo"></alc-breadcrumb-item>
+    </alc-breadcrumb>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'BreadcrumbExample',
+};
+</script>`}
+</CodeExample>

@@ -1,0 +1,132 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from '../utils/codeExample';
+
+<Meta title="Instalação/Configuração no Angular" />
+<h1> Configuração no Angular </h1>
+
+## Configuração
+
+Para configurar no Angular, primeiramente importe o `CUSTOM_ELEMENTS_SCHEMA` do `@angular/core` no arquivo `app.module.ts` localizado na pasta `src/app` do seu projeto.
+
+<CodeExample type="ts" title="src/app/app.module.ts">
+
+{`import { BrowserModule } from "@angular/platform-browser";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+
+import { AppComponent } from "./app.component";
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+`}
+</CodeExample>
+
+<Unstyled>
+<alc-alert dismissible="false">
+
+**Nota:** A importação do **@angular/core** já estará presente no arquivo, apenas adicione o parâmetro **CUSTOM_ELEMENTS_SCHEMA** como no exemplo.
+
+</alc-alert>
+</Unstyled>
+
+Em seguida adicione o schema `CUSTOM_ELEMENTS_SCHEMA`
+
+<CodeExample type="ts" title="src/app/app.module.ts">
+{`import { BrowserModule } from "@angular/platform-browser";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+
+import { AppComponent } from "./app.component";
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+})
+export class AppModule {}
+`}
+</CodeExample>
+
+Por fim, no arquivo `main.ts` localizado em `src` do seu projeto, faça a importação do Alcance inserindo as seguintes linhas:
+
+<CodeExample type="ts" title="src/main.ts">
+{`import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+import { defineCustomElements } from 'alcance/loader'
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+
+  // Configure o diretório onde ficam os assets de seu projeto.
+  // Isso é especialmente importante para componentes do Alcance que utilizam esse
+  // recurso, como o <alc-icon>
+
+  const resourcesUrl = \`\${new URL(window.location.href).origin}/assets/\`;
+
+  defineCustomElements(window, {
+    resourcesUrl: resourcesUrl
+  });
+`}
+</CodeExample>
+
+<Unstyled>
+<alc-alert dismissible="false">
+
+**Nota:** O **import** deverá ser inserido após os import's do próprio Angular e sua chamada ao final de tudo.
+
+</alc-alert>
+</Unstyled>
+
+Agora faremos a importação dos estilos do Alcance. Vá até o `styles.scss` que é o estilo global padrão do Angular e adicione a seguinte linha:
+
+<CodeExample type="css" title="src/styles.scss">
+{`@import 'alcance/dist/alcance/alcance.css'`}
+</CodeExample>
+
+<Unstyled>
+<alc-alert dismissible="false">
+
+**Nota:** O **import** pode ser feito no arquivo global de sua preferência, caso não utilize o padrão do Angular.
+
+</alc-alert>
+</Unstyled>
+
+## Exemplo de uso
+
+<CodeExample type="html" title="/src/app/home/home.component.html">
+{`<div class="content" role="main">
+
+    <!-- Resources -->
+    <h2>Esse é um Sample de Angular com o Alcance! <alc-icon name="heart"></alc-icon></h2>
+    <alc-alert>
+        Esse projeto mostra como os componentes do Alcance se comportam no Angular e como você 
+        deve inseri-los no seu projeto <alc-icon name="heart"></alc-icon>
+    </alc-alert>
+  
+</div>
+`}
+</CodeExample>
+
+### Projeto Exemplo
+<Unstyled>
+<a href="https://git.camara.gov.br/Seuso/alcance-angular-sample" class="alc-link"><alc-icon name="git" label="Git"></alc-icon> git.camara.gov.br/Seuso/alcance-angular-sample</a>
+</Unstyled>
+<CodeExample type="bash">
+{`git clone https://git.camara.gov.br/Seuso/alcance-angular-sample.git`}
+</CodeExample>
+
+Agora você já pode utilizar os componentes do Alcance em seu projeto Angular! 😉

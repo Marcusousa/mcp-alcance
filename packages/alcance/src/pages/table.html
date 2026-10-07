@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Table</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+  <style>
+    body {
+      /* font-size: 2em; */
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <h1>Table</h1>
+
+    <alc-table>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Cargo</th>
+            <th>UF</th>
+            <th><abbr title="Número">Nº</abbr> Identificador</th>
+            <th>Data de admissão</th>
+            <th>R$</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Octavius Kelly Johnson Coleman Valentine Jackobson</td>
+            <td>Analista</td>
+            <td>PA</td>
+            <td>110</td>
+            <td>20/12/2014</td>
+            <td>R$3690,00</td>
+          </tr>
+          <tr>
+            <td>Yeo Gonzales</td>
+            <td>Terceirizado</td>
+            <td>SP</td>
+            <td>115</td>
+            <td>22/12/2014</td>
+            <td>R$3300,00</td>
+          </tr>
+          <tr>
+            <td>Sophia Stewart</td>
+            <td>
+              <a href="http://www.google.com">Analista</a>
+            </td>
+            <td><img style="width:200px"
+                src="http://www.capixabadagema.com.br/wp-content/uploads/2015/06/Capixaba-da-Gema-Vit%C3%B3ria-ES-Brasil-16.jpg"
+                alt="Ponte em Vitória"></td>
+            <td>100</td>
+            <td>
+              <ul>
+                <li><a href="#">Ver detalhes desta linha</a></li>
+                <li><a href="#">Ver detalhes desta linha</a></li>
+                <li><a href="#">Ver detalhes desta linha</a></li>
+              </ul>
+            </td>
+            <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem cumque dolorem soluta unde dolore, harum
+              explicabo a repellat architecto quasi deleniti magni sapiente laudantium placeat tempora dignissimos et
+              perferendis laboriosam?</td>
+          </tr>
+          <tr>
+            <td>Eagan Wall</td>
+            <td>Analista</td>
+            <td><img style="width:200px"
+                src="https://4.bp.blogspot.com/-Vgfa4hErEks/UCz-b4viiZI/AAAAAAAAf0A/vSLc-T_0Kt0/s1600/Vitoria.jpg"
+                alt="Praia do Canto - Vitória/ES"></td>
+            <td>105</td>
+            <td>04/06/2015</td>
+            <td>R$3677,00</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </alc-table>
+
+    <h2>
+      Modelo estático de combinação de ícones para indicar ordenação
+    </h2>
+
+    <alc-table>
+      <table>
+        <thead>
+          <th class="align-middle border border-solid relative p-2 pr-6">
+  
+            Nome
+  
+            <span class="inline-flex flex-col h-4 text-xs absolute top-2 right-1 text-gray-70">
+              <alc-sort-indicator ></alc-sort-indicator>
+            </span>
+  
+          </th>
+  
+          <th class="align-middle border border-solid relative p-2 pr-6">
+  
+            E-mail
+  
+            <span class="inline-flex flex-col h-4 text-xs absolute top-2 right-1 text-gray-70">
+              <alc-sort-indicator ></alc-sort-indicator>
+            </span>
+  
+          </th>
+        </thead>
+  
+      </table>
+    </alc-table>
+
+  </div>
+
+</body>
+
+</html>

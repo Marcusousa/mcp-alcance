@@ -1,0 +1,185 @@
+import { Meta, Source, Unstyled } from '@storybook/addon-docs/blocks';
+import { useEffect, useRef } from 'react';
+import { Template } from './scripts/input-error'
+import CodeExample from '../../utils/codeExample';
+
+<Meta title="Template/Formulário" />
+
+# Formulário
+
+## Formulário com diversos campos
+
+<Unstyled>
+<form action="">
+{/* Campo nome completo e estado */}
+<div class="row">
+<div class="col-sm-8">
+<alc-field label="Nome Completo" style={{marginBottom: 'var(--alc-spacing-06)'}}>
+<input type="text" name="firstname" />
+</alc-field>
+</div>
+<div class="col-6 col-sm-4 col-md-3">
+<alc-field label="Estado" style={{marginBottom: 'var(--alc-spacing-06)'}}>
+<select name="uf">
+<option value="">Selecione</option>
+<option value="1">SC</option>
+<option value="2">SP</option>
+<option value="4">PR</option>
+<option value="5">DF</option>
+</select>
+</alc-field>
+</div>
+</div>
+
+{/* Campo email e data de nascimento */}
+<div class="row">
+<div class="col-sm-6">
+<alc-field label="E-mail" style={{marginBottom: 'var(--alc-spacing-06)'}}>
+<input type="email" name="email" />
+</alc-field>
+</div>
+<div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+<alc-field label="Data de nascimento" style={{marginBottom: 'var(--alc-spacing-06)'}}>
+<input type="date" name="birthdate" />
+</alc-field>
+</div>
+</div>
+
+{/* Fieldset de sexo */}
+<div class="row">
+<div class="col-8 col-sm-6 col-lg-4">
+<alc-fieldset legend="Sexo" required="true" style={{marginBottom: 'var(--alc-spacing-06)'}}>
+<div style={{display: 'flex', flexDirection: 'column', gap: 'var(--alc-spacing-03)'}}>
+<alc-radio label="Feminino">
+<input type="radio" value="f" name="sexo" defaultChecked />
+</alc-radio>
+<alc-radio label="Masculino">
+<input type="radio" value="m" name="sexo" />
+</alc-radio>
+<alc-radio label="Prefiro não informar">
+<input type="radio" value="ni" name="sexo" />
+</alc-radio>
+</div>
+</alc-fieldset>
+</div>
+</div>
+
+<alc-field label="Sua mensagem" style={{marginBottom: 'var(--alc-spacing-06)'}}>
+<textarea name="msg" />
+</alc-field>
+
+
+
+<alc-checkbox style={{marginBottom: 'var(--alc-spacing-08)'}} hint="Você precisa aceitar os termos de uso antes de continuar.">
+<input type="checkbox" name="termos"/>
+<label slot="label">Você aceita os <a class="alc-link" href="#">termos de uso?</a></label>
+</alc-checkbox>
+
+
+<div style={{display: 'flex', gap: 'var(--alc-spacing-03)'}} >
+<button class="alc-button">Publicar</button>
+<button class="alc-button alc-button--secondary">Salvar rascunho</button>
+</div>
+</form>
+
+</Unstyled>
+
+<CodeExample type="html">
+{`<form action="">
+    <div class="row">
+        <div class="col-sm-8">
+            <alc-field label="Nome Completo" style="margin-bottom: var(--alc-spacing-06)">
+                <input type="text" name="firstname" />
+            </alc-field>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3">
+          <alc-field label="Estado" style="margin-bottom: var(--alc-spacing-06)">
+            <select name="uf">
+              <option value="">Selecione</option>
+              <option value="1">SC</option>
+              <option value="2">SP</option>
+              <option value="4">PR</option>
+              <option value="5">DF</option>
+            </select>
+          </alc-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <alc-field label="E-mail" style="margin-bottom: var(--alc-spacing-06)">
+                <input type="email" name="email" />
+            </alc-field>
+        </div>
+        <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+            <alc-field label="Data de nascimento" style="margin-bottom: var(--alc-spacing-06)">
+                <input type="date" name="birthdate" />
+            </alc-field>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-8 col-sm-6 col-lg-4">
+            <alc-fieldset legend="Sexo" required="true" style="margin-bottom: var(--alc-spacing-06)">
+                <div style="display: 'flex'; flex-direction: 'column'; gap: var(--alc-spacing-03)">
+                    <alc-radio label="Feminino">
+                        <input type="radio" value="f" name="sexo" checked />
+                    </alc-radio>
+                    <alc-radio label="Masculino">
+                        <input type="radio" value="m" name="sexo" />
+                    </alc-radio>
+                    <alc-radio label="Prefiro não informar">
+                        <input type="radio" value="ni" name="sexo" />
+                    </alc-radio>
+                </div>
+            </alc-fieldset>
+        </div>
+    </div>
+
+    <alc-field label="Sua mensagem" style="margin-bottom: var(--alc-spacing-06)">
+        <textarea name="msg"></textarea>
+    </alc-field>
+
+    <alc-checkbox style="margin-bottom: var(--alc-spacing-08)" hint="Você precisa aceitar os
+     termos de uso antes de continuar.">
+        <input type="checkbox" name="termos"/>
+        <label slot="label">Você aceita os <a class="alc-link" href="#">termos de uso?</a></label>
+    </alc-checkbox>
+
+    <div style="display: flex; gap: var(--alc-spacing-03);">
+        <button class="alc-button">Publicar</button>
+        <button class="alc-button alc-button--secondary">Salvar rascunho</button>
+    </div>
+</form>`}
+</CodeExample>
+
+## Formulário com validação de senha
+
+No exemplo abaixo, é realizada uma validação que verifica se a senha inserida possui ao menos 4 caracteres e não está em branco, exibindo uma mensagem de erro caso necessário.
+
+<Unstyled>
+<alc-alert dismissible="false">
+    Recomenda-se que a validação dos campos seja feita nos seguintes momentos:
+    <ul>
+        <li class="list-item list-disc list-inside">Assim que o campo perde o foco.</li>
+        <li class="list-item list-disc list-inside">Antes da submissão do formulário.</li>
+    </ul>
+</alc-alert>
+</Unstyled>
+
+<Template />
+
+## Diretrizes para criar formulários
+
+**Posicionamento:**
+Utilize o sistema de grid para organizar os campos do formulário. Para mais detalhes, consulte a documentação sobre <a class="alc-link" href="./?path=/docs/estilos-grid--documentação">Grid</a>.
+
+**Espaçamentos:**
+Utilize tokens de espaçamento para definir os espaçamentos entre os elementos do formulário. 
+
+- Para espaçamento vertical entre inputs utilize `--alc-spacing-06`.
+- Para espaçamento vertical entre input e button utilize `--alc-spacing-08`.
+- Para espaçamento horizontal entre buttons utilize `--alc-spacing-03`.
+
+Para conhecer todos os tokens disponíveis, consulte a documentação sobre <a class="alc-link" href="./?path=/docs/estilos-tokens--documentação">Tokens</a>.

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Drawer</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <h1>Drawer</h1>
+
+    <h2>Exemplo drawer básico</h2>
+    <button class="alc-button" id="button" onclick="showDrawer()">Abrir drawer</button>
+
+    <alc-drawer>
+      <ul>
+        <li><a href="#">Institucional</a></li>
+        <li><a href="#" data-test-tabindex>Outros</a></li>
+      </ul>
+    </alc-drawer>
+
+  </div>
+
+  <script>
+    const drawer = document.querySelector('alc-drawer');
+
+    drawer.addEventListener('alc-show', e => {
+      console.log('alc-show', e);
+    });
+
+    drawer.addEventListener('alc-hide', e => {
+      console.log('alc-hide', e);
+    });
+
+    drawer.addEventListener('alc-after-show', e => {
+      console.log('alc-after-show', e);
+    });
+
+    drawer.addEventListener('alc-after-hide', e => {
+      console.log('alc-after-hide', e);
+    });
+
+    async function showDrawer() {
+      console.log(await drawer.show(), 'show()');
+    }
+
+    async function hideDrawer() {
+      console.log(await drawer.hide(), 'hide()');
+    }
+
+    setTimeout(function () {
+      document.querySelector('[data-test-tabindex]').setAttribute('tabindex', '-3');
+    }, 5000);
+
+  </script>
+
+</html>

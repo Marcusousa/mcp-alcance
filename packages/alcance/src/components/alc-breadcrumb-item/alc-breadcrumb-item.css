@@ -1,0 +1,27 @@
+[data-alc-theme="dark"] alc-breadcrumb-item {
+  --outline-color: var(--alc-color-action-30);
+}
+
+[data-alc-theme="light"] alc-breadcrumb-item {
+  --outline-color: var(--alc-color-action-60);
+}
+
+.alc-breadcrumb-item {
+  @apply flex items-baseline; 
+}
+
+.alc-breadcrumb-item__link {
+  @apply flex items-baseline text-[--alc-color-text-secondary];
+}
+
+.alc-breadcrumb-item__icon {
+  @apply mr-[--alc-spacing-02];
+}
+
+.alc-breadcrumb-item__link a {
+  @apply rounded-sm outline-[--outline-color];
+}
+
+.alc-breadcrumb-item__separator {
+  @apply mx-[--alc-spacing-02];
+}

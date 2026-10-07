@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Input File</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body class="m-0 p-0">
+  <div>
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <div class="container-fluid">
+      <alc-field label="Selecione arquivos" required="true">
+        <alc-input-file id="input-file-1" id-input="meuArquivo" multiple mode="dropzone"
+          icon-name="upload"></alc-input-file>
+      </alc-field>
+
+      <button class="alc-button" onclick="limparArquivos('input-file-1')">Limpar Arquivos</button>
+      <button class="alc-button" onclick="obterArquivos('input-file-1')">Obter Arquivos</button>
+
+
+      <alc-field label="Selecione arquivos" required="true">
+        <alc-input-file label="Selecione arquivos" id="input-file-2" id-input="meuArquivo2" multiple mode="input"
+          icon-name="upload"></alc-input-file>
+      </alc-field>
+
+      <button class="alc-button" onclick="limparArquivos('input-file-2')">Limpar Arquivos</button>
+      <button class="alc-button" onclick="obterArquivos('input-file-2')">Obter Arquivos</button>
+
+
+      <alc-field label="Selecione arquivos" required="true">
+        <alc-input-file label="Selecione arquivos" id="input-file-3" id-input="meuArquivo3" multiple
+          mode="input"></alc-input-file>
+      </alc-field>
+
+      <button class="alc-button" onclick="limparArquivos('input-file-3')">Limpar Arquivos</button>
+      <button class="alc-button" onclick="obterArquivos('input-file-3')">Obter Arquivos</button>
+
+
+      <alc-field label="Selecione arquivos" required="true">
+        <alc-input-file label="Selecione arquivos" id="input-file-4" id-input="meuArquivo4" multiple
+          mode="button"></alc-input-file>
+      </alc-field>
+
+      <button class="alc-button" onclick="limparArquivos('input-file-4')">Limpar Arquivos</button>
+      <button class="alc-button" onclick="obterArquivos('input-file-4')">Obter Arquivos</button>
+
+    </div>
+  </div>
+
+  <script>
+
+    function limparArquivos(idInput) {
+      const alcInputFile = document.querySelector(`#${idInput}`);
+      alcInputFile.clear();
+    }
+
+    async function obterArquivos(idInput) {
+      const alcInputFile = document.querySelector(`#${idInput}`);
+      const fileList = await alcInputFile.getFiles();
+
+      if (fileList.length === 0) {
+        console.log('Nenhum arquivo selecionado.');
+      } else {
+        for (let i = 0; i < fileList.length; i++) {
+          const file = fileList[i];
+          console.log(`Arquivo ${i + 1}:`);
+          console.log(`Nome: ${file.file.name}`);
+          console.log(`Tamanho: ${file.file.size} bytes`);
+          console.log(`Tipo: ${file.file.type}`);
+          console.log('File:', file);
+          console.log('-----------------------');
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>

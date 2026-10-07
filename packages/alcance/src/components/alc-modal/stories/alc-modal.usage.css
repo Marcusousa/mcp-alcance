@@ -1,0 +1,5 @@
+.sb-story .alc-modal__overlay {
+  /* Para evitar que o overlay fique maior do que a área disponível na página para o exemplo */
+  max-height: 100%;
+  max-width: 100%;
+}

@@ -1,0 +1,56 @@
+/* Form */
+
+/* Definição de variáveis - setup dos temas */
+
+[data-alc-theme="light"] .alc-form__icon {
+  --text-color: var(--alc-color-neutral-60);
+  // --text-color-hover: var(--alc-color-action-60);
+  --text-color-error: var(--alc-color-error-50);
+  // --text-color-hover-error: var(--alc-color-error-45);
+}
+
+[data-alc-theme="dark"] .alc-form__icon {
+  --text-color: var(--alc-color-neutral-30);
+  // --text-color-hover: var(--alc-color-action-40);
+  --text-color-error: var(--alc-color-error-45);
+  // --text-color-hover-error: var(--alc-color-error-50);
+}
+
+/* Comum a todos os temas */
+
+.alc-form__icon {
+  @apply absolute top-3 text-[color:var(--text-color)] transition-colors;
+}
+
+.alc-form__icon--error {
+  @apply text-[color:var(--text-color-error)];
+}
+
+
+.alc-form__input-icon {
+  @apply relative w-full;
+}
+
+.alc-form__input-icon--left {
+  & > .alc-form__input {
+    @apply pl-8;
+  }
+
+  & > .alc-form__icon {
+    @apply left-2 top-2;
+  }
+}
+
+.alc-form__input-icon--right {
+  & > .alc-form__input {
+    @apply pr-8;
+  }
+
+  & > .alc-form__icon {
+    @apply right-2 top-2;
+  }
+}
+
+.alc-form__input[type="color"] {
+  @apply h-10;
+}

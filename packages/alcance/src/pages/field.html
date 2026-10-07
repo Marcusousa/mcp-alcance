@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Field</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+  <style>
+
+    .custom .alc-button,
+    .custom alc-checkbox {
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 576px) {
+      .custom .alc-field {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+      }
+      .custom [slot="label"] {
+        text-align: right;
+        padding-top: 0.5rem;
+        width: 12rem;
+      }
+      .custom .alc-field__core {
+        flex-grow: 1;
+      }
+
+      .custom .alc-button,
+      .custom alc-checkbox {
+        margin-left: calc(12rem + 0.5rem); /* label width + flex gap */
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <h1>Field</h1>
+
+    <h2>
+      Formulário simples com submit
+    </h2>
+
+    <form action="" method="get">
+
+      <alc-field label="Nome" required="true" hint="Nome completo" error-msg="Campo obrigatório">
+        <input type="text" name="nome" />
+      </alc-field>
+
+      <button type="submit" class="alc-button mt-4">Salvar</button>
+
+    </form>
+
+    <h2>
+      Formulário com labels personalizadas
+    </h2>
+
+    <form action="" method="get" class="custom">
+
+      <!-- @TODO Orientar o dev em relação ao espaçamento esperado entre label e input (aqui, definido por mt-1 abaixo) -->
+      <!-- @TODO Antes disso, confirmar se o espaçamento entre label e input estão dentro do esperado. -->
+      <alc-field required="true" hint="Nome completo">
+        <div slot="label">
+          <label name="label" for="alcNome">Nome <alc-icon name="pencil"></alc-icon></label>
+        </div>
+        <input type="text" name="nome" id="alcNome" />
+      </alc-field>
+
+      <alc-field hint="Endereço" class="mt-4">
+        <div slot="label">
+          <label name="label" for="alcEnd">Endereço</label>
+        </div>
+        <textarea name="end" id="alcEnd"></textarea>
+      </alc-field>
+
+      <!-- @TODO Verificar se o espaçamento lateral entre label e input está ok. -->
+      <!-- @TODO Orientar ao desenvolvedor que os textos do label e do controle tem que estar alinhados. -->
+      <alc-field hint="Digite para filtrar" class="mt-4">
+        <div slot="label">
+          <label slot="label" for="filtro" class="mt-2 sr-only">Filtrar por</label>
+        </div>
+        <input type="text" name="end" id="filtro" placeholder="Filtrar por"/>
+      </alc-field>
+
+      <alc-checkbox label="Estou de acordo com o regulamento">
+        <input type="checkbox" name="regulamento">
+      </alc-checkbox>
+
+      <button type="submit" class="alc-button">Salvar</button>
+
+    </form>
+
+    
+    <h2>
+      Formulário com exibição de sumário de erros
+    </h2>
+
+    <alc-field-checker>
+
+      <alc-field label="Nome" hint="Nome completo do solicitante" class="mb-4" required="true">
+        <input type="text" value="Xistos" />
+      </alc-field>
+
+      <alc-field label="UF" hint="Unidade da Federação" class="mb-4">
+        <select name="uf" id="uf">
+          <option value="">(Selecione)</option>
+          <option value="AC">Acre</option>
+          <option value="DF">Distrito Federal</option>
+        </select>
+      </alc-field>
+
+      <alc-field id="senha" label="Senha" hint="Informe sua senha" class="mb-4" required="true">
+        <input type="password" value="abcd1234" id="password" oninput="validatePassword()" />
+      </alc-field>
+
+      <alc-field label="Mensagem" hint="Mensagem do solicitante" class="mb-4" required="true">
+        <textarea id="w3review" name="w3review" rows="4" cols="50" id="mensagem"></textarea>
+      </alc-field>
+
+      <alc-field Label="E-mail" hint="Informe seu e-mail" class="mb-4" required="true">
+        <input type="email" placeholder="meuemail@mail.com" id="mail">
+      </alc-field>
+
+      <alc-field Label="Telefone" hint="Informe seu número residencial" class="mb-4" required="true">
+        <input type="tel" placeholder="DDDXXXXXXXX" id="fone">
+      </alc-field>
+
+      <alc-fieldset legend="Termos de uso" error-msg="Escolha uma das opções!" hint="Apenas uma escolha!"
+        required="true">
+        <div class="flex flex-col gap-2">
+          <alc-checkbox>
+            <input type="checkbox" id="a" />
+            <label slot="label" for="a">a</label>
+          </alc-checkbox>
+          <alc-checkbox error-msg="teste">
+            <input type="checkbox" id="b" />
+            <label slot="label" for="b">b</label>
+          </alc-checkbox>
+          <alc-checkbox>
+            <input type="checkbox" id="c" />
+            <label slot="label" for="c">c</label>
+          </alc-checkbox>
+        </div>
+      </alc-fieldset>
+
+      <alc-checkbox error-msg="teste">
+        <input type="checkbox" id="teste" />
+        <label slot="label" for="teste">Opção 1</label>
+      </alc-checkbox>
+
+    </alc-field-checker>
+  </div>
+
+  <script>
+    const passwordInput = document.getElementById('password');
+    const passField = document.getElementById('senha');
+
+    function validatePassword() {
+      const password = passwordInput.value;
+      let errorMsg = "";
+
+      if (!password) {
+        errorMsg = "Insira uma senha!";
+      } else if (password.length < 4) {
+        errorMsg = "Senha muito curta! Mínimo de 4 caracteres!";
+      } else if (/^[a-zA-Z]+$/.test(password)) {
+        errorMsg = "Senha insegura! Insira ao menos um número!";
+      } else if (/^\d+$/.test(password)) {
+        errorMsg = "Senha insegura! Insira ao menos uma letra!";
+      }
+
+      passField.setAttribute("error-msg", errorMsg);
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>

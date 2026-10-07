@@ -1,0 +1,171 @@
+/* Definição de variáveis de cor para temas claro e escuro */
+[data-alc-theme="light"] alc-input-file {
+  --text-color-label: var(--alc-color-text-0);
+  --text-color: var(--alc-color-text-1);
+
+  --shadow-color: var(--alc-color-neutral-5);
+
+  --outline-color: var(--alc-color-action-60);
+
+  --border-color: var(--alc-color-neutral-60);
+  --border-color-hover: var(--alc-color-action-60);
+  --border-color-focus : var(--alc-color-action-20);
+
+  /* Estilização de desabilitado */
+  --bg-color-disabled    : var(--alc-color-neutral-10);
+  --border-color-disabled: var(--alc-color-neutral-40);
+  --text-color-disabled  : var(--alc-color-text-4);
+}
+
+[data-alc-theme="dark"] alc-input-file {
+  --text-color-label: var(--alc-color-text-0);
+  --text-color: var(--alc-color-text-1);
+
+  --shadow-color: var(--alc-color-neutral-80);
+
+  --outline-color: var(--alc-color-action-30);
+
+  --border-color: var(--alc-color-neutral-30);
+  --border-color-hover: var(--alc-color-action-40);
+  --border-color-focus : var(--alc-color-action-70);
+
+  /* Estilização de desabilitado */
+  --bg-color-disabled    : var(--alc-color-neutral-80);
+  --border-color-disabled: var(--alc-color-neutral-50);
+  --text-color-disabled  : var(--alc-color-text-4);
+}
+
+/* Estilos para o campo principal */
+.alc-input-file__field {
+  @apply flex flex-col w-full;
+}
+
+.alc-input-file__text-button {
+  @apply flex items-center gap-[--alc-spacing-03] text-base;
+}
+
+.alc-input-file__content {
+  @apply flex flex-col w-full gap-[--alc-spacing-03] mt-[--alc-spacing-03];
+}
+
+.alc-input-file__file {
+  @apply flex items-center justify-between py-[--alc-spacing-03] px-[--alc-spacing-05] rounded w-full bg-[--alc-color-layer-b] text-[--text-color];
+}
+
+.alc-input-file__file span {
+  @apply break-words;
+}
+
+.alc-input-file__text {
+  @apply text-[--alc-color-text-4] text-[0.875rem];
+}
+
+.alc-input-file__label {
+  @apply text-[--text-color-label];
+}
+
+/* Ocultar o input de arquivo padrão */
+.alc-input-file__input {
+  @apply hidden;
+}
+
+/* Estilos para o Modo Input */
+.alc-input-file__input-container {
+  @apply flex flex-col;
+}
+
+.alc-input-file__input-wrapper {
+  @apply relative flex items-center;
+}
+
+.alc-input-file__icon {
+  @apply absolute left-[--alc-spacing-04] top-1/2 transform -translate-y-1/2 pointer-events-none;
+}
+
+/* Input sem ícone */
+input[type=text].alc-input-file__text-input {
+  @apply w-full py-[--alc-spacing-03] pl-[--alc-spacing-04] pr-[--alc-spacing-10] cursor-pointer box-border select-none;
+  @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  @apply shadow-inner shadow-[--shadow-color] transition-colors min-h-[theme(height.10)];
+  @apply placeholder:text-[--text-color-placeholder];
+}
+
+/* Input com ícone */
+.alc-input-file__input-wrapper--with-icon input[type=text].alc-input-file__text-input {
+  @apply pl-[--alc-spacing-08]; /* Adiciona padding-left maior quando há ícone */
+}
+
+input[type=text].alc-input-file__text-input:focus {
+  @apply select-none ring-0 outline outline-2 outline-offset-[--alc-spacing-01] outline-[--outline-color];
+}
+
+.alc-input-file__text-input:disabled {
+  @apply shadow-none bg-[--bg-color-disabled] border-[--border-color-disabled];
+  @apply text-[--text-color-disabled] cursor-not-allowed;
+  @apply hover:border-[--border-color-disabled];
+}
+
+.alc-input-file__remove-button {
+  @apply absolute top-1/2 right-[--alc-spacing-03] -translate-y-1/2 bg-transparent border-0 cursor-pointer p-[--alc-spacing-none] w-8 h-8 rounded-full shadow-none;
+}
+
+.alc-input-file__remove-button:hover,
+.alc-input-file__remove-button:focus {
+  @apply bg-[--alc-color-layer-b] outline-none ring-2 ring-[--alc-color-primary];
+}
+
+.alc-input-file__remove-button alc-icon {
+  @apply pointer-events-none;
+}
+
+.alc-input-file__info {
+  @apply mt-[--alc-spacing-02] text-right text-sm text-[--alc-color-text-4];
+}
+
+/* Estilos para o Modo Área de Drop */
+.alc-input-file__dropzone {
+  @apply flex items-center justify-center flex-col gap-[--alc-spacing-03] p-[--alc-spacing-05] bg-[--alc-color-layer-b] text-[--text-color];
+  @apply border-[--alc-color-neutral-40] border-2 border-dashed rounded cursor-pointer transition-colors duration-200;
+}
+
+.alc-input-file__dropzone:focus {
+  @apply ring-0 border-[--border-color-hover] outline outline-2 outline-offset-[--alc-spacing-01] outline-[--outline-color];
+  @apply border-[--border-color-hover];
+}
+
+.alc-input-file__dropzone:hover {
+  @apply border-[--border-color-hover];
+}
+
+.alc-input-file__dropzone--dragover {
+  @apply border-[--alc-color-primary] bg-[--alc-color-neutral-20];
+}
+
+.alc-input-file__dropzone--disabled {
+  @apply opacity-60 cursor-not-allowed;
+}
+
+.alc-input-file__dropzone-text {
+  @apply text-base text-center;
+}
+
+.alc-input-file__dropzone.alc-field__input--error {
+  @apply border-[--border-color-error];
+}
+
+/* Estilos para o Modo Button */
+
+.alc-button.alc-field__input--error {
+  @apply border border-[--border-color-error];
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 600px) {
+  .alc-input-file__file {
+    @apply items-start;
+  }
+
+  .alc-input-file__info {
+    @apply text-left;
+  }
+}

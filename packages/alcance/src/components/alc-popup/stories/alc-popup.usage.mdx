@@ -1,0 +1,137 @@
+{/* alc-popup.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-popup.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.name}
+Por padrão o posicionamento do popup é embaixo da âncora.
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Placement.name}
+Você pode alterar o posicionamento do popup através da propriedade `placement`.
+<Canvas of={Stories.Placement} sourceState="shown" />
+<Controls of={Stories.Placement} />
+
+## {Stories.Distance.name}
+Use a propriedade `distance` para ajustar a distância entre o popup e sua âncora. Um valor positivo afasta o popup, enquanto um valor negativo o aproxima.
+<Canvas of={Stories.Distance} sourceState="shown" />
+<Controls of={Stories.Distance} />
+
+## {Stories.Flip.name}
+Quando o popup não tem espaço suficiente na posição definida, ele pode se reposicionar automaticamente para permanecer visível. Use a propriedade flip para habilitar essa função.
+
+Você pode acionar o scroll no exemplo abaixo para ver o `flip` em ação.
+<Canvas of={Stories.Flip} sourceState="shown" />
+<Controls of={Stories.Flip} />
+
+## {Stories.Shift.name}
+Ao usar a propriedade `shift` você impede que o elemento flutuante transborde ao longo de seu eixo de alinhamento, mantendo no lado em que foi posicionado.
+
+Você pode acionar o scroll no exemplo abaixo para ver o `shift` em ação.
+<Canvas of={Stories.Shift} sourceState="shown" />
+<Controls of={Stories.Shift} />
+
+## {Stories.Strategy.name}
+Por padrão, o popup usa posicionamento absoluto. No entanto, se a âncora estiver em um contêiner com overflow, por exemplo, o popup pode ser cortado. Para evitar isso, defina a propriedade `strategy` como `fixed`.
+
+Você pode acionar o scroll no exemplo abaixo para ver o `strategy` em ação.
+<Canvas of={Stories.Strategy} sourceState="shown" />
+<Controls of={Stories.Strategy} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <!-- Componente alc-popup -->
+    <alc-popup
+      ref="popupRef"
+      class="tooltip"
+      placement="top"
+      flip="true"
+      :active="isPopupActive"
+      @alc-close="onPopupClose"
+    >
+      <!-- Slot anchor -->
+      <div slot="anchor" @click="togglePopup">
+        <alc-icon name="heart" label="Coração"></alc-icon>
+      </div>
+      <!-- Conteúdo do popup -->
+      Coração
+    </alc-popup>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'PopupExample',
+  data() {
+    return {
+      isPopupActive: false,
+    };
+  },
+  methods: {
+    togglePopup() {
+      this.isPopupActive = !this.isPopupActive;
+    },
+    onPopupClose() {
+      this.isPopupActive = false;
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <!-- Componente alc-popup -->
+    <alc-popup
+      ref="popupRef"
+      class="tooltip"
+      placement="right"
+      flip="true"
+      :active="isPopupActive"
+      @alc-close="handlePopupClose"
+    >
+      <!-- Slot anchor -->
+      <div slot="anchor" @click="togglePopup">
+        <alc-icon name="info" label="Informação"></alc-icon>
+      </div>
+      <!-- Conteúdo do popup -->
+      Informações adicionais
+    </alc-popup>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'PopupExampleTS',
+  setup() {
+    const isPopupActive = ref(false);
+
+    const togglePopup = () => {
+      isPopupActive.value = !isPopupActive.value;
+    };
+
+    const handlePopupClose = () => {
+      isPopupActive.value = false;
+    };
+
+    return {
+      isPopupActive,
+      togglePopup,
+      handlePopupClose,
+    };
+  },
+});
+</script>`
+  }}
+/>

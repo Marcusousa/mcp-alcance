@@ -1,0 +1,40 @@
+/* Padrão a todos exemplos */
+.popup-example__container {
+    @apply flex justify-center items-center max-h-64;
+}
+
+.popup-example__popup {
+    @apply my-20;
+}
+
+.popup-example__anchor {
+    @apply h-36 w-36 rounded border-2 border-dashed border-gray-cool-50; 
+    @apply flex justify-center items-center;
+}
+
+.popup-example__box {
+    @apply h-12 w-24 rounded bg-blue-cool-50;
+    @apply flex justify-center items-center text-white;
+}
+
+/* Padrão para exemplos com scroll */
+.popup-example__container-scroll {
+    @apply overflow-auto border border-gray-cool-70 my-8;
+}
+
+.popup-example__container-scroll-horizontal {
+    @apply max-h-none ;
+}
+
+.popup-example__popup-scroll-vertical {
+    @apply pt-40 pb-12;
+}
+
+.popup-example__popup-scroll-horizontal {
+    @apply px-[90%]
+}
+
+/* Shift */
+.popup-example__box-shift {
+    @apply w-60;
+}

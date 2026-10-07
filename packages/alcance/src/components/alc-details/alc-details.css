@@ -1,0 +1,105 @@
+alc-details {
+  /**
+   * @prop --bg-color: Cor de fundo do details.
+   */
+  --bg-color: var(--alc-color-surface);
+
+  /* Define cor de fallback caso o color-mix não tenha suporte no navegador */
+  --shadow-color: var(--alc-color-border);
+
+  /* Define cor com transparência */
+  @supports (color: color-mix(in srgb, black, white)) {
+    --shadow-color: color-mix(in srgb, var(--alc-color-border) 50%, transparent);
+  }
+}
+
+[data-alc-theme="light"] alc-details {
+  --border-color: var(--alc-color-border);
+
+  --text-color-hover: var(--alc-color-action-60);
+
+  --bg-color-disabled: var(--alc-color-neutral-10);
+  --border-color-disabled: var(--alc-color-neutral-20);
+  --text-color-disabled: var(--alc-color-text-4);
+}
+
+[data-alc-theme="dark"] alc-details {
+  --border-color: var(--alc-color-border);
+
+  --text-color-hover: var(--alc-color-action-40);
+
+  --bg-color-disabled: var(--alc-color-neutral-80);
+  --border-color-disabled: var(--alc-color-neutral-70);
+  --text-color-disabled: var(--alc-color-text-3);
+}
+
+:host {
+  display: block;
+}
+
+/* Default icon hidden */
+.alc-details__summary {
+  list-style: none;
+}
+
+.alc-details__summary::-webkit-details-marker {
+  display: none;
+}
+/* ================== */
+
+
+/* Animações removidas até ajustar o tabs para funcionar o details dentro */
+.alc-details {
+  /* --max-height: calc(var(--min-height) + var(--content-height) + 1); */
+  @apply bg-[color:var(--bg-color)] rounded-[var(--alc-radius-default)] mb-[--alc-spacing-03] shadow shadow-[var(--shadow-color)];
+  /* @apply h-[var(--min-height)] transition-all duration-100 ease-in-out; */
+}
+
+/* .alc-details.is-open {
+  @apply h-[var(--max-height)];
+} */
+
+.alc-details.is-disabled {
+  @apply rounded-[var(--alc-radius-default)];
+  @apply bg-[color:var(--bg-color-disabled)] text-[color:var(--text-color-disabled)] border-[color:var(--border-color-disabled)];
+}
+
+.alc-details__summary {
+  --summary-padding: calc(var(--alc-spacing-03) - theme('borderWidth.2'));
+  @apply flex items-center gap-[--alc-spacing-03] p-[var(--summary-padding)] text-base transition-colors cursor-pointer;
+  @apply hover:text-[color:var(--text-color-hover)] rounded-[var(--alc-radius-default)] border border-[color:var(--border-color)];
+}
+
+.alc-details__summary.is-open {
+  @apply rounded-b-none;
+}
+
+.alc-details__summary:focus-visible {
+  @apply border-[color:var(--border-color)];
+}
+
+.alc-details__icon  {
+  @apply origin-center rotate-0 transition-transform duration-200 ease-in-out;
+}
+
+.alc-details__icon.is-open {
+  @apply rotate-90;
+}
+
+.alc-details__summary.is-disabled {
+  /* prevents click events and prevents text selection*/
+  @apply pointer-events-none select-none cursor-not-allowed outline-none;
+}
+
+.alc-details__summary.is-disabled:focus-visible {
+  @apply border-transparent;
+}
+
+.alc-details__content {
+  @apply p-[--alc-spacing-03] border-r rounded-[var(--alc-radius-default)] rounded-t-none border-l border-b border-[color:var(--border-color)];
+  /* @apply opacity-0 transition-opacity; */
+}
+
+/* .alc-details.is-open .alc-details__content {
+  @apply opacity-100;
+} */

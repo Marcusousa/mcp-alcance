@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Leiaute com Componentes</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+
+  <alc-header name="HoverCat Monitor" description="Thundercats Technology" home-url="/">
+    <!-- BANDEIRA DE AMBIENTE  -->
+    <!-- <alc-environment-label env="prototype"></alc-environment-label> -->
+    <!-- SKIP-LINKS  -->
+    <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+    <alc-skip-to-nav></alc-skip-to-nav>
+
+    <div slot="support">
+      <alc-header-action id="support-ajuda" icon-name="question-circle" variant="button">Ajuda</alc-header-action>
+      <alc-header-action icon-name="envelope" url="/contato" variant="link">Contato</alc-header-action>
+    </div>
+
+    <div slot="fixed">
+      <!--
+        Mostra uma possível forma de exibir uma lista de notificações em um dropdown.
+        Isso não faz parte do design system (ao menos não ainda).
+        alc-header-notifications pode ser, por exemplo:
+          1. Um botão que abre um dropdown. O conteúdo desse dropdown é definido pela aplicação.
+          2. Um botão que abre uma janela modal. O conteúdo da janela é definido pela aplicação.
+          3. Um link que navega para outra página. O conteúdo dessa página é definido pela aplicação.
+      -->
+      <alc-dropdown>
+        <alc-header-notifications slot="trigger" notifications="2"></alc-header-notifications>
+        <div class="p-3 flex flex-col gap-2">
+          <div class="my-notification">
+            <p>Notificação mais recente (não lida)</p>
+            <p>
+              <a href="#" class="alc-link">ver detalhes</a>
+            </p>
+          </div>
+          <div class="my-notification">
+            <p>Penúltima notificação (não lida)</p>
+            <p>
+              <a href="#" class="alc-link">ver detalhes</a>
+            </p>
+          </div>
+          <div class="my-notification">
+            <p>Antepenúltima notificação</p>
+            <p>
+              <a href="#" class="alc-link">ver detalhes</a>
+            </p>
+          </div>
+        </div>
+
+      </alc-dropdown>
+
+      <alc-header-action icon-name="search" variant="button">Buscar</alc-header-action>
+
+    </div>
+
+    <div slot="user">
+      <alc-user-menu name="Tygra a'Latus" registration-number="P_0000"
+        img-src="https://static.wikia.nocookie.net/thundercatslair/images/0/05/Tygra2.jpg">
+      </alc-user-menu>
+    </div>
+
+  </alc-header>
+
+  <!-- CORPO -->
+  <div class="alc-layout">
+
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <alc-nav-panel>
+      <alc-nav>
+        <ul>
+          <li><a href="#">Base de operação</a></li>
+          <li>
+            <span>Salão dos ThunderCats</span>
+            <div data-alc-panel>
+              <ul>
+                <li><a href="#">Lion-O</a></li>
+                <li><a href="#">Cheetara</a></li>
+                <li><a href="#">Panthro</a></li>
+                <li><a href="#">Tygra</a></li>
+                <li><a href="#">WilyKit & WilyKat</a></li>
+                <li><a href="#">Snarf</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="#">Biblioteca de Thundera</a></li>
+          <li><a href="#">Sala de Batalhas</a></li>
+        </ul>
+      </alc-nav>
+    </alc-nav-panel>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="main-content" class="alc-layout__content">
+
+      <!--
+        Daqui em diante, é necessário observar o uso de "container"
+        de acordo com as necessidades do leiaute.
+      -->
+
+      <div class="container my-4">
+
+        <!-- TITULO DA PAGINA -->
+        <h1>Biblioteca de Thundera</h1>
+
+        <p>
+          A Biblioteca de Thundera é mais do que um repositório de conhecimento antigo — ela é a guardiã da sabedoria
+          dos Anciões e a chave para decifrar os mistérios do Olho de Thundera. Em suas prateleiras, repousam registros
+          de batalhas históricas, mapas de galáxias distantes e tratados sobre as forças que ameaçam o equilíbrio
+          universal.
+
+        </p>
+
+      </div>
+
+      <div class="alc-layout__full-width bg-skin-surface-secondary py-10">
+        <div class="container">
+          <p>
+            Os Thundercats frequentemente consultam este local sagrado para planejar suas missões e desenvolver táticas
+            contra Mumm-Ra e seus aliados.
+            Cada sessão de estudo se transforma em um conselho tático, onde o saber acumulado dos ancestrais guia cada passo do presente.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="container-fluid my-4">
+
+        <h2>Documentos Consultados na Última Semana</h2>
+        <alc-datatable>
+          <table>
+            <thead>
+              <tr>
+                <th>Título do Volume</th>
+                <th>Categoria</th>
+                <th>Nível de Acesso</th>
+                <th>Último Leitor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Táticas Avançadas de Thundera</td>
+                <td>Estratégia</td>
+                <td>Alto</td>
+                <td>Panthro</td>
+              </tr>
+              <tr>
+                <td>Crônicas de Jaga, o Sábio</td>
+                <td>História</td>
+                <td>Médio</td>
+                <td>Cheetara</td>
+              </tr>
+              <tr>
+                <td>Magia e Cristais Eternos</td>
+                <td>Misticismo</td>
+                <td>Restrito</td>
+                <td>Lion-O</td>
+              </tr>
+              <tr>
+                <td>Atlas de Terceira Terra</td>
+                <td>Geografia</td>
+                <td>Livre</td>
+                <td>Tygra</td>
+              </tr>
+            </tbody>
+          </table>
+        </alc-datatable>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    const header = document.querySelector('alc-header')
+    header.addEventListener("alc-home", function (e) {
+      console.log(`alc-home `, e)
+      e.preventDefault();
+    });
+
+    async function showModal(selector) {
+      return await document.querySelector(selector).show();
+    }
+    async function hideModal(selector) {
+      return await document.querySelector(selector).hide();
+    }
+  </script>
+
+  <script>
+    // Funções usadas em toda a página
+    async function showModal(selector) {
+      return await document.querySelector(selector).show();
+    }
+    async function hideModal(selector) {
+      return await document.querySelector(selector).hide();
+    }
+  </script>
+
+</body>
+
+</html>

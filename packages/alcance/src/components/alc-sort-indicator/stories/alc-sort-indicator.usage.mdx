@@ -1,0 +1,170 @@
+{/* alc-sort-indicator.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-sort-indicator.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Ascendente
+
+<Canvas of={Stories.Ascendente} sourceState="shown" />
+<Controls of={Stories.Ascendente} />
+
+## Descendente
+
+<Canvas of={Stories.Descendente} sourceState="shown" />
+<Controls of={Stories.Descendente} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `
+<template>
+  <div>
+    <h2>Exemplo de Uso do alc-sort-indicator (JavaScript)</h2>
+    <p>Lista de personagens dos ThunderCats ordenável por nome:</p>
+    <table>
+      <thead>
+        <tr>
+          <th @click="sortByName">
+            Nome
+            <!-- Exibimos o indicador de ordenação ao lado do cabeçalho -->
+            <alc-sort-indicator :sorting="currentSorting"></alc-sort-indicator>
+          </th>
+          <th>Função</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="character in sortedCharacters" :key="character.name">
+          <td>{{ character.name }}</td>
+          <td>{{ character.role }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'SortIndicatorExampleJS',
+  data() {
+    return {
+      currentSorting: 'none', // 'asc', 'desc' ou 'none'
+      characters: [
+        { name: 'Lion-O', role: 'Líder' },
+        { name: 'Cheetara', role: 'Velocista' },
+        { name: 'Panthro', role: 'Engenheiro' },
+        { name: 'Tygra', role: 'Arquiteto' },
+        { name: 'Snarf', role: 'Companheiro' },
+      ],
+    };
+  },
+  computed: {
+    sortedCharacters() {
+      if (this.currentSorting === 'asc') {
+        return [...this.characters].sort((a, b) => a.name.localeCompare(b.name));
+      } else if (this.currentSorting === 'desc') {
+        return [...this.characters].sort((a, b) => b.name.localeCompare(a.name));
+      }
+      return this.characters;
+    },
+  },
+  methods: {
+    sortByName() {
+      if (this.currentSorting === 'none') {
+        this.currentSorting = 'asc';
+      } else if (this.currentSorting === 'asc') {
+        this.currentSorting = 'desc';
+      } else {
+        this.currentSorting = 'none';
+      }
+    },
+  },
+};
+</script>
+    `,
+    typescript: `
+<template>
+  <div>
+    <h2>Exemplo de Uso do alc-sort-indicator (TypeScript)</h2>
+    <p>Lista de personagens dos ThunderCats ordenável por nome:</p>
+    <table>
+      <thead>
+        <tr>
+          <th @click="sortByName">
+            Nome
+            <alc-sort-indicator :sorting="currentSorting"></alc-sort-indicator>
+          </th>
+          <th>Função</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="character in sortedCharacters" :key="character.name">
+          <td>{{ character.name }}</td>
+          <td>{{ character.role }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, computed } from 'vue';
+
+interface Character {
+  name: string;
+  role: string;
+}
+
+export default defineComponent({
+  name: 'SortIndicatorExampleTS',
+  setup() {
+    const currentSorting = ref<'asc' | 'desc' | 'none'>('none');
+    const characters = ref<Character[]>([
+      { name: 'Lion-O', role: 'Líder' },
+      { name: 'Cheetara', role: 'Velocista' },
+      { name: 'Panthro', role: 'Engenheiro' },
+      { name: 'Tygra', role: 'Arquiteto' },
+      { name: 'Snarf', role: 'Companheiro' },
+    ]);
+
+    const sortedCharacters = computed<Character[]>(() => {
+      if (currentSorting.value === 'asc') {
+        return [...characters.value].sort((a, b) => a.name.localeCompare(b.name));
+      } else if (currentSorting.value === 'desc') {
+        return [...characters.value].sort((a, b) => b.name.localeCompare(a.name));
+      }
+      return characters.value;
+    });
+
+    const sortByName = () => {
+      if (currentSorting.value === 'none') {
+        currentSorting.value = 'asc';
+      } else if (currentSorting.value === 'asc') {
+        currentSorting.value = 'desc';
+      } else {
+        currentSorting.value = 'none';
+      }
+    };
+
+    return {
+      currentSorting,
+      sortedCharacters,
+      sortByName,
+    };
+  },
+});
+</script>
+    `
+  }}
+/>

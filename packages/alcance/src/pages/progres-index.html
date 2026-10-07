@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Tarefas &mdash; Sistema Progres</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+  <style>
+    [data-alc-theme="light"] .insuficiente {
+      color: var(--alc-color-error-60);
+    }
+    [data-alc-theme="dark"] .insuficiente {
+      color: var(--alc-color-error-40);
+    }
+  </style>
+</head>
+
+<body>
+
+  <alc-header name="Progres">
+    <!-- BANDEIRA DE AMBIENTE  -->
+    <alc-environment-label env="prototype"></alc-environment-label>
+    <!-- SKIP-LINKS  -->
+    <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+  </alc-header>
+
+
+  <!-- CONTEUDO  -->
+  <div>
+
+    <div class="alc-layout">
+
+      <!-- NAVEGAÇÃO PRINCIPAL -->
+      <alc-sidepanel>
+
+        <!-- O MENU EM SI -->
+        <alc-nav>
+
+          <div slot="header">
+
+            <div class="px-5">
+              <alc-user
+                name="João Cabral de Melo Neto"
+                registration-number="P_123456"
+              ></alc-user>
+            </div>
+
+          </div>
+
+          <!-- <span data-alc-label>
+            Menu
+          </span> -->
+          <ul>
+            <li><a href="progres-index.html">Tarefas</a></li>
+            <li><a href="progres-erros--abel.html">Erros de importação</a></li>
+            <li><a href="#">Painel</a></li>
+          </ul>
+
+          <span data-alc-label>
+            Aprovações
+          </span>
+          <ul>
+            <li><a href="#">Aprovação supervisor</a></li>
+            <li><a href="#">Aprovação coordenador</a></li>
+            <li><a href="#">Relatório DRH</a></li>
+          </ul>
+
+          <span data-alc-label>
+            Planejamentos
+          </span>
+          <ul>
+            <li><a href="#">Tipos de portfólio</a></li>
+            <li><a href="#">Portfólios</a></li>
+            <li><a href="#">Itens de portfólios</a></li>
+          </ul>
+
+          <span data-alc-label>
+            Processos
+          </span>
+          <ul>
+            <li><a href="progres-repertorio.html">Repertório de atividades</a></li>
+            <li><a href="#">Lista de processos</a></li>
+          </ul>
+
+          <span data-alc-label>
+            Administrativo
+          </span>
+          <ul>
+            <li><a href="#">Afastamentos</a></li>
+            <li><a href="#">Lotações</a></li>
+            <li><a href="#">Colaboradores</a></li>
+            <li><a href="#">Unidades</a></li>
+          </ul>
+
+          <div slot="footer">
+            <!-- @TODO Isso será modificado quando definirmos a interface definitiva para alc-theme -->
+            <div class="mx-5 mb-5">
+              <label>Tema</label>
+              <alc-theme></alc-theme>
+            </div>
+          </div>
+
+        </alc-nav>
+      </alc-sidepanel>
+
+      <!-- CONTEÚDO PRINCIPAL -->
+      <div id="main-content" class="alc-layout__content">
+
+        <div class="container">
+
+          <!-- TITULO DA PAGINA -->
+          <h1>Tarefas</h1>
+
+          <alc-tabs class="">
+            <alc-tab-button slot="button" tab="tab-1">05/2023</alc-tab-button>
+            <alc-tab-button slot="button" tab="tab-2">04/2023</alc-tab-button>
+            <alc-tab-button slot="button" tab="tab-3">03/2023</alc-tab-button>
+            <alc-tab tab="tab-1">
+              <h2>05/2023</h2>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col">
+                    <div class="bg-skin-surface-secondary p-2 mt-4">
+                      <div class="flex gap-2 justify-between">
+                        <h3 class="basis-1/2">Secid</h3>
+                        <p class="text-center">
+                          <span class="text-2xl block">86%</span> da meta até hoje
+                        </p>
+                        <p class="text-center">
+                          <span class="text-2xl block">82%</span> da meta total do mês
+                        </p>
+                      </div>
+                    </div>
+                    <ul>
+                      <li class="mt-8">
+                        <p class="bg-skin-surface-tertiary p-1">
+                          Abel Augusto (P_1111)
+                        </p>
+                        <div class="flex gap-2 text-sm">
+                          <p class="text-center">
+                            <span class="text-2xl block">120</span> pontos.
+                            <span class="block font-semibold mt-2">meta: 150</span>
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">88%</span> da meta até hoje
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">88%</span> da meta total do mês
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">
+                              <alc-icon name="exclamation-triangle" label=""></alc-icon>
+                            </span>
+                            <a href="progres-erros--abel.html" class="alc-link">2 erros de importação</a>
+                          </p>
+                        </div>
+                      </li>
+                      <li class="mt-8">
+                        <p class="bg-skin-surface-tertiary p-1">
+                          Bento Bandeira (P_2222)
+                        </p>
+                        <div class="flex gap-2 text-sm">
+                          <p class="text-center">
+                            <span class="text-2xl block">150</span> pontos.
+                            <span class="block font-semibold mt-2">meta: 150</span>
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">100%</span> da meta até hoje
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">110%</span> da meta total do mês
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">
+                              <alc-icon name="exclamation-triangle" label=""></alc-icon>
+                            </span>
+                            2 erros de importação
+                          </p>
+                        </div>
+                      </li>
+                      <li class="mt-8">
+                        <p class="bg-skin-surface-tertiary p-1">
+                          Zoroastro Zamparoni (P_9999)
+                        </p>
+                        <div class="flex gap-2 text-sm">
+                          <p class="text-center">
+                            <span class="text-2xl block">110</span> pontos.
+                            <span class="block font-semibold mt-2">meta: 120</span>
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">95%</span> da meta até hoje
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">92%</span> da meta total do mês
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">
+                              <alc-icon name="check" label=""></alc-icon>
+                            </span>
+                            sem erros de importação
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col">
+                    <div class="bg-skin-surface-secondary p-2 mt-4">
+                      <div class="flex gap-2 justify-between">
+                        <h3 class="basis-1/2">Sepic/<wbr>Seuso</h3>
+                        <p class="text-center">
+                          <span class="text-2xl block">99%</span> da meta até hoje
+                        </p>
+                        <p class="text-center">
+                          <span class="text-2xl block">99%</span> da meta total do mês
+                        </p>
+                      </div>
+                    </div>
+                    <ul>
+                      <li class="mt-8">
+                        <p class="bg-skin-surface-tertiary p-1">
+                          Abel Augusto (P_1111)
+                        </p>
+                        <div class="flex gap-2 text-sm">
+                          <p class="text-center">
+                            <span class="text-2xl block">120</span> pontos.
+                            <span class="block font-semibold mt-2">meta: 150</span>
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">88%</span> da meta até hoje
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">88%</span> da meta total do mês
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">
+                              <alc-icon name="exclamation-triangle" label=""></alc-icon>
+                            </span>
+                            2 erros de importação
+                          </p>
+                        </div>
+                      </li>
+                      <li class="mt-8">
+                        <p class="bg-skin-surface-tertiary p-1">
+                          Zoroastro Zamparoni (P_9999)
+                        </p>
+                        <div class="flex gap-2 text-sm">
+                          <p class="text-center">
+                            <span class="text-2xl block">110</span> pontos.
+                            <span class="block font-semibold mt-2">meta: 120</span>
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">95%</span> da meta até hoje
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">92%</span> da meta total do mês
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">
+                              <alc-icon name="check" label=""></alc-icon>
+                            </span>
+                            sem erros de importação
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col">
+                    <div class="bg-skin-surface-secondary p-2 mt-4">
+                      <div class="flex gap-2 justify-between">
+                        <h3 class="basis-1/2">Seris</h3>
+                        <p class="text-center">
+                          <span class="text-2xl block">86%</span> da meta até hoje
+                        </p>
+                        <p class="text-center">
+                          <span class="text-2xl block">82%</span> da meta total do mês
+                        </p>
+                      </div>
+                    </div>
+                    <ul>
+                      <li class="mt-8">
+                        <p class="bg-skin-surface-tertiary p-1">
+                          Abel Augusto (P_1111)
+                        </p>
+                        <div class="flex gap-2 text-sm">
+                          <p class="text-center">
+                            <span class="text-2xl block">120</span> pontos.
+                            <span class="block font-semibold mt-2">meta: 150</span>
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">88%</span> da meta até hoje
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">88%</span> da meta total do mês
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">
+                              <alc-icon name="exclamation-triangle" label=""></alc-icon>
+                            </span>
+                            2 erros de importação
+                          </p>
+                        </div>
+                      </li>
+                      <li class="mt-8">
+                        <p class="bg-skin-surface-tertiary p-1">
+                          Bento Bandeira (P_2222)
+                        </p>
+                        <div class="flex gap-2 text-sm">
+                          <p class="text-center">
+                            <span class="text-2xl block">150</span> pontos.
+                            <span class="block font-semibold mt-2">meta: 150</span>
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">100%</span> da meta até hoje
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">110%</span> da meta total do mês
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">
+                              <alc-icon name="exclamation-triangle" label=""></alc-icon>
+                            </span>
+                            2 erros de importação
+                          </p>
+                        </div>
+                      </li>
+                      <li class="mt-8">
+                        <p class="bg-skin-surface-tertiary p-1">
+                          Zoroastro Zamparoni (P_9999)
+                        </p>
+                        <div class="flex gap-2 text-sm">
+                          <p class="text-center">
+                            <span class="text-2xl block">110</span> pontos.
+                            <span class="block font-semibold mt-2">meta: 120</span>
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">95%</span> da meta até hoje
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">92%</span> da meta total do mês
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">
+                              <alc-icon name="check" label=""></alc-icon>
+                            </span>
+                            sem erros de importação
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col">
+                    <div class="bg-skin-surface-secondary p-2 mt-4">
+                      <div class="flex gap-2 justify-between">
+                        <h3 class="basis-1/2">Sproc</h3>
+                        <p class="text-center">
+                          <span class="text-2xl block">86%</span> da meta até hoje
+                        </p>
+                        <p class="text-center insuficiente">
+                          <span class="text-2xl block">27%</span> da meta total do mês
+                        </p>
+                      </div>
+                    </div>
+                    <ul>
+                      <li class="mt-8">
+                        <p class="bg-skin-surface-tertiary p-1">
+                          Zoroastro Zamparoni (P_9999)
+                        </p>
+                        <div class="flex gap-2 text-sm">
+                          <p class="text-center">
+                            <span class="text-2xl block">110</span> pontos.
+                            <span class="block font-semibold mt-2">meta: 120</span>
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">95%</span> da meta até hoje
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">92%</span> da meta total do mês
+                          </p>
+                          <p class="text-center">
+                            <span class="text-2xl block">
+                              <alc-icon name="check" label=""></alc-icon>
+                            </span>
+                            sem erros de importação
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </alc-tab>
+            <alc-tab tab="tab-2">
+              <h2>04/2023</h2>
+            </alc-tab>
+            <alc-tab tab="tab-3">
+              <h2>03/2023</h2>
+            </alc-tab>
+          </alc-tabs>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

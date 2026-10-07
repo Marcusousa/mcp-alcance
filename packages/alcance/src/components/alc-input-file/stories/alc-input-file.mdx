@@ -1,0 +1,140 @@
+{/* alc-input-file.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-input-file.stories';
+import InputFileProps from './alc-input-file.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente InputFile é um componente versátil para seleção e upload de arquivos, oferecendo uma experiência de usuário amigável e personalizável. 
+Ele permite que os usuários selecionem arquivos de diferentes maneiras, adaptando-se às necessidades da sua aplicação.
+
+## Visão Geral
+
+O InputFile facilita a seleção de arquivos pelos usuários, oferecendo três modos de interação:
+
+    * Botão (button): Exibe um botão que abre o seletor de arquivos.
+    * Input (input): Exibe um campo de texto que mostra os nomes dos arquivos selecionados.
+    * Área de Arrastar e Soltar (dropzone): Permite que os usuários arrastem e soltem arquivos ou cliquem para selecioná-los.
+
+O componente suporta seleção múltipla de arquivos, exibe informações dos arquivos selecionados e permite que os usuários os removam antes do upload.
+
+## Modos de Uso
+
+### Modo Botão
+
+No modo botão, o componente apresenta um botão que, ao ser clicado, abre o diálogo de seleção de arquivos.
+
+<CodeExample type ='html'>
+{`<alc-input-file
+  id-input="seletorBotao"
+  multiple
+  mode="button"
+  icon-name="upload"
+  button-type="secondary"
+/>`}
+</CodeExample>
+
+### Modo Input
+
+No modo input, o componente exibe um campo de texto que lista os nomes dos arquivos selecionados. O usuário pode clicar no campo para abrir o seletor de arquivos.
+
+<CodeExample type ='html'>
+{`<alc-input-file
+  id-input="seletorInput"
+  multiple
+  mode="input"
+  icon-name="upload"
+/>`}
+</CodeExample>
+
+### Modo Dropzone
+
+No modo dropzone, o componente apresenta uma área onde os usuários podem arrastar e soltar arquivos ou clicar para selecioná-los.
+
+<CodeExample type ='html'>
+{`<alc-input-file
+  id-input="seletorDropzone"
+  multiple
+  mode="dropzone"
+  icon-name="upload"
+/>`}
+</CodeExample>
+
+## Exemplos Práticos
+
+### Integrando com alc-field
+
+O AlcInputFile pode ser facilmente integrado com o componente alc-field para aprimorar a experiência do usuário em formulários, oferecendo validação e exibição de mensagens de erro.
+
+<CodeExample type ='html'>
+{`<alc-field label="Anexar Documentos" required error-msg="Por favor, selecione pelo menos um arquivo.">
+  <alc-input-file
+    id-input="documentosAnexos"
+    multiple
+    mode="dropzone"
+    icon-name="upload"
+  />
+</alc-field>`}
+</CodeExample>
+
+## Perguntas Frequentes
+
+### Como obtenho os arquivos selecionados?
+
+Utilize o método `getFiles()` para obter os arquivos selecionados juntamente com seus conteúdos.
+
+<CodeExample type ='js'>
+{`const inputFile = document.querySelector('alc-input-file');
+inputFile.getFiles().then(files => {
+  console.log(files);
+});`}
+</CodeExample>
+
+### Como escuto mudanças na seleção de arquivos?
+
+Adicione um ouvinte para o evento alc-file-selected para ser notificado sempre que a seleção de arquivos mudar.
+
+<CodeExample type ='js'>
+{`const inputFile = document.querySelector('alc-input-file');
+inputFile.addEventListener('alc-file-selected', event => {
+  const files = event.detail.files;
+  console.log('Arquivos selecionados:', files);
+});`}
+</CodeExample>
+
+### Posso limitar os tipos de arquivos que podem ser selecionados?
+
+Sim, utilize a propriedade accept para especificar os tipos de arquivos permitidos.
+
+<CodeExample type ='html'>
+{`<alc-input-file
+  id-input="imagens"
+  accept="image/png, image/jpeg"
+/>`}
+</CodeExample>
+
+### Como desabilito o componente?
+
+Defina a propriedade disabled como true para desabilitar o componente.
+
+<CodeExample type ='html'>
+{`<alc-input-file
+  id-input="arquivoDesabilitado"
+  disabled
+/>`}
+</CodeExample>
+
+### Como limpar o input e a lista de arquivos?
+
+Utilize o método `clear()` para limpar o input e a lista de arquivos selecionados.
+
+<CodeExample type ='js'>
+{`const inputFile = document.querySelector('alc-input-file');
+inputFile.clear();`}
+</CodeExample>
+
+<Markdown>{InputFileProps}</Markdown>

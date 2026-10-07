@@ -1,0 +1,24 @@
+{/* alc-skip-link.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-skip-link.stories';
+
+import SkipLinkProps from './alc-skip-link.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+Um skip link é um atalho para uma região interna da página.
+É especialmente útil para o usuário que depende de teclado para navegar. Permite ir diretamente para o ponto de interesse.
+
+Geralmente, são criados skip links para o **conteúdo principal** e para a **navegação**. Outros skip links podem ser fornecidos de acordo com a estrutura da aplicação.
+
+O skip link que leva para o conteúdo deve ser o primeiro elemento focável de uma página. Os demais skip links devem vir logo em seguida.
+
+É importante que haja consistência entre os skip links de todas as páginas da aplicação.
+
+A configuração de cada skip link depende da estrutura da página, em especial dos `ids` utilizados para as regiões que serão referenciadas.
+
+<Markdown>{SkipLinkProps}</Markdown>

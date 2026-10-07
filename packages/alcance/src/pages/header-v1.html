@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Header</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <alc-header-v1 name="Gabinete Digital"></alc-header-v1>
+
+  <alc-header-v1 name="Usando home-url" home-url="#"></alc-header-v1>
+
+  <alc-header-v1>
+    <a slot="link" href="#">Usando slot</a>
+  </alc-header-v1>
+
+  <alc-header-v1 name="Prioridade para prop">
+    <a slot="link" href="#">slot</a>
+  </alc-header-v1>
+
+  <alc-theme></alc-theme>
+
+  <br />
+
+  <div class="bg-mint-cool-50">
+    <alc-header-id name="Gabinete Digital" description="Descrição da sigla do sistema" home-url="https://www.google.com"></alc-header-id>
+  </div>
+  <br />
+  <div class="bg-mint-cool-50">
+    <alc-header-id name="Gabinete Digital" home-url="#"></alc-header-id>
+  </div>
+
+  <script>
+    const h = document.querySelector('alc-header-id');
+    h.addEventListener('alc-home', e => {
+      // e.preventDefault();
+    });
+  </script>
+</body>
+</html>

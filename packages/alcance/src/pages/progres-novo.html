@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Novo tipo de atividade &mdash; Sistema Progres</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+</head>
+
+<body>
+
+  <alc-header name="Progres">
+    <!-- BANDEIRA DE AMBIENTE  -->
+    <alc-environment-label env="prototype"></alc-environment-label>
+    <!-- SKIP-LINKS  -->
+    <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+  </alc-header>
+
+
+  <!-- CORPO  -->
+  <div class="alc-layout">
+
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <alc-sidepanel>
+
+      <!-- O MENU EM SI -->
+      <alc-nav>
+
+        <div slot="header">
+
+          <div class="px-5">
+            <alc-user
+              name="João Cabral de Melo Neto"
+              registration-number="P_123456"
+            ></alc-user>
+          </div>
+
+        </div>
+
+        <!-- <span data-alc-label>
+          Menu
+        </span> -->
+        <ul>
+          <li><a href="progres-index.html">Tarefas</a></li>
+          <li><a href="progres-erros--abel.html">Erros de importação</a></li>
+          <li><a href="#">Painel</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Aprovações
+        </span>
+        <ul>
+          <li><a href="#">Aprovação supervisor</a></li>
+          <li><a href="#">Aprovação coordenador</a></li>
+          <li><a href="#">Relatório DRH</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Planejamentos
+        </span>
+        <ul>
+          <li><a href="#">Tipos de portfólio</a></li>
+          <li><a href="#">Portfólios</a></li>
+          <li><a href="#">Itens de portfólios</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Processos
+        </span>
+        <ul>
+          <li><a href="#">Repertório de atividades</a></li>
+          <li><a href="#">Lista de processos</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Administrativo
+        </span>
+        <ul>
+          <li><a href="#">Afastamentos</a></li>
+          <li><a href="#">Lotações</a></li>
+          <li><a href="#">Colaboradores</a></li>
+          <li><a href="#">Unidades</a></li>
+        </ul>
+
+        <div slot="footer">
+          <!-- @TODO Isso será modificado quando definirmos a interface definitiva para alc-theme -->
+          <div class="mx-5 mb-5">
+            <label>Tema</label>
+            <alc-theme></alc-theme>
+          </div>
+        </div>
+
+      </alc-nav>
+    </alc-sidepanel>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="main-content" class="alc-layout__content">
+
+      <div class="container">
+
+        <!-- TITULO DA PAGINA -->
+        <h1>Novo tipo de atividade</h1>
+
+        <form action="">
+
+          <div class="row">
+            <div class="col-md-4">
+              <alc-field label="Sigla" class="mt-4" required="true">
+                <input type="text" />
+              </alc-field>
+            </div>
+            <div class="col-md-8">
+              <alc-field label="Nome" class="mt-4" required="true">
+                <input type="text" />
+              </alc-field>
+            </div>
+          </div>
+
+          <alc-field label="Descrição" class="mt-4" required="true">
+            <textarea></textarea>
+          </alc-field>
+
+          <div class="row">
+            <div class="col-md-6">
+              <alc-field label="Unidade" class="mt-4">
+                <select>
+                  <option value="-1">Selecione</option><option value="729">- - SEÇÃO DE GESTÃO DA INFORMAÇÃO</option><option value="727">- - SERVIÇO DE REDAÇÃO FINAL</option><option value="728">- - SERVIÇO DE TRAMITAÇÃO LEGISLATIVA</option><option value="1255">ACESS - COORDENAÇÃO DE ACESSIBILIDADE</option><option value="1256">ACOM/ACESS - SERVIÇO DE ACESSIBILIDADE DE COMUNICAÇÃO E INFORMAÇÃO</option><option value="1419">ADVCD - ADVOCACIA DA CÂMARA DOS DEPUTADOS</option><option value="601">AEROBSB - SETOR AEROPORTO - BRASÍLIA</option><option value="40900">AFOIN - AFASTAMENTO ORGANISMO INTERNACIONAL</option><option value="1258">AINC/ACESS - SERVIÇO DE INCLUSÃO SOCIAL</option><option value="562">AMCO I - ALMOXARIFADO DE MATERIAL DE CONSUMO I xyz</option><option value="563">AMCO II - ALMOXARIFADO DE MATERIAL DE CONSUMO II</option><option value="564">AMCO III - ALMOXARIFADO DE MATERIAL DE CONSUMO III</option><option value="569">AMCO IV - ALMOXARIFADO DE MATERIAL DE CONSUMO IV</option><option value="568">AMCO SIA - ALMOXARIFADO DE MATERIAL DE CONSUMO SIA</option><option value="566">AMMED - ALMOXARIFADO DE MATERIAL MEDICO</option><option value="570">AMPER - ALMOXARIFADO DE MATERIAL PERMANENTE</option><option value="1145">APEG - ASSESSORIA DE PLANEJAMENTO ESTRATÉGICO E GOVERNANÇA DA PRIMEIRA-SECRETARIA</option><option value="756">APROGE - ASSESSORIA DE PROJETOS E GESTÃO</option><option value="40700">ASA - ASSOCIAÇAO DOS SERVIDORES APOSENTADOS</option><option value="40100">ASCADE - ASSOCIAÇAO DOS SERVIDORES DA CD</option><option value="40602">ASF - A DISPOSIÇÃO DO SENADO FEDERAL</option><option value="1417">ASJUR-PRESI - ASSESSORIA JURÍDICA DA PRESIDÊNCIA</option><option value="880">ASSEDECOM - ASSESSORIA TÉCNICO-JURÍDICA - DECOM</option><option value="4700">ASSOC - ASSOC. BRASILEIRA DOS EX-CONGRESSITAS</option><option value="1102">ASTEC/DILEG - ASSESSORIA TÉCNICA DA DIRETORIA LEGISLATIVA</option><option value="251">ASTEJ - ASSESSORIA TÉCNICO-JURÍDICA DA SGM</option><option value="1259">ATAD/ACESS - SEÇÃO DE APOIO TÉCNICO-ADMINISTRATIVO</option><option value="1257">ATIC/ACESS - SERVIÇO DE ACESSIBILIDADE DIGITAL E TECNOLOGIA</option><option value="567">ATRAN - ALMOXARIFADO DE MATERIAL DE TRANSPORTES</option><option value="3143">AVANTE - LIDERANÇA DO AVANTE</option><option value="565">AVEEU - ALMOXARIFADO DE VESTUÁRIO E UNIFORMES</option><option value="765">CADAR - COMISSÃO DE AVALIAÇÃO DE DOCUMENTOS DE ARQUIVO</option><option value="988">CADAR - SECRETARIA EXECUTIVA DA COMISSÃO DE AVALIAÇÃO DE DOCUMENTOS DE ARQUIVO</option><option value="1127">CADOF - COORDENAÇÃO DE ADEQUAÇÃO ORÇAMENTÁRIA E FINANCEIRA</option><option value="128">CAEDI - COORDENAÇÃO DE ADMINISTRAÇÃO DE EDIFÍCIOS</option><option value="136">CAFIN/DEFIN - COORDENAÇÃO DE ADMINISTRAÇÃO FINANCEIRA</option><option value="1310">CAINF - COORDENAÇÃO DE ADMINISTRAÇÃO DE INFRAESTRUTURA DE TIC</option><option value="159">CALEG - COORDENAÇÃO DE APOIO TÉCNICO-LEGISLATIVO</option><option value="674">CAPADR - COMISSÃO DE AGRICULTURA, PECUÁRIA, ABASTECIMENTO E DESENVOLVIMENTO RURAL</option><option value="675">CCJC - COMISSÃO DE CONSTITUIÇÃO E JUSTIÇA E DE CIDADANIA</option><option value="469">CCOMP/DEMAP - COORDENAÇÃO DE COMPRAS</option><option value="140">CCONT/DEFIN - COORDENAÇÃO DE CONTABILIDADE</option><option value="464">CCONT/DEMAP - COORDENAÇÃO DE CONTRATOS</option><option value="272">CCTCI - COMISSÃO DE CIÊNCIA E TECNOLOGIA, COMUNICAÇÃO E INFORMÁTICA</option><option value="871">CCULT - COMISSÃO DE CULTURA</option><option value="0">CD - CAMARA DOS DEPUTADOS</option><option value="676">CDC - COMISSÃO DE DEFESA DO CONSUMIDOR</option><option value="679">CDEICS - COMISSÃO DE DESENVOLVIMENTO ECONÔMICO, INDÚSTRIA, COMÉRCIO E SERVIÇOS</option><option value="678">CDHM - COMISSÃO DE DIREITOS HUMANOS E MINORIAS</option><option value="8902">CDTI - Comitê Diretivo de TIC</option><option value="870">CE - COMISSÃO DE EDUCAÇÃO</option><option value="553">CEATE - CENTRAL DE ATENDIMENTO DO CEDI</option><option value="873">CEDES - CENTRO DE ESTUDOS E DEBATES ESTRATÉGICOS DA CÂMARA DOS DEPUTADOS</option><option value="163">CEDI - CENTRO DE DOCUMENTAÇÃO E INFORMAÇÃO</option><option value="755">CEDOS - SECRETARIA EXECUTIVA DA COMISSÃO ESPECIAL DE DOCUMENTOS SIGILOSOS</option><option value="559">CEDPA - CONSELHO DE ÉTICA E DECORO PARLAMENTAR</option><option value="1431">CEDUC - COORDENAÇÃO DE EDUCAÇÃO CONTINUADA</option><option value="332">CEFOR - CENTRO DE FORMAÇÃO, TREINAMENTO E APERFEIÇOAMENTO</option><option value="736">CEGAB - COORDENAÇÃO DE APOIO AO GABINETE PARLAMENTAR</option><option value="1016">CELEG - COORDENAÇÃO DE ORGANIZAÇÃO DA INFORMAÇÃO LEGISLATIVA</option><option value="1051">CEQUI - COORDENAÇÃO DE ENGENHARIA DE EQUIPAMENTOS</option><option value="459">CERET - COMISSÃO ESPECIAL - REFORMA TRIBUTÁRIA</option><option value="869">CERIMONIAL - ASSESSORIA INTERNACIONAL E CERIMONIAL</option><option value="458">CERPJ - COMISSÃO ESPECIAL - REFORMA DO PODER JUDICIÁRIO</option><option value="460">CERRI - COMISSÃO ESPECIAL - REFORMA DO REGIMENTO INTERNO</option><option value="1036">CESPO - COMISSÃO DO ESPORTE</option><option value="224">CFFC - COMISSÃO DE FISCALIZAÇÃO FINANCEIRA E CONTROLE</option><option value="1125">CFISC - COORDENAÇÃO DE FISCALIZAÇÃO E CONTROLE</option><option value="280">CFT - COMISSÃO DE FINANÇAS E TRIBUTAÇÃO</option><option value="500">CGRAF - COORDENAÇÃO DE SERVIÇOS GRÁFICOS</option><option value="6485">CHGABSGM - CHEFIA DE GABINETE</option><option value="40200">CIA/AEREAS - COMPANHIAS AEREAS</option><option value="3146">CIDADANIA - LIDERANÇA DO CIDADANIA</option><option value="1137">CIDOSO - COMISSÃO DE DEFESA DOS DIREITOS DA PESSOA IDOSA</option><option value="1277">CIGES - COORDENAÇÃO DE APOIO À GOVERNANÇA E À GESTÃO DE TIC</option><option value="681">CINDRA - COMISSÃO DE INTEGRAÇÃO NACIONAL, DESENVOLVIMENTO REGIONAL E DA AMAZÔNIA</option><option value="1396">CJOR - COORDENAÇÃO DE JORNALISMO</option><option value="554">CLP - COMISSÃO DE LEGISLAÇÃO PARTICIPATIVA</option><option value="682">CMADS - COMISSÃO DE MEIO AMBIENTE E DESENVOLVIMENTO SUSTENTÁVEL</option><option value="297">CME - COMISSÃO DE MINAS E ENERGIA</option><option value="284">CMO - COMISSÃO MISTA DE PLANOS, ORÇAMENTOS PÚBLICOS E FISCALIZAÇÃO</option><option value="1136">CMULHER - COMISSÃO DE DEFESA DOS DIREITOS DA MULHER</option><option value="463">COALM/DEMAP - COORDENAÇÃO DE ALMOXARIFADOS</option><option value="361">COAPP - COORDENAÇÃO DE APOIO AO PLENÁRIO / SGM</option><option value="1429">COAPS - COORDENAÇÃO DE AUDITORIA, PERÍCIA E GESTÃO DA SAÚDE LABORAL</option><option value="354">COAPS/SGM - COORDENAÇÃO DE APOIO ADMINISTRATIVO / SGM</option><option value="1284">COARH - COORDENAÇÃO DE SOLUÇÕES DE TIC PARA A ÁREA DE RECURSOS HUMANOS</option><option value="165">COARQ - COORDENAÇÃO DE ARQUIVO</option><option value="158">COATA/CONLE - COORDENAÇÃO DE APOIO TÉCNICO-ADMINISTRATIVO / CONLE</option><option value="881">COATA/DECOM - COORDENAÇÃO DE APOIO TÉCNICO-ADMINISTRATIVO / DECOM</option><option value="629">COATA/DIRAD - COORDENAÇÃO DE APOIO TÉCNICO-ADMINISTRATIVO / DIRAD</option><option value="632">COATA/DRH - COORDENAÇÃO DE APOIO TÉCNICO-ADMINISTRATIVO / DRH</option><option value="1118">COATE - COORDENAÇÃO DE APOIO TÉCNICO E ESTRATÉGICO</option><option value="1066">COAUD - COORDENAÇÃO DE ENGENHARIA DE TELECOMUNICAÇÕES E AUDIOVISUAL</option><option value="1279">COAUS - COORDENAÇÃO DE ATENDIMENTO AOS USUÁRIOS DE SERVIÇOS DE TIC</option><option value="1005">COBEC - COORDENAÇÃO DE PRESERVAÇÃO DE CONTEÚDOS INFORMACIONAIS</option><option value="175">COBIB - COORDENAÇÃO DE BIBLIOTECA</option><option value="1424">COCEC - COORDENAÇÃO DE CERIMONIAL, EVENTOS E CULTURA</option><option value="517">CODTB - COMISSÃO ESPECIAL - CÓDIGO DE TRÂNSITO BRASILEIRO</option><option value="677">CODUR - COMISSÃO DE DESENVOLVIMENTO URBANO</option><option value="1432">COEDE - COORDENAÇÃO DE EDUCAÇÃO PARA DEMOCRACIA</option><option value="645">COEDI - COORDENAÇÃO EDIÇÕES CÂMARA DOS DEPUTADOS</option><option value="1435">COENF - COORDENAÇÃO DE ENFERMAGEM</option><option value="1058">COENG - COORDENAÇÃO DE ENGENHARIA DE OBRAS</option><option value="652">COESP - COORDENAÇÃO DE OPERAÇÕES ESPECIAIS</option><option value="1420">COGEA - COORDENAÇÃO DE GESTÃO ADMINISTRATIVA</option><option value="1430">COGEA/CEFOR - COORDENAÇÃO DE GESTÃO ADMINISTRATIVA/CEFOR</option><option value="1427">COGEA/DAS - COORDENAÇÃO DE GESTÃO ADMINISTRATIVA/DAS</option><option value="580">COGEP - COORDENAÇÃO GESTÃO DE COTA PARLAMENTAR</option><option value="874">COGEPLAN - COORDENAÇÃO DE PLANEJAMENTO E GESTÃO ESTRATÉGICA</option><option value="876">COGEPORT - COORDENAÇÃO DE GESTÃO DE PROJETOS, PROGRAMAS E PORTIFÓLIOS</option><option value="875">COGEPRO - COORDENAÇÃO DE GESTÃO DE PROCESSOS</option>
+                </select>
+              </alc-field>
+            </div>
+            <div class="col-md-6">
+              <alc-field label="Processo" class="mt-4">
+                <select>
+                  <option value="-1">Selecione</option><option value="61">(processos comuns)</option><option value="11">Apoiar a governança e a estratégia de dados e informações e de inteligência artificial</option><option value="144">Coordenar a articulação de ações para a condução dos projetos de TIC</option><option value="115">Coordenar pesquisa de satisfação dos serviços digitais</option><option value="49">Coordenar processos de segurança de TIC</option><option value="131">Definir o plano de compras e contratações de TIC</option><option value="130">Definir proposta orçamentária de TIC plurianual e anual</option><option value="62">Desenvolver solução digital</option><option value="40">Divulgar produtos e serviços digitais</option><option value="63">Empreender prospecção tecnológica</option><option value="54">Estabelecer modelos de avaliação de acessibilidade digital</option><option value="70">Gerenciar projetos de TIC</option><option value="125">Gerir a estratégia de dados e informações</option><option value="124">Gerir a estratégia de IA</option><option value="106">Gerir a inovação em TIC</option><option value="35">Gerir a preservação de dados dos serviços digitais</option><option value="33">Gerir a proteção dos dados (LGPD e outros)</option><option value="34">Gerir a qualidade dos dados</option><option value="45">Gerir a segurança da informação</option><option value="6">Gerir ações dirigidas aos comitês estratégicos e de TIC</option><option value="7">Gerir ações dirigidas às RAE´s Ditec</option><option value="113">Gerir acordos de nível de serviços digitais</option><option value="114">Gerir acordos operacionais de serviços digitais</option><option value="116">Gerir boas práticas de TIC</option><option value="32">Gerir catálogo de dados e informação</option><option value="14">Gerir conformidade de dados</option><option value="16">Gerir conformidade de IA</option><option value="48">Gerir conformidade de SI</option><option value="135">Gerir conformidade de TIC</option><option value="22">Gerir Dados Compartilhados</option><option value="5">Gerir demandas de TIC</option><option value="41">Gerir ideias inovadoras de serviços digitais</option><option value="60">Gerir incidentes em serviços para usuários</option><option value="129">Gerir indicadores da Estratégia Digital</option><option value="110">Gerir indicadores dos processos de TIC</option><option value="31">Gerir metadados e dados mestres</option><option value="39">Gerir o catálogo de serviços digitais sob responsabilidade da DITEC</option><option value="64">Gerir os processos de trabalho</option><option value="71">Gerir pessoas e plano de capacitação em TIC</option><option value="57">Gerir planejamento de TIC, de dados e de informações</option><option value="133">Gerir plano de dados abertos</option><option value="132">Gerir plano de dados e informações</option><option value="51">Gerir Plataforma de Proteção de Dados de Segurança Corporativos</option><option value="107">Gerir portfólio de processos de TIC</option><option value="138">Gerir portfólios de projetos de TIC</option><option value="137">Gerir programas de TIC</option>
+                </select>
+              </alc-field>
+            </div>
+          </div>
+
+          <alc-fieldset legend="Complexidade">
+            <div class="row">
+              <div class="col-md-6">
+                <alc-field label="Quantidade mínima" class="mt-4">
+                  <input type="number" />
+                </alc-field>
+              </div>
+              <div class="col-md-6">
+                <alc-field label="Quantidade máxima" class="mt-4">
+                  <input type="number" />
+                </alc-field>
+              </div>
+            </div>
+          </alc-fieldset>
+
+          <button class="alc-button mt-4" id="save">Salvar</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    const save = document.querySelector('#save');
+    save.addEventListener('click', e => {
+
+      e.preventDefault();
+
+      const fields = document.querySelectorAll('alc-field');
+      Array.from(fields)
+        .filter((_, i) => {
+          return i < 3
+        })
+        .forEach(field => {
+          field.errorMsg = "Campo obrigatório";
+        });
+
+    });
+  </script>
+
+</body>
+
+</html>

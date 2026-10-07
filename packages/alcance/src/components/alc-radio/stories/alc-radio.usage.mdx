@@ -1,0 +1,146 @@
+{/* alc-radio.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-radio.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+Há duas maneiras de criar o componente o radio: adicionando elemento label com slot nomeado ou adicionando a propriedade label no componente.
+
+### Com propriedade label
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+### Com slot label
+<Canvas of={Stories.BasicoComSlot} sourceState="shown" />
+<Controls of={Stories.BasicoComSlot} />
+
+## Radio com texto de ajuda
+Adicione a propriedade `hint="mensagem de ajuda"` no component alc-radio.
+
+<Canvas of={Stories.TextoAjuda} sourceState="shown" />
+<Controls of={Stories.TextoAjuda} />
+
+## Radio com erro
+Adicione a propriedade `error-msg="mensagem de erro"` no component alc-radio.
+
+Adicione essa propriedade apenas quando você quer ter o estado de erro no radio. Para voltar ao estado padrão é so remover a propriedade.
+
+<Canvas of={Stories.Erro} sourceState="shown" />
+<Controls of={Stories.Erro} />
+
+## Radio desabilitado
+Adicione a propriedade `disabled` no input dentro do alc-radio.
+
+<Canvas of={Stories.Desabilitado} sourceState="shown" />
+<Controls of={Stories.Desabilitado} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <h2>Escolha seu personagem favorito</h2>
+    <form>
+      <alc-radio label="Lion-O" hint="O líder dos ThunderCats" error-msg="">
+        <!-- Slot default para o input radio -->
+        <input type="radio" name="personagem" value="lion-o" v-model="selectedCharacter" />
+      </alc-radio>
+
+      <alc-radio label="Cheetara" hint="A integrante mais rápida do grupo" error-msg="">
+        <input type="radio" name="personagem" value="cheetara" v-model="selectedCharacter" />
+      </alc-radio>
+
+      <alc-radio hint="Escolha Snarf se quiser humor e companheirismo." error-msg="">
+        <!-- Usando o slot label -->
+        <span slot="label">Snarf</span>
+        <input type="radio" name="personagem" value="snarf" v-model="selectedCharacter" />
+      </alc-radio>
+
+      <!-- Botão para confirmar seleção -->
+      <button class="alc-button" type="button" @click="confirmSelection">
+        Confirmar
+      </button>
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'RadioExample',
+  data() {
+    return {
+      selectedCharacter: '',
+    };
+  },
+  methods: {
+    confirmSelection() {
+      if (!this.selectedCharacter) {
+        alert('Por favor, selecione um personagem.');
+      } else {
+        alert('Você selecionou: ' + this.selectedCharacter);
+      }
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <h2>Escolha seu personagem favorito</h2>
+    <form>
+      <alc-radio :label="lionLabel" :hint="lionHint" error-msg="">
+        <input type="radio" name="personagem" value="lion-o" v-model="selectedCharacter" />
+      </alc-radio>
+
+      <alc-radio label="Cheetara" hint="A integrante mais rápida do grupo" error-msg="">
+        <input type="radio" name="personagem" value="cheetara" v-model="selectedCharacter" />
+      </alc-radio>
+
+      <alc-radio error-msg="">
+        <!-- Usando slot label -->
+        <span slot="label">Tygra</span>
+        <input type="radio" name="personagem" value="tygra" v-model="selectedCharacter" />
+      </alc-radio>
+
+      <button class="alc-button" type="button" @click="confirmSelection">
+        Confirmar
+      </button>
+    </form>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'RadioExampleTS',
+  setup() {
+    const selectedCharacter = ref('');
+    const lionLabel = 'Lion-O';
+    const lionHint = 'O líder dos ThunderCats';
+
+    const confirmSelection = () => {
+      if (!selectedCharacter.value) {
+        alert('Por favor, selecione um personagem.');
+      } else {
+        alert('Você selecionou: ' + selectedCharacter.value);
+      }
+    };
+
+    return {
+      selectedCharacter,
+      lionLabel,
+      lionHint,
+      confirmSelection,
+    };
+  },
+});
+</script>`
+  }}
+/>

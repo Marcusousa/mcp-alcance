@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Header v2</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+
+  <alc-header name="Gabinete Digital" description="Plataforma digital de trabalho do Deputado" home-url="#">
+    <div slot="support">
+      <alc-header-action id="support-ajuda" icon-name="question-circle" variant="button">Ajuda</alc-header-action>
+      <alc-header-action id="support-contato" icon-name="envelope" variant="button">Contato</alc-header-action>
+      <alc-header-action id="support-link" icon-name="google" variant="link" url="http://google.com">Google</alc-header-action>
+    </div>
+    <div slot="user">
+      <alc-user-menu variation="desktop" name="João Henrique Miranda Soares Catan" registration-number="P_5242"
+      img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242">
+      Revisor representando o Dep. Adail Filho (REPUBLICANOS-AM)
+    </alc-user-menu>
+    </div>
+  </alc-header>
+
+  <script>
+    const userMenu = document.querySelector('alc-user-menu');
+    userMenu?.addEventListener('alc-theme-change', e => {
+      console.log('Tema alterado para: ', e.detail);
+    });
+  </script>
+
+  <div class="alc-layout">
+
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <alc-nav-panel id="nav-panel-id">
+
+      <alc-nav>
+      <span data-alc-label>
+        Lista de itens no nível 1
+      </span>
+      <ul>
+        <li data-alc-selected><a href="#">Institucional</a></li>
+        <li>
+          <span>Aplicações</span>
+          <div data-alc-panel>
+            <ul>
+              <li><a href="#">Gabinete Digital</a></li>
+              <li><a href="#">Liderança Digital</a></li>
+              <li><a href="#">Processo Legislativo Digital</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Serviços</a></li>
+        <li>
+          <span>Documentação digital</span>
+          <div data-alc-panel>
+            <span data-alc-label>
+              eDoc
+            </span>
+            <ul>
+              <li><a href="#">eDoc</a></li>
+              <li><a href="#">eDoc Forms</a></li>
+            </ul>
+
+            <span data-alc-label>
+              Legado
+            </span>
+            <ul>
+              <li><a href="#">Sigmas</a></li>
+              <li><a href="#">SisDoc</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Equipe técnica</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+
+      <ul>
+        <li>
+          <a href="#">Algo mais</a>
+        </li>
+        <li>
+          <a href="#">Algo mais 2</a>
+        </li>
+      </ul>
+
+      </alc-nav>
+
+
+    </alc-nav-panel>
+
+  </div>
+
+  <script type="module">
+  // espera o Web Component ser definido (garante que a classe já existe)
+    customElements.whenDefined('alc-header-action').then(() => {
+      const ajuda = document.getElementById('support-ajuda');
+      const contato = document.getElementById('support-contato');
+      const link = document.getElementById('support-link');
+
+      // ajuda.addEventListener('alc-select', event => {
+      //   const info = {
+      //     currentTarget: event.currentTarget,
+      //     event: event,
+      //     originalEvent: event.detail.originalEvent,
+      //     type: event.detail.originalEvent.type,
+      //     isTrusted: event.detail.originalEvent.isTrusted,
+      //     key: `${event.detail.originalEvent.key}`
+      //   }
+      //   console.log('Header-support (button) selecionado:', info );
+      // });
+
+      // contato.addEventListener('alc-select', event => {
+      //   console.log('Header-support selecionado:', event, event.detail.originalEvent);
+      // });
+
+      // link.addEventListener('alc-select', event => {
+      //   const info = {
+      //     event: event,
+      //     originalEvent: event.detail.originalEvent,
+      //     type: event.detail.originalEvent.type,
+      //     isTrusted: event.detail.originalEvent.isTrusted,
+      //     key: `${event.detail.originalEvent.key}`
+      //   }
+      //   console.log('Header-support (link) selecionado:', info);
+
+      // });
+
+      // Colocando listener no pai dos elementos (header-v2), para identificar
+      // depois, pela informação do evento, quem foi selecionado.
+      // Aplicável quando temos vários itens e queremos monitorar todos.
+      document.querySelector('alc-header').addEventListener('alc-select', event => {
+        const info = {
+          currentTarget: event.currentTarget,
+          event: event,
+          originalEvent: event.detail.originalEvent,
+          type: event.detail.originalEvent.type,
+          isTrusted: event.detail.originalEvent.isTrusted,
+          key: `${event.detail.originalEvent.key}`
+        }
+        console.log('Header-support selecionado.', info);
+
+        // Identificando quem foi efetivamente acionado
+        if (event.target.id === 'support-ajuda') {
+          console.log('selecionou ajuda', event.currentTarget);
+        }
+        if (event.target.id === 'support-contato') {
+          console.log('selecionou contato', event.currentTarget);
+        }
+        if (event.target.id === 'support-link') {
+          console.log('selecionou link', event.currentTarget);
+        }
+      });
+    });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+{/* alc-scroll-panel.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-scroll-panel.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div style="max-width: 500px;">
+    <!-- Botões para navegar até itens específicos -->
+    <button class="alc-button" @click="scrollToItem(1)">Ir para Item 1</button>
+    <button class="alc-button" @click="scrollToItem(10)">Ir para Item 10</button>
+    <button class="alc-button" @click="scrollToItem(15)">Ir para Item 15</button>
+
+    <!-- Componente alc-scroll-panel -->
+    <alc-scroll-panel ref="scrollPanel" :has-focus="false">
+      <div class="item" v-for="n in 15" :key="n" :ref="getItemRef(n)">
+        Item {{ n }}
+      </div>
+    </alc-scroll-panel>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ScrollPanelExample',
+  data() {
+    return {
+      itemsRefs: {},
+    };
+  },
+  mounted() {
+    // Criamos referências nomeadas para cada item
+    for (let i = 1; i <= 15; i++) {
+      this.itemsRefs[i] = 'item-' + i +'';
+    }
+  },
+  methods: {
+    getItemRef(n) {
+      return 'item-' + n +'';
+    },
+    scrollToItem(n) {
+      const scrollPanel = this.$refs.scrollPanel;
+      const item = this.$refs['item-' + n +''];
+
+      if (scrollPanel && item && item[0]) {
+        // Propriedade scroll-to-element recebe um HTMLElement
+        scrollPanel.scrollToElement = item[0];
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+.item {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  background-color: gray;
+  color: black;
+  line-height: 100px;
+  text-align: center;
+  border-radius: 10px;
+}
+</style>`,
+    typescript: `<template>
+  <div style="max-width: 500px;">
+    <!-- Botões para navegar até itens específicos -->
+    <button class="alc-button" @click="scrollToItem(5)">Ir para Item 5</button>
+    <button class="alc-button" @click="scrollToItem(12)">Ir para Item 12</button>
+
+    <!-- Componente alc-scroll-panel -->
+    <alc-scroll-panel ref="scrollPanel" :has-focus="false">
+      <!-- Em vez de usar ref, usamos data-index para identificar cada item -->
+      <div
+        class="item"
+        v-for="n in 15"
+        :key="n"
+        :data-index="n"
+      >
+        Item {{ n }}
+      </div>
+    </alc-scroll-panel>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, onMounted } from 'vue';
+
+export default defineComponent({
+  name: 'ScrollPanelExampleTS',
+  setup() {
+    const scrollPanel = ref<HTMLElement | null>(null);
+
+    const scrollToItem = (n: number) => {
+      if (!scrollPanel.value) return;
+
+      // Localiza o item desejado pelo data-attribute
+      const item = scrollPanel.value.querySelector('.item[data-index="' + n + '"]') as HTMLElement | null;
+      if (item) {
+        // Define o scroll-to-element para o item encontrado
+        (scrollPanel.value as any).scrollToElement = item;
+      } else {
+        console.error('Item ' + n + ' não encontrado.');
+      }
+    };
+
+    return {
+      scrollPanel,
+      scrollToItem,
+    };
+  },
+});
+</script>
+
+<style scoped>
+.item {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  background-color: gray;
+  color: black;
+  line-height: 100px;
+  text-align: center;
+  border-radius: 10px;
+}
+</style>`
+  }}
+/>

@@ -1,0 +1,310 @@
+import { Meta, Unstyled, Canvas } from '@storybook/addon-docs/blocks';
+import CodeExample from "../../utils/codeExample"
+import { DoDont, Do, Dont } from "../../utils/DoDont.jsx"
+import { IntroDoc } from "../../utils/IntroDoc.jsx"
+import { ImageCard } from '../../utils/ImageCard.jsx';
+import { TypographyDemo } from '../../utils/TypographyDemo.jsx';
+
+<Meta title="Estilos/Tipografia" />
+
+# Tipografia
+
+<IntroDoc>
+  A tipografia é fundamental para criar uma interface de usuário clara e consistente. Ao seguir os padrões descrito abaixo, você aprimorará a legibilidade e proporcionará uma boa experiência de usuário.
+</IntroDoc>
+
+## Demonstração
+
+### Cores em modo claro
+
+<Unstyled>
+  <ImageCard>
+    <TypographyDemo
+      theme="light"
+      rows={[
+            [
+                { text: '', heading: true },
+                { text: '--alc-color-surface', heading: true },
+                { text: '--alc-color-layer-a', heading: true },
+                { text: '--alc-color-layer-b', heading: true },
+                { text: '--alc-color-layer-c', heading: true }
+            ],
+            [
+                { text: '--alc-text-primary', heading: true },
+                { backgroundColor: '--alc-color-surface', textColor: '--alc-color-text-primary', text: 'Primário sobre surface' },
+                { backgroundColor: '--alc-color-layer-a', textColor: '--alc-color-text-primary', text: 'Primário sobre layer-a' },
+                { backgroundColor: '--alc-color-layer-b', textColor: '--alc-color-text-primary', text: 'Primário sobre layer-b' },
+                { backgroundColor: '--alc-color-layer-c', textColor: '--alc-color-text-primary', text: 'Primário sobre layer-c' },
+            ],
+            [
+                { text: '--alc-text-secondary', heading: true },
+                { backgroundColor: '--alc-color-surface', textColor: '--alc-color-text-secondary', text: 'Secundário sobre surface' },
+                { backgroundColor: '--alc-color-layer-a', textColor: '--alc-color-text-secondary', text: 'Secundário sobre layer-a' },
+                { backgroundColor: '--alc-color-layer-b', textColor: '--alc-color-text-secondary', text: 'Secundário sobre layer-b' },
+                { backgroundColor: '--alc-color-layer-c', textColor: '--alc-color-text-secondary', text: 'Secundário sobre layer-c' },
+            ],
+            [
+                { text: '--alc-text-subtle', heading: true },
+                { backgroundColor: '--alc-color-surface', textColor: '--alc-color-text-subtle', text: 'Sutil sobre surface' },
+                { backgroundColor: '--alc-color-layer-a', textColor: '--alc-color-text-subtle', text: 'Sutil sobre layer-a' },
+                { backgroundColor: '--alc-color-layer-b', textColor: '--alc-color-text-subtle', text: 'Sutil sobre layer-b' },
+                { backgroundColor: '--alc-color-layer-c', textColor: '--alc-color-text-subtle', text: 'Sutil sobre layer-c' },
+            ],
+      ]}
+    >
+    </TypographyDemo>
+  </ImageCard>
+</Unstyled>
+
+### Cores em modo escuro
+<Unstyled>
+  <ImageCard>
+    <TypographyDemo
+      theme="dark"
+      rows={[
+            [
+                { text: '', heading: true },
+                { text: '--alc-color-surface', heading: true },
+                { text: '--alc-color-layer-a', heading: true },
+                { text: '--alc-color-layer-b', heading: true },
+                { text: '--alc-color-layer-c', heading: true }
+            ],
+            [
+                { text: '--alc-text-primary', heading: true },
+                { backgroundColor: '--alc-color-surface', textColor: '--alc-color-text-primary', text: 'Primário sobre surface' },
+                { backgroundColor: '--alc-color-layer-a', textColor: '--alc-color-text-primary', text: 'Primário sobre layer-a' },
+                { backgroundColor: '--alc-color-layer-b', textColor: '--alc-color-text-primary', text: 'Primário sobre layer-b' },
+                { backgroundColor: '--alc-color-layer-c', textColor: '--alc-color-text-primary', text: 'Primário sobre layer-c' },
+            ],
+            [
+                { text: '--alc-text-secondary', heading: true },
+                { backgroundColor: '--alc-color-surface', textColor: '--alc-color-text-secondary', text: 'Secundário sobre surface' },
+                { backgroundColor: '--alc-color-layer-a', textColor: '--alc-color-text-secondary', text: 'Secundário sobre layer-a' },
+                { backgroundColor: '--alc-color-layer-b', textColor: '--alc-color-text-secondary', text: 'Secundário sobre layer-b' },
+                { backgroundColor: '--alc-color-layer-c', textColor: '--alc-color-text-secondary', text: 'Secundário sobre layer-c' },
+            ],
+            [
+                { text: '--alc-text-subtle', heading: true },
+                { backgroundColor: '--alc-color-surface', textColor: '--alc-color-text-subtle', text: 'Sutil sobre surface' },
+                { backgroundColor: '--alc-color-layer-a', textColor: '--alc-color-text-subtle', text: 'Sutil sobre layer-a' },
+                { backgroundColor: '--alc-color-layer-b', textColor: '--alc-color-text-subtle', text: 'Sutil sobre layer-b' },
+                { backgroundColor: '--alc-color-layer-c', textColor: '--alc-color-text-subtle', text: 'Sutil sobre layer-c' },
+            ],
+      ]}
+    >
+    </TypographyDemo>
+  </ImageCard>
+</Unstyled>
+
+### Aplicação de tamanhos e cores
+
+<Unstyled>
+  <ImageCard>
+    <div _style={{textAlign: 'left'}}>
+      <h1 role='none'>Tipografia no Alcance</h1>
+      <p>Diferentes tamanhos e cores podem ser aplicados ao texto para criar hierarquias visuais e melhorar a legibilidade.</p>
+      <p style={{marginTop: 'var(--alc-spacing-04)'}}>
+        <span style={{
+          fontSize: 'var(--alc-font-size-xl)',
+          lineHeight: 'var(--alc-font-line-height-xl)'
+        }}>130</span> episódios no total.
+      </p>
+      <p>
+        <span style={{
+          fontSize: 'var(--alc-font-size-xl)',
+          lineHeight: 'var(--alc-font-line-height-xl)'
+        }}>72%</span> dos episódios foram assistidos
+        <span style={{
+          fontSize: 'var(--alc-font-size-sm)',
+          lineHeight: 'var(--alc-font-line-height-sm)',
+          color: 'var(--alc-color-text-subtle)',
+          display: 'block'
+        }}>considerando apenas os que foram assistidos até o fim.</span>
+      </p>
+    </div>
+  </ImageCard>
+</Unstyled>
+
+
+## Tipo de fonte: Roboto
+O Alcance utiliza a fonte Roboto, projetada com diferentes escalas e pesos para facilitar a criação de hierarquias visuais bem definidas.
+Ao final da documentação, você verá as instruções para instalar o pacote da fonte Roboto.
+
+## Cores de texto
+
+Os textos estáticos, como títulos, parágrafos e conteúdo de tabelas, devem seguir as cores estabelecidas pelos <a href="./?path=/docs/estilos-tokens--documentação" class="alc-link">tokens de cor de texto</a>, garantindo uniformidade visual e conformidade com requisitos de acessibilidade.
+
+Textos coloridos devem ser aplicadas apenas em elementos interativos, como <a href="./?path=/docs/estilos-link--documentação" class="alc-link">links</a> e <a href="./?path=/docs/estilos-botões--documentação" class="alc-link">botões</a>, conforme descrito na documentação. Isso garante consistência visual e facilita a identificação desses elementos pelo usuário.
+
+As cores da marca, como os tons de verde e azul usados no header, não devem ser aplicadas em textos.
+
+
+<DoDont>
+  <Do
+    visual={
+      <div style={{display: 'flex', flexDirection: 'column'}}>
+        <span style={{color: 'var(--alc-color-text-primary)', fontSize: 'var(--alc-font-size-2xl)', lineHeight: 'var(--alc-font-line-height-2xl)', fontFamily: 'Roboto, system-ui, sans-serif'}}>Lion-O</span>
+        <span style={{color: 'var(--alc-color-text-subtle)', fontSize: 'var(--alc-font-size-base)', lineHeight: 'var(--alc-font-line-height-base)', fontFamily: 'Roboto, system-ui, sans-serif'}}>Lider dos Thundercats</span>
+      </div>
+    }
+  >
+    Utilize as cores definidas pelos tokens de cores de texto.
+  </Do>
+  <Dont
+    visual={
+      <div style={{display: 'flex', flexDirection: 'column'}}>
+        <span style={{color: '#40807e', fontSize: 'var(--alc-font-size-2xl)', lineHeight: 'var(--alc-font-line-height-2xl)', fontFamily: 'Roboto, system-ui, sans-serif'}}>Lion-O</span>
+        <span style={{color: '#2672de', fontSize: 'var(--alc-font-size-base)', lineHeight: 'var(--alc-font-line-height-base)', fontFamily: 'Roboto, system-ui, sans-serif'}}>Lider dos Thundercats</span>
+      </div>
+    }
+  >
+    Não utilize cores que não sejam as definidas pelos tokens. Cores de marca não devem ser aplicadas em textos.
+  </Dont>
+</DoDont>
+
+## Escala de texto
+Para garantir legibilidade, é recomendado usar os tokens de font-size e line-height disponibilizados na documentação sobre <a href="./?path=/docs/estilos-tokens--documentação" class="alc-link">tokens de escala de texto</a>.
+
+<DoDont>
+  <Do
+    visual={
+      <span style={{color: 'var(--alc-color-text-primary)', fontSize: 'var(--alc-font-size-lg)', lineHeight: 'var(--alc-font-line-height-lg)', fontFamily: 'Roboto, system-ui, sans-serif'}}>Lion-O é o líder dos ThunderCats, que moram no terceiro mundo e lutam pela ordem e justiça.</span>
+    }
+  >
+    Utilize os pares corretamente de font-size e line-height. Neste exemplo, foi utilizado o par de tokens --alc-font-size-lg e --alc-font-line-height-lg.
+  </Do>
+  <Dont
+    visual={
+      <span style={{color: 'var(--alc-color-text-primary)', fontSize: 'var(--alc-font-size-3xl)', lineHeight: 'var(--alc-font-line-height-sm)', fontFamily: 'Roboto, system-ui, sans-serif'}}>Lion-O é o líder dos ThunderCats, que moram no terceiro mundo e lutam pela ordem e justiça.</span>
+    }
+  >
+    Não utilize os pares diferentes de tokens font-size e line-height. Neste exemplo, foi utilizado o par de tokens --alc-font-size-3xl e --alc-font-line-height-sm.
+  </Dont>
+</DoDont>
+
+## Cabeçalhos
+Use cabeçalhos (headings) para títulos de página ou subtítulos para introduzir conteúdo ou seções de informação.
+
+Os cabeçalhos têm tamanhos que contrastam com o conteúdo, aumentam a hierarquia visual e ajudam os leitores a entender facilmente a estrutura do conteúdo.
+
+<Unstyled>
+  <ImageCard>
+    <div style={{textAlign: 'center'}}>
+      <h1 role='none'>Thundercats</h1>
+      <h2 role='none'>Thundercats</h2>
+      <h3 role='none'>Thundercats</h3>
+      <h4 role='none'>Thundercats</h4>
+      <h5 role='none'>Thundercats</h5>
+      <h6 role='none'>Thundercats</h6>
+    </div>
+  </ImageCard>
+</Unstyled>
+
+<CodeExample type="html">
+{`<h1>Thundercats</h1>
+<h2>Thundercats</h2>
+<h3>Thundercats</h3>
+<h4>Thundercats</h4>
+<h5>Thundercats</h5>
+<h6>Thundercats</h6>`}
+</CodeExample>
+
+Uma hierarquia correta de cabeçalhos ajuda usuários a navegar, escanear e compreender o conteúdo, especialmente pessoas que utilizam leitores de tela ou outras tecnologias assistivas, que usam os cabeçalhos como pontos de navegação.
+
+
+<Unstyled style={{marginBottom: '2rem'}}>
+  <alc-alert dismissible="false">
+    Não precisa de nenhuma classe CSS para esses títulos. Use a tag HTML correspondente (`<h1>, <h2>, <h3>, <h4>, <h5>, <h6>`).
+  </alc-alert>
+</Unstyled>
+
+### Definições visuais dos cabeçalhos
+Cores de texto:
+- Modo Light: #2E2E2E (gray-80)
+- Modo Dark: #E6E6E6 (gray-10)
+
+Espaçamentos verticais:
+- Margem superior (margin-top): --alc-spacing-05 / 1rem / 16px
+- Margem inferior (margin-bottom): --alc-spacing-03 / 0.5rem / 8px
+
+Os headings possuem margens superior e inferior por padrão.
+Essas margens devem ser mantidas quando o heading estrutura áreas de conteúdo, como seções de texto.
+Quando o heading apenas rotula componentes (como cards, por exemplo), o espaçamento deve ser definido pelo próprio componente.
+Nesses casos, as margens do heading podem ser redefinidas (utilizando os <a href="./?path=/docs/estilos-tokens--documentação" class="alc-link">tokens de espaçamentos</a>) ou removidas.
+
+
+| Elemento | Propriedade | Valor/Token                                 |
+| :------  | :---------- | :------------------------------------------ |
+| **h1**   | font-size   | --alc-font-size-4xl / 2rem / 32px           |
+|          | line-height | --alc-font-line-height-4xl / 2.5rem / 40px  |
+|          | font-weight | 600                                         |
+| **h2**   | font-size   | --alc-font-size-3xl / 1.625rem / 26px       |
+|          | line-height | --alc-font-line-height-3xl / 2rem / 32px    |
+|          | font-weight | 500                                         |
+| **h3**   | font-size   | --alc-font-size-2xl / 1.375rem / 22px       |
+|          | line-height | --alc-font-line-height-2xl / 2rem / 32px    |
+|          | font-weight | 500                                         |
+| **h4**   | font-size   | --alc-font-size-xl / 1.25rem / 20px         |
+|          | line-height | --alc-font-line-height-xl / 1.5rem / 24px   |
+|          | font-weight | 400                                         |
+| **h5**   | font-size   | --alc-font-size-lg / 1.125rem / 18px        |
+|          | line-height | --alc-font-line-height-lg / 1.5rem / 24px   |
+|          | font-weight | 400                                         |
+| **h6**   | font-size   | --alc-font-size-base / 1rem / 16px          |
+|          | line-height | --alc-font-line-height-base / 1.5rem / 24px |
+|          | font-weight | 600                                         |
+
+
+## Boas Práticas
+- O cabeçalho de nível 1 (`<h1>`) é o título principal da página e deve ser o primeiro elemento do conteúdo principal, identificando claramente o contexto da página atual.
+- Use apenas um `<h1>` por página.
+- Cabeçalhos devem ser usados para introduzir seções de conteúdo. Não utilize negrito ou tamanho de fonte para simular títulos, pois os cabeçalhos têm significado semântico e impacto direto na acessibilidade.
+- O nível do cabeçalho deve refletir a hierarquia do conteúdo, não a aparência visual (`<h2>` para seções, `<h3>` para subseções, e assim por diante).
+- Os cabeçalhos (`<h1>` a `<h6>`) devem seguir ordem sequencial, sem pular níveis, garantindo uma estrutura lógica e navegável.
+- Os estilos de cabeçalhos são predefinidos. Ajustes visuais devem usar apenas <a href="./?path=/docs/estilos-tokens--documentação" class="alc-link">tokens</a> de texto específicos para cor, tamanho e line-height, sem alterar a semântica.
+
+
+## Instalação
+Baixe o pacote de fontes Roboto acessando o <a href="https://fonts.google.com/specimen/Roboto" class="alc-link">Google Fonts</a> e adicione as fontes na pasta pública de seu projeto (por exemplo: `/public/assets/fonts`).
+
+<Unstyled>
+<alc-alert type="info" dismissible="false">
+  Caso você tenha instalado o Alcance utilizando o <a href="./?path=/docs/instalação-instalação--documentação" class="alc-link alc-link--text-color">alcance-init</a>, você não precisa se preocupar com essa instalação.
+</alc-alert>
+</Unstyled>
+
+
+### Script de instalação
+Caso você queira automatizar essa instalação, fornecemos um script simples que instala as fontes nos ***diretórios comuns ao Vue, React e Angular***. Caso seu projeto esteja configurado em outros diretórios,
+ajuste o script de acordo com sua necessidade.
+
+<CodeExample type="js">
+{`const https = require('https');
+const fs = require('fs');
+const extract = require('extract-zip');
+
+const fontUrl = 'https://fonts.google.com/download?family=Roboto';
+const destination = './Roboto.zip';
+
+const file = fs.createWriteStream(destination);
+const request = https.get(fontUrl, function(response) {
+  response.pipe(file);
+  file.on('finish', function() {
+    file.close(() => {
+      console.log('Fonte baixada.');
+
+      // Extrai as fontes
+      extract(destination, { dir: './public/assets/fonts' }, function (err) {
+        if (err) {
+          console.log('Ocorreu um erro ao extrair o zip da fonte.', err);
+        } else {
+          console.log('As fontes foram extraidas com sucesso.');
+        }
+      });
+    });
+  });
+}).on('error', function(err) {
+  fs.unlink(destination);
+  console.error('Ocorreu um erro durante o download da fonte.', err);
+});`}
+</CodeExample>

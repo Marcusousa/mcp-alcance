@@ -1,0 +1,7 @@
+alc-header-action {
+  display: inline
+}
+
+.alc-header-action__menu-link-icon {
+  @apply mr-[--alc-spacing-03];
+}

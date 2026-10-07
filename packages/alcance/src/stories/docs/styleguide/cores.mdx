@@ -1,0 +1,902 @@
+import { Meta, Canvas, Story, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
+import CodeExample from "../../utils/codeExample"
+import ContrastChecker from '../../utils/contrastChecker';
+
+<Meta title="Estilos/Cores" />
+# Cores
+
+## Estrutura da Paleta
+
+A paleta é dividida em categorias principais de cores, cada uma com diferentes variações tonais (como 5, 10, 20, etc.) e opções “vivid” (indicadas com o sufixo v), 
+que representam versões mais vibrantes e saturadas das cores principais.
+
+## Sintaxe da Paleta
+
+Cada cor é representada por um objeto onde as tonalidades são mapeadas por níveis. Por exemplo:
+
+<CodeExample type="js">
+{`{
+  "5": "#f9eeee",
+  "10": "#f8e1de",
+  "20": "#f7bbb1",
+  //...
+}`}
+</CodeExample>
+
+Os níveis de tonalidade variam de 5 até 90, onde valores mais baixos representam tons mais claros e suaves, e valores mais altos indicam tons mais escuros e intensos.
+
+Cores vivas possuem um sufixo v, por exemplo:
+
+<CodeExample type="js">
+{`{
+  "5v": "#fff3f2",
+  "10v": "#fde0db",
+  "20v": "#fdb8ae",
+  //...
+}`}
+</CodeExample>
+
+## Paleta de Cores
+
+<ColorPalette>
+<ColorItem
+  title="Vermelho"
+  subtitle="red-{n}"
+  colors={{
+    5: '#f9eeee',
+    10: '#f8e1de',
+    20: '#f7bbb1',
+    30: '#f2938c',
+    40: '#e9695f',
+    50: '#d83933',
+    60: '#a23737',
+    70: '#6f3331',
+    80: '#3e2927',
+    90: '#1b1616'
+  }}
+/>
+
+<ColorItem
+  title="Vermelho Vívido"
+  subtitle="red-{n}v"
+  colors={{
+    '5v': '#fff3f2',
+    '10v': '#fde0db',
+    '20v': '#fdb8ae',
+    '30v': '#ff8d7b',
+    '40v': '#fb5a47',
+    '50v': '#e52207',
+    '60v': '#b50909',
+    '70v': '#8b0a03',
+    '80v': '#5c1111'
+  }}
+/>
+
+<ColorItem
+  title="Vermelho Frio"
+  subtitle="red-cool-{n}"
+  colors={{
+    5: '#f8eff1',
+    10: '#f3e1e4',
+    20: '#ecbec6',
+    30: '#e09aa6',
+    40: '#e16b80',
+    50: '#cd425b',
+    60: '#9e394b',
+    70: '#68363f',
+    80: '#40282c',
+    90: '#1e1517'
+  }}
+/>
+
+<ColorItem
+  title="Vermelho Frio Vívido"
+  subtitle="red-cool-{n}v"
+  colors={{
+    '5v': '#fff2f5',
+    '10v': '#f8dfe2',
+    '20v': '#f8b9c5',
+    '30v': '#fd8ba0',
+    '40v': '#f45d79',
+    '50v': '#e41d3d',
+    '60v': '#b21d38',
+    '70v': '#822133',
+    '80v': '#4f1c24'
+  }}
+/>
+
+<ColorItem
+  title="Vermelho Quente"
+  subtitle="red-warm-{n}"
+  colors={{
+    5: '#f6efea',
+    10: '#f4e3db',
+    20: '#ecc0a7',
+    30: '#dca081',
+    40: '#d27a56',
+    50: '#c3512c',
+    60: '#805039',
+    70: '#524236',
+    80: '#332d29',
+    90: '#1f1c18'
+  }}
+/>
+
+<ColorItem
+  title="Vermelho Quente Vívido"
+  subtitle="red-warm-{n}v"
+  colors={{
+    '5v': '#fff5ee',
+    '10v': '#fce1d4',
+    '20v': '#f6bd9c',
+    '30v': '#f39268',
+    '40v': '#ef5e25',
+    '50v': '#d54309',
+    '60v': '#9c3d10',
+    '70v': '#63340f',
+    '80v': '#3e2a1e'
+  }}
+/>
+
+<ColorItem
+  title="Laranja Quente"
+  subtitle="orange-warm-{n}"
+  colors={{
+    5: '#faeee5',
+    10: '#fbe0d0',
+    20: '#f7bca2',
+    30: '#f3966d',
+    40: '#e17141',
+    50: '#bd5727',
+    60: '#914734',
+    70: '#633a32',
+    80: '#3d2925',
+    90: '#1c1615'
+  }}
+/>
+
+<ColorItem
+  title="Laranja Quente Vívido"
+  subtitle="orange-warm-{n}v"
+  colors={{
+    '5v': '#fff3ea',
+    '10v': '#ffe2d1',
+    '20v': '#fbbaa7',
+    '30v': '#fc906d',
+    '40v': '#ff580a',
+    '50v': '#cf4900',
+    '60v': '#a72f10',
+    '70v': '#782312',
+    '80v': '#3d231d'
+  }}
+/>
+
+<ColorItem
+  title="Laranja"
+  subtitle="orange-{n}"
+  colors={{
+    5: '#f6efe9',
+    10: '#f2e4d4',
+    20: '#f3bf90',
+    30: '#f09860',
+    40: '#dd7533',
+    50: '#a86437',
+    60: '#775540',
+    70: '#524236',
+    80: '#332d27',
+    90: '#1b1614'
+  }}
+/>
+
+<ColorItem
+  title="Laranja Vívido"
+  subtitle="orange-{n}v"
+  colors={{
+    '5v': '#fef2e4',
+    '10v': '#fce2c5',
+    '20v': '#ffbc78',
+    '30v': '#fa9441',
+    '40v': '#e66f0e',
+    '50v': '#c05600',
+    '60v': '#8c471c',
+    '70v': '#5f3617',
+    '80v': '#352313'
+  }}
+/>
+
+<ColorItem
+  title="Ouro"
+  subtitle="gold-{n}"
+  colors={{
+    5: '#f5f0e6',
+    10: '#f1e5cd',
+    20: '#dec69a',
+    30: '#c7a97b',
+    40: '#ad8b65',
+    50: '#8e704f',
+    60: '#6b5947',
+    70: '#4d4438',
+    80: '#322d26',
+    90: '#191714'
+  }}
+/>
+
+<ColorItem
+  title="Ouro Vívido"
+  subtitle="gold-{n}v"
+  colors={{
+    '5v': '#fef0c8',
+    '10v': '#ffe396',
+    '20v': '#ffbe2e',
+    '30v': '#e5a000',
+    '40v': '#c2850c',
+    '50v': '#936f38',
+    '60v': '#7a591a',
+    '70v': '#5c410a',
+    '80v': '#3b2b15'
+  }}
+/>
+
+<ColorItem
+  title="Amarelo"
+  subtitle="yellow-{n}"
+  colors={{
+    5: '#faf3d1',
+    10: '#f5e6af',
+    20: '#e6c74c',
+    30: '#c9ab48',
+    40: '#a88f48',
+    50: '#8a7237',
+    60: '#6b5a39',
+    70: '#504332',
+    80: '#332d27',
+    90: '#1a1614'
+  }}
+/>
+
+<ColorItem
+  title="Amarelo Vívido"
+  subtitle="yellow-{n}v"
+  colors={{
+    '5v': '#fff5c2',
+    '10v': '#fee685',
+    '20v': '#face00',
+    '30v': '#ddaa01',
+    '40v': '#b38c00',
+    '50v': '#947100',
+    '60v': '#776017',
+    '70v': '#5c4809',
+    '80v': '#422d19'
+  }}
+/>
+
+<ColorItem
+  title="Verde Quente"
+  subtitle="green-warm-{n}"
+  colors={{
+    5: '#f1f4d7',
+    10: '#e7eab7',
+    20: '#cbd17a',
+    30: '#a6b557',
+    40: '#8a984b',
+    50: '#6f7a41',
+    60: '#5a5f38',
+    70: '#45472f',
+    80: '#2d2f21',
+    90: '#171712'
+  }}
+/>
+
+<ColorItem
+  title="Verde Quente Vívido"
+  subtitle="green-warm-{n}v"
+  colors={{
+    '5v': '#f5fbc1',
+    '10v': '#e7f434',
+    '20v': '#c5d30a',
+    '30v': '#a3b72c',
+    '40v': '#7e9c1d',
+    '50v': '#6a7d00',
+    '60v': '#5a6613',
+    '70v': '#4b4e10',
+    '80v': '#38380b'
+  }}
+/>
+
+<ColorItem
+  title="Verde"
+  subtitle="green-{n}"
+  colors={{
+    5: '#eaf4dd',
+    10: '#dfeacd',
+    20: '#b8d293',
+    30: '#9bb672',
+    40: '#7d9b4e',
+    50: '#607f35',
+    60: '#4c6424',
+    70: '#3c4a29',
+    80: '#293021',
+    90: '#161814'
+  }}
+/>
+
+<ColorItem
+  title="Verde Vívido"
+  subtitle="green-{n}v"
+  colors={{
+    '5v': '#ddf9c7',
+    '10v': '#c5ee93',
+    '20v': '#98d035',
+    '30v': '#7fb135',
+    '40v': '#719f2a',
+    '50v': '#538200',
+    '60v': '#466c04',
+    '70v': '#2f4a0b',
+    '80v': '#243413'
+  }}
+/>
+
+<ColorItem
+  title="Verde Frio"
+  subtitle="green-cool-{n}"
+  colors={{
+    5: '#ecf3ec',
+    10: '#dbebde',
+    20: '#b4d0b9',
+    30: '#86b98e',
+    40: '#5e9f69',
+    50: '#4d8055',
+    60: '#446443',
+    70: '#37493b',
+    80: '#28312a',
+    90: '#1a1f1a'
+  }}
+/>
+
+<ColorItem
+  title="Verde Frio Vívido"
+  subtitle="green-cool-{n}v"
+  colors={{
+    '5v': '#e3f5e1',
+    '10v': '#b7f5bd',
+    '20v': '#70e17b',
+    '30v': '#21c834',
+    '40v': '#00a91c',
+    '50v': '#008817',
+    '60v': '#216e1f',
+    '70v': '#154c21',
+    '80v': '#19311e'
+  }}
+/>
+
+<ColorItem
+  title="Menta"
+  subtitle="mint-{n}"
+  colors={{
+    5: '#dbf6ed',
+    10: '#c7efe2',
+    20: '#92d9bb',
+    30: '#5abf95',
+    40: '#34a37e',
+    50: '#2e8367',
+    60: '#286846',
+    70: '#204e34',
+    80: '#193324',
+    90: '#0d1a12'
+  }}
+/>
+
+<ColorItem
+  title="Menta Vívida"
+  subtitle="mint-{n}v"
+  colors={{
+    '5v': '#c9fbeb',
+    '10v': '#83fcd4',
+    '20v': '#0ceda6',
+    '30v': '#04c585',
+    '40v': '#00a871',
+    '50v': '#008659',
+    '60v': '#146947',
+    '70v': '#0c4e29',
+    '80v': '#0d351e'
+  }}
+/>
+
+<ColorItem
+  title="Menta Fria"
+  subtitle="mint-cool-{n}"
+  colors={{
+    5: '#e0f7f6',
+    10: '#c4eeeb',
+    20: '#9bd4cf',
+    30: '#6fbab3',
+    40: '#4f9e99',
+    50: '#40807e',
+    60: '#376462',
+    70: '#2a4b45',
+    80: '#203131',
+    90: '#111818'
+  }}
+/>
+
+<ColorItem
+  title="Menta Fria Vívida"
+  subtitle="mint-cool-{n}v"
+  colors={{
+    '5v': '#d5fbf3',
+    '10v': '#7efbe1',
+    '20v': '#29e1cb',
+    '30v': '#1dc2ae',
+    '40v': '#00a398',
+    '50v': '#008480',
+    '60v': '#0f6460',
+    '70v': '#0b4b3f',
+    '80v': '#123131'
+  }}
+/>
+
+<ColorItem
+  title="Ciano"
+  subtitle="cyan-{n}"
+  colors={{
+    5: '#e7f6f8',
+    10: '#ccecf2',
+    20: '#99deea',
+    30: '#5dc0d1',
+    40: '#449dac',
+    50: '#168092',
+    60: '#2a646d',
+    70: '#2c4a4e',
+    80: '#203133',
+    90: '#111819'
+  }}
+/>
+
+<ColorItem
+  title="Ciano Vívido"
+  subtitle="cyan-{n}v"
+  colors={{
+    '5v': '#e5faff',
+    '10v': '#a8f2ff',
+    '20v': '#52daf2',
+    '30v': '#00bde3',
+    '40v': '#009ec1',
+    '50v': '#0081a1',
+    '60v': '#00687d',
+    '70v': '#0e4f5c',
+    '80v': '#093b44'
+  }}
+/>
+
+<ColorItem
+  title="Azul Frio"
+  subtitle="blue-cool-{n}"
+  colors={{
+    5: '#e7f2f5',
+    10: '#dae9ee',
+    20: '#adcfdc',
+    30: '#82b4c9',
+    40: '#6499af',
+    50: '#3a7d95',
+    60: '#2e6276',
+    70: '#224a58',
+    80: '#14333d',
+    90: '#0f191c'
+  }}
+/>
+
+<ColorItem
+  title="Azul Frio Vívido"
+  subtitle="blue-cool-{n}v"
+  colors={{
+    '5v': '#e1f3f8',
+    '10v': '#c3ebfa',
+    '20v': '#97d4ea',
+    '30v': '#59b9de',
+    '40v': '#28a0cb',
+    '50v': '#0d7ea2',
+    '60v': '#07648d',
+    '70v': '#074b69',
+    '80v': '#002d3f'
+  }}
+/>
+
+<ColorItem
+  title="Azul"
+  subtitle="blue-{n}"
+  colors={{
+    5: '#eff6fb',
+    10: '#d9e8f6',
+    20: '#aacdec',
+    30: '#73b3e7',
+    40: '#4f97d1',
+    50: '#2378c3',
+    60: '#2c608a',
+    70: '#274863',
+    80: '#1f303e',
+    90: '#11181d'
+  }}
+/>
+
+<ColorItem
+  title="Azul Vívido"
+  subtitle="blue-{n}v"
+  colors={{
+    '5v': '#e8f5ff',
+    '10v': '#cfe8ff',
+    '20v': '#a1d3ff',
+    '30v': '#58b4ff',
+    '40v': '#2491ff',
+    '50v': '#0076d6',
+    '60v': '#005ea2',
+    '70v': '#0b4778',
+    '80v': '#112f4e'
+  }}
+/>
+
+<ColorItem
+  title="Azul Quente"
+  subtitle="blue-warm-{n}"
+  colors={{
+    5: '#ecf1f7',
+    10: '#e1e7f1',
+    20: '#bbcae4',
+    30: '#98afd2',
+    40: '#7292c7',
+    50: '#4a77b4',
+    60: '#345d96',
+    70: '#2f4668',
+    80: '#252f3e',
+    90: '#13171f'
+  }}
+/>
+
+<ColorItem
+  title="Azul Quente Vívido"
+  subtitle="blue-warm-{n}v"
+  colors={{
+    '5v': '#edf5ff',
+    '10v': '#d4e5ff',
+    '20v': '#adcdff',
+    '30v': '#81aefc',
+    '40v': '#5994f6',
+    '50v': '#2672de',
+    '60v': '#0050d8',
+    '70v': '#1a4480',
+    '80v': '#162e51'
+  }}
+/>
+
+<ColorItem
+  title="Indigo Frio"
+  subtitle="indigo-cool-{n}"
+  colors={{
+    5: '#eef0f9',
+    10: '#e1e6f9',
+    20: '#bbc8f5',
+    30: '#96abee',
+    40: '#6b8ee8',
+    50: '#496fd8',
+    60: '#3f57a6',
+    70: '#374274',
+    80: '#292d42',
+    90: '#151622'
+  }}
+/>
+
+<ColorItem
+  title="Indigo Frio Vívido"
+  subtitle="indigo-cool-{n}v"
+  colors={{
+    '5v': '#edf0ff',
+    '10v': '#dee5ff',
+    '20v': '#b8c8ff',
+    '30v': '#94adff',
+    '40v': '#628ef4',
+    '50v': '#4866ff',
+    '60v': '#3e4ded',
+    '70v': '#222fbf',
+    '80v': '#1b2b85'
+  }}
+/>
+
+<ColorItem
+  title="Indigo"
+  subtitle="indigo-{n}"
+  colors={{
+    5: '#efeff8',
+    10: '#e5e4fa',
+    20: '#c5c5f3',
+    30: '#a5a8eb',
+    40: '#8889db',
+    50: '#676cc8',
+    60: '#4d52af',
+    70: '#3d4076',
+    80: '#2b2c40',
+    90: '#16171f'
+  }}
+/>
+
+<ColorItem
+  title="Indigo Vívido"
+  subtitle="indigo-{n}v"
+  colors={{
+    '5v': '#f0f0ff',
+    '10v': '#e0e0ff',
+    '20v': '#ccceff',
+    '30v': '#a3a7fa',
+    '40v': '#8289ff',
+    '50v': '#656bd7',
+    '60v': '#4a50c4',
+    '70v': '#3333a3',
+    '80v': '#212463'
+  }}
+/>
+
+<ColorItem
+  title="Indigo Quente"
+  subtitle="indigo-warm-{n}"
+  colors={{
+    5: '#f1eff7',
+    10: '#e7e3fa',
+    20: '#cbc4f2',
+    30: '#afa5e8',
+    40: '#9287d8',
+    50: '#7665d1',
+    60: '#5e519e',
+    70: '#453c7b',
+    80: '#2e2c40',
+    90: '#18161d'
+  }}
+/>
+
+<ColorItem
+  title="Indigo Quente Vívido"
+  subtitle="indigo-warm-{n}v"
+  colors={{
+    '5v': '#f5f2ff',
+    '10v': '#e4deff',
+    '20v': '#cfc4fd',
+    '30v': '#b69fff',
+    '40v': '#967efb',
+    '50v': '#745fe9',
+    '60v': '#5942d2',
+    '70v': '#3d2c9d',
+    '80v': '#261f5b'
+  }}
+/>
+
+<ColorItem
+  title="Violeta"
+  subtitle="violet-{n}"
+  colors={{
+    5: '#f4f1f9',
+    10: '#ebe3f9',
+    20: '#d0c3e9',
+    30: '#b8a2e3',
+    40: '#9d84d2',
+    50: '#8168b3',
+    60: '#665190',
+    70: '#4c3d69',
+    80: '#312b3f',
+    90: '#18161d'
+  }}
+/>
+
+<ColorItem
+  title="Violeta Vívido"
+  subtitle="violet-{n}v"
+  colors={{
+    '5v': '#f7f2ff',
+    '10v': '#ede3ff',
+    '20v': '#d5bfff',
+    '30v': '#c39deb',
+    '40v': '#ad79e9',
+    '50v': '#9355dc',
+    '60v': '#783cb9',
+    '70v': '#54278f',
+    '80v': '#39215e'
+  }}
+/>
+
+<ColorItem
+  title="Violeta Quente"
+  subtitle="violet-warm-{n}"
+  colors={{
+    5: '#f8f0f9',
+    10: '#f6dff8',
+    20: '#e2bee4',
+    30: '#d29ad8',
+    40: '#bf77c8',
+    50: '#b04abd',
+    60: '#864381',
+    70: '#5c395a',
+    80: '#382936',
+    90: '#1b151b'
+  }}
+/>
+
+<ColorItem
+  title="Violeta Quente Vívido"
+  subtitle="violet-warm-{n}v"
+  colors={{
+    '5v': '#fef2ff',
+    '10v': '#fbdcff',
+    '20v': '#f4b2ff',
+    '30v': '#ee83ff',
+    '40v': '#d85bef',
+    '50v': '#be32d0',
+    '60v': '#93348c',
+    '70v': '#711e6c',
+    '80v': '#481441'
+  }}
+/>
+
+<ColorItem
+  title="Magenta"
+  subtitle="magenta-{n}"
+  colors={{
+    5: '#f9f0f2',
+    10: '#f6e1e8',
+    20: '#f0bbcc',
+    30: '#e895b3',
+    40: '#e0699f',
+    50: '#c84281',
+    60: '#8b4566',
+    70: '#66364b',
+    80: '#402731',
+    90: '#1b1617'
+  }}
+/>
+
+<ColorItem
+  title="Magenta Vívido"
+  subtitle="magenta-{n}v"
+  colors={{
+    '5v': '#fff2f5',
+    '10v': '#ffddea',
+    '20v': '#ffb4cf',
+    '30v': '#ff87b2',
+    '40v': '#fd4496',
+    '50v': '#d72d79',
+    '60v': '#ab2165',
+    '70v': '#731f44',
+    '80v': '#4f172e'
+  }}
+/>
+
+<ColorItem
+  title="Cinza Frio"
+  subtitle="gray-cool-{n}"
+  colors={{
+    1: '#fbfcfd',
+    2: '#f7f9fa',
+    3: '#f5f6f7',
+    4: '#f1f3f6',
+    5: '#edeff0',
+  }}
+/>
+
+<ColorItem
+  title="Cinza Frio"
+  subtitle="gray-cool-{n}"
+  colors={{
+    10: '#dfe1e2',
+    20: '#c6cace',
+    30: '#a9aeb1',
+    40: '#8d9297',
+    50: '#71767a',
+    60: '#565c65',
+    70: '#3d4551',
+    80: '#2d2e2f',
+    90: '#1c1d1f'
+  }}
+/>
+
+<ColorItem
+  title="Cinza"
+  subtitle="gray-{n}"
+  colors={{
+    1: '#fcfcfc',
+    2: '#f9f9f9',
+    3: '#f6f6f6',
+    4: '#f3f3f3',
+    5: '#f0f0f0',
+  }}
+/>
+
+<ColorItem
+  title="Cinza"
+  subtitle="gray-{n}"
+  colors={{
+    10: '#e6e6e6',
+    20: '#c9c9c9',
+    30: '#adadad',
+    40: '#919191',
+    50: '#757575',
+    60: '#5c5c5c',
+    70: '#454545',
+    80: '#2e2e2e',
+    90: '#1b1b1b',
+    100: '#000000'
+  }}
+/>
+
+<ColorItem
+  title="Cinza Quente"
+  subtitle="gray-warm-{n}"
+  colors={{
+    1: '#fcfcfb',
+    2: '#f9f9f7',
+    3: '#f6f6f2',
+    4: '#f5f5f0',
+    5: '#f0f0ec',
+  }}
+/>
+
+<ColorItem
+  title="Cinza Quente"
+  subtitle="gray-warm-{n}"
+  colors={{
+    10: '#e6e6e2',
+    20: '#cac9c0',
+    30: '#afaea2',
+    40: '#929285',
+    50: '#76766a',
+    60: '#5d5d52',
+    70: '#454540',
+    80: '#2e2e2a',
+    90: '#171716'
+  }}
+/>
+</ColorPalette>
+
+## Acessibilidade de Cores
+
+A acessibilidade de cores é um dos pilares mais importantes para garantir que todas as pessoas, independentemente de limitações visuais, possam consumir e interagir com conteúdos digitais. Um dos aspectos fundamentais para a acessibilidade de cores é a **taxa de contraste** entre o texto (ou elementos interativos) e seu fundo, o que permite uma legibilidade adequada em diversos contextos.
+
+### Diretrizes de Acessibilidade: WCAG 2.1
+
+As **Diretrizes de Acessibilidade para Conteúdo Web (WCAG)** estabelecem recomendações para garantir que os sites e aplicativos sejam acessíveis para todas as pessoas, incluindo aquelas com deficiência visual. Em relação à acessibilidade de cores, as diretrizes WCAG definem níveis de conformidade baseados na taxa de contraste:
+
+1. **Nível AA**:
+   - Para **texto normal**: a taxa de contraste mínima deve ser de **4.5:1**.
+   - Para **texto grande** (18pt ou 14pt em negrito): a taxa de contraste mínima deve ser de **3:1**.
+   - **Componentes da interface do usuário** e **elementos gráficos** também devem seguir uma taxa de contraste de **3:1**.
+
+2. **Nível AAA** (critério mais restrito):
+   - Para **texto normal**: a taxa de contraste mínima deve ser de **7:1**.
+   - Para **texto grande**: a taxa de contraste mínima deve ser de **4.5:1**.
+
+Esses critérios garantem que pessoas com baixa visão ou deficiências relacionadas ao contraste possam acessar e ler o conteúdo sem dificuldade.
+
+### Recomendações de Uso da Ferramenta
+
+Para garantir que seu projeto esteja de acordo com as diretrizes de acessibilidade de contraste de cores, recomendamos o uso de ferramentas de verificação de contraste, como a **ferramenta de Checagem de Contraste WCAG** que foi desenvolvida. 
+
+Essa ferramenta permite que você:
+- Insira as cores de texto e fundo em formato hexadecimal.
+- Verifique a taxa de contraste entre as duas cores inseridas.
+- Veja se a combinação de cores atende aos critérios de acessibilidade WCAG para **Texto Normal**, **Texto Grande** e **Elementos Gráficos/Componentes da Interface do Usuário**.
+- Exiba a conformidade com os níveis AA e AAA.
+
+## Como Usar a Ferramenta
+
+1. **Selecione as cores**: Você pode inserir o código hexadecimal da cor para definir as cores de **texto** e **fundo**.
+2. **Veja o resultado em tempo real**: A ferramenta calcula automaticamente a taxa de contraste e informa se a combinação de cores atende aos requisitos de contraste do WCAG para texto normal, texto grande e componentes gráficos.
+3. **Ajuste suas cores**: Caso a combinação não passe nos testes de acessibilidade, ajuste as cores até que elas atinjam as diretrizes necessárias (AA ou AAA).
+
+Utilizar essa ferramenta durante o desenvolvimento de interfaces garante que o design de seu projeto será acessível e de fácil leitura para todos os usuários.
+
+---
+
+Recomendamos que todos os desenvolvedores e designers incorporem a verificação de contraste em seus fluxos de trabalho para garantir uma experiência inclusiva para todos os usuários.
+
+### Checagem de Contraste WCAG
+<ContrastChecker/>
+
+
+## Considerações Finais
+
+Essa paleta oferece uma vasta gama de possibilidades de cores e tonalidades, adequadas para criar interfaces visualmente agradáveis e consistentes. 
+Ao definir os tons adequados para diferentes elementos de uma interface, você pode garantir uma harmonia visual, seja em fundos, textos, botões ou gráficos.

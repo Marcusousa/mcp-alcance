@@ -1,0 +1,154 @@
+{/* alc-tabs.mdx */}
+
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-tabs.stories';
+import TabsProps from './alc-tabs.props.md?raw';
+import { IntroDoc } from "../../../stories/utils/IntroDoc";
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+<IntroDoc>
+Tabs são usadas para organizar conteúdos relacionados, que possuam paralelismo entre si. Eles permitem que o usuário navegue entre grupos de conteúdos no mesmo nível hierárquico.
+</IntroDoc>
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">O alc-tabs deve ser usada em conjunto com o componente `alc-tab` (painel) e os botões de aba `alc-tab-button`.</alc-alert>
+</Unstyled>
+
+{/*
+## Demonstração
+
+### Modo claro
+IMAGEM AQUI
+
+### Modo Escuro
+IMAGEM AQUI
+*/}
+
+## Quando usar
+Use Tabs quando o objetivo é organizar conteúdo relacionado em seções dentro da mesma página, permitindo que o usuário alterne rapidamente entre elas.
+
+Situações ideais:
+- O conteúdo pode ser dividido em seções paralelas (mesmo nível de hierarquia)
+- O usuário precisa alternar frequentemente entre essas seções.
+- Apenas uma seção precisa ser exibida por vez.
+- O conteúdo pertence ao mesmo contexto.
+
+
+Exemplos comuns:
+- Estados de documentos: Recebidos, Em análise, Concluídos.
+- Configurações: Perfil, Segurança, Notificações.
+- Visualizações alternativas: Última semana, Último mês, Último ano.
+
+
+Tabs funcionam melhor quando os destinos são equivalentes entre si, não hierárquicos.
+
+
+## Quando não usar
+Evite Tabs nas seguintes situações:
+
+- **Quando o conteúdo puder ser mostrado todo de uma vez**: Não deixe conteúdo oculto em abas desnecessariamente.
+- **Conteúdo não relacionado:** Se não há relação entre os conteúdos das abas, o padrão de navegação fica confuso.
+- **Navegação principal do sistema:** Tabs não devem substituir a navegação principal de uma aplicação.
+- **Muitos itens:** Isso aumenta a carga cognitiva e dificulta encontrar informações.
+- **Fluxos sequenciais ou indicação de progresso:** Tabs não são ideais quando o usuário precisa seguir um fluxo linear.
+- **Como filtro do mesmo conteúdo**
+- **Para comparar informações:** Se o usuário precisar comparar informações em diferentes grupos, seu uso resultaria no usuário tendo que alternar várias vezes para completar uma tarefa.
+
+{/*
+## Estados
+IMAGEM AQUI
+ */}
+
+### alc-tab-button
+
+| Elemento         | Estado           | Propriedade                                           | Valor/Token                                             | HEX (Light/Dark)                    | USWDS (Light/Dark)                             |
+|------------------|------------------|-------------------------------------------------------|---------------------------------------------------------|-------------------------------------|------------------------------------------------|
+| Fundo            | Repouso/Padrão   | background-color                                      |                                                         | Light: #dfe1e2 <br/> Dark: #454545  | Light: gray-cool-10 <br/> Dark: gray-70        |
+|                  | Hover            | background-color                                      |                                                         | Light: #074b69 <br/> Dark: #3d4551  | Light: gray-cool-20 <br/> Dark: gray-cool-70   |
+|                  | Tab Ativado      | background-color                                      | Cor do surface/layer no qual o componente está inserido |                                     |                                                |
+| Label            | Repouso/Padrão   | text-color                                            |                                                         | Light: #07648d <br/>Dark: #52daf2   | Light: blue-cool-60v <br/> Dark: cyan-20v      |
+|                  | Tab Ativado      | text-color                                            | --alc-color-text-primary                                | Light: #000000 <br/> Dark: #ffffff  |                                                |
+|                  |                  | font-family                                           | Roboto                                                  |                                     |                                                |
+|                  |                  | font-size                                             | --alc-font-size-base / 1rem / 16px                      |                                     |                                                |
+|                  |                  | line-height                                           | --alc-font-line-height-base / 1.5rem / 24px             |                                     |                                                |
+| Borda            |                  | border-color                                          | --alc-color-border                                      | Light: #c9c9c9 <br/> Dark: #adadad  | Light: gray-20 <br/> Dark: gray-30             |
+|                  |                  | border-bottom-width <br/> border-right-width          | 1px                                                     |                                     |                                                |
+|                  | Tab Ativado      | border-top-width                                      | 4px                                                     |                                     |                                                |
+|                  |                  | border-bottom                                         | none                                                    |                                     |                                                |
+|                  |                  | border-left-width <br/> border-right-width            | 1px                                                     |                                     |                                                |
+| Espaçamento      |                  | padding-left <br/> padding-right <br/> padding-bottom | --alc-spacing-03 / 0.5rem / 8px                         |                                     |                                                |
+|                  |                  | padding-top                                           | --alc-spacing-04 / 0.75rem / 12px                       |                                     |                                                |
+|                  | Tab Ativado      | padding                                               | --alc-spacing-03 / 0.5rem / 8px                         |                                     |                                                |
+| Outline          | Focus            | outline-color                                         |                                                         | Light: #07648d <br/> Dark: #59b9de  | Light: blue-cool-60v <br/> Dark: blue-cool-30v |
+|                  |                  | outline-width                                         | 2px                                                     |                                     |                                                |   
+|                  |                  | outline-offset                                        | -8px                                                    |                                     |                                                |   
+
+
+## alc-tab (painel)
+
+| Elemento              | Estado | Propriedade         | Valor/Token                                                                 | HEX (Light/Dark)                         | USWDS (Light/Dark)                             |
+|-----------------------|--------|---------------------|-----------------------------------------------------------------------------|------------------------------------------|------------------------------------------------|
+| Fundo                 |        | background-color    | Cor do surface/layer no qual o componente esta inserido                     |                                          |                                                |
+| Texto                 |        | text-color          | --alc-color-text-primary                                                    | Light: #000000 <br/> Dark: #ffffff       |                                                |
+|                       |        | font-family         | Roboto                                                                      |                                          |                                                |
+|                       |        | font-size           | --alc-font-size-base / 1rem / 16px                                          |                                          |                                                |
+|                       |        | line-height         | --alc-font-line-height-base / 1.5rem / 24px                                 |                                          |                                                |
+| Borda                 |        | border-color        | --alc-color-border                                                          | Light: #c9c9c9 <br/> Dark: #adadad       | Light: gray-20 <br/> Dark: gray-30             |
+|                       |        | border-width        | 1px                                                                         |                                          |                                                |
+| Margem                |        | margem-top          | -1px (Aqui serve para esconder a borda e "mesclar" com tab-button ativo)    |                                          |                                                |
+| Espaçamento interno   |        | padding             | --alc-spacing-04 / 0.75rem / 12px                                           |                                          |                                                |
+| Outline               | Focus  | outline-color       |                                                                             | Light: #07648d <br/> Dark: #59b9de       | Light: blue-cool-60v <br/> Dark: blue-cool-30v |
+|                       |        | outline-width       | 2px                                                                         |                                          |                                                |
+|                       |        | outline-offset      | -8px                                                                        |                                          |                                                |
+
+
+Para detalhes sobre os tokens de surface e layer consulte a <a class="alc-link" href="./?path=/docs/estilos-tokens--documentação">documentação de tokens</a>.
+
+## Responsividade
+O componente Tabs se adapta automaticamente à largura disponível na página:
+- Quando há espaço suficiente, todas as `tab-buttons` são exibidas lado a lado sem necessidade de rolagem.
+- Quando o número de abas ultrapassa a largura disponível, o componente ativa rolagem horizontal controlada por botões nas laterais. Isso permite navegar para `tab-buttons` que estão fora da área visível.
+
+O comportamento dos botões de scroll possuem três estados:
+1. **Início da navegação:** Quando a primeira aba está visível no início da lista, o botão à esquerda permanece desabilitado, indicando que não há mais conteúdo nessa direção.
+2. **Navegação intermediária:** Quando existem abas ocultas tanto à esquerda quanto à direita, ambos os botões permanecem habilitados, permitindo navegação nas duas direções.
+3. **Final da navegação:** Quando a última aba é alcançada, o botão à direita fica desabilitado, indicando que não há mais conteúdo disponível nessa direção.
+
+Para saber mais sobre o botão de scroll utilizado no componente acesse a <a class="alc-link" href="./?path=/docs/componentes-alfa-scroll-panel--documentação">documentação de scroll-panel</a>
+
+{/* IMAGEM AQUI */}
+
+## Quantidade recomendada de tabs
+Procure manter um número reduzido de tabs para preservar a legibilidade e diminuir a carga cognitiva.
+
+Se houver muitas tabs, avalie **reorganizar a arquitetura da informação ou agrupar conteúdos**, em vez de adicionar novas tabs.
+
+## Boas práticas
+- **Limite o número de tabs:** O excesso prejudica a visão geral e dificulta a navegação, principalmente em telas menores.
+- **Use rótulos claros:** Como o conteúdo fica oculto até a seleção, os rótulos devem indicar claramente o que o usuário encontrará em cada aba.
+- **Use rótulos curtos:** Rótulos curtos (1–2 palavras) melhoram a leitura e evitam problemas de layout.
+- **Priorize o conteúdo importante:** Posicionando em primeiro as seções mais relevantes para o usuário.
+- **Evite tabs desabilitadas:** Se uma aba não possui conteúdo disponível, prefira removê-la ou explicar o motivo da indisponibilidade.
+- **Não utilize tabs dentro de tabs:** Isso aumenta a complexidade na interação.
+- **Mantenha conteúdo relacionado:** Use tabs apenas para dividir conteúdos que pertencem ao mesmo contexto ou funcionalidade.
+
+## Acessibilidade
+### Interação pelo teclado
+- **Tab**
+    - Quando o foco entra no conjunto de `tab-buttons`, coloca o foco no `tab-button` ativo.
+    - Quando o foco está no `tab-button`, o foco avança para o próximo elemento na ordem de navegação. Normalmente será o componente `tab` (painel)
+    atualmente exibido ou o primeiro elemento focável dentro dele
+    (ver a <a class="alc-link" href="./?path=/docs/componentes-alfa-tab--documenta%C3%A7%C3%A3o#propriedade-content-focus">propriedade content-focus no componente tab</a>).
+- **Setas para direita e esquerda**
+    - Move o foco entre os `tab-buttons` do conjunto.
+    - O `tab` é ativado automaticamente quando recebe foco.
+    - Se o foco estiver no último `tab-button`, a seta para a direita move para o primeiro.
+    - Se o foco estiver no primeiro `tab-button`, a seta para a esquerda move para o último.
+- **Home**
+    - Move o foco para primeiro `tab-button` e ativa o `tab` correspondente.
+- **End**
+    - Move o foco para último `tab-button` e ativa o `tab` correspondente.
+<Markdown>{TabsProps}</Markdown>

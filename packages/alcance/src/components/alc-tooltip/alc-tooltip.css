@@ -1,0 +1,22 @@
+[data-alc-theme="dark"] alc-tooltip {
+  --bg-color: var(--alc-color-neutral-90);
+}
+
+[data-alc-theme="light"] alc-tooltip {
+  --bg-color: var(--alc-color-neutral-5);
+}
+
+.alc-tooltip__content {
+  @apply px-[--alc-spacing-03] py-[--alc-spacing-02] rounded-sm bg-[--bg-color] text-[--alc-color-text-secondary] border border-[--alc-color-border] text-sm;
+  width: fit-content;
+}
+
+/* Estilização para arrow */
+alc-tooltip .alc-popup__arrow {
+  /* width e height devem ser iguais */
+  --arrow-size: var(--alc-spacing-03);
+
+  @apply bg-[--bg-color] w-[--arrow-size] h-[--arrow-size] border-[--alc-color-border];
+  border-bottom-width: var(--alc-border-width);
+  border-right-width: var(--alc-border-width);
+}

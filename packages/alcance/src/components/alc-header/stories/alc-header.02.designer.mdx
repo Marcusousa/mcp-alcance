@@ -1,0 +1,124 @@
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-header.stories';
+import HeaderProps from './alc-header.props.md?raw';
+import { ColorHEX, Scale } from '../../../stories/utils/designRender.jsx';
+
+<Meta of={Stories} name="Design" />
+
+# Design de {Stories.default.name}
+
+## Anatomia
+
+<img src='./static/images/header/anatomia-header.svg' alt="Anatomia do header" style={{margin: "1.5rem 0"}}/>
+
+<span style={{color: "#168092"}}>**1  - Logo Câmara dos Deputados:**</span>
+
+Deverá ser aplicado de forma obrigatória em todos os sistemas, mantendo o tamanho **36x36px** para os breakpoints inferiores e **40x40px** a partir do breakpoint 992.
+
+<span style={{color: "#168092"}}>**2 - Identificação do Sistema | Obrigatório:**</span>
+
+Destinado para identificação do sistema, pode ser o nome do sistema ou sigla. 
+
+<span style={{color: "#168092"}}>**3 - Descrição do Sistema | Opcional:**</span>
+
+Descrição servem para reforçar a identificação de uma sigla (escrita por extenso) associada ao título do sistema. 
+
+<span style={{color: "#168092"}}>**4 - Área de funcionalidades:**</span>
+
+São itens opcionais/ personalizáveis e devem ser utilizados quando houver necessidades específicas em cada sistema.
+
+<span style={{color: "#168092"}}>**5 - Botão de funcionalidade:**</span>
+
+São links opcionais de apoio, usados apenas quando relevantes ao contexto do sistema ou usuário
+
+<span style={{color: "#168092"}}>**6 - Tag para notificação do header:**</span>
+
+Item dinâmico para notificações.
+
+<span style={{color: "#168092"}}>**7 - Separador:**</span>
+
+Utilizado para separar a área de links funcionais da área de  identificação do usuário
+
+<span style={{color: "#168092"}}>**8 - Identificação do usuário (nome):**</span>
+
+Informação com o nome e ponto do usuário logado
+
+<span style={{color: "#168092"}}>**9 - Identificação do usuário (avatar):**</span>
+
+Informação com imagem/foto do usuário logado
+
+<span style={{color: "#168092"}}>**10 - Identificação do usuário (cargo):**</span>
+
+Informação com o nome e ponto do usuário logado
+
+<span style={{color: "#168092"}}>**11 - Área para identificação do usuário:**</span>
+
+Área destinada ao detalhamento do usuário logado, menu de ferramentas e autenticador.
+
+<span style={{color: "#168092"}}>**12 - Menu do usuário (dropdown):**</span>
+
+A lista dropdown é utilizada na área para Links e para Funcionalidades.
+
+
+## Espaçamento
+<img src='./static/images/header/espacamento-header.svg' alt="Espaçamento do header" style={{marginTop: "1.5rem"}}/>
+
+
+## Estados
+<img src='./static/images/header/estados-header.svg' alt="Estados do header" style={{marginTop: "1.5rem"}}/>
+
+
+| Estado  | Item       | Cor                                | Hex     | USWDS - Token | Observações                                                       |
+|:--------|:-----------|:----------------------------------:|:-------:|:-------------:|:------------------------------------------------------------------|
+| Default | Ícone      | <ColorHEX color="#FFFFFF" />       | #FFFFFF | White         | Conteúdo                                                           |
+| Default | Texto      | <ColorHEX color="#FFFFFF" />       | #FFFFFF | White         | Conteúdo                                                           |
+| Hover   | Background | <ColorHEX color="#FFFFFF" />       | #FFFFFF | White         | Opacidade: 0.1; border-radius: 4px;                                |
+| Focus   | Outline    | <ColorHEX color="#FFFFFF" />       | #FFFFFF | White         | outline-width: 2px; outline-style: solid; outline-radius: 4px;     |
+
+
+## Fundamentos Visuais
+<img src='./static/images/header/fundamentos-visuais-header.svg' alt="Fundamentos visuais do header" style={{marginTop: "1.5rem"}}/>
+
+
+### Tipografia
+
+{/* VALORES (rem X px) NÃO ESTÃO CORRETOS - VERIFICAR DEPOIS */}
+
+| Elemento                               | Font/Line-height (rem) | Font/Line-height (px) |   Peso   |
+| -------------------------------------- | ---------------------: | --------------------: | :------: |
+| Título do Sistema (Mobile)             |               1.375 / 2|               20 / 24 | Regular  |
+| Descrição da sigla do sistema (Mobile) |                 1 / 1.5|               14 / 16 | Regular  |
+| Título do Sistema                      |               1.375 / 2|               22 / 24 | Regular  |
+| Descrição da sigla do sistema          |                 1 / 1.5|               16 / 16 | Regular  |
+| Usuário                                |                 1 / 1.5|               16 / 24 | Medium   |
+| Função                                 |               0.875 / 1|               14 / 16 | Regular  |
+| Ponto (P_999999)                       |               0.875 / 1|               14 / 16 | Regular  |
+
+
+### Cores
+
+| Elemento          |                   Representação                  |   HEX   |  USWDS - Token  |
+| ----------------- | :----------------------------------------------: | :-----: | :-------------: |
+| BG - Light (from) | <ColorHEX theme="light" hex="40807E"></ColorHEX> | #40807E |   mint-cool-50  |
+| BG - Light (to)   | <ColorHEX theme="light" hex="074B69"></ColorHEX> | #074B69 |  blue-cool-70v  |
+| BG - Dark (from)  | <ColorHEX theme="dark" hex="203131"></ColorHEX>  | #203131 |   mint-cool-80  |
+| BG - Dark (to)    | <ColorHEX theme="dark" hex="172222"></ColorHEX>  | #172222 |   gray-cool-90  |
+| Texto             | <ColorHEX theme="light" hex="FFFFFF"></ColorHEX> | #FFFFFF |      white      |
+| Ícone             | <ColorHEX theme="light" hex="FFFFFF"></ColorHEX> | #FFFFFF |      white      |
+| Badge             | <ColorHEX theme="light" hex="FC906D"></ColorHEX> | #FC906D | orange-warm-30v |
+| Stroke (avatar)   | <ColorHEX theme="light" hex="00687D"></ColorHEX> | #00687D |     cyan-60v    |
+
+### Escala / Tamanho
+
+| Elemento     |             Representação         |   px  |  rem |
+| -------------| :-------------------------------: | :---: | :--: |
+| Logo         | <Scale width={36} height={36} />  | 36x36 | 2.25 |
+| Logo ≥ 768px | <Scale width={40} height={40} />  | 40x40 |  2.5 |
+| Ícones menu  | <Scale width={36} height={36} />  | 36x36 | 2.25 |
+| Badge        | <Scale width={20} height={11} />  | 20x11 |   —  |
+| Dot          | <Scale width={12} height={12} />  | 12x12 | 0.75 |
+
+
+## Documentação completa
+
+A documentação completa está no [Guia de Estilo - Header e Navegação (PDF, 8MB)](https://drive.camara.leg.br/s/E8zaA95osPMNBja).

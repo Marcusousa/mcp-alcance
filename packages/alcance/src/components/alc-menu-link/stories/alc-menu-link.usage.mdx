@@ -1,0 +1,143 @@
+{/* alc-menu-link.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-menu-link.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <h2>Menu de Navegação</h2>
+    <alc-menu>
+      <alc-menu-link
+        value="home"
+        @alc-select="onMenuLinkSelect"
+      >
+        <a href="/">Página Inicial do Alcance</a>
+      </alc-menu-link>
+      <alc-menu-link
+        value="google"
+        @alc-select="onMenuLinkSelect"
+        :disabled="isGoogleDisabled"
+      >
+        <a href="https://google.com">Google</a>
+      </alc-menu-link>
+      <alc-menu-item
+        value="naoLink"
+        @click="onMenuItemClick"
+      >
+        Não link
+      </alc-menu-item>
+    </alc-menu>
+
+    <!-- Botão para desabilitar o link do Google -->
+    <button class="alc-button" @click="toggleGoogleLink">
+      {{ isGoogleDisabled ? 'Habilitar' : 'Desabilitar' }} Link do Google
+    </button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'MenuLinkExample',
+  data() {
+    return {
+      isGoogleDisabled: false,
+    };
+  },
+  methods: {
+    onMenuLinkSelect(event) {
+      const value = event.currentTarget.getAttribute('value');
+      alert('Você selecionou o link: ' + value);
+      // Implementar lógica adicional com base no link selecionado
+    },
+    onMenuItemClick(event) {
+      const value = event.currentTarget.getAttribute('value');
+      alert('Você clicou no item: ' + value);
+      // Implementar lógica adicional para itens não-link
+    },
+    toggleGoogleLink() {
+      this.isGoogleDisabled = !this.isGoogleDisabled;
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <h2>Menu de Navegação (TypeScript)</h2>
+    <alc-menu>
+      <alc-menu-link
+        value="about"
+        @alc-select="handleMenuLinkSelect"
+      >
+        <router-link to="/about">Sobre Nós</router-link>
+      </alc-menu-link>
+      <alc-menu-link
+        value="contact"
+        @alc-select="handleMenuLinkSelect"
+      >
+        <router-link to="/contact">Contato</router-link>
+      </alc-menu-link>
+      <alc-menu-item
+        value="ajuda"
+        @click="handleMenuItemClick"
+      >
+        Ajuda
+      </alc-menu-item>
+    </alc-menu>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
+
+export default defineComponent({
+  name: 'MenuLinkExampleTS',
+  setup() {
+    const router = useRouter();
+
+    const handleMenuLinkSelect = (event: Event) => {
+      const target = event.currentTarget as HTMLElement;
+      const value = target.getAttribute('value');
+
+      alert('Você selecionou o link: ' + value);
+
+      // Navegar para a rota correspondente
+      if (value === 'about') {
+        router.push('/about');
+      } else if (value === 'contact') {
+        router.push('/contact');
+      }
+    };
+
+    const handleMenuItemClick = (event: Event) => {
+      const target = event.currentTarget as HTMLElement;
+      const value = target.getAttribute('value');
+
+      alert('Você clicou no item: ' + value);
+      // Implementar lógica adicional para itens não-link
+    };
+
+    return {
+      handleMenuLinkSelect,
+      handleMenuItemClick,
+    };
+  },
+});
+</script>`
+  }}
+/>

@@ -1,0 +1,176 @@
+{/* alc-fieldset.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-fieldset.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+A propriedade `legend` é obrigatória e indica a label do grupo.
+
+
+### Basico com checkbox
+<Canvas of={Stories.BasicoComCheckbox} sourceState="shown" />
+<Controls of={Stories.BasicoComCheckbox} />
+
+### Basico com radio button
+<Canvas of={Stories.BasicoComRadio} sourceState="shown" />
+<Controls of={Stories.BasicoComRadio} />
+
+
+## Obrigatório
+Adicione a propriedade `required="true"` no component alc-fieldset.
+
+Essa propriedade é apenas indicação visual, o tratamento deve ser feito pela aplicação.
+
+<Canvas of={Stories.Obrigatorio} sourceState="shown" />
+<Controls of={Stories.Obrigatorio} />
+
+## Texto de ajuda
+Adicione a propriedade `hint="mensagem de ajuda"` no component alc-fieldset.
+
+<Canvas of={Stories.TextoAjuda} sourceState="shown" />
+<Controls of={Stories.TextoAjuda} />
+
+## Mensagem de erro
+Adicione a propriedade `error-msg="mensagem de erro"` no component alc-fieldset.
+
+Adicione essa propriedade apenas quando você quiser indicar um erro no fieldset. Para voltar ao estado padrão é so remover a propriedade.
+
+<Canvas of={Stories.Erro} sourceState="shown" />
+<Controls of={Stories.Erro} />
+
+## Sem borda
+É possível, com CSS, remover a borda do fieldset.
+
+A borda do fieldset é um elemento visual importante para identificação dos elementos relacionados. Ao removê-la, certifique-se de que seu leiaute ofereça essa percepção de agrupamento.
+
+<Canvas of={Stories.SemBorda} sourceState="shown" />
+<Controls of={Stories.SemBorda} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <alc-fieldset
+      legend="Eu quero receber"
+      hint="Selecione pelo menos uma opção."
+      :required="true"
+      :error-msg="fieldsetError"
+    >
+      <div class="flex flex-col gap-2">
+        <alc-checkbox label="Notícias da semana">
+          <input type="checkbox" v-model="subscriptions.news" />
+        </alc-checkbox>
+        <alc-checkbox label="Ofertas e promoções">
+          <input type="checkbox" v-model="subscriptions.offers" />
+        </alc-checkbox>
+        <alc-checkbox label="Atualizações">
+          <input type="checkbox" v-model="subscriptions.updates" />
+        </alc-checkbox>
+      </div>
+    </alc-fieldset>
+    <button class="alc-button" @click="submitForm">Enviar</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'FieldsetExample',
+  data() {
+    return {
+      subscriptions: {
+        news: false,
+        offers: false,
+        updates: false,
+      },
+      fieldsetError: '',
+    };
+  },
+  methods: {
+    submitForm() {
+      if (!this.subscriptions.news && !this.subscriptions.offers && !this.subscriptions.updates) {
+        this.fieldsetError = 'Por favor, selecione pelo menos uma opção.';
+      } else {
+        this.fieldsetError = '';
+        // Processar o formulário
+        alert('Opções selecionadas com sucesso!');
+      }
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <alc-fieldset
+      :legend="fieldsetLegend"
+      :hint="fieldsetHint"
+      :required="true"
+      :error-msg="fieldsetError"
+    >
+      <div class="flex flex-col gap-2">
+        <alc-checkbox>
+          <!-- Usando o slot 'label' para personalizar o label -->
+          <span slot="label">Assinar Newsletter</span>
+          <input type="checkbox" v-model="subscriptions.newsletter" />
+        </alc-checkbox>
+        <alc-checkbox label="Receber notificações por SMS">
+          <input type="checkbox" v-model="subscriptions.smsNotifications" />
+        </alc-checkbox>
+        <alc-checkbox label="Participar de pesquisas">
+          <input type="checkbox" v-model="subscriptions.surveys" />
+        </alc-checkbox>
+      </div>
+    </alc-fieldset>
+    <button class="alc-button" @click="savePreferences">Salvar Preferências</button>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'FieldsetExampleTS',
+  setup() {
+    const subscriptions = ref({
+      newsletter: false,
+      smsNotifications: false,
+      surveys: false,
+    });
+
+    const fieldsetLegend = ref('Preferências de Comunicação');
+    const fieldsetHint = ref('Escolha suas preferências de comunicação.');
+    const fieldsetError = ref('');
+
+    const savePreferences = () => {
+      if (
+        !subscriptions.value.newsletter &&
+        !subscriptions.value.smsNotifications &&
+        !subscriptions.value.surveys
+      ) {
+        fieldsetError.value = 'Por favor, selecione pelo menos uma opção.';
+      } else {
+        fieldsetError.value = '';
+        // Processar as preferências
+        alert('Preferências salvas com sucesso!');
+      }
+    };
+
+    return {
+      subscriptions,
+      fieldsetLegend,
+      fieldsetHint,
+      fieldsetError,
+      savePreferences,
+    };
+  },
+});
+</script>`
+  }}
+/>

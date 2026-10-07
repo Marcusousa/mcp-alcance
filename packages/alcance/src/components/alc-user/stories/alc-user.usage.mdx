@@ -1,0 +1,131 @@
+{/* alc-user.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-user.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+O componente possui uma propriedade chamada `name`, que permite adicionar o nome do usuário. 
+Por padrão, se nenhum valor for fornecido para a propriedade name, será exibido o texto "Usuário".
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+
+## Ponto/Matrícula
+O componente possui uma propriedade chamada `registration-number`, na qual você pode adicionar o 
+ponto ou a matrícula do usuário.
+
+<Canvas of={Stories.Ponto} sourceState="shown" />
+<Controls of={Stories.Ponto} />
+
+## Imagem
+O componente possui uma propriedade chamada `img-src`, na qual você pode adicionar a URL da imagem 
+a ser exibida. Essa propriedade aceita os mesmos valores válidos que o atributo src da tag img do HTML.
+Por padrão, se nenhum valor for fornecido para a propriedade, será exibido um ícone padrão.
+
+<Canvas of={Stories.Imagem} sourceState="shown" />
+<Controls of={Stories.Imagem} />
+
+## Logout
+O componente possui uma propriedade chamada `logout-url`, onde você pode adicionar a URL responsável por efetuar o logout do usuário.
+
+<Canvas of={Stories.Logout} sourceState="shown" />
+<Controls of={Stories.Logout} />
+
+<Unstyled>
+    <alc-alert dismissible="false">
+        Você tem a opção de personalizar a função de logout utilizando o evento `alc-logout`.
+    </alc-alert>
+</Unstyled>
+
+## Slot
+Com o slot você pode adicionar mais informações se necessário.
+
+<Canvas of={Stories.Slot} sourceState="shown" />
+<Controls of={Stories.Slot} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `
+<template>
+  <div>
+    <h2>Exemplo de uso do alc-user (JavaScript)</h2>
+    <p>Informações do usuário logado:</p>
+
+    <alc-user
+      img-src="https://via.placeholder.com/50"
+      name="Fulano de Tal"
+      registration-number="123456"
+      logout-url="/logout"
+      @alc-logout="onLogout"
+    >
+      <!-- Slot DEFAULT: Informação adicional do usuário -->
+      <p>Cargo: Desenvolvedor Front-End</p>
+    </alc-user>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'UserExampleJS',
+  methods: {
+    onLogout(event) {
+      // Evento alc-logout permite cancelar a navegação se desejado
+      const confirmLogout = confirm('Deseja realmente sair?');
+      if (!confirmLogout) {
+        event.preventDefault(); // Cancela a navegação se o usuário desistir
+      }
+    },
+  },
+};
+</script>
+    `,
+    typescript: `
+<template>
+  <div>
+    <h2>Exemplo de uso do alc-user (TypeScript)</h2>
+    <p>Informações do usuário logado:</p>
+
+    <alc-user
+      img-src="https://via.placeholder.com/50"
+      name="Ciclano da Silva"
+      registration-number="654321"
+      logout-url="/logout"
+      @alc-logout="handleLogout"
+    >
+      <!-- Slot DEFAULT: Informação adicional do usuário -->
+      <p>Setor: Marketing Digital</p>
+    </alc-user>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'UserExampleTS',
+  setup() {
+    const handleLogout = (event: Event) => {
+      const confirmLogout = confirm('Tem certeza que deseja sair?');
+      if (!confirmLogout) {
+        event.preventDefault(); // Cancela a navegação se o usuário desistir
+      }
+    };
+
+    return {
+      handleLogout,
+    };
+  },
+});
+</script>
+    `
+  }}
+/>

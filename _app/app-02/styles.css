@@ -1,0 +1,24 @@
+.alc-alert {
+  padding: 0.2em;
+  overflow: hidden;
+  border-left-width: 0.5em;
+}
+
+.alc-alert--info {
+  background-color: #729fff;
+  border-color: #5e91fd;
+}
+
+.alc-alert__icon {
+  margin: 0 0.2em;
+  font-weight: bold;
+}
+
+.alc-alert__content {
+  display: inline-block;
+}
+
+.alc-alert__dismiss {
+  font-weight: bold;
+  float: right;
+}

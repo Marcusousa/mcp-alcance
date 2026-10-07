@@ -1,0 +1,194 @@
+{/* alc-datatable.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-datatable.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+Por padrão a tabela possui paginação e ordenação ativados. 
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Básico inline
+Pode-se criar tabelas utilizando as propriedades.
+
+<Canvas of={Stories.Inline} sourceState="shown" />
+<Controls of={Stories.Inline} />
+
+## Uso de datas
+<Unstyled>
+    <alc-alert dismissible="false">
+        **Nota:** Lembre-se que na ordenação do datatable a primeira coluna representa sempre o número 0.
+    </alc-alert>
+</Unstyled>
+
+### Ordenação por datas
+Você pode ordenar a tabela baseado na data, formato: DD/MM/YYYY
+<Canvas of={Stories.OrdenacaoData} sourceState="shown" />
+<Controls of={Stories.OrdenacaoData} />
+
+### Ordenação por datas e horas
+Você também pode ordenar quando há datas e horas no mesmo campo, formato: DD/MM/YYYY HH:MM:SS
+<Canvas of={Stories.OrdenacaoDataHora} sourceState="shown" />
+<Controls of={Stories.OrdenacaoDataHora} />
+
+## Usando dados recebidos de uma API pública
+Se seus dados estiverem em uma API pública, você pode obtê-los, ajustá-los e repassá-los ao datatable.
+
+<Canvas of={Stories.ApiPublica} sourceState="shown" />
+<Controls of={Stories.ApiPublica} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <button class="alc-button" @click="refreshData">Adicionar Dados</button>
+    <alc-datatable
+      ref="datatable"
+      :data="tableData"
+      :options="datatableOptions"
+      table-id="my-datatable"
+    ></alc-datatable>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      tableData: [],
+      datatableOptions: {
+        columns: [
+          { title: 'ID', data: 'id' },
+          { title: 'Nome', data: 'name' },
+          { title: 'Email', data: 'email' },
+        ],
+        stateSave: true,
+      },
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      // Simula uma chamada de API para obter os dados iniciais
+      this.tableData = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve([
+            { id: 1, name: 'João Silva', email: 'joao@example.com' },
+            { id: 2, name: 'Maria Souza', email: 'maria@example.com' },
+            { id: 3, name: 'Pedro Santos', email: 'pedro@example.com' },
+          ]);
+        }, 1000);
+      });
+    },
+    async newData() {
+      // Simula uma chamada de API para obter novos dados
+      const newEntries = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve([
+            { id: 4, name: 'José Oliveira', email: 'jose@example.com' },
+            { id: 5, name: 'Ana Pereira', email: 'ana@example.com' },
+          ]);
+        }, 1000);
+      });
+      // Atualiza o array reativo tableData
+      this.tableData = [...this.tableData, ...newEntries];
+    },
+    async refreshData() {
+      // Adiciona novos dados e atualiza a tabela
+      await this.newData();
+      const datatable = await this.$refs.datatable.getApi();
+      datatable.clear().draw();
+      datatable.rows.add(this.tableData).draw();
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <button class="alc-button" @click="refreshData">Adicionar Dados</button>
+    <alc-datatable
+      ref="datatable"
+      :data="tableData"
+      :options="datatableOptions"
+      table-id="my-datatable"
+    ></alc-datatable>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, onMounted } from 'vue';
+
+export default defineComponent({
+  name: 'DatatableExample',
+  setup() {
+    const tableData = ref<Array<{ id: number; name: string; email: string }>>([]);
+    const datatableOptions = {
+      columns: [
+        { title: 'ID', data: 'id' },
+        { title: 'Nome', data: 'name' },
+        { title: 'Email', data: 'email' },
+      ],
+      stateSave: true,
+    };
+    const datatable = ref<any>(null);
+
+    const fetchData = async () => {
+      // Simula uma chamada de API para obter os dados iniciais
+      tableData.value = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve([
+            { id: 1, name: 'João Silva', email: 'joao@example.com' },
+            { id: 2, name: 'Maria Souza', email: 'maria@example.com' },
+            { id: 3, name: 'Pedro Santos', email: 'pedro@example.com' },
+          ]);
+        }, 1000);
+      });
+    };
+
+    const newData = async () => {
+      // Simula uma chamada de API para obter novos dados
+      const newEntries = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve([
+            { id: 4, name: 'José Oliveira', email: 'jose@example.com' },
+            { id: 5, name: 'Ana Pereira', email: 'ana@example.com' },
+          ]);
+        }, 1000);
+      });
+      // Atualiza o array reativo tableData
+      tableData.value = [...tableData.value, ...newEntries];
+    };
+
+    const refreshData = async () => {
+      await newData();
+      const dt = await datatable.value.getApi();
+      dt.clear().draw();
+      dt.rows.add(tableData.value).draw();
+    };
+
+    onMounted(() => {
+      fetchData();
+    });
+
+    return {
+      tableData,
+      datatableOptions,
+      datatable,
+      refreshData,
+    };
+  },
+});
+</script>`
+  }}
+/>

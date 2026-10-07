@@ -1,0 +1,165 @@
+[data-alc-theme="light"] alc-datatable {
+  --color-header: theme('colors.gray-cool.10');
+  --color-header-sorting: theme('colors.gray.20');
+  --color-header-hover: theme('colors.gray.30');
+
+  --color-row-odd: theme('colors.gray.4');
+  --color-row-odd-sorting: theme('colors.gray.10');
+  --color-row-even: theme('colors.white');
+  --color-row-even-sorting: theme('colors.gray.5');
+  --color-row-hover: theme('colors.gray.10');
+
+  --color-header-border: theme('colors.gray.40');
+  --color-body-border: theme('colors.gray.20');
+}
+
+[data-alc-theme="dark"] alc-datatable {
+  --color-header: theme('colors.gray.80');
+  --color-header-sorting: theme('colors.gray.95');
+  --color-header-hover: theme('colors.gray.70');
+
+  --color-row-odd: theme('colors.black');
+  --color-row-odd-sorting: theme('colors.gray.80');
+  --color-row-even: theme('colors.transparent');
+  --color-row-even-sorting: theme('colors.gray.70');
+  --color-row-hover: theme('colors.gray.60');
+
+  --color-header-border: theme('colors.gray.70');
+  --color-body-border: theme('colors.gray.70');
+
+}
+
+alc-datatable {
+  @apply relative block;
+}
+
+
+.dt-layout-table {
+  --shadow-color:  theme('colors.gray.30');
+  /* Relative para o sombreamento */
+  @apply mt-[--alc-spacing-03] relative;
+}
+
+.alc-datatable__wrapper {
+  @apply overflow-auto transition-shadow overflow-x-auto shadow-none;
+}
+
+/* Sombreamento */
+.alc-datatable__wrapper.has-scroll-end:after {
+  @apply block content-["\200C"];
+  @apply w-3 h-full absolute top-[--alc-spacing-none] right-[--alc-spacing-none] z-10;
+  box-shadow: inset -8px 0px 8px -8px var(--shadow-color);
+}
+/* Sombreamento */
+.alc-datatable__wrapper.has-scroll-start:before {
+  @apply block content-["\200C"];
+  @apply w-3 h-full absolute top-[--alc-spacing-none] left-[--alc-spacing-none] z-10;
+  box-shadow: inset 8px 0px 8px -8px var(--shadow-color);
+}
+
+.alc-datatable {
+  @apply w-full;
+}
+
+/* Espaçamento entre o thead e tbody */
+.alc-datatable tbody:before {
+  @apply block content-["\200C"] leading-3;
+}
+
+.alc-datatable__header-row {
+  @apply text-left bg-[--color-header];
+}
+
+.alc-datatable__header-cell {
+  @apply p-[--alc-spacing-04] border-r last:border-none border-[--color-header-border] text-base;
+  /* Ajustes para os icones */
+  @apply align-top relative pr-[--alc-spacing-07];
+}
+
+.alc-datatable__header-cell.dt-orderable-asc,
+.alc-datatable__header-cell.dt-orderable-desc {
+  @apply cursor-pointer hover:bg-[--color-header-hover];
+}
+
+.sorting_asc.alc-datatable__header-cell,
+.sorting_desc.alc-datatable__header-cell {
+  @apply bg-[--color-header-sorting] hover:bg-[--color-header-hover]
+}
+
+.alc-datatable__column-order {
+  @apply absolute top-[--alc-spacing-04] right-[--alc-spacing-03];
+}
+
+.alc-datatable__row:nth-child(2n+1) {
+  @apply bg-[--color-row-odd];
+}
+
+.alc-datatable__row:nth-child(2n) {
+  @apply bg-[--color-row-even];
+}
+
+.alc-datatable__row:nth-child(2n+1) .alc-datatable__cell.sorting_1 {
+  @apply bg-[--color-row-odd-sorting];
+}
+
+.alc-datatable__row:nth-child(2n) .alc-datatable__cell.sorting_1 {
+  @apply bg-[--color-row-even-sorting];
+}
+
+.alc-datatable__row:hover,
+.alc-datatable__row:hover .alc-datatable__cell.sorting_1 {
+  @apply bg-[--color-row-hover];
+}
+
+.alc-datatable__cell {
+  @apply p-[--alc-spacing-04] border-r last:border-none border-[--color-body-border];
+}
+
+.alc-field__input.alc-datatable__select-length {
+  @apply inline-block w-auto mx-[--alc-spacing-03];
+}
+
+.alc-datatable__bottom-region {
+  /* Itens podem estar empilhados (se faltar espaço), e ficam centralizados no contêiner */
+  @apply flex flex-wrap items-center justify-center mt-[--alc-spacing-03] gap-[--alc-spacing-03];
+  @apply sm:justify-start;
+}
+
+.alc-datatable__pagination {
+  /* Pagination, se mostrado, tem que ficar sempre à direita */
+  @apply sm:ml-auto;
+}
+
+/* controles de ordenação e filtro */
+.alc-datatable__controls {
+  @apply flex flex-col items-start sm:flex-row sm:justify-between sm:items-end gap-[--alc-spacing-03];
+}
+
+.alc-datatable__controls-order {
+  @apply flex flex-wrap gap-[--alc-spacing-03];
+}
+
+.alc-datatable__controls-search {
+  @apply w-full sm:w-auto;
+}
+
+.alc-datatable__controls-search alc-field {
+  @apply flex flex-col sm:flex-row sm:items-center;
+}
+
+.alc-datatable__processing {
+  @apply absolute inset-[--alc-spacing-none] pointer-events-none z-50;
+}
+
+.alc-datatable__processing .alc-loading__overlay-container {
+  @apply flex items-center justify-center bg-transparent;
+}
+
+.alc-datatable__processing .alc-loading__card-container {
+  @apply border border-[--alc-color-border] border-solid shadow-lg;
+}
+
+/* Remove o indicador de processamento padrão do Datatables.net */
+alc-datatable .dt-processing {
+  display: none !important;
+}

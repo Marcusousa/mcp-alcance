@@ -1,0 +1,33 @@
+[data-alc-theme="dark"] alc-environment-label {
+  --text-color: var(--alc-color-text-0);
+}
+
+[data-alc-theme="light"] alc-environment-label {
+  --text-color: var(--alc-color-text-contrast);
+}
+
+alc-environment-label {
+  @apply block text-center p-[--alc-spacing-03];
+  color: var(--text-color);
+  background-color: var(--alc-color-label-undefined);
+}
+
+.alc-environment-label--prototype {
+  background-color: var(--alc-color-label-prototype);
+}
+
+.alc-environment-label--development {
+  background-color: var(--alc-color-label-development);
+}
+
+.alc-environment-label--testing {
+  background-color: var(--alc-color-label-testing);
+}
+
+.alc-environment-label--homologation {
+  background-color: var(--alc-color-label-homologation);
+}
+
+.alc-environment-label--production {
+  @apply hidden;
+}

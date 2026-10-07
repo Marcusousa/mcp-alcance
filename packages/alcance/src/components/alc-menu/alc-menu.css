@@ -1,0 +1,4 @@
+.alc-menu {
+  @apply block py-[--alc-spacing-03];
+  @apply bg-[color:var(--alc-color-surface-primary)];
+}

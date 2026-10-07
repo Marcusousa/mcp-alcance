@@ -1,0 +1,15 @@
+{/* alc-scroll-panel.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-scroll-panel.stories';
+
+import ScrollPanelProps from './alc-scroll-panel.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+<h1>{Stories.default.name}</h1>
+
+Um scroll panel mostra o conteúdo em uma única linha, criando uma rolagem horizontal quando necessário.
+
+<Markdown>{ScrollPanelProps}</Markdown>

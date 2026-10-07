@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Menu</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <hr class="mb-2">
+
+
+    <a data-test-before href="#" class="alc-link">Foco anterior</a>
+    <alc-menu>
+      <alc-menu-item data-test-item data-test-item-1>Item 1</alc-menu-item>
+      <alc-menu-item data-test-item disabled>Item 2</alc-menu-item>
+      <alc-menu-item data-test-item>Item 3</alc-menu-item>
+      <alc-menu-item-theme></alc-menu-item-theme>
+    </alc-menu>
+    <a data-test-after href="#" class="alc-link">Foco posterior</a>
+
+    <br />
+
+    <alc-dropdown id="dropdown-menu1" close-on-select="false">
+      <button slot="trigger" class="alc-button">
+        Menu
+        <alc-icon name="chevron-down" label=""></alc-icon>
+      </button>
+      <alc-menu>
+        <alc-menu-item>Item</alc-menu-item>
+        <alc-menu-item type="radio">Radio</alc-menu-item>
+        <alc-menu-item type="radio" checked>Radio checked</alc-menu-item>
+        <alc-menu-item type="checkbox">Checkbox</alc-menu-item>
+        <alc-menu-item type="checkbox" checked>Checkbox checked</alc-menu-item>
+        <alc-menu-item disabled>Disabled</alc-menu-item>
+        <alc-menu-item>
+          Prefix Icon
+          <alc-icon name="gift" label="" slot="prefix"></alc-icon>
+        </alc-menu-item>
+        <alc-menu-item>
+          Suffix Icon
+          <alc-icon name="gift" label="" slot="suffix"></alc-icon>
+        </alc-menu-item>
+        <alc-menu-item-theme></alc-menu-item-theme>
+      </alc-menu>
+
+    </alc-dropdown>
+
+    <br/><br/><br/><br/><br/><br/><br/>
+
+    <alc-menu id="menu1" window-width="200px">
+      <alc-menu-item>Item</alc-menu-item>
+      <alc-menu-link>
+        <a href="https://google.com">Link</a>
+      </alc-menu-link>
+      <alc-menu-link disabled>
+        <a href="https://google.com">Link Disabled</a>
+      </alc-menu-link>
+      <alc-menu-item type="radio">Radio</alc-menu-item>
+      <alc-menu-item type="radio" checked>Radio checked</alc-menu-item>
+      <alc-menu-item type="checkbox">Checkbox</alc-menu-item>
+      <alc-menu-item type="checkbox" id="teste-checked">ola</alc-menu-item>
+      <alc-menu-item >
+        <alc-icon name="gift" label="" slot="prefix"></alc-icon>
+        Icons
+        <alc-icon name="gift" label="" slot="suffix"></alc-icon>
+      </alc-menu-item>
+      <alc-menu-item disabled>Disabled</alc-menu-item>
+      <alc-menu-item>
+        Prefix Icon
+        <alc-icon name="gift" label="" slot="prefix"></alc-icon>
+      </alc-menu-item>
+      <alc-menu-item>
+        Suffix Icon
+        <alc-icon name="gift" label="" slot="suffix"></alc-icon>
+      </alc-menu-item>
+    </alc-menu>
+
+  </div>
+
+        <script>
+          let el = document.getElementById('menu1');
+          el.addEventListener('alc-select', (event) => {
+            console.log('SELECT alc-select', event.detail.item);
+          });
+
+          let el2 = document.getElementById('dropdown-menu1');
+          el2.addEventListener('alc-select', (event) => {
+            console.log('SELECT alc-select', event.detail.item);
+          });
+
+          let checkboxItem = document.getElementById('teste-checked');
+          checkboxItem.addEventListener('alc-select', (event) => {
+            checkboxItem.checked = !checkboxItem.checked;
+          });
+
+        </script>
+</body>
+
+</html>

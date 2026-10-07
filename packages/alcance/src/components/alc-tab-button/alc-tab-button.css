@@ -1,0 +1,71 @@
+/* Definição das variáveis - Setup dos temas*/
+
+/* 
+  Definição das variáveis que estão no alc-tabs 
+    --bg-color
+    --border-color
+    --border-width
+    --outline-color
+*/
+
+/* DARK */
+[data-alc-theme="dark"] .alc-tabs__button {
+  --text-color: theme('colors.cyan.20v');
+  --bg-color-button: var(--alc-color-neutral-70);
+}
+
+[data-alc-theme="dark"] .alc-tabs__button:hover {
+  --bg-color-button: theme('colors.gray-cool.70');
+}
+
+[data-alc-theme="dark"] .alc-tabs__button.active {
+  --text-color: var(--alc-color-text-primary);
+  --bg-color-button: var(--bg-color);
+}
+
+/* LIGHT */
+[data-alc-theme="light"] .alc-tabs__button {
+  --text-color: var(--alc-color-link-text);
+  --bg-color-button: theme('colors.gray-cool.10');
+}
+
+[data-alc-theme="light"] .alc-tabs__button:hover {
+  --bg-color-button: theme('colors.gray-cool.20');
+}
+
+[data-alc-theme="light"] .alc-tabs__button.active {
+  --text-color: var(--alc-color-text-primary);
+  --bg-color-button: var(--bg-color);
+}
+
+/* CSS COMUM a todos os temas */
+alc-tab-button {
+  @apply inline-block;
+}
+
+.alc-tabs__button {
+  @apply z-10 p-[--alc-spacing-03] pt-[--alc-spacing-04] text-[--text-color] bg-[--bg-color-button] border-[--border-color];
+  border-right-width: var(--border-width);
+  border-bottom-width: var(--border-width);
+}
+
+
+.alc-tabs__button.active {
+  @apply no-underline cursor-default pt-[--alc-spacing-03];
+  @apply border-t-4 border-b-transparent;
+}
+
+
+/* 
+  O primeiro alc-tab-button quando esta ativo deixa transparente a borda inferior.
+  Porém ficava um espaço entre essa borda invisivel e o do conteudo.
+  Foi adicionado borda no 'host' do primeiro botão para solucionar esse problema. 
+*/
+alc-tab-button:first-child {
+  @apply border-[--border-color];
+  border-left-width: var(--border-width);
+}
+
+.alc-tabs__button:focus-visible, .alc-tabs__button.active:focus-visible {
+  @apply outline outline-2 outline-[--outline-color] -outline-offset-[--alc-spacing-03];
+}

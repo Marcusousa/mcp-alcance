@@ -1,0 +1,33 @@
+{/* alc-user-menu.mdx */}
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-user-menu.stories';
+import UserMenuProps from './alc-user-menu.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente user-menu é um dropdown que serve para mostrar informações do usuário logado, como nome, foto e ponto.
+
+Além disso, padroniza a forma de mostrar a opção "Sair" (logout) e fornece a opção de seleção de tema.
+
+<Unstyled>
+    <alc-alert dismissible="false">
+        Deve ser utilizado dentro do `slot="user"` no componente `alc-header`.
+    </alc-alert>
+</Unstyled>
+
+## Responsividade
+- **Modo desktop:** exibe a foto do usuário, nome e ponto. Ao clicar, é aberto um dropdown com as opções de logout e alternância de tema.
+- **Modo tablet:** exibe apenas a foto do usuário inicialmente. Ao clicar, o dropdown revela as informações do usuário (nome e ponto), além das opções de logout e troca de tema.
+- **Modo mobile:** Esse modo ficará dentro de um drawer junto com a navegação.
+
+## Logout
+A propriedade `logout-url` é obrigatória para que a funcionalidade de logout via link padrão funcione corretamente.
+
+Se preferir implementar sua própria lógica de logout, você pode:
+- Ouvir o evento `alc-logout`.
+- Aplicar `event.preventDefault()`.
+- Executar a ação de logout conforme sua necessidade.
+
+<Markdown>{UserMenuProps}</Markdown>

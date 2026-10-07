@@ -1,0 +1,128 @@
+{/* alc-icon.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-icon.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Ícone customizado
+<Canvas of={Stories.Customizado} sourceState="shown" />
+<Controls of={Stories.Customizado} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <h2>Exemplos de Ícones</h2>
+
+    <!-- Ícone simples usando a propriedade 'name' -->
+    <alc-icon label="Ícone de coração" name="heart"></alc-icon>
+
+    <!-- Ícone usando a propriedade 'src' para carregar um SVG externo -->
+    <alc-icon
+      label="Ícone Externo"
+      src="https://www.camara.leg.br/tema/assets/images/assuntos/agropecuaria.svg"
+      :sanitize="true"
+    ></alc-icon>
+
+    <!-- Ícone que inverte em modo RTL -->
+    <alc-icon label="Seta Direita" name="arrow-right" :flip-rtl="true"></alc-icon>
+
+    <!-- Ícone carregado apenas quando visível na viewport -->
+    <alc-icon label="Ícone Preguiçoso" name="123" :lazy="true"></alc-icon>
+
+    <!-- Ícone definido dinamicamente usando a propriedade 'icon' -->
+    <alc-icon :label="dynamicLabel" :icon="dynamicIcon"></alc-icon>
+
+    <!-- Botão para alterar o ícone dinamicamente -->
+    <button class="alc-button" @click="changeIcon">Alterar Ícone</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'IconExample',
+  data() {
+    return {
+      dynamicIcon: 'star',
+      dynamicLabel: 'Ícone de estrela',
+    };
+  },
+  methods: {
+    changeIcon() {
+      if (this.dynamicIcon === 'star') {
+        this.dynamicIcon = 'moon';
+        this.dynamicLabel = 'Ícone de lua';
+      } else {
+        this.dynamicIcon = 'star';
+        this.dynamicLabel = 'Ícone de estrela';
+      }
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <h2>Exemplos de Ícones (TypeScript)</h2>
+
+    <!-- Ícone usando 'src' com sanitização desabilitada -->
+    <alc-icon
+      label="Logo da Empresa"
+      src="https://www.camara.leg.br/tema/assets/images/assuntos/agropecuaria.svg"
+      :sanitize="false"
+    ></alc-icon>
+
+    <!-- Ícone invertido horizontalmente quando em modo RTL -->
+    <alc-icon label="Seta Esquerda" name="arrow-left" :flip-rtl="true"></alc-icon>
+
+    <!-- Ícone que carrega somente quando aparece na viewport -->
+    <alc-icon label="Ícone com Lazy Loading" name="123" :lazy="true"></alc-icon>
+
+    <!-- Ícone definido dinamicamente usando 'icon' -->
+    <alc-icon :label="currentLabel" :icon="currentIcon"></alc-icon>
+
+    <!-- Botão para alternar entre ícones -->
+    <button class="alc-button" @click="toggleIcon">Alternar Ícone</button>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'IconExampleTS',
+  setup() {
+    const currentIcon = ref<string>('sun');
+    const currentLabel = ref<string>('Ícone de sol');
+
+    const toggleIcon = () => {
+      if (currentIcon.value === 'sun') {
+        currentIcon.value = 'cloud';
+        currentLabel.value = 'Ícone de nuvem';
+      } else {
+        currentIcon.value = 'sun';
+        currentLabel.value = 'Ícone de sol';
+      }
+    };
+
+    return {
+      currentIcon,
+      currentLabel,
+      toggleIcon,
+    };
+  },
+});
+</script>`
+  }}
+/>

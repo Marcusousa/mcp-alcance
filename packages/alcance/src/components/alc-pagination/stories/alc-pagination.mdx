@@ -1,0 +1,16 @@
+{/* alc-pagination.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-pagination.stories';
+
+import PaginationProps from './alc-pagination.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+A paginação é usada para dividir conteúdos ou dados em várias páginas, com um controle para navegar para a página seguinte ou anterior e para a primeira ou última página.
+
+
+<Markdown>{PaginationProps}</Markdown>

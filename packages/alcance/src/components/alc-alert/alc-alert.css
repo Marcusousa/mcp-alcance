@@ -1,0 +1,101 @@
+/* Definição das variáveis - Setup dos temas*/
+[data-alc-theme="dark"] alc-alert {
+/**
+ * @prop --bg-color-info: Cor de fundo para info
+ * @prop --border-color-info: Cor de borda para info
+ * @prop --text-color-info: Cor de texto para info
+ */
+  --bg-color-info: var(--alc-color-info-70);
+  --border-color-info: var(--alc-color-info-60);
+  --text-color-info: var(--alc-color-text-1);
+
+/**
+ * @prop --bg-color-warning: Cor de fundo para warning
+ * @prop --border-color-warning: Cor de borda para warning
+ * @prop --text-color-warning: Cor de texto para warning
+ */
+  --bg-color-warning: var(--alc-color-warning-60);
+  --border-color-warning: var(--alc-color-warning-50);
+  --text-color-warning: var(--alc-color-text-1);
+
+  --bg-color-error: var(--alc-color-error-70);
+  --border-color-error: var(--alc-color-error-60);
+  --text-color-error: var(--alc-color-text-1);
+
+  --bg-color-success: var(--alc-color-success-70);
+  --border-color-success: var(--alc-color-success-60);
+  --text-color-success: var(--alc-color-text-1);
+}
+
+[data-alc-theme="light"] alc-alert {
+
+  --bg-color-info: var(--alc-color-info-10);
+  --border-color-info: var(--alc-color-info-40);
+  --text-color-info: var(--alc-color-info-70);
+
+  --bg-color-warning: var(--alc-color-warning-10);
+  --border-color-warning: var(--alc-color-warning-20);
+  --text-color-warning: var(--alc-color-warning-60);
+
+  --bg-color-error: var(--alc-color-error-20);
+  --border-color-error: var(--alc-color-error-50);
+  --text-color-error: var(--alc-color-error-70);
+
+  --bg-color-success: var(--alc-color-success-10);
+  --border-color-success: var(--alc-color-success-50);
+  --text-color-success: var(--alc-color-success-70);
+}
+
+
+/* CSS COMUM a todos os temas */
+.alc-alert {
+  --border-width: theme('borderWidth.6');
+
+  @apply rounded-sm py-[--alc-spacing-05] pr-[--alc-spacing-05] my-[--alc-spacing-03];
+  border-left-width: var(--border-width);
+  padding-left: calc(var(--alc-spacing-06) - var(--border-width));
+  color: var(--alc-color-text-1);
+}
+
+.alc-alert {
+  @apply flex flex-row flex-nowrap;
+}
+
+.alc-alert__content {
+  @apply flex-grow pl-[--alc-spacing-03];
+}
+
+/**
+ * @prop alc-alert__summary: Elemento que deve conter o sumário do alerta.
+ */
+.alc-alert__summary {
+  @apply font-bold block;
+}
+
+.alc-alert__dismiss {
+  @apply  ml-[--alc-spacing-03] -my-[--alc-spacing-03] -mr-[--alc-spacing-03];
+}
+
+.alc-alert--info {
+  background-color: var(--bg-color-info);
+  border-color: var(--border-color-info);
+  color: var(--text-color-info);
+}
+
+.alc-alert--warning {
+  background-color: var(--bg-color-warning);
+  border-color: var(--border-color-warning);
+  color: var(--text-color-warning);
+}
+
+.alc-alert--error {
+  background-color: var(--bg-color-error);
+  border-color: var(--border-color-error);
+  color: var(--text-color-error);
+}
+
+.alc-alert--success {
+  background-color: var(--bg-color-success);
+  border-color: var(--border-color-success);
+  color: var(--text-color-success);
+}

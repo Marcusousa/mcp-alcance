@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Details</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <!-- <alc-details summary="Fechado">
+      <p>Conteúdo fechado</p>
+    </alc-details>
+
+    <alc-details summary="Aberto" opened="true">
+      <p>Conteúdo aberto</p>
+    </alc-details>
+
+    <alc-details summary="Desabilitado" disabled="true">
+      <p>Conteúdo desabilitado</p>
+    </alc-details> -->
+
+    <alc-details summary="Lorem" id="details">
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, odit quod. Consequatur excepturi aspernatur maxime perferendis? Iste autem praesentium aut fugiat molestias soluta eaque, distinctio vitae, deleniti provident nihil enim?
+      </p>
+      <alc-details summary="Lorem">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, odit quod. Consequatur excepturi aspernatur maxime perferendis? Iste autem praesentium aut fugiat molestias soluta eaque, distinctio vitae, deleniti provident nihil enim?
+        </p>
+      </alc-details>
+    </alc-details>
+
+    Para gerar Warn
+    <alc-details>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, odit quod. Consequatur excepturi aspernatur maxime perferendis? Iste autem praesentium aut fugiat molestias soluta eaque, distinctio vitae, deleniti provident nihil enim?
+      </p>
+    </alc-details>
+
+    <script>
+      const details = document.getElementById("details")
+      details.addEventListener("alc-show", function (e) { console.log(`alc-show `, e) });
+      details.addEventListener("alc-close", function (e) { console.log(`alc-close `, e) });
+    </script>
+</body>
+
+</html>

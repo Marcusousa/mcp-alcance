@@ -1,0 +1,119 @@
+/* Definição das variáveis - Setup dos temas*/
+[data-alc-theme="light"] alc-modal {
+  --bg-color-overlay: theme('colors.gray-cool.80')66; /* 66 = 40% */
+  --border-color: theme('colors.gray-cool.40');
+}
+
+[data-alc-theme="dark"] alc-modal {
+  --bg-color-overlay: theme('colors.gray-cool.60')66; /* 66 = 40% */
+  --border-color: theme('colors.gray-cool.60');
+}
+
+alc-modal {
+  --bg-color-card: var(--alc-color-surface-primary);
+  --bg-color-header: var(--alc-color-layer-b);
+}
+
+.alc-modal__base {
+  /* Posicionamento */
+  @apply z-[1050] w-full h-full top-[--alc-spacing-none] left-[--alc-spacing-none] fixed;
+  /* Alinhamento do elemento interno (cartão) */
+  @apply sm:flex sm:items-center sm:justify-center;
+}
+
+.alc-modal__overlay {
+  /* Posicionamento */
+  @apply w-full h-full top-[--alc-spacing-none] left-[--alc-spacing-none] fixed;
+  /* Cor */
+  @apply bg-[--bg-color-overlay];
+}
+
+.alc-modal__card {
+  /* Aparência */
+  @apply bg-[--bg-color-card] rounded-t border-t border-[--border-color] overflow-hidden; /* Overflow é para o header "obedecer" o arredondamento no topo do card */
+  /* A partir do sm vai ter borda em todo o card */
+  @apply sm:border;
+
+  /* Tamanho inicial (mobile) */
+  @apply w-full max-h-[90%];
+
+  /* Posicionamento dos elementos internos */
+  @apply flex flex-col;
+  
+  /* Posicionamento do cartão*/
+  /* Em mobile o cartão vai ficar na parte inferior */
+  @apply fixed bottom-[--alc-spacing-none] left-[--alc-spacing-none];
+  /* A partir do sm vai ficar centralizado na tela */
+  @apply sm:relative;
+}
+
+/* Tamanhos */
+.alc-modal__card--sm {
+  /* 576px */
+  @apply sm:w-[66%] sm:max-h-[72%];
+  /* 768px */
+  @apply md:w-[50%];
+  /* 992px */
+  @apply lg:w-[40%];
+  /* 1200px */
+  @apply xl:w-[33%];
+  /* 1400px */
+  @apply 2xl:w-[28%];
+}
+
+.alc-modal__card--md {
+  /* 576px */
+  @apply sm:w-[96%] sm:max-h-[84%];
+  /* 768px */
+  @apply md:w-[80%];
+  /* 992px */
+  @apply lg:w-[56%];
+  /* 1200px */
+  @apply xl:w-[52%];
+  /* 1400px */
+  @apply 2xl:w-[50%];
+}
+
+.alc-modal__card--lg {
+  /* 576px */
+  @apply sm:w-[96%] sm:max-h-[96%];
+  /* 768px */
+  @apply md:w-[96%];
+  /* 992px */
+  @apply lg:w-[78%];
+  /* 1200px */
+  @apply xl:w-[72%];
+  /* 1400px */
+  @apply 2xl:w-[70%];
+}
+
+.alc-modal__card--xl {
+  /* 576px */
+  @apply sm:w-[96%] sm:max-h-[96%];
+  /* 768px */
+  @apply md:w-[96%];
+  /* 992px */
+  @apply lg:w-[96%];
+  /* 1200px */
+  @apply xl:w-[98%];
+  /* 1400px */
+  @apply 2xl:w-[98%];
+}
+
+
+
+.alc-modal__header {
+  @apply flex items-center justify-between p-[--alc-spacing-05] bg-[--bg-color-header];
+}
+
+.alc-modal__title {
+  @apply m-[--alc-spacing-none];
+}
+
+.alc-modal__content {
+  @apply overflow-y-auto p-[--alc-spacing-05];
+}
+
+.alc-modal__footer {
+  @apply text-right p-[--alc-spacing-05] border-t border-t-[--border-color];
+}

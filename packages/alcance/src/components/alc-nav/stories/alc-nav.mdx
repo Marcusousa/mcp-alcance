@@ -1,0 +1,182 @@
+{/* alc-nav.mdx */}
+
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-nav.stories';
+import NavProps from './alc-nav.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O objetivo principal do `nav` é apresentar as funcionalidades da aplicação. Nele estarão contidas também as informações sobre o usuário logado, configurações e outros recursos da aplicação.
+
+Esses elementos podem estar organizados em diferentes painéis (explicados mais adiante). O painel principal é dividido em três sessões (_slots_):
+
+<ul className="list-disc list-inside">
+  <li><b>header</b>: Onde é colocada a informação sobre o usuário autenticado.</li>
+  <li><b>default</b>: Onde são colocados os links para as funcionalidades principais.</li>
+  <li><b>footer</b>: Onde são colocados os links para configurações da aplicação, recursos adicionais, informações acessórias e seletor de tema.</li>
+</ul>
+
+[Veja o exemplo da aplicação dos slots](/docs/componentes-nav--exemplos#slots)
+
+## Definição dos elementos
+
+Vários elementos são utilizados na composição da navegação. Vamos defini-los aqui para poder fazer referência a esses termos ao longo da documentação.
+<ul className="list-disc list-inside">
+  <li><b>1. Painel</b>: Elemento que contém os grupos. O <i>painel principal</i>, que aparece primeiro para o usuário, possui algumas especificidades.</li>
+  <li><b>2. Link</b>: Elemento que leva a uma funcionalidade, configuração etc.</li>
+  <li><b>3. Acionador de painel</b>: Elemento que provoca a exibição de um novo painel.</li>
+  <li><b>4. Item de navegação</b>: Um item de navegação pode ser tanto um <b>link</b> quanto um <b>acionador de painel</b>.</li>
+  <li><b>5. Rótulo de grupo</b>: Elemento que aparece antes de um grupo, e dá nome a ele.</li>
+  <li><b>6. Grupo</b>: Um conjunto de itens de navegação relacionados entre si, que pode ou não possuir um rótulo.</li>
+  <li><b>7. Rótulo de painel</b>: Elemento que aparece no topo do painel (exceto do <i>painel principal</i>), e que dá nome a ele. O rótulo do painel será sempre igual ao texto do acionador de painel correspondente.</li>
+  <li><b>8. Item selecionado</b>: Elemento que representa a página ou funcionalidade atualmente em exibição ou foco.</li>
+</ul>
+
+<img src='./static/images/anatomia-navmenu.png' alt="Anatomia do menu" />
+
+## Formas de organização dos itens de navegação
+
+Há duas formas de organização dos itens de navegação: em grupos ou em painéis.
+
+Observação: Por menor que seja o número de itens de navegação, sempre vai haver um painel (o principal) e um grupo, contido nesse painel.
+
+### Grupos
+
+_Essa é a forma preferencial de organização_.
+
+Divida os itens de navegação em conjuntos que façam sentido para o usuário. Em cada painel, se houver um único grupo, ele não deve ser rotulado. Havendo mais grupos, o rótulo é opcional para o primeiro e obrigatório para os demais.
+
+Cada grupo é representado no HTML como uma lista.
+
+Use o atributo `data-alc-label` no elemento imediatamente anterior à lista para criar o rótulo do grupo.
+
+[Veja o exemplo da aplicação dos grupos](/docs/componentes-nav--exemplos#grupos)
+
+### Painéis
+
+O uso de painéis permite a criação de estruturas de navegação em profundidade. Um painel, ao ser acionado, toma o lugar do painel atual. Todo painel, exceto o principal, já provê o mecanismo para retornar ao painel anterior.
+
+Essa forma de organização traz maior complexidade porque faz com que partes da navegação fiquem inicialmente ocultas para o usuário.
+
+Divida os itens de navegação em conjuntos que façam sentido para o usuário. Cada conjunto pode estar em seu próprio painel. Os itens de navegação dentro de um painel podem ser, por sua vez, organizados em grupos, ou em outros panéis mais profundos.
+
+Para que o usuário alcance um painel, deve haver um acionador de painel disponível em um painel já visível. O painel principal, por padrão, é o que inicia visível.
+
+Observação: A organização em painéis, refere-se à criação de painéis adicionais, visto que o painel principal sempre vai existir.
+
+Para criar um painel, adicione o atributo `data-alc-panel` no elemento correspondente. O elemento imediatamente anterior (tipicamente, um `span`) será transformado no acionador do painel.
+
+[Veja o exemplo da aplicação dos painéis](/docs/componentes-nav--exemplos#painéis)
+
+### Combinando grupos e painéis
+
+É possível criar grupos contendo acionadores de painel. É como criar uma "subdivisão" do grupo, reunindo parte dos itens de navegação em um painel à parte.
+
+É possível criar painéis contendo grupos. É como criar "subdivisões" do painel, reunindo os itens de navegação em grupos.
+
+Isso permite uma grande flexibilidade em relação à forma de estruturar a navegação de uma aplicação. Diante disso, é preciso estar atento para que ela não se torne confusa para o usuário.
+
+O ideal que é o projetista:
+<ul className="list-disc list-inside">
+  <li>leve sempre em conta o que faz mais sentido para os usuários da aplicação;</li>
+  <li>defina que recursos serão usados para agrupar, e quais serão os critérios de agrupamento; e</li>
+  <li>use esses critérios de forma consistente.</li>
+</ul>
+
+[Veja o exemplo combinado da aplicação dos grupos e painéis](/docs/componentes-nav--exemplos#grupos-e-painéis)
+
+### Boas práticas de organização
+
+A organização em grupos permite ao usuário explorar rapidamente as opções disponíveis na navegação. É a forma preferencial de organização, especialmente quando há poucos itens de navegação no conjunto.
+
+A organização em painéis permite ao usuário concentrar-se no conjunto de itens de navegação contidas em cada painel. Pode ser interessante quando há um grande número de itens de navegação em um conjunto.
+
+Dentro de qualquer painel (não somente no principal), os itens de navegação podem ser organizados também em grupos. Avalie sempre a possibilidade de usar esse recurso, evitando criar uma estrutura de navegação mais profunda.
+
+Quando usar painéis, busque manter dois níveis apenas de navegação:
+<ul className="list-disc list-inside">
+  <li>Nível 1: o painel principal.</li>
+  <li>Nível 2: outros painéis acessados a partir do principal.</li>
+</ul>
+
+Se for necessário um terceiro nível, faça isso com parcimônia. Isso aumenta a complexidade de navegação para o usuário, e pode indicar a necessidade de revisar a organização definida para a navegação.
+
+Evite criar grupos ou panéis contendo um único item de navegação. O ideal é que contenham ao menos dois itens.
+
+Não há um número máximo de itens de navegação em um grupo ou painel, mas deve-se considerar que um número muito grande pode prejudicar a navegabilidade. Recomendamos que o projetista avalie subdividir o conjunto em novos grupos ou painéis, sempre considerando a visão do usuário.
+
+
+## Rodapé (footer)
+
+O rodapé é destinado a itens de navegação relacionados a configuração da aplicação, recursos adicionais, informações acessórias e seletor de tema.
+
+Assim como a sessão principal, o rodapé pode conter itens de navegação. A diferença entre eles está na finalidade correspondente a esses itens. Os links para as funcionalidades principais (de negócio) da aplicação devem estar sempre na sessão principal.
+
+Exemplos itens de navegação ou outros elementos que devem ficar no rodapé:
+<ul className="list-disc list-inside">
+  <li>Informações sobre a aplicação, como versão, gestor etc.</li>
+  <li>Preferências de recebimento de e-mails.</li>
+  <li>Lista de notificações.</li>
+  <li>Ajuda da aplicação.</li>
+  <li>Seletor de tema do Alcance.</li>
+</ul>
+
+## Item selecionado
+Quando o usuário clica em um item de navegação que o leva a uma página (link), é importante que este item seja destacado como selecionado na navegação. Essa responsabilidade cabe à aplicação, que deve controlar isso usando o método `setSelectedItem`.
+
+É importante mencionar que nem sempre haverá um item selecionado visível. Por exemplo, isso ocorre quando o usuário está na página inicial do sistema e não há um link correspondente na navegação.
+
+## Recomendações de usabilidade
+
+<ul className="list-disc list-inside">
+  <li>Os itens de navegação devem ser dispostos em uma ordem que faça sentido para o usuário da aplicação.</li>
+  <li>Utilize rótulos sucintos. Não forme frases. Evite o uso de artigos; por exemplo, use "Adicionar a fila" em vez de "Adicionar a uma fila".</li>
+  <li>O título da página e o rótulo do link devem ser equivalentes. Por exemplo, se o título da página é "Lista de episódios", o link correspondente deve ter a mesma nomenclatura.</li>
+</ul>
+
+
+## Perguntas frequentes
+
+<Unstyled>
+  <alc-details summary="Em um mesmo grupo de itens de navegação posso ter links e acionadores de painéis?">
+    <p>
+      Sim, sem problemas.
+    </p>
+  </alc-details>
+
+  <alc-details summary="Quando devo ou não usar um rótulo para um grupo?">
+    <p>
+      - Quando houver um único grupo em um painel, esse grupo não deve ter rótulo.
+      - Quando houver vários, o rótulo para o primeiro grupo é opcional, e para os demais é  obrigatório.
+    </p>
+  </alc-details>
+
+  <alc-details summary="Dentro de um painel, posso ter grupos com rótulos?">
+    <p>
+      Sim, sem problemas.
+    </p>
+  </alc-details>
+
+  <alc-details summary="Quantos itens de navegação, no mínimo e no máximo, eu deveria ter em um grupo?">
+    <p>
+      No mínimo dois. Não há um número máximo estabelecido, mas é importante considerar a usabilidade da navegação. Veja a seção "Boas práticas de organização".
+    </p>
+  </alc-details>
+
+  <alc-details summary="Quantos itens de navegação, no mínimo e no máximo, eu deveria ter dentro de um painel?">
+    <p>
+      No mínimo dois. Não há um número máximo estabelecido, mas é importante considerar a usabilidade da navegação. Veja a seção "Boas práticas de organização".
+    </p>
+  </alc-details>
+
+  <alc-details summary="Quantos grupos, no mínimo e no máximo, posso ter em um painel?">
+    <p>
+      Como todo item de navegaçao está contido em um grupo, deve haver ao menos um grupo. Havendo um único grupo, ele não deve ser rotulado. Quanto ao número máximo, não há um valor estabelecido, mas é importante considerar a usabilidade da navegação. Veja a seção "Boas práticas de organização".
+    </p>
+  </alc-details>
+</Unstyled>
+
+
+<Markdown>{NavProps}</Markdown>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Alert</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+    <h1>Alert</h1>
+    <h2 class="mt-[--alc-spacing-04]">Testando novos tokens</h2>
+
+    <alc-alert type="info" dismissible="false">
+      <span slot="summary">Exemplos de alerta.</span>
+      Seguem alguns exemplos. Esse alerta não pode ser fechado.
+    </alc-alert>
+
+    <alc-alert id="alert" type="info" visible="false">
+      <span slot="summary">Exemplos de alerta.</span>
+      Seguem alguns exemplos. Esse alerta não pode ser fechado.
+    </alc-alert>
+
+    <alc-alert id="alert2" type="warning">
+      <span slot="summary">Fechando mensagens.</span>
+      Mensagens podem ser fechadas usando o <a href="#" class="alc-link">ícone à direita</a>.
+    </alc-alert>
+
+    <alc-alert type="error">
+      Texto no sumário é opcional. Podemos ter somente a mensagem principal.
+    </alc-alert>
+
+    <alc-alert type="success">
+      Vamos começar!
+    </alc-alert>
+
+    <alc-alert type="success" dismissible="false">
+      Vamos começar!
+    </alc-alert>
+
+    <div class="flex gap-2 mt-[--alc-spacing-06]">
+      <button class="alc-button" onclick="closeAlert()"> Abrir alert que iniciou invisivel </button>
+      <button class="alc-button" onclick="handleVisibilityAlert()"> Abrir/Fechar alert pelo atributo 'visible'</button>
+    </div>
+
+    <script>
+      const alert = document.getElementById("alert");
+      const alert2 = document.getElementById("alert2");
+      alert.addEventListener("alc-hide", function (e) { console.log(`alc-hide `, e) });
+      alert.addEventListener("alc-after-hide", function (e) { console.log(`alc-after-hide `, e) });
+
+      function closeAlert() {
+        alert.show();
+      }
+
+      function handleVisibilityAlert() {
+        alert2.visible = !alert2.visible;
+      }
+    </script>
+
+</html>

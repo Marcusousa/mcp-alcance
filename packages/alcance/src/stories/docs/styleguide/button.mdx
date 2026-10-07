@@ -1,0 +1,191 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import './container-example.css';
+import css from './container-example.css?inline';
+import CodeExample from "../../utils/codeExample";
+import { IntroDoc } from "../../utils/IntroDoc";
+import { ImageCard } from "../../utils/ImageCard";
+
+
+<Meta title="Estilos/Botões" />
+# Button
+
+<IntroDoc>
+  Os botões são elementos interativos usados para disparar ações pelo usuário. O rótulo expressa a ação que vai ocorrer quando o usuário acionar o botão.
+</IntroDoc>
+
+## Demonstração
+### Modo claro
+<ImageCard>
+  <img src='./static/images/button/button-light.svg' alt="Demonstração dos botões em modo claro" />
+</ImageCard>
+
+### Modo escuro
+<ImageCard>
+  <img src='./static/images/button/button-dark.svg' alt="Demonstração dos botões em modo escuro" />
+</ImageCard>
+
+## Exemplo de código
+
+### Botão primário
+
+Use a classe `alc-button` para os botões. O uso de apenas essa classe cria um botão primário.
+
+<Unstyled>
+  <button className="alc-button">Salvar</button>
+</Unstyled>
+
+<CodeExample type="html">
+{`<button class="alc-button">Salvar</button>`}
+</CodeExample>
+
+### Botão secundário
+
+A classe `alc-button--secondary` deve ser usada em um botão secundário.
+
+<Unstyled>
+  <button className="alc-button alc-button--secondary">Salvar</button>
+</Unstyled>
+
+<CodeExample type="html">
+{`<button class="alc-button alc-button--secondary">Salvar</button>`}
+</CodeExample>
+
+### Desabilitados
+
+Adicione o atributo `disabled` nos botões.
+
+<Unstyled>
+  <button className="alc-button" disabled>Salvar</button>
+</Unstyled>
+
+<CodeExample type="html">
+{`<button class="alc-button" disabled>Salvar</button>`}
+</CodeExample>
+
+## Quando usar
+
+Os botões são elementos clicáveis usados para acionar ações. Eles comunicam chamadas à ação para o usuário e permitem que ele interaja com as páginas de diversas maneiras. Os rótulos dos botões expressam qual ação ocorrerá quando o usuário interagir com eles.
+
+## Quando não usar
+
+Não utilize botões como elementos de navegação. Em vez disso, use links quando a ação desejada for levar o usuário a uma nova página.
+
+Consulte a <a class="alc-link" href="./?path=/docs/estilos-link--documentação">documentação de links</a> para mais informações.
+
+
+## Estados
+
+<ImageCard>
+  <img src='./static/images/button/button-states.svg' alt="Demonstração dos estados do botão" />
+</ImageCard>
+
+### Botão primário
+
+| Elemento            | Estado         | Propriedade                  | Valor/Token                                   | HEX       | USWDS         |
+| :------------------ | :------------- | :--------------------------- | :-------------------------------------------- | :-------- | :-------------|
+| Fundo               | Repouso/Padrão | background-color             |                                               | #0d7ea2 | blue-cool-50v |
+|                     | Hover          | background-color             |                                               | #074b69 | blue-cool-70v |
+|                     | Active         | background-color             |                                               | #07648d | blue-cool-60v |
+| Label               |                | text-color                   |                                               | #ffffff |               |
+|                     |                | font-family                  | Roboto                                        |           |               |
+|                     |                | font-size                    | --alc-font-size-base / 1rem / 16px            |           |               |
+|                     |                | line-height                  | --alc-font-line-height-base / 1.5rem / 24px   |           |               |
+| Borda               |                | border                       | none                                          |           |               |
+| Espaçamento interno |                | padding-left <br/> padding-right | --alc-spacing-05 / 1rem / 16px            |           |               |
+|                     |                | padding-top <br/> padding-bottom | --alc-spacing-03 / 0.5rem / 8px           |           |               |
+
+### Botão Secundário
+
+| Elemento            | Estado         | Propriedade                      | Valor/Token                                   | HEX                                             | USWDS                                           |
+| :------------------ | :------------- | :------------------------------- | :-------------------------------------------- | :---------------------------------------------- | :---------------------------------------------- |
+| Fundo               | Repouso/Padrão | background-color                 | transparent                                   |                                                 |                                                 |
+|                     | Hover          | background-color                 |                                               | Light: #dae9ee <br/> Dark: #002d3f          | Light: blue-cool-10 <br/> Dark: blue-cool-80v   |
+|                     | Active         | background-color                 |                                               | Light: #e1f3f8 <br/> Dark: #14333d          | Light: blue-cool-5v <br/> Dark: blue-cool-80    |
+| Label               |                | text-color                       |                                               | Light: #07648d <br/> Dark: #28a0cb          | Light: blue-cool-60v <br/> Dark: blue-cool-40v  |
+|                     |                | font-family                      | Roboto                                        |                                                 |                                                 |
+|                     |                | font-size                        | --alc-font-size-base / 1rem / 16px            |                                                 |                                                 |
+|                     |                | line-height                      | --alc-font-line-height-base / 1.5rem / 24px   |                                                 |                                                 |
+| Borda               |                | border-color                     |                                               | Light: #07648d <br/> Dark: #28a0cb          | Light: blue-cool-60v <br/> Dark: blue-cool-40v  |
+|                     |                | border-width                     | 1px                                           |                                                 |                                                 |
+|                     |                | border-style                     | solid                                         |                                                 |                                                 |
+| Espaçamento interno (*) |            | padding-left <br/> padding-right | --alc-spacing-05 / 1rem / 16px                |                                                 |                                                 |
+|                     |                | padding-top <br/> padding-bottom | --alc-spacing-03 / 0.5rem / 8px               |                                                 |                                                 |
+
+_(*) Como o botão secundário tem bordas (que os demais não têm), a largura da borda deve ser descontada do
+espaçamento interno para que ele tenha a mesma altura que os demais._
+### Botão Desabilitado
+
+| Elemento            | Estado         | Propriedade                      | Valor/Token                                   | HEX                                             | USWDS                                      |
+| :------------------ | :------------- | :------------------------------- | :-------------------------------------------- | :---------------------------------------------- | :----------------------------------------- |
+| Fundo               | Repouso/Padrão | background-color                 |                                               | Light: #e6e6e6 <br/> Dark: #2e2e2e          | Light: gray-10 <br/> Dark: gray-80         |
+|                     | Hover          | background-color                 |                                               | Light: #e6e6e6 <br/> Dark: #2e2e2e          | Light: gray-10 <br/> Dark: gray-80         |
+|                     | Active         | background-color                 |                                               | Light: #e6e6e6 <br/> Dark: #2e2e2e          | Light: gray-10 <br/> Dark: gray-80         |
+| Label               |                | text-color                       |                                               | Light: #5c5c5c <br/> Dark: #adadad          | Light: gray-60 <br/> Dark: gray-30         |
+|                     |                | font-family                      | Roboto                                        |                                                 |                                            |
+|                     |                | font-size                        | --alc-font-size-base / 1rem / 16px            |                                                 |                                            |
+|                     |                | line-height                      | --alc-font-line-height-base / 1.5rem / 24px   |                                                 |                                            |
+| Borda               |                | border                           | none                                          |                                                 |                                            |
+| Espaçamento interno |                | padding-left <br/> padding-right | --alc-spacing-05 / 1rem / 16px                |                                                 |                                            |
+|                     |                | padding-top <br/> padding-bottom | --alc-spacing-03 / 0.5rem / 8px               |                                                 |                                            |
+
+
+## Tamanho
+
+O botão deve ter altura total de `40px`, considerando bordas e espaçamentos. A largura será ajustada automaticamente conforme o tamanho do texto do rótulo.
+
+## Espaçamentos entre botões
+
+Havendo dois ou mais botões em um conjunto, o espaçamento visual entre eles deve obedecer ao tamanho `--alc-spacing-03` (0.5rem / 8px).
+
+<ImageCard>
+  <img src='./static/images/button/button-espacamento.svg' alt="Demonstração do espaçamento entre botões" />
+</ImageCard>
+
+**A aplicação é responsável por garantir esse espaçamento.**
+Nos exemplos a seguir, isso foi feito utilizando `flexbox` no contêiner dos botões. A classe CSS usada nos exemplos é a seguinte:
+
+<CodeExample type="css">
+{`${css}`}
+</CodeExample>
+
+## Elementos HTML que correspondem a botões
+
+Há vários elementos HTML que podem usar as classes de botão.
+
+A escolha de qual elemento será usado depende do comportamento esperado por sua aplicação.
+
+<Unstyled>
+<div className="container-example">
+  <button className="alc-button alc-button--secondary">Button (button)</button>
+  <input className="alc-button alc-button--secondary" type="submit" value="Submit" />
+  <input className="alc-button alc-button--secondary" type="reset"  value="Reset" />
+  <input className="alc-button alc-button--secondary" type="button" value="Button (input)" />
+</div>
+</Unstyled>
+
+<CodeExample type="html">
+{`<div class="container-example">
+  <button class="alc-button alc-button--secondary">Button (button)</button>
+  <input  class="alc-button alc-button--secondary" type="submit" value="Submit" />
+  <input  class="alc-button alc-button--secondary" type="reset"  value="Reset" />
+  <input  class="alc-button alc-button--secondary" type="button" value="Button (input)" />
+</div>`}
+</CodeExample>
+
+## Boas práticas
+
+- O botão principal deve sempre vir antes do secundário — à esquerda quando estiverem lado a lado e acima quando estiverem dispostos na vertical.
+- Em páginas com vários botões, é indicado que haja apenas um botão principal, representando a ação mais importante da página. Os demais devem ser configurados como secundários.
+- Os textos dos botões devem explicar claramente qual ação será realizada. Utilize verbo + objeto: “Salvar alterações”, “Excluir conta”, etc.
+- Use rótulos consistentes para ações opostas, como: “Salvar” / “Cancelar”, “Ativar” / “Desativar”, “Aceitar” / “Recusar”.
+- Use letra maiúscula apenas na primeira palavra do rótulo do botão. Use: "Salvar rascunho". Evite: “SALVAR RASCUNHO”, “Salvar Rascunho”, “salvar rascunho”.
+- Ações que possam causar perda de dados ou mudanças irreversíveis devem ter textos claros e exigir confirmação adicional quando necessário.
+
+## Acessibilidade
+
+### Interação pelo teclado
+
+`Espaço ou Enter` - Executa a ação do botão
+
+

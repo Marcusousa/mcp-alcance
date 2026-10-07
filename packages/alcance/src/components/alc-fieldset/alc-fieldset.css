@@ -1,0 +1,36 @@
+alc-fieldset {
+  display: block;
+}
+
+[data-alc-theme="dark"] alc-fieldset {
+  --border-color: var(--alc-color-border);
+  --text-color: var(--alc-color-text-4);
+  --text-color-error: var(--alc-color-error-45);
+}
+
+[data-alc-theme="light"] alc-fieldset {
+  --border-color: theme('colors.gray-warm.50');
+  --text-color: var(--alc-color-text-4);
+  --text-color-error: var(--alc-color-error-50);
+}
+
+.alc-fieldset {
+  @apply border border-solid border-[--border-color] rounded p-[--alc-spacing-04];
+}
+
+.alc-fieldset__legend {
+  @apply font-semibold px-[--alc-spacing-03];
+  /* @apply font-semibold px-1.5; */
+}
+
+.alc-fieldset__text-container {
+  @apply mt-[--alc-spacing-04] flex flex-col gap-[--alc-spacing-02];
+}
+
+.alc-fieldset__text {
+  @apply text-sm text-[--text-color];
+
+  &--error {
+    @apply text-[--text-color-error];
+  }
+}

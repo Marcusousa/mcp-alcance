@@ -1,0 +1,367 @@
+{/* alc-datatable.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-datatable.stories';
+import DatatableProps from './alc-datatable.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente Datatable exibe uma tabela de dados regulares utilizando o mecanismo fornecido pelo **DataTables.net** para funcionalidades como ordenação, paginação e filtragem de dados.
+
+<Unstyled style={{marginBottom: '2rem'}}>
+  <alc-alert dismissible="false">
+    **Datatable** refere-se ao componente do Alcance, enquanto **DataTables.net** é um software desenvolvido pela SpryMedia.
+    Para obter informações detalhadas sobre as opções e recursos disponíveis no DataTables.net, recomendamos consultar sua <a class="alc-link" href="https://datatables.net/">documentação oficial</a>.
+  </alc-alert>
+</Unstyled>
+
+## A propriedade `options`
+O Datatable possui a propriedade `options`, que equivale a um <a class="alc-link" href="https://datatables.net/manual/options">objeto de configuração informado ao construtor do DataTables.net</a>.
+
+<CodeExample type="html">
+{`<!-- O que é informado em options... -->
+<alc-datatable options='{ "paging": false, "ordering": false } '>`}
+</CodeExample>
+<CodeExample type="js">
+{`// ... internamente, é repassado ao construtor do DataTables.net
+$('#example').DataTable({
+  paging: false,
+  ordering: false
+});`}
+</CodeExample>
+
+Em regra, tudo o que for informado pela aplicação em `options` é repassado ao DataTables.net. Algumas chaves desse objeto são fixadas pelo componente Datatable, fugindo à regra.
+
+Para detalhes sobre as configurações que podem ser feitas por meio de `options`, consulte a <a class="alc-link" href="https://datatables.net/reference/option/">referência oficial de options</a>.
+
+
+## Os dados - processamento, tipos e origens
+O DataTables.net oferece recursos para diferentes modos de processamento dos dados (cliente ou servidor), diferentes tipos e fontes de dados. Um ponto de partida para entender isso é o <a class="alc-link" href="https://datatables.net/manual/data">manual do DataTables.net sobre dados</a>.
+
+Quando os dados são obtidos do servidor pelo próprio componente, é importante compreender o protocolo de comunicação: como as solicitações são feitas e como as respostas devem ser dadas. Nem sempre os serviços terão uma compatibilidade direta com o DataTables.net, mas há recursos para ajustar tanto o formato das solicitações quanto as respostas recebidas.
+
+O componente Datatable não interfere nessa configuração, nem no funcionamento dos mecanismos de processamento, obtenção e interpretação dos dados.
+
+O componente Datatable possui a propriedade `data`, que pode ser vista como um "atalho" para a chave `data` que existe em `options`. Ela é uma forma conveniente de prover reatividade à modificação dos dados. Mudanças em `data` são refletidas automaticamente na renderização da tabela para o usário.
+
+## A propriedade `data`
+Como dito acima, `data` é uma propriedade que permite que o Datatable reaja automaticamente à modificação dos dados.
+
+Sendo `data` um array, **para que a alteração seja percebida pelo componente, é preciso que um novo array seja informado**. Tipicamente, isso pode ser feito usando a <a class="alc-link" href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Spread_syntax">sintaxe de espalhamento (spread syntax)</a>, ou métodos de array que retornam um novo array como resultado (como `filter()` ou `map()`, por exemplo).
+
+Isso quer dizer que alterações feitas diretamente no array, usando métodos como `push()`, ou modificando o valor contido em uma posição do array, não permitem que o componente perceba a alteração.
+
+<CodeExample type="js">
+{`// Obtém a referência ao componente
+const dt = document.querySelector('alc-datatable#exemplo');
+// Valor inicial
+dt.data = [
+  ['Lion-O', 'Espada Justiceira'],
+  ['Cheetara', 'Bastão']
+];
+// Inclui uma linha:
+dt.data = [...dt.data, ['Panthro', 'Nunchaku']];
+// Isso NÃO permite que o componente reaja à modificação dos dados:
+dt.data.push(['Tygra', 'Chicote']); // Não funciona!`}
+</CodeExample>
+
+## O objeto `DataTable`
+O DataTables.net fornece um objeto global `DataTable` (compartilhado entre todas as instâncias de uma página), que dá acesso a métodos utilitários, configurações, extensões etc. Vamos tratar de alguns desses recursos aqui.
+
+O componente Datatable possui o método `getDataTable()`, que retorna uma referência a esse objeto.
+
+<Unstyled style={{marginBottom: '1rem'}}>
+  <alc-alert type='warning' dismissible='false' >
+    O objeto <code>DataTable</code> é compartilhado entre todas as instâncias do Datatable em uma página. Por isso, o que for feito a partir desse objeto tem potencial para afetar todas as instâncias. Tratando-se de <i lang='en'>single page applications</i>, isso deve ser especialmente considerado.
+  </alc-alert>
+</Unstyled>
+
+Em nosso contexto, talvez o principal recurso disponível por meio do objeto `DataTable` seja a possibilidade de incluir plugins de detecção de tipo e ordenação.
+
+
+### Exemplo de uso do objeto `DataTable`
+Esse exemplo mostra como utilizar o objeto `DataTable` para a inclusão de plugins.
+
+Sempre que o objeto `DataTable` for utilizado para modificar algum comportamento, é necessário adiar o início do processamento (com `defer-start="true"`), fazer as modificações necessárias e somente então executar o método `start()`.
+
+<CodeExample type="html">
+{`<!--
+  Observe o uso de defer-start="true", para que os plugins de detecção/ordenação
+  possam ser incluídos antes da execução do Datatable (senão não teriam efeito).
+-->
+<alc-datatable
+  id="iteracoes"
+  defer-start="true"
+>
+  <!-- Conteúdo da tabela -->
+</alc-datatable>`}
+</CodeExample>
+
+<CodeExample type="js">
+{`// Função para detecção do tipo 'situacao'
+// Referência: https://datatables.net/manual/plug-ins/type-detection
+function situacaoDetect (data) {
+  switch (data) {
+    case 'CRIADA':
+    case 'EM EXECUÇÃO':
+    case 'EM HOMOLOGAÇÃO':
+    case 'CANCELADA':
+      return 'situacao';
+  }
+  return null;
+}
+
+// Função para ordenação para dados do tipo 'situacao'
+// Referência: https://datatables.net/manual/plug-ins/sorting
+function situacaoOrder (data) {
+  switch (data) {
+    case 'CRIADA':
+      return 0;
+    case 'EM EXECUÇÃO':
+      return 1;
+    case 'EM HOMOLOGAÇÃO':
+      return 2;
+    case 'CANCELADA':
+      return 3;
+  }
+  return 4;
+}
+
+customElements.whenDefined('alc-datatable').then(async () => {
+  // Obtém referência ao datatable na página
+  const iteracoes = document.querySelector('alc-datatable#iteracoes');
+  // Obtém referência ao objeto DataTable
+  const DataTable = await iteracoes.getDataTable();
+  // Inclui plugin de detecção de tipo
+  DataTable.ext.type.detect.unshift(situacaoDetect);
+  // Inclui plugin de ordenação para o tipo 'situacao'
+  DataTable.ext.type.order['situacao-pre'] = situacaoOrder;
+  // Inicia a execução
+  await iteracoes.start();
+});`}
+</CodeExample>
+
+### Informações adicionais
+Na documentação oficial do DataTables.net, alguns exemplos mostram o acesso ao objeto `DataTable` usando diretamente esse nome. Outros exemplos usam `$.fn.dataTable`. São referências ao mesmo objeto, que é também o mesmo objeto retornado pelo método `getDataTable()` do componente Datatable do Alcance.
+
+A intenção dessa documentação é esclarecer a relação entre o objeto global `DataTable` e o componente Datatable do Alcance. As possibilidades de uso desse objeto estão descritas em diversos pontos da documentação do DataTables.net. Destacamos aqui, <em>de forma não exaustiva</em>, alguns desses pontos:
+
+- <a href="https://datatables.net/manual/data/renderers#Built-in-helpers" class="alc-link">Utilitários integrados, como <code>DataTable.render</code></a>.
+- <a href="https://datatables.net/reference/api/" class="alc-link">Métodos utilitários estáticos</a> (nessa página, filtre por "DataTables - Static").
+- <a href="https://datatables.net/manual/plug-ins/" class="alc-link">Inclusão de plugins</a>, como <a href="https://datatables.net/manual/plug-ins/type-detection" class="alc-link">plugins de detecção de tipo</a> ou <a href="https://datatables.net/manual/plug-ins/sorting" class="alc-link">plugins de ordenação</a>.
+
+
+## A `API` do DataTable
+O Datatables.net disponibiliza uma API extensa para ser utilizada após a inicialização da tabela. Essa API oferece acesso e manipulação de dados contidos na tabela, refletindo diretamente na estrutura dos dados da mesma.
+
+O componente Datatable oferece o método `getApi()`, que retorna a instância da API do DataTables.net.
+
+### Exemplo de uso da `API` do DataTable
+A API estará disponível somente após a inicialização completa do componente. Se você estiver adiando o início do processamento utilizando `defer-start="true"`, será necessário executar primeiro o método `start()` e em seguida chamar o `getApi()`.
+
+<CodeExample type="js">
+{`customElements.whenDefined('alc-datatable').then(async () => {
+  // Obtém referência ao datatable na página
+  const iteracoes = document.querySelector('alc-datatable#iteracoes');
+
+  // Se defer-start=true, é necessário chamar o método start() antes de obter a API.
+  // await iteracoes.start();
+
+  // Obtém a API do DataTable
+  const api = await iteracoes.getApi();
+  // Chama dois métodos da API: search() e draw()
+  // Search realiza o filtro e draw atualiza a tabela.
+  // Referência: https://datatables.net/reference/api/search()
+  api.search('iteracao').draw();
+});`}
+</CodeExample>
+
+### Informações adicionais
+Na documentação oficial do DataTables.net, os exemplos mostram o acesso a `API` através de 4 maneiras:
+
+- $(selector).DataTable();
+- $(selector).dataTable().api();
+- new $.fn.dataTable.Api(selector);
+- new DataTable(selector, options);
+
+Todos são referências a API, que é também o mesmo retornado pelo método `getApi()` do componente Datatable do Alcance.
+
+A intenção dessa documentação é esclarecer a relação entre a API do DataTables.net e o componente Datatable do Alcance. 
+As possibilidades de uso da API são diversas. Para saber mais, destacamos alguns pontos de partida para pesquisa:
+
+- <a href="https://datatables.net/manual/api" class="alc-link">Manual sobre API do <code>Datatables.net</code></a>.
+- <a href="https://datatables.net/reference/api/" class="alc-link">Documentação sobre API do <code>Datatables.net</code></a>.
+
+
+## Salvando e recuperando o estado
+É possivel manter o estado da tabela ao adicionar `stateSave=true` nas opções do componente datatable.
+
+Esta opção permite manter o **estado da tabela**,
+incluindo ordenação, filtro, paginação etc., quando o usuário navegar para outras páginas.
+
+<CodeExample type="html">
+{`<alc-datatable
+  options='{
+    "stateSave": true
+  }'
+>
+  [...]
+</alc-datatable>`}
+</CodeExample>
+
+Veja detalhes na <a href="https://datatables.net/reference/option/stateSave" class="alc-link">referência oficial do Datatables.net sobre stateSave</a>.
+
+É responsabilidade da aplicação definir em que momentos o estado da tabela deve ser restaurado ou descartado, dependendo de como o usuário interage com a aplicação.
+Por exemplo, pode ser desejável restaurar o estado quando o usuário retorna à página, mas pode ser apropriado descartar o estado quando o usuário inicia uma nova sessão ou realiza ações que indicam uma mudança significativa no contexto.
+
+O ideal é fazer testes com os usuários da aplicação para entender quando faz mais sentido manter ou descartar o estado.
+
+### Um exemplo prático
+Imagine o cenário em que um usuário realiza filtros e ordenação em uma tabela, e em seguida, decide explorar detalhes clicando em um link.
+Ao retornar à página onde está a tabela, se o estado não for recuperado, a tabela será carregada do zero, perdendo todas as configurações anteriores e **violando as expectativas do usuário**.
+
+<Unstyled style={{marginBottom: '1rem'}}>
+  <alc-alert type="info" dismissible="false">
+    <span class="alc-alert__summary">Controlar adequadamente o estado da tabela é importante para uma boa experiência do usuário.</span>
+    Quando o usuário realiza ações como filtrar dados, ordenar colunas e personalizar a exibição da tabela,
+    pode esperar que, ao retornar à página, a tabela encontre-se no mesmo estado em que estava antes.
+  </alc-alert>
+</Unstyled>
+
+## Configuração de paginação
+### paging
+Você pode desativar a paginação colocando a seguinte configuração:
+<CodeExample type="html">
+{`<alc-datatable
+  options='{
+    "paging": false
+  }'
+>
+  [...]
+</alc-datatable>`}
+</CodeExample>
+<Unstyled style={{marginBottom: '1rem'}}>
+  <alc-alert type="warning" dismissible="false">
+    <span class="alc-alert__summary">Seja cuidadoso ao fazer isso.</span>
+    Não é recomendável desativar a paginação para uma grande quantidade de dados, pode prejudicar a experiência do usuário.
+  </alc-alert>
+</Unstyled>
+
+### pageLength
+Você pode alterar a quantidade de linhas exibidas na paginação adicionando a configuração a seguir:
+<CodeExample type="html">
+{`<alc-datatable
+  options='{
+    "pageLength": 4
+  }'
+>
+  [...]
+</alc-datatable>`}
+</CodeExample>
+
+## Configuração de ordenação
+### ordering
+Você pode desativar a ordenação para todas as colunas adicionando a seguinte configuração:
+<CodeExample type="html">
+{`<alc-datatable
+  options='{
+    "ordering": false
+  }'
+>
+  [...]
+</alc-datatable>`}
+</CodeExample>
+
+### columnDefs
+Você pode ativar e desativar a ordenação em apenas algumas colunas com a configuração a seguir:
+<CodeExample type="html">
+{`<alc-datatable
+  options='{
+    "columnDefs": [{ 
+      "orderable": false, 
+      "targets": [2,3] 
+    }]
+  }'
+>
+  [...]
+</alc-datatable>`}
+</CodeExample>
+
+## Perguntas frequentes
+
+<Unstyled>
+  <alc-details summary="Como faço para modificar a forma de apresentar os dados de uma coluna?">
+    <p>Às vezes os dados fornecidos por sua fonte de dados não estão no formato exato em que devem aparecer para o usuário. É possível modificar a forma como os dados são mostrados.</p>
+    <p>A forma mais simples de fazer isso é usar a opção <code>columns.render</code> do DataTables.net.</p>
+
+    <CodeExample type="js">
+{` "columns": [{
+   "title": "Valor",
+    "render": function (data, type, row) {
+      return \`R$ \$\{data}\`\
+      }
+}]`}
+    </CodeExample>
+
+    <p>Para mais detalhes, consulte a <a class="alc-link" href="https://datatables.net/reference/option/columns.render">documentação oficial sobre columns.render</a>.</p>
+  </alc-details>
+
+  <alc-details summary="Como renderizar HTML nas colunas?">
+    <p>Para renderizar HTML nas colunas de um datatable, você pode usar a opção render dentro da configuração columns. Aqui está um exemplo de como adicionar um botão HTML em uma coluna:</p>
+
+    <CodeExample type="html">
+{`"columns": [{
+  "title": "Ações",
+  "render": function (data, type, row) {
+    return \`<button class="alc-button">Ação</button>\`
+  }
+}]`}
+</CodeExample>
+    <p>Para mais detalhes, consulte a <a class="alc-link" href="https://datatables.net/reference/option/columns.render">documentação oficial sobre columns.render</a>.</p>
+  </alc-details>
+
+  <alc-details summary="É possível remover o botão de colunas?">
+    <p>
+      Não, não é possível remover o botão de colunas. Nossos componentes são projetados com a abordagem "mobile first", e em telas menores, esse botão é essencial para garantir uma boa experiência de usuário. Removê-lo poderia comprometer a usabilidade e o uso em dispositivos móveis.
+    </p>
+  </alc-details>
+
+  <alc-details summary="Como adicionar o evento de click nos botões de ações no Vue.js?">
+    <p>
+      Devido às limitações do `columns.render` do datatable, não é possível usar onClick diretamente nos botões pois o render não consegue ver as funções e componentes do Vue diretamente.
+      Em vez disso, você pode adicionar um eventListener ao datatable e verificar se o elemento clicado é um botão de ação específico. Com isso, você pode chamar as funções apropriadas do Vue.
+      Aqui está um exemplo de como fazer isso:
+    </p>
+
+    <p>Primeiro, você pode adicionar um **eventListener** ao seu datatable. Isso permite que você capture eventos de clique nos botões de ação.</p>
+    <CodeExample type="js"> 
+{`customElements.whenDefined('alc-datatable').then( () => {
+  const datatable = document.querySelector('alc-datatable');
+  datatable.addEventListener('click', handleClick)
+})
+const handleClick = async (event) => {
+  const target = event.target.closest('.custom-event');
+  if (target) {
+    console.log(target);
+  }
+}; `}
+    </CodeExample>
+
+    <p>Certifique-se de que seus botões de ação têm uma classe específica e/ou atributos de dados para identificar o item ao qual pertencem. No exemplo, estamos utilizamos a classe **custom-event**.</p>
+
+    <CodeExample type="js"> 
+      {`"columns": [{
+        "title": "Ações",
+        "render": function (data, type, row) {
+          return \`<button class="alc-button custom-event" id=\$\{data}\>Ação</button>\`
+        }
+    }]`}
+    </CodeExample>
+  </alc-details>
+</Unstyled>
+
+
+<Markdown>{DatatableProps}</Markdown>

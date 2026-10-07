@@ -1,0 +1,176 @@
+{/* alc-autocomplete.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-autocomplete.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.storyName} 
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Hint.storyName} 
+<Canvas of={Stories.Hint} sourceState="shown" />
+<Controls of={Stories.Hint} />
+
+## {Stories.Required.storyName} 
+<Canvas of={Stories.Required} sourceState="shown" />
+<Controls of={Stories.Required} />
+
+## {Stories.DataAttributes.storyName} 
+<Canvas of={Stories.DataAttributes} sourceState="shown" />
+<Controls of={Stories.DataAttributes} />
+
+## {Stories.ListDirection.storyName} 
+<Canvas of={Stories.ListDirection} sourceState="shown" />
+<Controls of={Stories.ListDirection} />
+
+## {Stories.Disabled.storyName} 
+<Canvas of={Stories.Disabled} sourceState="shown" />
+<Controls of={Stories.Disabled} />
+
+## {Stories.Error.storyName} 
+<Canvas of={Stories.Error} sourceState="shown" />
+<Controls of={Stories.Error} />
+
+## {Stories.Api.storyName} 
+<Canvas of={Stories.Api} sourceState="shown" />
+<Controls of={Stories.Api} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <alc-autocomplete
+      ref="autocomplete"
+      :items="items"
+      label="Selecione um item"
+      placeholder="Digite para pesquisar"
+      :disabled="false"
+      :loading="isLoading"
+      :error="hasError"
+      error-msg="Erro ao carregar itens"
+      hint="Você pode selecionar um item da lista"
+      required
+      display-keys="nome"
+      list-direction="vertical"
+    ></alc-autocomplete>
+    <button @click="obterItemSelecionado">Obter Item Selecionado</button>
+    <button @click="limparSelecao">Limpar Seleção</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      items: [],
+      isLoading: false,
+      hasError: false,
+    };
+  },
+  mounted() {
+    this.carregarItems();
+  },
+  methods: {
+    carregarItems() {
+      this.isLoading = true;
+      // Simula uma chamada assíncrona para obter os itens
+      setTimeout(() => {
+        this.items = [
+          { id: 1, nome: 'Item A' },
+          { id: 2, nome: 'Item B' },
+          { id: 3, nome: 'Item C' },
+        ];
+        this.isLoading = false;
+      }, 1000);
+    },
+    async obterItemSelecionado() {
+      const itemSelecionado = await this.$refs.autocomplete.getSelected();
+      console.log('Item selecionado:', itemSelecionado);
+    },
+    limparSelecao() {
+      this.$refs.autocomplete.clearSelected();
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <alc-autocomplete
+      ref="autocomplete"
+      :items="users"
+      label="Escolha um usuário"
+      placeholder="Digite o nome do usuário"
+      :disabled="isDisabled"
+      :loading="isLoading"
+      :error="hasError"
+      error-msg="Não foi possível carregar os usuários"
+      hint="Selecione um usuário da lista"
+      required
+      display-keys="username"
+      list-direction="horizontal"
+    ></alc-autocomplete>
+    <button @click="definirUsuarioSelecionado">Definir Usuário Selecionado</button>
+    <button @click="mostrarUsuarioSelecionado">Mostrar Usuário Selecionado</button>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, onMounted } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const autocomplete = ref(null);
+    const users = ref<Array<{ id: number; username: string }>>([]);
+    const isLoading = ref(false);
+    const hasError = ref(false);
+    const isDisabled = ref(false);
+
+    onMounted(() => {
+      carregarUsuarios();
+    });
+
+    const carregarUsuarios = () => {
+      isLoading.value = true;
+      // Simula uma chamada API para obter usuários
+      setTimeout(() => {
+        users.value = [
+          { id: 1, username: 'usuario1' },
+          { id: 2, username: 'usuario2' },
+          { id: 3, username: 'usuario3' },
+        ];
+        isLoading.value = false;
+      }, 1000);
+    };
+
+    const definirUsuarioSelecionado = async () => {
+      const usuario = { id: 2, username: 'usuario2' };
+      await autocomplete.value.setSelected(usuario);
+    };
+
+    const mostrarUsuarioSelecionado = async () => {
+      const usuarioSelecionado = await autocomplete.value.getSelected();
+      console.log('Usuário selecionado:', usuarioSelecionado);
+    };
+
+    return {
+      autocomplete,
+      users,
+      isLoading,
+      hasError,
+      isDisabled,
+      definirUsuarioSelecionado,
+      mostrarUsuarioSelecionado,
+    };
+  },
+});
+</script>`
+  }}
+/>

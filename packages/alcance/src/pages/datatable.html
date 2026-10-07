@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Datatable</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <h1>Datatable</h1>
+
+    <a href="button.html" class="alc-link">Ir para pagina de button</a>
+
+    <h2>Server Side (mockup)</h2>
+    <p>As funções de ordenação e filtro não estão funcionais porque não foram implementadas no mockup do servidor.</p>
+    <!-- Usa defer-start para poder passar "options" por script -->
+    <alc-datatable
+      id="server-side"
+      defer-start="true"
+    >
+      <table id="server-side-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Pergunta</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+      </table>
+    </alc-datatable>
+    <script>
+      customElements.whenDefined('alc-datatable').then( () => {
+        const datatable = document.querySelector('#server-side');
+        datatable.options = {
+          loading: true,
+          stateSave: true,
+          serverSide: true,
+          select: true,
+          pageLength: 1,
+          lengthMenu: [1,2,3,10],
+          columnDefs: [
+            {
+              targets: [3],
+              render: (_data, _type, row) => {
+                // Conteúdo gerado de forma independente do retornado via ajax
+                return `
+                  <span>Olá, ${row[1]}</span>
+                `
+              }
+            }
+          ],
+          ajax: (requestData, callback) => {
+            let database = [
+                [
+                  '1',
+                  'João',
+                  'Café ou chá?'
+                ],
+                [
+                  '2',
+                  'Joamar',
+                  'Praia ou montanha?'
+                ],
+                [
+                  '3',
+                  'Maria',
+                  'Livros ou filmes?'
+                ],
+                [
+                  '4',
+                  'Maricota',
+                  'Verão ou inverno?'
+                ],
+                [
+                  '5',
+                  'Zé',
+                  'Bolacha ou biscoito?'
+                ]
+              ];
+
+            // Loga aquilo que o datatable enviaria ao servidor, para ser tratado lá
+            console.log('Informações enviadas na requisição ao servidor: ', requestData);
+
+            // Cria um temporizador para simular a chamada assíncrona ao servidor
+            // Aqui deveria estar fazendo uma requisição verdadeira ao server-side
+            setTimeout(() => {
+              // Pega a página desejada, no tamanho desejado
+              retorno = database.slice(requestData.start, requestData.start + requestData.length);
+              // Callback que entrega os dados solicitados do servidor para o datatable.
+              callback({
+                draw: requestData.draw,
+                recordsTotal: database.length, // tamanho total da base de dados
+                recordsFiltered: database.length, // tamanho total dos dados filtrados (igual ao acima, pois filtro não foi implementado)
+                data: retorno
+              });
+
+            }, 100);
+          }
+        };
+
+        // Tudo configurado, inicia o datatable.
+        datatable.start();
+      });
+    </script>
+
+
+    <h2>Ícones</h2>
+    <alc-datatable id="bi" defer-start="true"></alc-datatable>
+
+    <script>
+
+      function dataTransform(json) {
+        const iconNames = json.uncategorized;
+        return iconNames.map(name => {
+          return [name];
+        });
+      }
+
+      const dt = document.querySelector('#bi');
+
+      dt.options = {
+        "ajax": {
+          "url": "https://api.iconify.design/collection?prefix=bi",
+          "dataSrc": dataTransform,
+        },
+        "columns": [
+          {
+            "title": "Nome"
+          },
+          {
+            "title": "Código HTML",
+            "render": function (data, type, row) {
+              const code = `<alc-icon name="${row[0]}"></alc-icon>`.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+              return `<code>${code}</code>`;
+            },
+            "orderable": false,
+            "searchable": false,
+          },
+          {
+            "title": "Ícone",
+            "render": function (data, type, row) {
+              return `<alc-icon name="${row[0]}" label="Ícone ${row[0]}"></alc-icon>`;
+            },
+            "orderable": false,
+            "searchable": false,
+            "className": "example"
+          }
+        ]
+      }
+
+      customElements.whenDefined('alc-datatable').then(() => {
+        dt.start();
+      });
+
+    </script>
+
+    <style>
+      td.example {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    </style>
+
+
+    <h2>Datatable ordenação</h2>
+    <alc-datatable options='{"pageLength": 20, "extensions": true}'>
+      <table>
+        <thead>
+          <tr>
+            <th>Coluna</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr><td>1</td></tr>
+          <tr><td>2</td></tr>
+          <tr><td>10</td></tr>
+          <tr><td>11</td></tr>
+          <tr><td>20</td></tr> -->
+          <tr><td>Aa</td></tr>
+          <tr><td>Áa</td></tr>
+          <tr><td>aa</td></tr>
+          <tr><td>áa</td></tr>
+          <tr><td>Ab</td></tr>
+          <tr><td>Áb</td></tr>
+          <tr><td>ab</td></tr>
+          <tr><td>áb</td></tr>
+        </tbody>
+      </table>
+    </alc-datatable>
+
+    <h2>Datatable inline</h2>
+    <alc-datatable options='{"paging": false, "columnDefs": [{ "orderable": false, "targets": [3,4,5] }], "stateSave": true}' extensions='{"orderIntl": true}' >
+      <table id="inline-table">
+        <thead>
+          <tr>
+            <th>Ordem</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Placeholder A</th>
+            <th>Placeholder B</th>
+            <th>Placeholder C</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Angela</td>
+            <td>
+              É o líder dos ThunderCats, que moram no terceiro mundo e lutam pela ordem e justiça.
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Bernado</td>
+            <td>
+              E um integrante dos ThunderCats, representando uma pantera negra na linhagem Thunderiana.
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Ángela</td>
+            <td>
+              Pertencendo à linhagem dos tigres de Thundera, é um dos mais poderosos e versáteis Thundercats.
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Cheetara</td>
+            <td>
+              Representando a chita, é uma guerreira destemida. Forte e decidida, não hesita em entrar em ação para combater os vilões.
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Jaga</td>
+            <td>
+              É o mentor e guerreiro mestre de todos os Thundercats e, como seu nome sugere, é representado pelo jaguar.
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </alc-datatable>
+
+    <h2>Minhas iterações (inline)</h2>
+    <p>Coluna 'situação' e 'gerenciar iteração' com pesquisa desabilitada</p>
+    <alc-datatable
+      id="iterations"
+      options='{"columnDefs": [{ "type": "br-data", "targets": [4,5]}, { "searchable": false, "targets": [7, 10] } ], "stateSave": true, "pageLength": 3}'
+      defer-start="true"
+    >
+      <table id="iterations-table">
+        <thead>
+          <tr>
+            <th>Sigla Sistema / Tópico</th>
+            <th>Iteração</th>
+            <th>Descrição da Iteração</th>
+            <th>Criada em</th>
+            <th>Previsão de início</th>
+            <th>Previsão de conclusão</th>
+            <th>Data efetivo Encerramento</th>
+            <th>Situação</th>
+            <th>USTs Planejadas</th>
+            <th>USTs Entregues</th>
+            <th>Gerenciar Iteração</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alcance</td>
+            <td>17</td>
+            <td>
+              Desenvolvimento do Alcance - fevereiro/2023</td>
+            <td>01/02/2023 12:09:23</td>
+            <td>01/02/2023</td>
+            <td>28/02/2023</td>
+            <td></td>
+            <td>CANCELADA</td>
+            <td>253.65</td>
+            <td>249.5</td> 
+            <td>
+              <button class="alc-button alc-button--secondary"><alc-icon name="folder" label="Gerenciar"></alc-icon></button>
+            </td>
+          </tr>
+          <tr>
+            <td>Ãtividades
+              Gerais</td>
+            <td>22</td>
+            <td>Atividades
+              gerais da Seuso - junho/2022</td>
+            <td>01/06/2022 10:32:38</td>
+            <td>01/06/2022</td>
+            <td>30/06/2022</td>
+            <td></td>
+            <td>EM HOMOLOGAÇÃO</td>
+            <td>63.95</td>
+            <td>63.95</td>
+            <td><button class="alc-button alc-button--secondary"><alc-icon name="folder" label="Gerenciar"></alc-icon></button></td>
+          </tr>
+          <tr>
+            <td>Atividades
+              Gerais</td>
+            <td>64</td>
+            <td>
+              Átividades gerais da Seuso - janeiro/2023</td>
+            <td>15/12/2022 02:35:09</td>
+            <td>02/01/2023</td>
+            <td>31/01/2023</td>
+            <td></td>
+            <td>EM EXECUÇÃO</td>
+            <td>241.25</td>
+            <td>229.15</td> 
+            <td><button class="alc-button alc-button--secondary"><alc-icon name="folder" label="Gerenciar"></alc-icon></button></td>
+          </tr>
+          <tr>
+            <td>AtividadÉs
+              Gerais</td>
+            <td>68</td>
+            <td>
+              Atividades gerais da Seuso - fevereiro/2023</td>
+            <td>01/02/2023 01:46:02</td>
+            <td>01/02/2023</td>
+            <td>28/02/2023</td>
+            <td></td>
+            <td>EM EXECUÇÃO</td>
+            <td>195.2</td>
+            <td>194.05</td> 
+            <td><button class="alc-button alc-button--secondary"><alc-icon name="folder" label="Gerenciar"></alc-icon></button></td>
+          </tr>
+          <tr>
+            <td>âlcance</td>
+            <td>2</td>
+            <td>Contrução de CRUD para a organização, pessoas e repertórios.</td>
+            <td>04/11/2022 11:42:12</td>
+            <td>06/11/2022</td>
+            <td>29/11/2022</td>
+            <td></td>
+            <td>EM EXECUÇÃO</td>
+            <td>150.55</td>
+            <td>116.25</td> 
+            <td><button class="alc-button alc-button--secondary"><alc-icon name="folder" label="Gerenciar"></alc-icon></button></td>
+          </tr>
+          <tr>
+            <td>PGDD</td>
+            <td>3</td>
+            <td>Sprint 2</td>
+            <td>21/12/2022 03:40:35</td>
+            <td>18/12/2022</td>
+            <td>05/01/2023</td>
+            <td></td>
+            <td>EM EXECUÇÃO</td>
+            <td>62.35</td>
+            <td>82.75</td> 
+            <td><button class="alc-button alc-button--secondary"><alc-icon name="folder" label="Gerenciar"></alc-icon></button></td>
+          </tr>
+          <tr>
+            <td>PGDD</td>
+            <td>5</td>
+            <td>Sprint 4 </td>
+            <td>14/02/2023 11:08:36</td>
+            <td>06/02/2023</td>
+            <td>24/02/2023</td>
+            <td></td>
+            <td>CRIADA</td>
+            <td>0</td>
+            <td>0</td>
+            <td><button class="alc-button alc-button--secondary"><alc-icon name="folder" label="Gerenciar"></alc-icon></button></td>
+          </tr>
+          <tr>
+            <td>PIC</td>
+            <td>11</td>
+            <td>Suporte aos desenvolvedores que utilizam o PIC - fevereiro/2023</td>
+            <td>15/12/2022 02:27:38</td>
+            <td>01/02/2023</td>
+            <td>28/02/2023</td>
+            <td></td>
+            <td>CRIADA</td>
+            <td>1.15</td>
+            <td>0</td> 
+            <td><button class="alc-button alc-button--secondary"><alc-icon name="folder" label="Gerenciar"></alc-icon></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </alc-datatable>
+
+    <h2>Datatable por propriedade</h2>
+    <alc-datatable
+      data='[["Panthro", "01/12/2022 12:49:50.127"], ["Lion-O", "01/11/2022 12:49:50.124"], ["Panthro1", "02/01/2022 12:49:50.122"], ["Lion-O1", "01/01/2022 12:49:50.129"], ["Panthro2", "04/01/2022 12:49:50.120"], ["Lion-O2", "01/01/2022 12:49:50.125"], ["Panthro3", "01/01/2022 12:49:50.130"], ["Lion-O3", "01/01/2022 12:49:50.121"]]'
+      options='{
+        "columns": [
+        {"title": "Nome"}, {"title": "Horário"}],
+        "pageLength": 10,
+        "searching": false
+      }'
+      table-id="id-prop"
+    >
+    </alc-datatable>
+
+
+    <h2>Info: comportamento padrão</h2>
+    <p>Info (número de registros mostrados) é exibido por padrão, sem precisar de opção explícita.</p>
+    <alc-datatable
+      data='[["Lion-O", "Líder dos ThunderCats"], ["Panthro", "Pantera negra da linhagem Thunderiana"], ["Tygra", "Linhagem dos tigres de Thundera"], ["Cheetara", "Guerreira destemida que representa a chita"], ["Jaga", "Mentor e guerreiro mestre, representado pelo jaguar"]]'
+      options='{
+        "columns": [{"title": "Nome"}, {"title": "Descrição"}],
+        "pageLength": 2,
+        "lengthMenu": [2, 5, 10]
+      }'
+      table-id="info-default"
+    >
+    </alc-datatable>
+
+    <h2>Info desabilitado (option info=false)</h2>
+    <p>Com <code>"info": false</code>, o número de registros não é exibido, mas a paginação continua aparecendo.</p>
+    <alc-datatable
+      data='[["Lion-O", "Líder dos ThunderCats"], ["Panthro", "Pantera negra da linhagem Thunderiana"], ["Tygra", "Linhagem dos tigres de Thundera"], ["Cheetara", "Guerreira destemida que representa a chita"], ["Jaga", "Mentor e guerreiro mestre, representado pelo jaguar"]]'
+      options='{
+        "columns": [{"title": "Nome"}, {"title": "Descrição"}],
+        "pageLength": 2,
+        "lengthMenu": [2, 5, 10],
+        "info": false
+      }'
+      table-id="info-disabled"
+    >
+    </alc-datatable>
+
+    <h2>Info sem paginação (option paging=false)</h2>
+    <p>Com <code>"paging": false</code>, info continua sendo exibido mesmo sem os controles de paginação.</p>
+    <alc-datatable
+      data='[["Lion-O", "Líder dos ThunderCats"], ["Panthro", "Pantera negra da linhagem Thunderiana"], ["Tygra", "Linhagem dos tigres de Thundera"], ["Cheetara", "Guerreira destemida que representa a chita"], ["Jaga", "Mentor e guerreiro mestre, representado pelo jaguar"]]'
+      options='{
+        "columns": [{"title": "Nome"}, {"title": "Descrição"}],
+        "paging": false
+      }'
+      table-id="info-no-paging"
+    >
+    </alc-datatable>
+
+    <h2>Info com filtro sem resultados</h2>
+    <p>A tabela abaixo começa com um filtro pré-aplicado que não corresponde a nenhum registro: info não é exibido. Limpe o campo de pesquisa para ver info reaparecer.</p>
+    <alc-datatable
+      data='[["Lion-O", "Líder dos ThunderCats"], ["Panthro", "Pantera negra da linhagem Thunderiana"], ["Tygra", "Linhagem dos tigres de Thundera"], ["Cheetara", "Guerreira destemida que representa a chita"], ["Jaga", "Mentor e guerreiro mestre, representado pelo jaguar"]]'
+      options='{
+        "columns": [{"title": "Nome"}, {"title": "Descrição"}],
+        "pageLength": 2,
+        "lengthMenu": [2, 5, 10],
+        "search": {"search": "registro-inexistente"}
+      }'
+      table-id="info-no-records"
+    >
+    </alc-datatable>
+
+    <h2>Somente datas</h2>
+    <alc-datatable>
+      <table>
+        <thead>
+          <tr>
+            <th>Normal</th>
+            <th>Em branco</th>
+            <th>Extremos</th>
+            <th>Inválido</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01/01/2022</td>
+            <td></td>
+            <td>29/02/2024</td>
+            <td>29/02/2023</td>
+          </tr>
+          <tr>
+            <td>01/01/2023</td>
+            <td>31/12/2022</td>
+            <td>01/01/1970</td>
+            <td>31/04/2020</td>
+          </tr>
+          <tr>
+            <td>01/01/2024</td>
+            <td>01/01/2023</td>
+            <td>31/12/2051</td>
+            <td>12/13/2014</td>
+          </tr>
+          <tr>
+            <td>01/02/2023</td>
+            <td></td>
+            <td>31/03/2023</td>
+            <td>32/08/2018</td>
+          </tr>
+          <tr>
+            <td>02/01/2023</td>
+            <td>17/03/2023</td>
+            <td>01/04/2023</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </alc-datatable>
+
+    <h2>Datatable API</h2>
+    <button class="alc-button" onclick="showData()">Gerar dados</button>
+    <button class="alc-button" onclick="removeData()">Remover dados</button>
+    <div id="exampledatatable"></div>
+
+    <h2>Table</h2>
+
+    <alc-table>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Cargo</th>
+            <th>UF</th>
+            <th><abbr title="Número">Nº</abbr> Identificador</th>
+            <th>Data de admissão</th>
+            <th>R$</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Octavius Kelly Johnson Coleman Valentine Jackobson</td>
+            <td>Analista</td>
+            <td>PA</td>
+            <td>110</td>
+            <td>20/12/2014</td>
+            <td>R$3690,00</td>
+          </tr>
+          <tr>
+            <td>Yeo Gonzales</td>
+            <td>Terceirizado</td>
+            <td>SP</td>
+            <td>115</td>
+            <td>22/12/2014</td>
+            <td>R$3300,00</td>
+          </tr>
+          <tr>
+            <td>Sophia Stewart</td>
+            <td>
+              <a href="http://www.google.com">Analista</a>
+            </td>
+            <td><img style="width:200px"
+                src="http://www.capixabadagema.com.br/wp-content/uploads/2015/06/Capixaba-da-Gema-Vit%C3%B3ria-ES-Brasil-16.jpg"
+                alt="Ponte em Vitória"></td>
+            <td>100</td>
+            <td>
+              <ul>
+                <li><a href="#">Ver detalhes desta linha</a></li>
+                <li><a href="#">Ver detalhes desta linha</a></li>
+                <li><a href="#">Ver detalhes desta linha</a></li>
+              </ul>
+            </td>
+            <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem cumque dolorem soluta unde dolore, harum
+              explicabo a repellat architecto quasi deleniti magni sapiente laudantium placeat tempora dignissimos et
+              perferendis laboriosam?</td>
+          </tr>
+          <tr>
+            <td>Eagan Wall</td>
+            <td>Analista</td>
+            <td><img style="width:200px"
+                src="https://4.bp.blogspot.com/-Vgfa4hErEks/UCz-b4viiZI/AAAAAAAAf0A/vSLc-T_0Kt0/s1600/Vitoria.jpg"
+                alt="Praia do Canto - Vitória/ES"></td>
+            <td>105</td>
+            <td>04/06/2015</td>
+            <td>R$3677,00</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </alc-table>
+
+  </div> <!-- container-fluid -->
+
+  <script>
+    const api_url = 'https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=RJ&siglaUf=DF&siglaUf=SP&itens=20&ordem=ASC&ordenarPor=nome';
+
+    async function getapi(url) {
+      const response = await fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        let formattedData = [];
+
+        const uf = {"SP": "São Paulo", "DF": "Distrito Federal", "RJ": "Rio de janeiro"}
+
+        // Filtra os dados para mostrar só o necessário
+        let dataFiltered = data.dados.map(obj => {
+          return { nome: obj.nome, siglaUf: uf[obj.siglaUf], email: obj.email };
+        })
+
+
+        // Formatação dos dados
+        dataFiltered.forEach(obj => {
+          formattedData = [...formattedData, Object.values(obj)];
+        });
+
+        show(formattedData);
+      })
+
+    }
+
+    // getapi(api_url);
+
+    createTable();
+
+    function createTable() {
+      const container = document.getElementById('exampledatatable');
+      const alcDatatable = document.createElement('alc-datatable');
+
+      alcDatatable.data = [];
+      alcDatatable.options = {
+        "columns": [{"title": "nome"}, {"title": "Estado"}, {"title": "email" }],
+        "pageLength": 4,
+        "ordering": false
+      }
+
+      container.appendChild(alcDatatable);
+    }
+
+    function show(data) {
+      const alcDatatable = document.querySelector('#exampledatatable alc-datatable');
+      alcDatatable.data = data;
+      // console.log('show', alcDatatable);
+
+      // alcDatatable.options = {
+      //   "columns": [{"title": "nome"}, {"title": "Estado"}, {"title": "email" }],
+      //   "pageLength": 4,
+      //   "ordering": false,
+      // }
+
+      // container.appendChild(alcDatatable);
+    }
+
+    function showData() {
+      getapi(api_url);
+    }
+
+    function removeData() {
+      const alcDatatable = document.querySelector('#exampledatatable alc-datatable');
+      alcDatatable.data = [];
+    }
+  </script>
+
+  <script>
+
+    function statusTypeDetect (data) {
+
+      console.debug('testando statusTypeDetect');
+
+      switch (data) {
+        case 'CRIADA':
+        case 'EM EXECUÇÃO':
+        case 'EM HOMOLOGAÇÃO':
+        case 'CANCELADA':
+          return 'situacao';
+      }
+      return null;
+    }
+
+    function statusTypeOrder (data) {
+
+      switch (data) {
+        case 'CRIADA':
+          return 0;
+        case 'EM EXECUÇÃO':
+          return 1;
+        case 'EM HOMOLOGAÇÃO':
+          return 2;
+        case 'CANCELADA':
+          return 3;
+      }
+      return 4;
+    }
+
+
+    const iterations = document.querySelector('#iterations');
+
+    customElements.whenDefined('alc-datatable').then(async () => {
+      const dt = await iterations.getDataTable();
+      dt.ext.type.detect.unshift(statusTypeDetect);
+      dt.ext.type.order['situacao-pre'] = statusTypeOrder;
+
+      console.debug('Iniciou?', await iterations.start());
+    });
+
+
+  </script>
+
+</body>
+
+</html>

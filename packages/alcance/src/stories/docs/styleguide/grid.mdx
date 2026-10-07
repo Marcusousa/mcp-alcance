@@ -1,0 +1,48 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from "../../utils/codeExample"
+
+<Meta title="Estilos/Grid" />
+<h1> Grid </h1>
+
+## Mobile First
+
+No Alcance, sugerimos fortemente seguir a filosofia do *mobile-first*, o que significa que o design inicial é construído pensando nos dispositivos móveis em primeiro lugar.
+Isso garante uma boa experiência de usuário em dispositivos móveis, que são amplamente utilizados para acessar a web atualmente.
+
+
+## Grid do Bootstrap
+Para facilitar o desenvolvimento de layout com o Alcance, utilizamos a <a href="https://getbootstrap.com/docs/5.3/layout/grid/" class="alc-link">grid do Bootstrap</a>.
+Ela permite criar um sistema de colunas responsivo, onde os elementos do seu layout podem se ajustar e reorganizar automaticamente com base no tamanho da tela do dispositivo do usuário.
+
+### Estrutura da Grid
+A grid do utiliza classes específicas para definir o comportamento das colunas.
+Ela é construída com base em uma estrutura de 12 colunas que se adaptam de forma fluida a diferentes tamanhos de tela.
+Aqui estão algumas das classes mais comuns:
+
+- **row:** a classe é utilizada para criar uma linha.
+- **col:** a classe é utilizada para criar uma coluna.
+- **col-\{n}:** define a largura de uma coluna em todos os tamanhos de tela.
+- **col-\{size}-\{n}:** define a largura de uma coluna para um tamanho específico de tela.
+
+*Onde: \{n} é o número de colunas ocupadas e varia de 1 a 12; e \{size} o tamanho da tela, cujos valores podem ser `sm` (pequeno), `md` (médio), `lg` (grande) ou `xl` (extra grande).*
+
+### Exemplo básico
+
+<CodeExample type="html">
+{`<div class="row">
+    <div class="col-12 col-sm-6">
+        <p class="border p-2">Conteúdo da coluna 1.</p>
+    </div>
+    <div class="col-12 col-sm-6">
+        <p class="border p-2">Conteúdo da coluna 2.</p>
+    </div>
+</div>`}
+</CodeExample>
+
+Nesse exemplo, utilizamos uma linha (`row`) que contém duas colunas (`col-12 col-sm-6`).
+A classe `col-12` faz com que as colunas ocupem a largura completa em dispositivos móveis.
+Já a classe `col-sm-6` define que, em telas maiores (a partir do tamanho "sm" - pequeno), cada coluna ocupe metade da largura disponível.
+
+## Informações adicionais
+Recomendamos acessar a <a href="https://getbootstrap.com/docs/5.3/layout/grid/" class="alc-link">documentação oficial da grid do Bootstrap</a>, onde você encontrará informações detalhadas sobre como utilizar e aproveitar ao máximo a grid.

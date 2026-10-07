@@ -1,0 +1,22 @@
+{/* alc-user.mdx */}
+
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-user.stories';
+
+import UserProps from './alc-user.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+  Seguindo o padrão atual do Alcance, a forma de mostrar as informações do usuário está disponível no componente <a href="./?path=/docs/componentes-user-menu--documentação" className="alc-link">alc-user-menu</a>.
+  Visite o <a href="./?path=/docs/componentes-header-v1--guia-de-migração" className="alc-link">Guia de Migração</a> para instruções de como migrar para o novo componente.
+</alc-alert>
+</Unstyled>
+
+O componente permite a adicionar informações do usuário, como: nome, foto e ponto/matrícula. Além disso, oferece a opção de fazer logout.
+
+<Markdown>{UserProps}</Markdown>

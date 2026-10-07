@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Tabs</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <alc-tabs class="mb-2">
+
+      <alc-tab-button slot="button" tab="tab-1" class="custom">Geral</alc-tab-button>
+      <alc-tab-button slot="button" tab="tab-2">O que esperar</alc-tab-button>
+      <alc-tab-button slot="button" tab="tab-3">Recomendações</alc-tab-button>
+      <alc-tab-button slot="button" tab="tab-4">Recomendações1</alc-tab-button>
+      <alc-tab-button slot="button" tab="tab-5">Recomendações2</alc-tab-button>
+      <alc-tab-button slot="button" tab="tab-6">Recomendações3</alc-tab-button>
+
+      <alc-tab tab="tab-1">
+        Este texto corresponde a um assunto genérico qualquer, aqui posicionado apenas para fazer número, apontando a
+        localização em que se espera que seu conteúdo personalizado seja inserido.
+      </alc-tab>
+      <alc-tab tab="tab-2">
+        Eis alguns efeitos esperados quando o widget entrar em ação:
+        <ul>
+          <li>O conteúdo de seus elementos ligados por cada comando de aba serão exibidos alternadamente, de acordo com
+            a
+            ação do usuário por mouse ou teclado</li>
+          <li>Uma vez atingido um comando de aba por teclado, a navegação entre os comandos das abas se dará pelas
+            teclas
+            de seta.</li>
+        </ul>
+      </alc-tab>
+      <alc-tab tab="tab-3" content-focus="true">
+        <ul>
+          <li>
+            Não abuse do número de abas, tente evitar superar uma quantidade confortável para memorização - leia-se até
+            sete itens
+          </li>
+          <li>
+            Evite o uso de abas aninhadas - isso pode provocar confusão na interação (embora funcione)
+          </li>
+        </ul>
+
+        <!-- Tabs dentro de tabs -->
+        <!-- Exemplo sem o uso do slot button -->
+        <alc-tabs>
+
+          <alc-tab tab="tab-31" label="Interna 1">
+            Conteúdo interno 1
+          </alc-tab>
+          <alc-tab tab="tab-32" label="Interna 2">
+            Conteúdo interno 2
+          </alc-tab>
+        </alc-tabs>
+
+
+      </alc-tab>
+
+      <alc-tab tab="tab-4">
+        Este texto corresponde a um assunto genérico qualquer, aqui posicionado apenas para fazer número, apontando a
+        localização em que se espera que seu conteúdo personalizado seja inserido.
+      </alc-tab>
+      <alc-tab tab="tab-5">
+        Este texto corresponde a um assunto genérico qualquer, aqui posicionado apenas para fazer número, apontando a
+        localização em que se espera que seu conteúdo personalizado seja inserido.
+      </alc-tab>
+      <alc-tab tab="tab-6">
+        Este texto corresponde a um assunto genérico qualquer, aqui posicionado apenas para fazer número, apontando a
+        localização em que se espera que seu conteúdo personalizado seja inserido.
+      </alc-tab>
+    </alc-tabs>
+
+
+    <button class="button button--secondary" id="nova">Nova tab</button>
+
+
+    <div class="bg-skin-surface-secondary p-4 mt-4">
+      <!-- Exemplo de ajuste de cor de fundo com atributo style -->
+      <alc-tabs class="mb-2" style="--bg-color: var(--alc-color-layer-a)" selected="tab-3">
+
+        <alc-tab-button slot="button" tab="tab-1" class="custom">Geral</alc-tab-button>
+        <alc-tab-button slot="button" tab="tab-2">O que esperar</alc-tab-button>
+        <alc-tab-button slot="button" tab="tab-3">Recomendações</alc-tab-button>
+
+  
+        <alc-tab tab="tab-1">
+          Este texto corresponde a um assunto genérico qualquer, aqui posicionado apenas para fazer número, apontando a
+          localização em que se espera que seu conteúdo personalizado seja inserido.
+        </alc-tab>
+        <alc-tab tab="tab-2">
+          Eis alguns efeitos esperados quando o widget entrar em ação:
+          <ul>
+            <li>O conteúdo de seus elementos ligados por cada comando de aba serão exibidos alternadamente, de acordo com
+              a
+              ação do usuário por mouse ou teclado</li>
+            <li>Uma vez atingido um comando de aba por teclado, a navegação entre os comandos das abas se dará pelas
+              teclas
+              de seta.</li>
+          </ul>
+        </alc-tab>
+        <alc-tab tab="tab-3">
+          <ul>
+            <li>
+              Não abuse do número de abas, tente evitar superar uma quantidade confortável para memorização - leia-se até
+              sete itens
+            </li>
+            <li>
+              Evite o uso de abas aninhadas - isso pode provocar confusão na interação (embora funcione)
+            </li>
+          </ul>
+        </alc-tab>
+      </alc-tabs>
+
+    </div>
+
+    <div class="bg-skin-surface-tertiary p-4 mt-4">
+      <style>
+        /* Exemplo de ajuste de cor de fundo com classe css */
+        .on-layer-b {
+          --bg-color: var(--alc-color-layer-b);
+        }
+      </style>
+      <alc-tabs class="mb-2 on-layer-b">
+
+        <alc-tab-button slot="button" tab="tab-1" class="custom">Geral</alc-tab-button>
+        <alc-tab-button slot="button" tab="tab-2">O que esperar</alc-tab-button>
+        <alc-tab-button slot="button" tab="tab-3">Recomendações</alc-tab-button>
+
+  
+        <alc-tab tab="tab-1">
+          Este texto corresponde a um assunto genérico qualquer, aqui posicionado apenas para fazer número, apontando a
+          localização em que se espera que seu conteúdo personalizado seja inserido.
+        </alc-tab>
+        <alc-tab tab="tab-2">
+          Eis alguns efeitos esperados quando o widget entrar em ação:
+          <ul>
+            <li>O conteúdo de seus elementos ligados por cada comando de aba serão exibidos alternadamente, de acordo com
+              a
+              ação do usuário por mouse ou teclado</li>
+            <li>Uma vez atingido um comando de aba por teclado, a navegação entre os comandos das abas se dará pelas
+              teclas
+              de seta.</li>
+          </ul>
+        </alc-tab>
+        <alc-tab tab="tab-3">
+          <ul>
+            <li>
+              Não abuse do número de abas, tente evitar superar uma quantidade confortável para memorização - leia-se até
+              sete itens
+            </li>
+            <li>
+              Evite o uso de abas aninhadas - isso pode provocar confusão na interação (embora funcione)
+            </li>
+          </ul>
+        </alc-tab>
+      </alc-tabs>
+
+    </div>
+  </div>
+
+  <script>
+
+    document.querySelector('alc-tabs').addEventListener('alc-change', (e) => {
+      console.debug('index', e);
+    });
+
+    document.querySelector('#nova').addEventListener('click', () => {
+
+      let nova = document.createElement('alc-tab');
+      let novoBotao = document.createElement('alc-tab-button');
+
+      nova.setAttribute('tab', 'tab-4');
+      nova.setAttribute('label', 'tab 4');
+      nova.setAttribute('visible', 'false');
+      nova.innerText = 'Conteúdo da tab 4';
+
+      novoBotao.innerText = 'TAB 4';
+
+      document.querySelector('alc-tabs').appendChild(nova);
+      document.querySelector('alc-tabs div div').appendChild(novoBotao);
+
+    });
+  </script>
+
+
+</body>
+
+</html>

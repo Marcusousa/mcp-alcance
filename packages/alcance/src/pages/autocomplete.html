@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Autocomplete</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+  <style>
+      .list-of-features{
+         list-style: auto;
+         margin-left: 2rem;
+      }
+  </style>
+</head>
+
+<body>
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-12 col-sm-12">
+            <alc-theme></alc-theme>
+            <hr class="mb-4 mt-4">
+         </div>
+         <div class="col-12 col-sm-12">
+            <h1>Web Component - Autocomplete</h1>
+         </div>
+
+         <div class="col-12 col-sm-6">
+            <h2>Sugestões de funcionalidades</h2>
+            <div>
+               <ol class="list-of-features">
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Prop() <strong>label</strong> título do campo busca
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Prop() <strong>hint</strong> mensagem de ajuda para realizar a pesquisa
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Prop() <strong>placeholder</strong> mensagem inicial que aparece dentro do input
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Prop() <strong>required</strong> campo obrigatório
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Prop() <strong>data-url</strong> url do serviço que deseja utilizar
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     ...Loading (resposta do serviço)
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Mensagem de serviço indisponível (resposta do serviço)
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Prop() <strong>display-keys</strong> parâmetros apresentados na lista
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Prop() <strong>list-direction</strong> tipo de visualização da lista
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Navegação por teclado (Setas, Esc e Enter)
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Scroll para visualização vertical
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Sincronização de item selecionado e scroll
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Limitador de itens da lista (Mensagem de ajuda)
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Requisição a partir de (2) caracteres
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Pesquisa com letra maiúscula, minúscula e acento gráfico.
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Input disabled
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     (InputValue) Valor selecionado
+                  </li>
+                  <li><alc-icon name="check" label="check" class="text-green-60v font-bold text-2xl"></alc-icon> 
+                     Resultado não encontrado
+                  </li>
+                  <li class="mt-4">Map() antes da pesquisa no serviço (?)</li>
+               </ol>
+            </div>
+
+            <h2>Alterações de funcionalidades </h2>
+            <div>
+               <ol class="list-of-features">
+                  <li>Prop() <strong>data-url</strong> passa a ser chamado <strong>items</strong></li>
+                  <li>Prop() <strong>data-atributos</strong> passa a ser chamado <strong>display-keys</strong></li>
+                  <li>Remove requisição interna</li>
+               </ol>
+            </div>
+         </div>
+         <div class="col-12 col-sm-6">
+            <h2>Playground</h2>
+
+            <!-- Componente Autocomplete para Deputados -->
+            <alc-autocomplete
+               id="busca-deputados"
+               label="Buscar deputados"
+               hint="Exclusivamente parlamentares no exercício do mandato"
+               placeholder="Digite para iniciar a busca"
+               required="true"
+               display-keys="nome, siglaPartido"
+               list-direction="horizontal"
+               error-msg="é obrigatório selecionar"
+               >
+            </alc-autocomplete>
+
+            <!-- <alc-modal id="modal"  header-text="Modal básico" open="true" size="sm" open>
+   
+               <alc-autocomplete 
+                  id="busca-comissoes" 
+                  label="Buscar comissões e outros órgãos legislativos"
+                  hint="Exemplo: CCJC, Comissão de..." 
+                  placeholder="Comissão de Desenvolvimento Econômico" 
+                  required="true"
+                  display-keys="nome, tipoOrgao, sigla" 
+                  list-direction="vertical" 
+                  
+               >
+             </alc-autocomplete>
+   
+             <alc-field label="Nome">
+               <input type="text">
+             </alc-field>
+   
+           </alc-modal> -->
+   
+
+            <alc-autocomplete
+               id="busca-comissoes"
+               label="Buscar comissões e outros órgãos legislativos"
+               hint="Exemplo: CCJC, Comissão de..."
+               placeholder="Comissão de Desenvolvimento Econômico"
+               required="false"
+               display-keys="nome, tipoOrgao, sigla"
+               list-direction="vertical"
+               >
+            </alc-autocomplete>
+
+            <!-- Botões para usar os novos métodos -->
+            <button class="alc-button alc-button--secondary" onclick="setComissaoPreSelecionada()">Pré-selecionar Comissão</button>
+            <button class="alc-button alc-button--secondary" onclick="clearComissaoSelecionada()">Limpar Seleção de Comissão</button>
+
+            <!-- Componente Autocomplete para Partidos -->
+            <alc-autocomplete
+               id="busca-partidos"
+               label="Buscar partidos"
+               hint="Exemplo: Par..., PS..."
+               placeholder="Digite para iniciar a busca"
+               required="true"
+               display-keys="nome, sigla"
+               list-direction="horizontal">
+            </alc-autocomplete>
+
+            <!-- Botões para usar os novos métodos -->
+            <button class="alc-button alc-button--secondary" onclick="setPartidoPreSelecionado()">Pré-selecionar Partido</button>
+            <button class="alc-button alc-button--secondary" onclick="clearPartidoSelecionado()">Limpar Seleção de Partido</button>
+
+            <!-- Componente Autocomplete para Blocos -->
+            <alc-autocomplete
+               id="busca-blocos"
+               label="Buscar blocos"
+               hint="Exemplo: Fe..., Un..."
+               placeholder="Digite para iniciar a busca"
+               required="false"
+               display-keys="nome, uri"
+               list-direction="vertical">
+            </alc-autocomplete>
+
+            <!-- Botões para usar os novos métodos -->
+            <button class="alc-button alc-button--secondary" onclick="setBlocoPreSelecionado()">Pré-selecionar Bloco</button>
+            <button class="alc-button alc-button--secondary" onclick="clearBlocoSelecionado()">Limpar Seleção de Bloco</button>
+
+            <!-- Botão para obter itens selecionados -->
+            <button class="alc-button alc-button--secondary" onclick="getItemSelected()">Obter itens</button>
+
+            <script>
+               async function getItemSelected() {
+                  const comissoes = await document.getElementById('busca-blocos').getSelected();
+                  console.log('Comissões:', comissoes);
+               }
+
+               // Função para pré-selecionar um deputado
+               async function setDeputadoPreSelecionado() {
+                  const autocomplete = document.getElementById('busca-deputados');
+
+                  // Garantir que os dados estão carregados
+                  if (!autocomplete.items || autocomplete.items.length === 0) {
+                     await fetchData(dataAutocompleteExamples['busca-deputados'], autocomplete);
+                  }
+
+                  // Selecionar o primeiro item como exemplo
+                  const firstItem = autocomplete.items[0];
+                  autocomplete.setSelected(firstItem);
+               }
+
+               // Função para limpar a seleção do deputado
+               function clearDeputadoSelecionado() {
+                  const autocomplete = document.getElementById('busca-deputados');
+                  autocomplete.clearSelected();
+               }
+
+               // Funções para Comissões
+               async function setComissaoPreSelecionada() {
+                  const autocomplete = document.getElementById('busca-comissoes');
+
+                  if (!autocomplete.items || autocomplete.items.length === 0) {
+                     await fetchData(dataAutocompleteExamples['busca-comissoes'], autocomplete);
+                  }
+
+                  const firstItem = autocomplete.items[0];
+                  autocomplete.setSelected(firstItem);
+               }
+
+               function clearComissaoSelecionada() {
+                  const autocomplete = document.getElementById('busca-comissoes');
+                  autocomplete.clearSelected();
+               }
+
+               // Funções para Partidos
+               async function setPartidoPreSelecionado() {
+                  const autocomplete = document.getElementById('busca-partidos');
+
+                  if (!autocomplete.items || autocomplete.items.length === 0) {
+                     await fetchData(dataAutocompleteExamples['busca-partidos'], autocomplete);
+                  }
+
+                  const firstItem = autocomplete.items[0];
+                  autocomplete.setSelected(firstItem);
+               }
+
+               function clearPartidoSelecionado() {
+                  const autocomplete = document.getElementById('busca-partidos');
+                  autocomplete.clearSelected();
+               }
+
+               // Funções para Blocos
+               async function setBlocoPreSelecionado() {
+                  const autocomplete = document.getElementById('busca-blocos');
+
+                  if (!autocomplete.items || autocomplete.items.length === 0) {
+                     await fetchData(dataAutocompleteExamples['busca-blocos'], autocomplete);
+                  }
+
+                  const firstItem = autocomplete.items[0];
+                  autocomplete.setSelected(firstItem);
+               }
+
+               function clearBlocoSelecionado() {
+                  const autocomplete = document.getElementById('busca-blocos');
+                  autocomplete.clearSelected();
+               }
+
+               document.getElementById('busca-comissoes').addEventListener('alc-change', (event) => {
+                  console.log('Comissão selecionada:', event.detail);
+               });
+            </script>
+
+            <script type="module">
+
+               const dataAutocompleteExamples = {
+                  "busca-deputados": "https://dadosabertos.camara.leg.br/api/v2/deputados?ordem=ASC&ordenarPor=nome",
+                  "busca-comissoes": "https://dadosabertos.camara.leg.br/api/v2/orgaos?ordem=ASC&ordenarPor=id",
+                  "busca-partidos": "https://dadosabertos.camara.leg.br/api/v2/partidos?ordem=ASC&ordenarPor=sigla",
+                  "busca-blocos": "https://dadosabertos.camara.leg.br/api/v2/blocos?ordem=ASC&ordenarPor=nome"
+               }
+               
+               async function delay(time) {
+                  return new Promise(resolve => setTimeout(resolve, time));
+               }
+
+               async function fetchData(url, acElement) {
+
+                  acElement.loading = true;
+                  acElement.error = false;
+                  try {
+                     // Apenas para simulação de atraso do serviço
+                     console.log('antes do delay');
+                     await delay(1500);
+                     console.log('depois do delay');
+
+                     // Obtenção dos dados
+                     const response = await fetch(url);
+                     const json = await response.json();
+                     // Transformação/tratamento dos dados.
+                     acElement.items = json.dados;
+                     if (json.dados.length === 0) {
+                        acElement.error = true;
+                        console.debug('error - length');
+                     }
+                  } catch (error) {
+                     // Tratamento de erros
+                     console.error('Erro ao buscar dados:', error);
+                     acElement.items = [];
+                     acElement.error = true;
+                     console.debug('error - catch');
+                  } finally {
+                     acElement.loading = false;
+                  }
+               }
+
+               // Setup da busca de dados.
+               for (const id in dataAutocompleteExamples) {
+                  let autocomplete = document.getElementById(id);
+                  // BUSCAR DADOS NO MOMENTO EM QUE O ELEMENTO FOI FOCADO A PRIMEIRA VEZ
+                  autocomplete.addEventListener('focusin', async () => {
+                     const url = dataAutocompleteExamples[id];
+                     await fetchData(url, autocomplete);
+                  }, { once: true });
+               }
+            </script>
+         </div>
+     </div>
+   </div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+// Função helper para publicar package com tag apropriada
+def publishNpmPackage(String packagePath, String version) {
+    def isSnapshot = version.contains('-SNAPSHOT')
+
+    if (isSnapshot) {
+        echo "Publicando SNAPSHOT: ${version}"
+        sh 'npm publish --tag snapshot'
+    } else {
+        echo "Publicando release estável: ${version}"
+        sh 'npm publish'
+    }
+}
+
+// Versão do Alcance (biblioteca principal) que está sendo publicada
+// Isso é necessário para garantir que as bibliotecas Vue e React sejam atualizadas com a versão correta do Alcance
+def currentVersion = ""
+
+pipeline {
+    agent any
+    environment {
+        VERSAO_NODE_JS = 'NodeJS22'
+        CONFIG_NODE_JS = '211e3b36-ac91-4e95-8e0a-ccc8c6e847c7'
+	    NODE_OPTIONS = '--use-openssl-ca'
+    }
+    
+    stages {
+        stage('Git checkout') {
+            steps {
+                deleteDir()
+                checkout scm
+                scmSkip(deleteBuild: true)
+            }
+        }
+        stage('Verificar autor do commit') {
+            steps {
+                script {
+                    def commitAuthor = sh(script: 'git log -1 --pretty=format:"%an"', returnStdout: true).trim()
+                    if (commitAuthor == 'jenkins') {
+                        currentBuild.result = 'ABORTED'
+                        error("O último commit foi feito pelo Jenkins. Abortando o job.")
+                    }
+                }
+            }
+        }
+        stage('Dependências globais') {
+            steps {
+                script {
+                    nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                        /*
+                            Instala o Yarn
+                        */
+                        sh 'npm config set registry https://registry.npmjs.org/'
+                        /*
+                            Para evitar problemas com certificados de segurança.
+                        */
+                        sh 'npm config set strict-ssl false'
+                        sh 'npm install --global yarn'
+                        sh 'yarn install'
+                    }
+                }
+            }
+        }
+        stage('Preparando Alcance') {
+            steps {
+                script {
+                    dir('packages/alcance') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'npm config set registry https://registry.npmjs.org/'
+                            /*
+                            Para evitar problemas com certificados de segurança.
+                            */
+                            sh 'npm config set strict-ssl false'
+                            /*
+                            rm: remove a pasta node_modules
+                            install: instala os pacotes
+                            */
+                            sh 'rm -rf node_modules/ && yarn install --network-timeout 100000'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Gerando Build') {
+            steps {
+                script {
+                    /*
+                     rm: remove as pastas dist, utils e loader
+                     build: gera a build
+                     */
+                    dir('packages/alcance') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'rm -rf dist/ utils/ loader/ && yarn build'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Publicando no Nexus - NPM') {
+            steps {
+                script {
+                    dir('packages/alcance') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'npm config set registry https://hub.camara.gov.br/repository/npm-hosted/'
+
+                            def packageJson = readJSON file: 'package.json'
+                            currentVersion = packageJson.version
+
+                            publishNpmPackage('packages/alcance', currentVersion)
+                        }
+                    }
+                }
+            }
+        }
+        stage('Preparando Alcance-Vue-Library') {
+            steps {
+                script {
+                    dir('packages/alcance-vue') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'npm config set registry https://hub.camara.gov.br/repository/npm-camara/'
+                            /*
+                            Para evitar problemas com certificados de segurança.
+                            */
+                            sh 'npm config set strict-ssl false'
+                            /*
+                            rm: remove a pasta node_modules
+                            install: instala os pacotes
+                            */
+                            sh 'rm -rf node_modules/ && yarn install --network-timeout 100000'
+                            /*
+                            Força atualização do Alcance na Library Vue
+                            */
+                            sh "yarn add alcance@${currentVersion} --network-timeout 100000"
+                        }
+                     }
+        		}
+            }
+        }
+        stage('Gerando Build Alcance-Vue-Library') {
+            steps {
+                script {
+                    /*
+                     rm: remove as pastas dist, utils e loader
+                     build: gera a build
+                     */
+                     dir('packages/alcance-vue') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'rm -rf lib/ && yarn build'
+                        }
+                     }
+        		}
+            }
+        }
+        stage('Publicando no Nexus - NPM - Alcance-Vue-Library') {
+            steps {
+                script {
+                    dir('packages/alcance-vue') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'npm config set registry https://hub.camara.gov.br/repository/npm-hosted/'
+
+                            def packageJson = readJSON file: 'package.json'
+                            def version = packageJson.version
+                            
+                            publishNpmPackage('packages/alcance-vue', version)
+                        }
+                    }
+                }
+            }
+        }
+        stage('Preparando Alcance-React-Library') {
+            steps {
+                script {
+                    dir('packages/alcance-react') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'npm config set registry https://hub.camara.gov.br/repository/npm-camara/'
+                            /*
+                            Para evitar problemas com certificados de segurança.
+                            */
+                            sh 'npm config set strict-ssl false'
+                            /*
+                            rm: remove a pasta node_modules
+                            install: instala os pacotes
+                            */
+                            sh 'rm -rf node_modules/ && yarn install --network-timeout 100000'
+                            /*
+                            Força atualização do Alcance na Library Vue
+                            */
+                            sh "yarn add alcance@${currentVersion} --network-timeout 100000"
+                        }
+                     }
+        		}
+            }
+        }
+        stage('Gerando Build Alcance-React-Library') {
+            steps {
+                script {
+                    /*
+                     rm: remove as pastas dist, utils e loader
+                     build: gera a build
+                     */
+                     dir('packages/alcance-react') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'rm -rf lib/ && yarn build'
+                        }
+                     }
+        		}
+            }
+        }
+        stage('Publicando no Nexus - NPM - Alcance-React-Library') {
+            steps {
+                script {
+                    dir('packages/alcance-react') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'npm config set registry https://hub.camara.gov.br/repository/npm-hosted/'
+                            
+                            def packageJson = readJSON file: 'package.json'
+                            def version = packageJson.version
+                            
+                            publishNpmPackage('packages/alcance-react', version)
+                        }
+                    }
+                }
+            }
+        }
+        stage('Incrementa versão') {
+            steps {
+                sshagent(['ssh_git']) {
+                        sh 'git checkout develop'
+                        sh 'git pull'
+                }
+                script {
+                    dir('packages/alcance') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'node incrementVersion.js'
+                        }
+                    }
+                    dir('packages/alcance-vue') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'node incrementVersion.js'
+                        }
+                    }
+                    dir('packages/alcance-react') {
+                        nodejs(configId: env.CONFIG_NODE_JS, nodeJSInstallationName: env.VERSAO_NODE_JS) {
+                            sh 'node incrementVersion.js'
+                        }
+                    }
+                }
+                sshagent(['ssh_git']) {
+                        sh 'git add .'
+                        sh 'git commit -m "[ci skip] Versão do package.json atualizada para próximo SNAPSHOT"'
+                        sh 'git push'
+                }
+            }
+        }
+        stage('Publica Storybook') {
+            steps {
+                build(job: 'alcance-storybook/develop', wait: true)
+            }
+        }
+    }
+}

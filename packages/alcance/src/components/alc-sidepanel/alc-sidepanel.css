@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+
+alc-sidepanel {
+  /*
+    --offset
+    Esse valor é calculado pelo componente.
+    Representa a posição inicial (vertical) do sidepanel na página.
+    Deve fazer parte da API do sidepanel para que a aplicação possa ajustar caso seja necessário.
+  */
+  /* O valor default é 80px, que seria a altura padrão em produção, em situação "normal" */
+  --_offset: calc(var(--offset, 80) * 1px);
+  /* A altura do sidepanel é o total da view subtraído do offset. */
+  --height: calc(100vh - var(--_offset));
+}
+
+.alc-sidepanel__mobile-container {
+  @apply md:hidden;
+}
+
+.alc-sidepanel__desktop-container {
+  @apply hidden md:block sticky top-[--_offset] z-[1020];
+}
+
+.alc-sidepanel__desktop-slot {
+  @apply hidden overflow-y-auto bg-white dark:bg-black;
+  height: var(--height)
+}
+
+.alc-sidepanel__desktop-slot.is-open {
+  @apply block w-72 shadow-xl;
+}

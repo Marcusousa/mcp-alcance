@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Field</title>
+
+    <script type="module" src="/build/alcance.esm.js"></script>
+    <script nomodule src="/build/alcance.js"></script>
+    <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <alc-theme></alc-theme>
+        <hr class="mb-2">
+
+        <h1>Field Checker</h1>
+        <alc-field-checker check-on-submit="true">
+            <form id="example-form">
+                <div class="row">
+                    <div class="col-12">
+                        <alc-field label="Nome Completo" style="margin-bottom: var(--alc-spacing-06)" required="true">
+                            <input id="nome" type="text"/>
+                        </alc-field>
+
+                        <alc-field label="E-mail" style="margin-bottom: var(--alc-spacing-06)" required="true">
+                            <input id="email" type="email"/>
+                        </alc-field>
+
+                        <alc-checkbox style="margin-bottom: var(--alc-spacing-08)"
+                            hint="Você precisa aceitar os termos de uso antes de continuar." required="true">
+                            <input id="termos" type="checkbox" name="termos" />
+                            <label slot="label">Você aceita os <a class="alc-link" href="#">termos de uso?</a></label>
+                        </alc-checkbox>
+                        <alc-field label="Selecione arquivos" required="true" style="margin-bottom: var(--alc-spacing-06)">
+                            <alc-input-file id-input="meuArquivo" multiple mode="dropzone" icon-name="upload"></alc-input-file>
+                        </alc-field>
+                    
+                        <alc-field label="Selecione arquivos" required="true" hint="Selecione somente arquivos png" style="margin-bottom: var(--alc-spacing-06)">
+                          <alc-input-file label="Selecione arquivos" id-input="meuArquivo2" multiple mode="input" icon-name="upload"></alc-input-file>
+                      </alc-field>
+                    
+                      <alc-field label="Selecione arquivos" required="true" style="margin-bottom: var(--alc-spacing-06)">
+                        <alc-input-file label="Selecione arquivos" id-input="meuArquivo3" multiple mode="button"></alc-input-file>
+                    </alc-field>
+                        <div style="display: flex; gap: var(--alc-spacing-03);">
+                            <button class="alc-button" onclick="checkFields()">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </alc-field-checker>
+
+        <script>
+        function checkFields() {
+        
+            const nomeInput = document.getElementById('nome');
+            const emailInput = document.getElementById('email');
+            const termosInput = document.getElementById('termos');
+            const tipoDropzone = document.querySelector('alc-input-file[id-input="meuArquivo"]');
+            const tipoInput = document.querySelector('alc-input-file[id-input="meuArquivo2"]');
+            const tipoButton = document.querySelector('alc-input-file[id-input="meuArquivo3"]');
+            
+            if (!nomeInput.value) {
+                nomeInput.closest('alc-field').setAttribute('error-msg', 'O campo é obrigatório');
+            }
+            
+            if (!emailInput.value || !emailInput.checkValidity()) {
+                emailInput.closest('alc-field').setAttribute('error-msg', 'Email inválido');
+            }
+
+            if (!termosInput.checked) {
+                termosInput.closest('alc-checkbox').setAttribute('error-msg', 'Você deve aceitar os termos');
+            }
+
+            if (!tipoDropzone.value) {
+                tipoDropzone.closest('alc-field').setAttribute('error-msg', 'Adicione arquivos!');
+            }
+
+            if (!tipoInput.value) {
+                tipoInput.closest('alc-field').setAttribute('error-msg', 'Adicione arquivos!');
+            }
+
+            if (!tipoButton.value) {
+                tipoButton.closest('alc-field').setAttribute('error-msg', 'Adicione arquivos!');
+            }
+        };
+        </script>
+    </div>
+</body>
+
+</html>

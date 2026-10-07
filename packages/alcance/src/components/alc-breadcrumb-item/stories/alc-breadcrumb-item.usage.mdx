@@ -1,0 +1,24 @@
+{/* alc-breadcrumb-item.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-breadcrumb-item.stories';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Slot.name}
+
+<Canvas of={Stories.Slot} sourceState="shown" />
+<Controls of={Stories.Slot} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+O uso avançado com Vue encontra-se na <a href="./?path=/docs/componentes-alfa-breadcrumb--exemplos">documentação do componente alc-breadcrumb.</a>
+

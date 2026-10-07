@@ -1,0 +1,7 @@
+.alc-breadcrumb {
+  @apply py-[--alc-spacing-02];
+}
+
+.alc-breadcrumb__list {
+  @apply flex items-baseline;
+}

@@ -1,0 +1,18 @@
+alc-view-more {
+  @apply block;
+}
+.alc-view-more__content {
+  @apply max-h-[var(--min-height)] overflow-hidden flex flex-col justify-between transition-all duration-500 ease-in-out relative;
+}
+.alc-view-more__content--opened {
+  @apply max-h-[var(--max-height)];
+}
+.alc-view-more__content::before {
+  @apply bg-gradient-to-b from-transparent to-[var(--bg-color)] h-16 bottom-[--alc-spacing-none] absolute right-[--alc-spacing-none] left-[--alc-spacing-none] content-[""];
+}
+.alc-view-more__content--opened::before {
+  @apply hidden;
+}
+.alc-view-more__toggle {
+  @apply flex w-full;
+}

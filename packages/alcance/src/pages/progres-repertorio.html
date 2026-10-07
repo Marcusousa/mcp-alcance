@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Repertório de atividades &mdash; Sistema Progres</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+</head>
+
+<body>
+
+  <alc-header name="Progres">
+    <!-- BANDEIRA DE AMBIENTE  -->
+    <alc-environment-label env="prototype"></alc-environment-label>
+    <!-- SKIP-LINKS  -->
+    <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+  </alc-header>
+
+
+  <!-- CORPO  -->
+  <div class="alc-layout">
+
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <alc-sidepanel>
+
+      <!-- O MENU EM SI -->
+      <alc-nav>
+
+        <div slot="header">
+
+          <div class="px-5">
+            <alc-user
+              name="João Cabral de Melo Neto"
+              registration-number="P_123456"
+            ></alc-user>
+          </div>
+
+        </div>
+
+        <!-- <span data-alc-label>
+          Menu
+        </span> -->
+        <ul>
+          <li><a href="progres-index.html">Tarefas</a></li>
+          <li><a href="progres-erros--abel.html">Erros de importação</a></li>
+          <li><a href="#">Painel</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Aprovações
+        </span>
+        <ul>
+          <li><a href="#">Aprovação supervisor</a></li>
+          <li><a href="#">Aprovação coordenador</a></li>
+          <li><a href="#">Relatório DRH</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Planejamentos
+        </span>
+        <ul>
+          <li><a href="#">Tipos de portfólio</a></li>
+          <li><a href="#">Portfólios</a></li>
+          <li><a href="#">Itens de portfólios</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Processos
+        </span>
+        <ul>
+          <li><a href="progres-repertorio.html">Repertório de atividades</a></li>
+          <li><a href="#">Lista de processos</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Administrativo
+        </span>
+        <ul>
+          <li><a href="#">Afastamentos</a></li>
+          <li><a href="#">Lotações</a></li>
+          <li><a href="#">Colaboradores</a></li>
+          <li><a href="#">Unidades</a></li>
+        </ul>
+
+        <div slot="footer">
+          <!-- @TODO Isso será modificado quando definirmos a interface definitiva para alc-theme -->
+          <div class="mx-5 mb-5">
+            <label>Tema</label>
+            <alc-theme></alc-theme>
+          </div>
+        </div>
+
+      </alc-nav>
+    </alc-sidepanel>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="main-content" class="alc-layout__content">
+      <div class="container-fluid">
+
+        <!-- TITULO DA PAGINA -->
+        <h1>Repertório de atividades</h1>
+
+        <div class="text-right">
+          <a href="progres-novo.html" class="alc-link">Novo tipo de atividade</a>
+        </div>
+
+        <div class="mt-4">
+          <alc-datatable options='{"columnDefs": [{ "orderable": false, "targets": [7] }]}'>
+            <table>
+              <thead>
+                <tr>
+                  <th>Sigla da Atividade</th>
+                  <th>Nome da Atividade</th>
+                  <th>Processo Nível 3</th>
+                  <th>Processo Nível 2</th>
+                  <th>Unidade</th>
+                  <th>Complexidade mínima</th>
+                  <th>Complexidade máxima</th>
+                  <th class="w-1/12">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AtividadeTeste</td>
+                  <td>Realizar Atividade de teste</td>
+                  <td>Desenvolver solução digital</td>
+                  <td>(processos comuns)</td>
+                  <td>SECID</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=20">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>Requisitos</td>
+                  <td>Realizar o Levantamento de requisitos para solução digital</td>
+                  <td>Desenvolver solução digital</td>
+                  <td>(processos comuns)</td>
+                  <td>SPROC</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=1006">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>ProspeccaoFerramenta</td>
+                  <td>Realizar a Prospecção de ferramentas</td>
+                  <td>Empreender prospecção tecnológica</td>
+                  <td>(processos comuns)</td>
+                  <td>SECID</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                          <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=43">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;
+                  </td>
+                </tr>
+                <tr>
+                  <td>EstudoTecnico</td>
+                  <td>Realizar Estudo e disseminação de conhecimento técnico</td>
+                  <td>Empreender prospecção tecnológica</td>
+                  <td>(processos comuns)</td>
+                  <td>SECID</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=39">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>GerirPolGovDados</td>
+                  <td>Gerir políticas de governança de dados</td>
+                  <td>Gerenciar projetos de TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SECID</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=47">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>GerirProjetos</td>
+                  <td>Realizar a Gestão de Projetos</td>
+                  <td>Gerenciar projetos de TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SERIS</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=73">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>SolucaoIncidente</td>
+                  <td>Realizar a Solução de incidentes</td>
+                  <td>Gerir incidentes em serviços para usuários</td>
+                  <td>(processos comuns)</td>
+                  <td>SECID</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=38">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>GESTÃO_EQUIPE</td>
+                  <td>Apoiar equipe para a realização das atividades diversas</td>
+                  <td>Gerir os processos de trabalho</td>
+                  <td>(processos comuns)</td>
+                  <td>SEPIC/SEUSO</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=90">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>ApoioTecnico</td>
+                  <td>Apoiar outras áreas no aprimoramento de processos, na qualidade de dados, na elaboração de documentos ou na tutoria (apoio técnico especializado)</td>
+                  <td>Gerir os processos de trabalho</td>
+                  <td>(processos comuns)</td>
+                  <td>CIGES</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=1024">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>ATIVIDADES_ROTINAS</td>
+                  <td>Gerir Atividades de Rotinas (e-doc, e-mail, telefonemas, reuniões, orientações de equipe)</td>
+                  <td>Gerir os processos de trabalho</td>
+                  <td>(processos comuns)</td>
+                  <td>SEPIC/SEUSO</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=92">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>FISCAL_CONTRATOS</td>
+                  <td>Planejar e acompanhar demandas passadas à contratada</td>
+                  <td>Gerir os processos de trabalho</td>
+                  <td>(processos comuns)</td>
+                  <td>SEPIC/SEUSO</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=89">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>AtividadeEscritorio</td>
+                  <td>Realizar Atividades de escritório</td>
+                  <td>Gerir os processos de trabalho</td>
+                  <td>(processos comuns)</td>
+                  <td>SECID</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=40">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>GerirProcessosTrabalho</td>
+                  <td>Realizar atividades relativas à gestão dos processos de trabalho da seção ou à gestão da própria seção</td>
+                  <td>Gerir os processos de trabalho</td>
+                  <td>(processos comuns)</td>
+                  <td>SPROJ</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=1021">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>CAPACITAÇÃO_CONTRATAÇÃO</td>
+                  <td>Realizar a contratação de cursos e licenças de capacitação</td>
+                  <td>Gerir pessoas e plano de capacitação em TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SEPIC/SEUSO</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=86">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>GerirPessoas</td>
+                  <td>Realizar a gestão de pessoas (aprovar ePonto, definir alocação nas atividades, coordenar férias e afastamentos, etc) </td>
+                  <td>Gerir pessoas e plano de capacitação em TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SPROJ</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=1022">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>GerirPlanoCapacitacao</td>
+                  <td>Realizar a gestão do plano de capacitação da área</td>
+                  <td>Gerir pessoas e plano de capacitação em TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SPROJ</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=1023">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>CAPACITAÇÃO_PLANEJAMENTO</td>
+                  <td>Realizar o planejamento de capacitação </td>
+                  <td>Gerir pessoas e plano de capacitação em TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SEPIC/SEUSO</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=87">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>ESTUDO</td>
+                  <td>Realizar Estudo/Capacitação</td>
+                  <td>Participar de treinamento e capacitação</td>
+                  <td>(processos comuns)</td>
+                  <td>SEPIC/SEUSO</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=91">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>FiscalizarContrato</td>
+                  <td>Realizar a Fiscalização de contratos</td>
+                  <td>Prover a fiscalização dos contratos dos serviços de TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SECID</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=46">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>AcompanharAquisicao</td>
+                  <td>Acompanhar a instrução da aquisição</td>
+                  <td>Prover compras e contratação de soluções de TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SECID</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=45">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>COMPRAS_UX_APOIO</td>
+                  <td>Apoiar equipe de compras na avaliação de resultados de licitações (UX)</td>
+                  <td>Prover compras e contratação de soluções de TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SEPIC/SEUSO</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=107">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>AvaliarPregao</td>
+                  <td>Avaliar os critérios técnicos de habilitação de licitantes durante a fase do pregão</td>
+                  <td>Prover compras e contratação de soluções de TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SPROJ</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=1009">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+                <tr>
+                  <td>COMPRAS_UX_CRITERIOS</td>
+                  <td>Elaborar critérios de aceitação de UX para contratações e compras</td>
+                  <td>Prover compras e contratação de soluções de TIC</td>
+                  <td>(processos comuns)</td>
+                  <td>SEPIC/SEUSO</td>
+                  <td></td>
+                  <td></td>
+                  <td>                 <br>                     <br><a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=106">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+                </tr>
+              </tbody>
+              </table>
+          </alc-datatable>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <template>
+    <alc-dropdown>
+      <button slot="trigger" class="alc-button alc-button--secondary">
+        <alc-icon name="three-dots-vertical" label="Ações"></alc-icon>
+      </button>
+      <alc-menu>
+        <alc-menu-item>Alterar</alc-menu-item>
+        <alc-menu-item>Excluir</alc-menu-item>
+      </alc-menu>
+    </alc-dropdown>
+  </template>
+
+
+  <script>
+    // Faz um clone do template em cada célula da última coluna da tabela
+    const lastCol = document.querySelectorAll('table tr td:last-child');
+    const actions = document.querySelector('template');
+    Array.from(lastCol).forEach(col => {
+      col.innerHTML = null;
+      col.appendChild(actions.content.cloneNode(true));
+    });
+  </script>
+
+</body>
+
+</html>

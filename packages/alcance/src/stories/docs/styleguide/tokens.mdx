@@ -1,0 +1,87 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import { Text, Surface, Color, BorderColor, Radius, Spacing, Scale} from './renderer.jsx';
+
+<Meta title="Estilos/Tokens" />
+<h1> Tokens </h1>
+
+
+## Cores básicas
+
+### Texto
+
+| Token | Descrição | Light | Dark
+| ----- | --------- | :-: | :-:
+| `--alc-color-text-primary` | Texto primário, cabeçalhos, títulos | <Text token="--alc-color-text-primary" /> | <Text token="--alc-color-text-primary" theme="dark"/>
+| `--alc-color-text-secondary` | Texto secundário | <Text token="--alc-color-text-secondary" /> | <Text token="--alc-color-text-secondary" theme="dark" />
+| `--alc-color-text-subtle` | Texto acessório, placeholder dos inputs | <Text token="--alc-color-text-subtle" /> | <Text token="--alc-color-text-subtle" theme="dark" />
+
+### Link
+
+| Token | Descrição | Light | Dark
+| ----- | --------- | :-: | :-:
+| `--alc-color-link-text` | Texto de link | <Text token="--alc-color-link-text" /> | <Text token="--alc-color-link-text" theme="dark" />
+
+
+### Surface
+
+| Token | Descrição | Light | Dark
+| ----- | --------- | :-: | :-:
+| `--alc-color-surface` | Cor de fundo padrão da página | <Surface /> | <Surface theme="dark" />
+
+### Camadas
+
+| Token | Descrição | Light | Dark
+| ----- | --------- | :-: | :-:
+| `--alc-color-layer-a` | Cor de container sobre o fundo padrão da página (surface); <br /> Cor de container sobre layer-c | <Color token="--alc-color-layer-a" /> | <Color token="--alc-color-layer-a" theme="dark" />
+| `--alc-color-layer-b` | Cor de container sobre layer-a | <Color token="--alc-color-layer-b" /> | <Color token="--alc-color-layer-b" theme="dark" />
+| `--alc-color-layer-c` | Cor de container sobre layer-b | <Color token="--alc-color-layer-c" /> | <Color token="--alc-color-layer-c" theme="dark" />
+
+### Bordas
+
+| Token | Descrição | Light | Dark
+| ----- | --------- | :-: | :-:
+| `--alc-color-border` | Cor das bordas | <BorderColor token="--alc-color-border" /> | <BorderColor token="--alc-color-border" theme="dark" />
+
+
+## Raio
+
+
+| Token | Descrição | Amostra |
+| ----- | --------- | :-:
+| `--alc-radius-default` | Raio padrão | <Radius token="--alc-radius-default" />
+
+## Espaçamento
+Os tokens de espaçamento são usados para manter os espaçamentos dos componentes e conteúdos consistentes na aplicação.
+
+| Token              | rem   | px  | Amostra                            
+| ------------------ | :---: | :-: | :---------------------------------: 
+| `--alc-spacing-01` | 0.125 | 2   | <Spacing token="--alc-spacing-01" />
+| `--alc-spacing-02` | 0.25  | 4   | <Spacing token="--alc-spacing-02" />
+| `--alc-spacing-03` | 0.5   | 8   | <Spacing token="--alc-spacing-03" />
+| `--alc-spacing-04` | 0.75  | 12  | <Spacing token="--alc-spacing-04" />
+| `--alc-spacing-05` | 1     | 16  | <Spacing token="--alc-spacing-05" />
+| `--alc-spacing-06` | 1.5   | 24  | <Spacing token="--alc-spacing-06" />
+| `--alc-spacing-07` | 2     | 32  | <Spacing token="--alc-spacing-07" />
+| `--alc-spacing-08` | 2.5   | 40  | <Spacing token="--alc-spacing-08" />
+| `--alc-spacing-09` | 3     | 48  | <Spacing token="--alc-spacing-09" />
+| `--alc-spacing-10` | 4     | 64  | <Spacing token="--alc-spacing-10" />
+| `--alc-spacing-11` | 5     | 80  | <Spacing token="--alc-spacing-11" />
+| `--alc-spacing-12` | 6     | 96  | <Spacing token="--alc-spacing-12" />
+| `--alc-spacing-13` | 10    | 160 | <Spacing token="--alc-spacing-13" />
+
+## Escala de texto
+Para a escala de texto, use os tokens correspondentes de **font-size** e **line-height** juntos. Por exemplo, o token `font-size-xs` deve ser usado com `font-line-height-xs`.
+
+| Tokens                                                         | rem                 | px              | Amostra                                                                                                  
+| -------------------------------------------------------------- | :-----------------: | :-------------: | :--------------------------------------------------------------------------------:
+| `--alc-font-size-xs` <br></br> `--alc-font-line-height-xs`     | 0.75 <br></br> 1    | 12 <br></br> 16 | <Scale fontSize="--alc-font-size-xs" lineHeight="--alc-font-line-height-xs" />
+| `--alc-font-size-sm` <br></br> `--alc-font-line-height-sm`     | 0.875 <br></br> 1   | 14 <br></br> 16 | <Scale fontSize="--alc-font-size-sm" lineHeight="--alc-font-line-height-sm" />
+| `--alc-font-size-base` <br></br> `--alc-font-line-height-base` | 1 <br></br> 1.5     | 16 <br></br> 24 | <Scale fontSize="--alc-font-size-base" lineHeight="--alc-font-line-height-base" />
+| `--alc-font-size-lg` <br></br> `--alc-font-line-height-lg`     | 1.125 <br></br> 1.5 | 18 <br></br> 24 | <Scale fontSize="--alc-font-size-lg" lineHeight="--alc-font-line-height-lg" />
+| `--alc-font-size-xl` <br></br> `--alc-font-line-height-xl`     | 1.25 <br></br> 1.5  | 20 <br></br> 24 | <Scale fontSize="--alc-font-size-xl" lineHeight="--alc-font-line-height-xl" />
+| `--alc-font-size-2xl` <br></br> `--alc-font-line-height-2xl`   | 1.375 <br></br> 2   | 22 <br></br> 32 | <Scale fontSize="--alc-font-size-2xl" lineHeight="--alc-font-line-height-2xl" />
+| `--alc-font-size-3xl` <br></br> `--alc-font-line-height-3xl`   | 1.625 <br></br> 2    | 26 <br></br> 32 | <Scale fontSize="--alc-font-size-3xl" lineHeight="--alc-font-line-height-3xl" />
+| `--alc-font-size-4xl` <br></br> `--alc-font-line-height-4xl`   | 2 <br></br> 2.5     | 32 <br></br> 40 | <Scale fontSize="--alc-font-size-4xl" lineHeight="--alc-font-line-height-4xl" />
+| `--alc-font-size-5xl` <br></br> `--alc-font-line-height-5xl`   | 2.5 <br></br> 3     | 40 <br></br> 48 | <Scale fontSize="--alc-font-size-5xl" lineHeight="--alc-font-line-height-5xl" />
+| `--alc-font-size-6xl` <br></br> `--alc-font-line-height-6xl`   | 3 <br></br> 3.5     | 48 <br></br> 56 | <Scale fontSize="--alc-font-size-6xl" lineHeight="--alc-font-line-height-6xl" />

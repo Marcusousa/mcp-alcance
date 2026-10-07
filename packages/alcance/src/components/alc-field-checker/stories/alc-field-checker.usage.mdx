@@ -1,0 +1,187 @@
+{/* alc-field-checker.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-field-checker.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.OnSubmit.name}
+
+<Canvas of={Stories.OnSubmit} sourceState="shown" />
+<Controls of={Stories.OnSubmit} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <alc-field-checker :check-on-submit="true">
+      <form @submit.prevent="submitForm">
+        <div class="flex flex-col gap-4">
+          <alc-field
+            label="Nome Completo"
+            required="true"
+            :error-msg="nameError"
+          >
+            <input type="text" v-model="name" id="bnome" />
+          </alc-field>
+
+          <alc-field
+            label="E-mail"
+            required="true"
+            :error-msg="emailError"
+          >
+            <input type="email" v-model="email" id="bemail" />
+          </alc-field>
+
+          <button type="submit" class="alc-button">Enviar</button>
+        </div>
+      </form>
+    </alc-field-checker>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'FormCheckerExample',
+  data() {
+    return {
+      name: '',
+      email: '',
+      nameError: '',
+      emailError: '',
+    };
+  },
+  methods: {
+    submitForm() {
+      let valid = true;
+
+      // Resetando as mensagens de erro
+      this.nameError = '';
+      this.emailError = '';
+
+      // Validação do campo Nome Completo
+      if (this.name.trim() === '') {
+        this.nameError = 'O campo Nome Completo é obrigatório.';
+        valid = false;
+      }
+
+      // Validação do campo E-mail
+      if (this.email.trim() === '') {
+        this.emailError = 'O campo E-mail é obrigatório.';
+        valid = false;
+      } else if (!this.validateEmail(this.email)) {
+        this.emailError = 'Por favor, insira um e-mail válido.';
+        valid = false;
+      }
+
+      if (valid) {
+        // Processar o formulário
+        alert('Formulário enviado com sucesso!');
+      }
+    },
+    validateEmail(email) {
+      const re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <alc-field-checker :check-on-submit="true">
+      <form @submit.prevent="submitForm">
+        <div class="flex flex-col gap-4">
+          <alc-field
+            :label="nameLabel"
+            required="true"
+            :error-msg="nameError"
+          >
+            <input type="text" v-model="name" id="bnome" />
+          </alc-field>
+
+          <alc-field
+            :label="emailLabel"
+            required="true"
+            :error-msg="emailError"
+          >
+            <input type="email" v-model="email" id="bemail" />
+          </alc-field>
+
+          <button type="submit" class="alc-button">Enviar</button>
+        </div>
+      </form>
+    </alc-field-checker>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'FormCheckerExampleTS',
+  setup() {
+    const name = ref('');
+    const email = ref('');
+    const nameLabel = ref('Nome Completo');
+    const emailLabel = ref('E-mail');
+    const nameError = ref('');
+    const emailError = ref('');
+
+    const submitForm = () => {
+      let valid = true;
+
+      // Resetando as mensagens de erro
+      nameError.value = '';
+      emailError.value = '';
+
+      // Validação do campo Nome Completo
+      if (name.value.trim() === '') {
+        nameError.value = 'O campo Nome Completo é obrigatório.';
+        valid = false;
+      }
+
+      // Validação do campo E-mail
+      if (email.value.trim() === '') {
+        emailError.value = 'O campo E-mail é obrigatório.';
+        valid = false;
+      } else if (!validateEmail(email.value)) {
+        emailError.value = 'Por favor, insira um e-mail válido.';
+        valid = false;
+      }
+
+      if (valid) {
+        // Processar o formulário
+        alert('Formulário enviado com sucesso!');
+      }
+    };
+
+    const validateEmail = (email: string): boolean => {
+      const re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    };
+
+    return {
+      name,
+      email,
+      nameLabel,
+      emailLabel,
+      nameError,
+      emailError,
+      submitForm,
+    };
+  },
+});
+</script>`
+  }}
+/>

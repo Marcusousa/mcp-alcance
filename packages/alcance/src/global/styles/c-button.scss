@@ -1,0 +1,227 @@
+/* Button */
+
+/* Definição de variáveis - setup dos temas */
+
+[data-alc-theme="dark"] .alc-button {
+  --text-color: var(--alc-color-text-0);
+  --outline-color: var(--alc-color-action-30);
+}
+
+[data-alc-theme="light"] .alc-button {
+  --text-color: var(--alc-color-text-contrast);
+  --outline-color: var(--alc-color-action-60);
+}
+
+// Botão secundário
+
+[data-alc-theme="dark"] .alc-button--secondary {
+  --text-color  : var(--alc-color-action-40);
+  --bg-color-hover: var(--alc-color-action-90);
+  --bg-color-active: var(--alc-color-action-80);
+  --border-color: var(--alc-color-action-40);
+}
+
+[data-alc-theme="light"] .alc-button--secondary {
+  --text-color  : var(--alc-color-action-60);
+  --bg-color-hover: var(--alc-color-action-10);
+  --bg-color-active: var(--alc-color-action-5);
+  --border-color: var(--alc-color-action-60);
+}
+
+
+
+
+// Botão desabilitado
+
+[data-alc-theme="light"] .alc-button:disabled {
+  --text-color  : var(--alc-color-neutral-60);
+  --bg-color    : var(--alc-color-neutral-10);
+}
+
+[data-alc-theme="dark"] .alc-button:disabled {
+  --text-color  : var(--alc-color-neutral-30);
+  --bg-color    : var(--alc-color-neutral-80);
+}
+
+// Botão de icone redondo
+
+[data-alc-theme="light"] .alc-button-rounded {
+  --text-color: var(--alc-color-neutral-90);
+
+  // Define cor de fallback caso o color-mix não tem suporte no navegador
+  // Abrimos mão dos tokens para o fallback
+  --bg-color-hover: rgba(0,0,0, 0.3);
+  --bg-color-active: rgba(0,0,0, 0.1);
+
+  // Define cor transparente
+  @supports (color: color-mix(in srgb, black, white)) {
+    --bg-color-hover: color-mix(in srgb, var(--alc-color-neutral-100) 30%, transparent);
+    --bg-color-active: color-mix(in srgb, var(--alc-color-neutral-100) 10%, transparent);
+  }
+}
+
+[data-alc-theme="light"] .alc-button-rounded--info {
+  --text-color: var(--alc-color-info-80);
+  --bg-color-hover: var(--alc-color-info-30);
+  --bg-color-active: var(--alc-color-info-20);
+}
+
+[data-alc-theme="light"] .alc-button-rounded--error {
+  --text-color: var(--alc-color-error-80);
+  --bg-color-hover: var(--alc-color-error-40);
+  --bg-color-active: var(--alc-color-error-30);
+}
+
+[data-alc-theme="light"] .alc-button-rounded--success {
+  --text-color: var(--alc-color-success-80);
+  --bg-color-hover: var(--alc-color-success-30);
+  --bg-color-active: var(--alc-color-success-20);
+}
+
+[data-alc-theme="light"] .alc-button-rounded--warning {
+  --text-color: var(--alc-color-warning-80);
+  --bg-color-hover: var(--alc-color-warning-30);
+  --bg-color-active: var(--alc-color-warning-20);
+}
+
+[data-alc-theme="dark"] .alc-button-rounded {
+  --text-color: var(--alc-color-text-0);
+
+  // Define cor de fallback caso o color-mix não tem suporte no navegador
+  --bg-color-fallback-hover: var(--alc-color-neutral-70);
+  --bg-color-fallback-active: var(--alc-color-neutral-60);
+
+  // Define cor de fallback caso o color-mix não tem suporte no navegador
+  // Abrimos mão dos tokens para o fallback
+  --bg-color-hover: rgba(255,255,255, 0.3);
+  --bg-color-active: rgba(255,255,255, 0.1);
+
+  // Define cor transparente
+  @supports (color: color-mix(in srgb, black, white)) {
+    --bg-color-hover: color-mix(in srgb, var(--alc-color-neutral-0) 30%, transparent);
+    --bg-color-active: color-mix(in srgb, var(--alc-color-neutral-0) 10%, transparent);
+  }
+}
+
+[data-alc-theme="dark"] .alc-button-rounded--info {
+  --text-color: var(--alc-color-text-0);
+  --bg-color-hover: var(--alc-color-info-60);
+  --bg-color-active: var(--alc-color-info-50);
+}
+
+[data-alc-theme="dark"] .alc-button-rounded--error {
+  --text-color: var(--alc-color-text-0);
+  --bg-color-hover: var(--alc-color-error-60);
+  --bg-color-active: var(--alc-color-error-55);
+}
+
+[data-alc-theme="dark"] .alc-button-rounded--success {
+  --text-color: var(--alc-color-text-0);
+  --bg-color-hover: var(--alc-color-success-60);
+  --bg-color-active: var(--alc-color-success-55);
+}
+
+[data-alc-theme="dark"] .alc-button-rounded--warning {
+  --text-color: var(--alc-color-text-0);
+  --bg-color-hover: var(--alc-color-warning-50);
+  --bg-color-active: var(--alc-color-warning-40);
+}
+
+[data-alc-theme="light"] .alc-button-rounded:disabled {
+  --text-color: var(--alc-color-neutral-50);
+  --bg-color: theme('colors.transparent');
+}
+
+[data-alc-theme="dark"] .alc-button-rounded:disabled {
+  --text-color: var(--alc-color-neutral-40);
+  --bg-color: theme('colors.transparent');
+}
+
+
+/* Comum a todos os temas */
+
+.alc-button {
+  --box-shadow  : 0 3px 1px -2px theme('colors.blue-cool.50v')33, 0 2px 2px 0 theme('colors.blue-cool.50v')24, 0 1px 5px 0 theme('colors.blue-cool.50v')1f;
+  --padding-y   : theme('padding.2');
+  --padding-x   : theme('padding.4');
+  --border-width: theme('borderWidth.0');
+  --bg-color    : var(--alc-color-action-50);
+  --bg-color-hover: var(--alc-color-action-70);
+  --bg-color-active: var(--alc-color-action-60);
+
+  @apply text-[color:var(--text-color)];
+  @apply cursor-pointer;
+  @apply rounded transition-colors duration-200 px-[--padding-x] py-[calc(var(--padding-y)-var(--border-width))];
+  @apply bg-[color:var(--bg-color)] hover:bg-[color:var(--bg-color-hover)] active:bg-[color:var(--bg-color-active)];
+  @apply focus-visible:shadow-none focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-2 focus-visible:outline-[--outline-color];
+
+  border-width  : var(--border-width);
+  border-color    : var(--border-color);
+
+  text-shadow   : 0 -1px 0 rgb(0 0 0 / 12%);
+  box-shadow: var(--box-shadow);
+}
+
+.alc-button--secondary {
+  --bg-color: theme('colors.transparent');
+  --border-width: theme('borderWidth.DEFAULT');
+}
+
+.alc-button--sm {
+  --padding-y   : theme('padding.1');
+  --padding-x   : theme('padding.2');
+}
+
+.alc-button--lg {
+  font-size: var(--alc-font-size-xl);
+  line-height: var(--alc-font-line-height-2xl);
+  --padding-y   : theme('padding.2');
+  --padding-x   : theme('padding.4');
+}
+
+.alc-button:disabled {
+  --border-width: theme('borderWidth.0');
+  --bg-color-hover: var(--bg-color);
+  --bg-color-active: var(--bg-color);
+
+  @apply cursor-not-allowed shadow-none;
+  text-shadow: none;
+}
+
+.alc-button-rounded {
+  --bg-color: theme('colors.transparent');
+  @apply rounded-full px-3 py-2 shadow-none;
+}
+
+// Botão do header
+.alc-header-button {
+  --bg-color: theme('colors.transparent');
+
+  /* Define cor de fallback caso o color-mix não tem suporte no navegador */
+  /* Abrimos mão dos tokens para o fallback */
+  --bg-color-hover: rgba(255,255,255, 0.1);
+  --bg-color-active: rgba(255,255,255, 0.3);
+
+  /* Define cor transparente */
+  @supports (color: color-mix(in srgb, black, white)) {
+    --bg-color-hover: color-mix(in srgb, var(--alc-color-neutral-0) 10%, transparent);
+    --bg-color-active: color-mix(in srgb, var(--alc-color-neutral-0) 30%, transparent);
+  }
+
+  @apply w-[36px] h-[36px] md:w-auto px-[--alc-spacing-03];
+  @apply inline-flex gap-[--alc-spacing-03] items-center justify-center md:justify-start;
+  /* São circulares por padrão */
+  @apply rounded-full md:rounded;
+
+  @apply text-white outline-current outline-2 focus-visible:outline;
+  @apply bg-[--bg-color] hover:bg-[--bg-color-hover] active:bg-[--bg-color-active];
+  @apply transition-colors duration-200;
+}
+
+.alc-header-button__icon {
+  @apply text-xl/none;
+}
+
+.alc-header-button__label {
+  @apply text-xs sr-only md:not-sr-only;
+}

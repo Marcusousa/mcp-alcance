@@ -1,0 +1,234 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import VersionComponent from './currentVersion';
+
+import './intro.css';
+
+import Gitea from './static/gitea.svg';
+import Discord from './static/discord.svg';
+import Youtube from './static/youtube.svg';
+import Tutorials from './static/tutorials.svg';
+import UX from './static/ux.png';
+import Module from './static/module.png';
+import Coding from './static/coding.png';
+import Docs from './static/docs.png';
+import Share from './static/share.png';
+import FigmaPlugin from './static/figma-plugin.png';
+import Testing from './static/testing.png';
+import Accessibility from './static/accessibility.png';
+import Theming from './static/theming.png';
+import AddonLibrary from './static/addon-library.png';
+
+export const RightArrow = () => (
+  <svg
+    viewBox="0 0 14 14"
+    width="8px"
+    height="14px"
+    style={{
+      'marginLeft': '4px',
+      'display': 'inline-block',
+      'shapeRendering': 'inherit',
+      'verticalAlign': 'middle',
+      'fill': 'currentColor',
+      'path fill': 'currentColor',
+    }}
+  >
+    <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
+  </svg>
+);
+
+<Meta title="Alcance" />
+
+<div className="sb-container sb-unstyled">
+  <div className="sb-section-title">
+    <header class="hero heroBanner">
+      <div class="container">
+        <h1 class="hero__title">Alcance</h1>
+        <p class="hero__subtitle">Construa aplicações web acessíveis e mobile-first.</p>
+        <div class="buttons_hero">
+          <a class="alc-button alc-button--primary" href="./?path=/docs/instalação-instalação--documentação">Comece agora</a>
+        </div>
+        <p>
+          <VersionComponent />
+        </p>
+      </div>
+    </header>
+  </div>
+
+  <div className="highlights">
+    <div className="highlight-item">
+      <img src={UX} alt="Uma mulher apontando na tela recursos de design" className="images-features" />
+      <h2>Fácil de usar</h2>
+      <p>
+        O Alcance está sendo construído para ser utilizado de forma prática. Instale, configure e tenha à mão os recursos para oferecer uma boa experiência aos usuários.
+      </p>
+    </div>
+    <div className="highlight-item">
+      <img src={Module} alt="Uma abstração que representa a composição de dados para um componente" className="images-features" />
+      <h2>Compatível</h2>
+      <p>
+        Nada de quebrar a cabeça para usar os componentes. O Alcance utiliza web components, pode ser usado em diversos frameworks de front-end e funciona nos navegadores modernos.
+      </p>
+    </div>
+    <div className="highlight-item">
+      <img src={Coding} alt="Uma representação de tipografia e ativos de imagem" className="images-features" />
+      <h2>Moderno</h2>
+      <p>
+        Para o usuário, pensado para dispositivos móveis e com temas que respeitam suas preferências. Para o desenvolvedor, modular e extensível. O Alcance está a tom com as
+        tecnologias atuais.
+      </p>
+    </div>
+  </div>
+
+  <div className="git">
+    <img src={Gitea} alt="" className="git__icon"/> Conheça e colabore com o projeto.
+    <a
+      className="alc-link"
+      href="https://git.camara.gov.br/Seuso/alcance"
+    >Acesse o Alcance no git <alc-icon name="chevron-double-right" label=""></alc-icon></a>
+
+  </div>
+
+</div>
+
+<style>
+  {`
+  .sb-container {
+    margin-bottom: 48px;
+  }
+
+  .sb-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section a:not(h1 a, h2 a, h3 a) {
+    font-size: 14px;
+  }
+
+  .sb-section-item, .sb-grid-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sb-chevron {
+    margin-left: 5px;
+  }
+
+  .sb-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px 20px;
+  }
+
+  .sb-socials {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .sb-socials p {
+    margin-bottom: 10px;
+  }
+
+  .sb-addon {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: #EEF3F8;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: #EEF3F8;
+    height: 180px;
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+
+  .sb-addon-text {
+    padding-left: 48px;
+    max-width: 240px;
+  }
+
+  .sb-addon-text h4 {
+    padding-top: 0px;
+  }
+
+  .sb-addon-img {
+    position: absolute;
+    left: 345px;
+    top: 0;
+    height: 100%;
+    width: 200%;
+    overflow: hidden;
+  }
+
+  .sb-addon-img img {
+    width: 650px;
+    transform: rotate(-15deg);
+    margin-left: 40px;
+    margin-top: -72px;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0);
+    backface-visibility: hidden;
+  }
+
+  @media screen and (max-width: 800px) {
+    .sb-addon-img {
+      left: 300px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .sb-section {
+      flex-direction: column;
+    }
+
+    .sb-features-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .sb-socials {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sb-addon {
+      height: 280px;
+      align-items: flex-start;
+      padding-top: 32px;
+      overflow: hidden;
+    }
+
+    .sb-addon-text {
+      padding-left: 24px;
+    }
+
+    .sb-addon-img {
+      right: 0;
+      left: 0;
+      top: 130px;
+      bottom: 0;
+      overflow: hidden;
+      height: auto;
+      width: 124%;
+    }
+
+    .sb-addon-img img {
+      width: 1200px;
+      transform: rotate(-12deg);
+      margin-left: 0;
+      margin-top: 48px;
+      margin-bottom: -40px;
+      margin-left: -24px;
+    }
+  }
+  `}
+</style>

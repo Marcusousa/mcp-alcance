@@ -1,0 +1,94 @@
+{/* alc-modal.mdx */}
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-modal.stories';
+import ModalProps from './alc-modal.props.md?raw';
+import './alc-modal.css';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+Modal é uma janela em sobreposição para exibir conteúdo.
+
+## Diretrizes
+Esta seção estabelece diretrizes para projetistas e desenvolvedores, visando uma experiência consistente e intuitiva para os usuários.
+
+### Header
+O header corresponde ao título da janela modal. Deve ser significativo e conciso.
+
+No `slot` header não devem ser colocados elementos interativos (links, botões etc.).
+
+### Footer
+O footer deve conter um ou mais botões de ação associados à modal. O footer padrão apresenta um botão que fecha automaticamente a modal.
+
+Ao usar o `slot` footer, a aplicação deve observar o seguinte:
+
+**Botão primário (obrigatório):**
+- Defina um único botão primário.
+- Posicione o botão primário à esquerda dos demais.
+- Associe o botão primário à ação principal da modal.
+
+**Botões secundários:**
+- É possível ter mais de um botão secundário.
+- Os botões secundários complementam ou oferecem alternativas à ação principal.
+
+**Ação dos botões:**
+- Os botões devem fazer com que, em regra, a modal seja fechada após a realização da ação associada.
+
+**Posicionamento dos botões:**
+- O botão deve estar sempre alinhado à direita.
+- Use até 3 botões.
+- Mantenha o mesmo espaço entre os botões, seja na horizontal ou na vertical, usando o token `alc-spacing-03`.
+- Se tiver mais de um botão, eles devem ficar um ao lado do outro. Se precisar, mude o tamanho da modal para acomodar os botões.
+
+<Unstyled>
+    <div className='images-examples__container'>
+        <div className='image-examples__content'>
+            <img src='./static/images/modal_do_dont/modal-dont-3-buttons.png' alt="" />
+            <p className='image-examples__text'><strong>Não pode:</strong> Modal `sm` com 3 botões alinhado à direita e com quebra de linha.</p>
+        </div>
+        <div className='image-examples__content'>
+            <img src='./static/images/modal_do_dont/modal-do-3-buttons.png' alt="" />
+            <p className='image-examples__text'><strong>Pode:</strong> Modal `md` com 3 botões alinhado à direita e sem quebra de linha .</p>
+        </div>
+    </div>
+</Unstyled>
+
+- A mesma regra se aplica aos botões no modo mobile: devem ficar alinhado à direita e um ao lado do outro
+<Unstyled>
+    <div className='images-examples__container'>
+        <div className='image-examples__content'>
+            <img src='./static/images/modal_do_dont/modal-mobile-dont-1-button.png' alt="" />
+            <p className='image-examples__text'><strong>Não pode:</strong> Modal `mobile` com apenas um botão e ocupando a largura total do footer.</p>
+        </div>
+        <div className='image-examples__content'>
+            <img src='./static/images/modal_do_dont/modal-mobile-do-1-button.png' alt="" />
+            <p className='image-examples__text'><strong>Pode:</strong> Modal `mobile` com botão alinhado à direta.</p>
+        </div>
+    </div>
+</Unstyled>
+
+- Se a modal na versão mobile ter mais de um botão e faltar espaço (ter quebra de linha), os botões podem ser empilhados, cada um ocupando a largura total do footer.
+<Unstyled>
+    <div className='images-examples__container'>
+        <div className='image-examples__content'>
+            <img src='./static/images/modal_do_dont/modal-mobile-dont-3-buttons.png' alt="" />
+            <p className='image-examples__text'> <strong>Não pode:</strong> Modal `mobile` com 3 botões alinhado à direita e com quebra de linha.</p>
+        </div>
+        <div className='image-examples__content'>
+            <img src='./static/images/modal_do_dont/modal-mobile-do-3-buttons.png' alt="" />
+            <p className='image-examples__text'><strong>Pode:</strong> Modal `mobile` com os 3 botões empilhado e com a largura total do footer.</p>
+        </div>
+    </div>
+
+</Unstyled>
+
+### Size
+As modais podem ser exibidas em três tamanhos: pequeno, médio e grande (`sm`, `md` e `lg` respectivamente). Ao selecionar o tamanho do modal, certifique-se de escolher aquele que melhor se adapta ao seu conteúdo, proporcionando uma boa experiência de usuário.
+
+- **Pequeno (`sm`)**: Recomendado para mensagens curtas, para evitar linhas de texto muito longas.
+- **Médio (`md`)**: É o tamanho padrão, usado para a maioria dos casos.
+- **Grande (`lg`)**: Indicado para componentes mais complexos, como datatable, que demandam mais espaço para apresentar o conteúdo de forma clara e legível.
+
+
+<Markdown>{ModalProps}</Markdown>

@@ -1,0 +1,101 @@
+alc-nav {
+  display: block;
+  --spacing-x: var(--alc-spacing-06);
+  --border-width-selected: var(--alc-spacing-03);
+  --border-color-selected: var(--alc-color-neutral-50);
+  --padding-left-selected: calc(var(--spacing-x) - var(--border-width-selected));
+}
+
+[data-alc-theme="light"] alc-nav {
+  --icon-color: var(--alc-color-neutral-50);
+  --bg-color-selected: var(--alc-color-neutral-10);
+}
+
+[data-alc-theme="dark"] alc-nav {
+  --icon-color: var(--alc-color-neutral-40);
+  --bg-color-selected: var(--alc-color-neutral-90);
+}
+
+.alc-nav__panel {
+  @apply hidden;
+}
+
+.alc-nav__panel--subpanel {
+  @apply py-[--alc-spacing-05];
+}
+
+.alc-nav__panel.is-open {
+  @apply block;
+}
+
+.alc-nav__header {
+  @apply py-[--alc-spacing-05];
+  @apply border-b border-[--alc-color-neutral-40];
+}
+
+.alc-nav__main {
+  @apply py-[--alc-spacing-05];
+}
+
+.alc-nav__main--navbar {
+  @apply py-[--alc-spacing-none];
+}
+
+
+.alc-nav__footer {
+  @apply py-[--alc-spacing-05];
+  @apply border-t border-[--alc-color-neutral-40];
+}
+
+.alc-nav__label-wrapper {
+  @apply px-[--spacing-x] mt-[--alc-spacing-06];
+}
+.alc-nav__label {
+  @apply uppercase font-bold text-xs tracking-[0.15rem] text-[--alc-color-text-3] dark:text-[--alc-color-text-2];
+
+}
+
+.alc-nav__listview {
+  @apply mt-[--alc-spacing-03];
+}
+
+.alc-nav__listview--labelled {
+  @apply mt-[--alc-spacing-05];
+}
+
+
+.alc-nav__listitem {
+  @apply flex gap-[--alc-spacing-03] items-center;
+}
+
+.alc-nav__text {
+  @apply w-full text-[--alc-color-link-text] px-[--spacing-x] py-[--alc-spacing-05];
+  @apply hover:text-[--alc-color-text-2] dark:hover:text-[--alc-color-text-0];
+  @apply hover:bg-[--alc-color-neutral-5] dark:hover:bg-[--alc-color-neutral-80];
+}
+
+.alc-nav__listitem.is-selected .alc-nav__text {
+  @apply border-l-[--border-color-selected] bg-[--bg-color-selected] pl-[--padding-left-selected];
+  border-left-width: var(--border-width-selected);
+  @apply hover:bg-[--alc-color-neutral-5] dark:hover:bg-[--alc-color-neutral-80];
+}
+
+.alc-nav__navbar {
+  @apply flex items-center mx-[--spacing-x];
+}
+
+.alc-nav__navbar-title {
+  @apply text-center grow font-medium uppercase text-[--alc-color-text-3] dark:text-[--alc-color-text-0];
+}
+
+.alc-nav__button--next {
+  @apply flex gap-[--alc-spacing-03] justify-between items-center;
+}
+
+.alc-nav__icon--next {
+  @apply text-[--icon-color];
+}
+
+.alc-nav__icon--prev {
+  @apply text-4xl text-[--alc-color-link-text];
+}

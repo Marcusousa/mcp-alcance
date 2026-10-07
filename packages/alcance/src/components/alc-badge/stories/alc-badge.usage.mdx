@@ -1,0 +1,277 @@
+{/* alc-badge.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-badge.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.name} 
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.ComContador.name} 
+
+<Canvas of={Stories.ComContador} sourceState="shown" />
+<Controls of={Stories.ComContador} />
+
+## {Stories.ComDot.name} 
+
+<Canvas of={Stories.ComDot} sourceState="shown" />
+<Controls of={Stories.ComDot} />
+
+## {Stories.ComOutlined.name} 
+
+<Canvas of={Stories.ComOutlined} sourceState="shown" />
+<Controls of={Stories.ComOutlined} />
+
+## {Stories.ComPositionFloating.name} 
+
+<Canvas of={Stories.ComPositionFloating} sourceState="shown" />
+<Controls of={Stories.ComPositionFloating} />
+
+## {Stories.ComPulsate.name} 
+
+<Canvas of={Stories.ComPulsate} sourceState="shown" />
+<Controls of={Stories.ComPulsate} />
+
+## {Stories.ComAcessibilidade.name} 
+
+<Canvas of={Stories.ComAcessibilidade} sourceState="shown" />
+<Controls of={Stories.ComAcessibilidade} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `
+<template>
+  <div>
+    <h2>Exemplo Avançado do alc-badge (JavaScript)</h2>
+    <p>Neste exemplo, temos um sistema de notificações e mensagens que atualiza dinamicamente a contagem exibida no badge:</p>
+
+    <div style="display:flex; gap:20px; align-items:center; margin-bottom:20px;">
+      <!-- Badge como contador em um botão de notificações -->
+      <alc-badge :color="notificationColor" :count="true" :label="notificationCount > 99 ? '99+' : notificationCount.toString()" :hidden="notificationCount === 0">
+        <button class="alc-button alc-button-rounded alc-button--secondary" @click="openNotifications">
+          <alc-icon name="bell-fill" label="mensagens"></alc-icon>
+          <p class="sr-only">{{ notificationCount }} notificações</p>
+        </button>
+      </alc-badge>
+      <button class="alc-button" @click="addNotification">Adicionar Notificação</button>
+      <button class="alc-button" @click="clearNotifications" :disabled="notificationCount === 0">Limpar Notificações</button>
+    </div>
+
+    <div style="display:flex; gap:20px; align-items:center;">
+      <!-- Badge como contador em um botão de mensagens -->
+      <alc-badge color="error" :count="true" :label="messageCount > 99 ? '99+' : messageCount.toString()" :hidden="messageCount === 0">
+        <button class="alc-button alc-button-rounded" @click="openMessages">
+          <alc-icon name="chat-left-dots-fill" label="mensagens"></alc-icon>
+          <p class="sr-only">{{ messageCount }} novas mensagens</p>
+        </button>
+      </alc-badge>
+      <button class="alc-button" @click="addMessage">Adicionar Mensagem</button>
+      <button class="alc-button" @click="clearMessages" :disabled="messageCount === 0">Limpar Mensagens</button>
+    </div>
+
+    <!-- Área de conteúdo que simula a abertura de notificações ou mensagens -->
+    <div v-if="showNotifications" style="margin-top:20px;">
+      <h3>Notificações</h3>
+      <ul>
+        <li v-for="(notif, idx) in notifications" :key="'notif-' + idx">{{ notif }}</li>
+      </ul>
+    </div>
+
+    <div v-if="showMessages" style="margin-top:20px;">
+      <h3>Mensagens</h3>
+      <ul>
+        <li v-for="(msg, idx) in messages" :key="'msg-' + idx">{{ msg }}</li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'BadgeExampleJS',
+  data() {
+    return {
+      notificationCount: 0,
+      messageCount: 0,
+      notifications: [],
+      messages: [],
+      showNotifications: false,
+      showMessages: false,
+    };
+  },
+  computed: {
+    notificationColor() {
+      // Cor baseada na quantidade de notificações
+      if (this.notificationCount > 50) return 'error';
+      if (this.notificationCount > 20) return 'warning';
+      return 'primary';
+    },
+  },
+  methods: {
+    addNotification() {
+      this.notificationCount++;
+      this.notifications.push('Nova notificação #' + this.notificationCount);
+    },
+    clearNotifications() {
+      this.notificationCount = 0;
+      this.notifications = [];
+      this.showNotifications = false;
+    },
+    openNotifications() {
+      this.showNotifications = !this.showNotifications;
+      this.showMessages = false;
+    },
+    addMessage() {
+      this.messageCount++;
+      this.messages.push('Nova mensagem #' + this.messageCount);
+    },
+    clearMessages() {
+      this.messageCount = 0;
+      this.messages = [];
+      this.showMessages = false;
+    },
+    openMessages() {
+      this.showMessages = !this.showMessages;
+      this.showNotifications = false;
+    },
+  },
+};
+</script>
+    `,
+    typescript: `
+<template>
+  <div>
+    <h2>Exemplo Avançado do alc-badge (TypeScript)</h2>
+    <p>Aqui temos um cenário dinâmico, onde o badge atualiza de acordo com o estado do sistema:</p>
+
+    <div style="display:flex; gap:20px; align-items:center; margin-bottom:20px;">
+      <!-- Badge para notificações dinâmicas -->
+      <alc-badge :color="notificationColor" count="true" :label="notificationLabel" :hidden="notificationCount === 0">
+        <button class="alc-button alc-button-rounded alc-button--secondary" @click="toggleNotifications">
+          <alc-icon name="bell-fill" label="mensagens"></alc-icon>
+          <p class="sr-only">{{ notificationCount }} notificações</p>
+        </button>
+      </alc-badge>
+      <button class="alc-button" @click="addNotification">Adicionar Notificação</button>
+      <button class="alc-button" @click="clearNotifications" :disabled="notificationCount === 0">Limpar Notificações</button>
+    </div>
+
+    <div style="display:flex; gap:20px; align-items:center;">
+      <!-- Badge para mensagens dinâmicas -->
+      <alc-badge color="error" count="true" :label="messageLabel" :hidden="messageCount === 0">
+        <button class="alc-button alc-button-rounded" @click="toggleMessages">
+          <alc-icon name="chat-left-dots-fill" label="mensagens"></alc-icon>
+          <p class="sr-only">{{ messageCount }} novas mensagens</p>
+        </button>
+      </alc-badge>
+      <button class="alc-button" @click="addMessage">Adicionar Mensagem</button>
+      <button class="alc-button" @click="clearMessages" :disabled="messageCount === 0">Limpar Mensagens</button>
+    </div>
+
+    <div v-if="showNotifications" style="margin-top:20px;">
+      <h3>Notificações</h3>
+      <ul>
+        <li v-for="(notif, idx) in notifications" :key="'notif-' + idx">{{ notif }}</li>
+      </ul>
+    </div>
+
+    <div v-if="showMessages" style="margin-top:20px;">
+      <h3>Mensagens</h3>
+      <ul>
+        <li v-for="(msg, idx) in messages" :key="'msg-' + idx">{{ msg }}</li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, computed } from 'vue';
+
+export default defineComponent({
+  name: 'BadgeExampleTS',
+  setup() {
+    const notificationCount = ref<number>(0);
+    const messageCount = ref<number>(0);
+    const notifications = ref<string[]>([]);
+    const messages = ref<string[]>([]);
+    const showNotifications = ref<boolean>(false);
+    const showMessages = ref<boolean>(false);
+
+    const notificationLabel = computed(() => {
+      return notificationCount.value > 99 ? '99+' : notificationCount.value.toString();
+    });
+
+    const messageLabel = computed(() => {
+      return messageCount.value > 99 ? '99+' : messageCount.value.toString();
+    });
+
+    const notificationColor = computed(() => {
+      if (notificationCount.value > 50) return 'error';
+      if (notificationCount.value > 20) return 'warning';
+      return 'primary';
+    });
+
+    const addNotification = () => {
+      notificationCount.value++;
+      notifications.value.push('Nova notificação #' + notificationCount.value);
+    };
+
+    const clearNotifications = () => {
+      notificationCount.value = 0;
+      notifications.value = [];
+      showNotifications.value = false;
+    };
+
+    const toggleNotifications = () => {
+      showNotifications.value = !showNotifications.value;
+      showMessages.value = false;
+    };
+
+    const addMessage = () => {
+      messageCount.value++;
+      messages.value.push('Nova mensagem #' + messageCount.value);
+    };
+
+    const clearMessages = () => {
+      messageCount.value = 0;
+      messages.value = [];
+      showMessages.value = false;
+    };
+
+    const toggleMessages = () => {
+      showMessages.value = !showMessages.value;
+      showNotifications.value = false;
+    };
+
+    return {
+      notificationCount,
+      messageCount,
+      notifications,
+      messages,
+      showNotifications,
+      showMessages,
+      notificationLabel,
+      messageLabel,
+      notificationColor,
+      addNotification,
+      clearNotifications,
+      toggleNotifications,
+      addMessage,
+      clearMessages,
+      toggleMessages,
+    };
+  },
+});
+</script>
+    `
+  }}
+/>

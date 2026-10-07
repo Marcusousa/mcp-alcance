@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Tooltip</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <alc-tooltip placement="left" id="test-trigger" trigger="focus">
+      <div slot="trigger">
+        <alc-icon name="heart" label="" ></alc-icon>
+      </div>
+      Fulano
+    </alc-tooltip>
+
+    <div class="mb-10"></div>
+
+    <alc-tooltip active="true" trigger="click hover focus" id="tooltip-event">
+      <!-- <alc-icon name="heart" label="" slot="trigger"></alc-icon> -->
+      <button slot="trigger" class="alc-button">Click</button>
+      <p>ciclano</p>
+    </alc-tooltip>
+
+    <div class="mb-10"></div>
+
+    <button class="alc-button" onclick="openTooltip()" style="margin-right: 20px;">Abrir manualmente</button>
+
+    <alc-tooltip trigger="manual" id="tooltip-manual">
+      <alc-icon name="heart" label="" slot="trigger"></alc-icon>
+      <p>Manual</p>
+    </alc-tooltip>
+
+    <div class="mb-10"></div>
+
+    <alc-tooltip placement="left">
+      <div slot="trigger">
+        <alc-icon name="heart" label="" ></alc-icon>
+      </div>
+      Fulano <a href="#" class="alc-link">teste link</a>
+    </alc-tooltip>
+
+    <div class="mb-10"></div>
+
+    <div style="width: 100px; height: 50px; background-color: aliceblue; overflow: auto;">
+      <alc-tooltip id="test-trigger" trigger="focus" active="true">
+        <div slot="trigger">
+          absolute
+        </div>
+        Fulano
+      </alc-tooltip>
+    </div>
+
+    <div class="mb-10"></div>
+
+
+    <div style="width: 100px; height: 50px; background-color: aliceblue; overflow: auto;">
+      <alc-tooltip id="test-trigger" trigger="focus" strategy="fixed" active="true">
+        <div slot="trigger">
+          fixed
+        </div>
+        Fulano
+      </alc-tooltip>
+    </div>
+
+    <div class="mb-10"></div>
+
+  <div style="display: flex; justify-content: center; margin-bottom: 20rem;">
+    <div style="width: 500px;
+    height: 200px;
+    overflow: auto;">
+      <div style="width: 1000px; height: 400px; background-color: aliceblue; display: flex; justify-content: center; align-items: center;">
+        <alc-tooltip  active="true" placement="top">
+          <div slot="trigger">
+            teste
+          </div>
+          teste
+        </alc-tooltip>
+      </div>
+    </div>
+  </div>
+
+
+  
+  </div>
+
+  <script>
+    const tooltip = document.querySelector('#tooltip-event');
+    // tooltip.addEventListener('alc-show', (e) => console.log('alc-show', e.detail));
+    // tooltip.addEventListener('alc-after-show', (e) => console.log('alc-after-show', e.detail));
+    // tooltip.addEventListener('alc-hide', (e) => console.log('alc-hide', e.detail));
+    // tooltip.addEventListener('alc-after-hide', (e) => console.log('alc-after-hide', e.detail));
+
+    async function openTooltip() {
+      const tooltip = document.querySelector('#tooltip-manual');
+      tooltip.active ? await tooltip.hide() : await tooltip.show();
+    }
+
+  </script>
+
+</body>
+
+</html>

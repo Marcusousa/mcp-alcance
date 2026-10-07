@@ -1,0 +1,118 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from "../../utils/codeExample"
+import { DoDont, Do, Dont } from "../../utils/DoDont.jsx"
+import { IntroDoc } from "../../utils/IntroDoc.jsx"
+import { ImageCard } from '../../utils/ImageCard.jsx';
+
+<Meta title="Estilos/Link" />
+# Link
+
+<IntroDoc>
+  Um link é um elemento que permite que os usuários naveguem entre diferentes páginas da web ou para outras áreas dentro da mesma página.
+</IntroDoc>
+
+## Demonstração
+
+### Modo claro
+<ImageCard>
+  <img src='./static/images/link/link-light.svg' alt="Demonstração do link em fundos do modo claro" />
+</ImageCard>
+
+### Modo escuro
+<ImageCard>
+  <img src='./static/images/link/link-dark.svg' alt="Demonstração do link em fundos do modo escuro" />
+</ImageCard>
+
+## Exemplo de código
+
+Use a classe `alc-link` para os elementos de links.
+
+<a class="alc-link" href="#">Link</a>
+
+<CodeExample type="html">
+{`<a class="alc-link" href="#">Link</a>`}
+</CodeExample>
+
+## Quando usar 
+Use links quando você quiser que os usuários:
+- Naveguem para uma página diferente dentro da aplicação.
+- Naveguem para um site completamente diferente.
+- Saltem para um elemento na mesma página.
+- Acessem um e-mail ou número de telefone via link.
+
+## Quando não usar
+Não use links para **alterar dados** ou manipular como eles são exibidos, **mudar um estado** ou **disparar uma ação**.
+Em vez disso, use botões para guiar os usuários a ações específicas.
+
+Consulte a <a class="alc-link" href="./?path=/docs/estilos-botões--documentação">documentação de botão</a> para mais informações.
+
+
+## Estados
+<ImageCard>
+  <img src='./static/images/link/link-states.svg' alt="Demonstração dos estados do link" />
+</ImageCard>
+
+*A indicação de foco é a definida pelo próprio navegador, geralmente uma borda (outline) em torno do link.*
+
+
+| Elemento | Estado | Propriedade | Valor - Token | Hex | USWDS |
+|----------|--------|-------------|---------------|-----| ----- |
+| Texto do link | Repouso | color | `--alc-color-link-text` | Light: #07648d / Dark: #28a0cb | Light: blue-cool-60v / Dark: blue-cool-40v |
+| | | text-decoration | underline |  | |
+| | Hover | cursor | pointer | | |
+
+## Tamanho
+
+Considere links como texto para definir o tamanho da fonte e altura da linha, conforme definido na <a class="alc-link" href="./?path=/docs/estilos-tokens--documentação#escala-de-texto">documentação de tokens de escala de texto</a>.
+
+Links contidos no corpo do texto devem sempre seguir o tamanho do texto ao seu redor.
+
+## Como utilizar um link sobre um fundo colorido
+
+<DoDont>
+  <Do
+    visual={
+      <img src='./static/images/link/link-do.svg' alt="Exemplo correto de link sobre fundo colorido" />
+    }
+  >
+    Utilize a cor recomendada para links sobre fundos coloridos. Melhor contraste garante boa legibilidade.
+  </Do>
+  <Dont
+    visual={
+      <img src='./static/images/link/link-dont.svg' alt="Exemplo incorreto de link sobre fundo colorido" />
+    }
+  >
+    Não utilize a cor padrão do link sobre fundos coloridos. Baixo contraste pode dificultar a leitura.
+  </Dont>
+</DoDont>
+
+Quando o link em uma área com cor de fundo diferente das cores padrão, utilize a classe modificadora:
+`alc-link--color-text`, ou aplique a propriedade: `color: currentColor`
+
+<Unstyled style={{margin: '1rem 0'}}>
+  <alc-alert dismissible="false">
+        O nível AA das WCAG 2.0 exige uma relação de contraste de pelo menos 4.5:1 para texto normal e 3:1 para texto grande.
+  </alc-alert>
+</Unstyled>
+
+Confira a nossa <a class="alc-link " href="./?path=/docs/estilos-cores--documentação#checagem-de-contraste-wcag">ferramenta de checkagem de contraste</a>
+ou utilize outra ferramenta de sua preferência.
+
+## Boas práticas
+
+- Use texto de link distintivo e significativo.
+- Garanta que os links reflitam com precisão o conteúdo que os usuários encontrarão no destino do link.
+- Evite usar textos genéricos como “clique aqui” ou “saiba mais”;
+- Evite usar o mesmo texto de link para destinos diferentes na mesma página e tente diferenciar os links usando texto exclusivo para cada um.
+- Certifique‑se de que os links sejam compreensíveis, mas não excessivamente longos, especialmente se quebrarem em várias linhas.
+
+
+Tenha atenção ao posicionamento e à linguagem dos links e crie experiências inclusivas para usuários que navegam com leitores de tela. Leitores de tela extraem uma lista de links — somente o texto do link, sem incluir o contexto — para determinar o conteúdo da página.
+Pessoas que usam leitores de tela podem alternar entre links sem obter o texto entre eles, por isso é importante seguir o guia de boas práticas
+
+## Acessibilidade
+
+### Interação pelo teclado
+
+`Enter` - Executa o link e move o foco para o destino do link.

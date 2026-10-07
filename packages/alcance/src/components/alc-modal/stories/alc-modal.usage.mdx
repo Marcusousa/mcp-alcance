@@ -1,0 +1,189 @@
+{/* alc-modal.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled} from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-modal.stories';
+import './alc-modal.usage.css';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## {Stories.Basico.name}
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Slot.name}
+<Canvas of={Stories.Slot} sourceState="shown" />
+<Controls of={Stories.Slot} />
+
+## {Stories.Overlay.name}
+É possível prevenir o fechamento da modal ao clicar no overlay. Para isso, basta adicionar a propriedade `prevent-overlay-close` como `true`.
+<Canvas of={Stories.Overlay} sourceState="shown" />
+<Controls of={Stories.Overlay} />
+
+## {Stories.ModalInsideForm.name}
+Para uma janela modal com formulário, com o botão de submit no slot footer,
+uma forma simples de fazer é, no html, deixar a tag `form` envolvendo a tag `alc-modal`.
+
+Dessa forma, mesmo que o componente modal manipule os botões para posicioná-los no footer,
+eles continuam contidos no formulário e funcionando adequadamente.
+
+<Canvas of={Stories.ModalInsideForm} sourceState="shown" />
+<Controls of={Stories.ModalInsideForm} />
+
+## {Stories.FormInsideModal.name}
+Caso a estrutura mostrada no exemplo anterior não atenda às necessidades, e a tag `form`
+precise estar contida na tag `alc-modal`, e o botão de submit ainda tenha que estar no footer
+da janela modal, essa estrutura pode ser utilizada.
+
+
+Nesse caso, é necessário:
+* definir um id único para o form;
+* deixar a área de botões (slot buttons) fora do form;
+* usar o <a class='alc-link' href='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#form'>atributo form</a> do botão apontando para o id do form.
+
+<Canvas of={Stories.FormInsideModal} sourceState="shown" />
+<Controls of={Stories.FormInsideModal} />
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+  A razão para isso é que um slot nomeado (o 'footer', no caso) tem que ser filho direto do componente para ser reconhecido.
+</alc-alert>
+</Unstyled>
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <!-- Botão para abrir a modal -->
+    <button class="alc-button" @click="openModal">Abrir Modal</button>
+
+    <!-- Componente alc-modal -->
+    <alc-modal ref="myModal" :open="isModalOpen" size="md" @alc-after-show="onAfterShow" @alc-after-hide="onAfterHide"
+      @alc-hide="onHide">
+      <h2 slot="header">
+        História de Lion-O
+      </h2>
+      <!-- Conteúdo da modal -->
+      <p>
+        Lion-O, o líder corajoso e nobre dos ThunderCats, é um personagem
+        complexo conhecido por sua coragem, sabedoria e determinação. Como o
+        jovem príncipe de Thundera, Lion-O foi forçado a amadurecer
+        rapidamente devido à destruição de seu planeta natal e à necessidade de
+        liderar seu povo em um novo mundo.
+      </p>
+
+      <!-- Slot do rodapé personalizado -->
+      <button slot="footer" class="alc-button" @click="closeModal">Fechar</button>
+    </alc-modal>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ModalExample',
+  data() {
+    return {
+      isModalOpen: false,
+    };
+  },
+  methods: {
+    openModal() {
+      this.isModalOpen = true;
+    },
+    closeModal() {
+      this.isModalOpen = false;
+    },
+    onAfterShow() {
+      console.log('Modal foi aberta.');
+    },
+    onAfterHide() {
+      console.log('Modal foi fechada.');
+    },
+    onHide(event) {
+      this.isModalOpen = false;
+      console.log('Modal está fechando. Origem:', event.detail.from);
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <!-- Botão para abrir a modal -->
+    <button class="alc-button" @click="openModal">Abrir Modal</button>
+
+    <!-- Componente alc-modal -->
+    <alc-modal
+      ref="myModal"
+      :open="isModalOpen"
+      size="md"
+      @alc-after-show="onAfterShow"
+      @alc-after-hide="onAfterHide"
+      @alc-hide="onHide"
+    >
+      <!-- Cabeçalho da modal -->
+      <h2 slot="header">
+        História de Cheetara
+      </h2>
+
+      <!-- Conteúdo da modal -->
+      <p>
+        Cheetara é a integrante rápida e ágil dos ThunderCats, conhecida por sua
+        velocidade incrível e percepção psíquica. Como uma guerreira habilidosa,
+        ela desempenha um papel crucial na equipe, utilizando sua velocidade para
+        explorar, combater inimigos e resgatar seus companheiros em situações
+        difíceis.
+      </p>
+
+      <!-- Slot do rodapé personalizado -->
+      <button slot="footer" class="alc-button" @click="closeModal">Fechar</button>
+    </alc-modal>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'ModalExampleTS',
+  setup() {
+    const isModalOpen = ref(false);
+
+    const openModal = () => {
+      isModalOpen.value = true;
+    };
+
+    const closeModal = () => {
+      isModalOpen.value = false;
+    };
+
+    const onAfterShow = () => {
+      console.log('Modal foi aberta.');
+    };
+
+    const onAfterHide = () => {
+      console.log('Modal foi fechada.');
+    };
+
+    const onHide = (event: any) => {
+      isModalOpen.value = false;
+      console.log('Modal está fechando. Origem:', event.detail.from);
+    };
+
+    return {
+      isModalOpen,
+      openModal,
+      closeModal,
+      onAfterShow,
+      onAfterHide,
+      onHide,
+    };
+  },
+});
+</script>`
+  }}
+/>

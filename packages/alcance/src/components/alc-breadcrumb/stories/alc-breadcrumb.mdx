@@ -1,0 +1,17 @@
+{/* alc-breadcrumb.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-breadcrumb.stories';
+
+import BreadcrumbProps from './alc-breadcrumb.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente breadcrumb é uma ferramenta de navegação que fornece um grupo de links, permitindo que os usuários naveguem facilmente pela hierarquia de um site. 
+Geralmente, os breadcrumbs são posicionados antes do conteúdo principal da página, com a página atual exibida por último, indicando a posição do usuário na navegação.
+ Esse recurso melhora a usabilidade, facilitando o retorno a páginas anteriores e ajudando os usuários a entenderem melhor a estrutura do site, sendo especialmente útil em plataformas com múltiplas camadas de conteúdo.
+
+<Markdown>{BreadcrumbProps}</Markdown>

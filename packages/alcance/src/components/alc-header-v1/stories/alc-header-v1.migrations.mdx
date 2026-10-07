@@ -1,0 +1,183 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-header-v1.stories';
+import CodeExample from '../../../stories/utils/codeExample'
+
+<Meta of={Stories} name="Guia de Migração" />
+
+# Guia de Migração: `alc-header-v1` para `alc-header`
+
+Este guia detalha o processo de atualização do antigo componente de cabeçalho (`alc-header-v1`) para a nova versão (`alc-header`).
+
+A nova versão (a partir da versão 0.16.0 da biblioteca) foi desenhada para ser mais eficiente e flexível, introduzindo um layout com altura reduzida, integração nativa de informações do usuário e espaços dedicados para ações rápidas.
+
+## Resumo das Principais Mudanças
+
+- **Atributos:** O atributo `name` foi dividido em `name` (nome principal/sigla) e `description` (nome do sistema/contexto).
+- **Slot `link`:** O uso do `slot="link"` para o título do sistema foi **descontinuado**. A definição do título agora é feita exclusivamente por meio dos atributos.
+- **Painel de Navegação:** O novo header foi projetado para funcionar com o `<alc-nav-panel>`, substituindo o antigo `<alc-sidepanel>`.
+- **Informações de Usuário:** As informações de usuário, antes inseridas no painel lateral com `<alc-user>`, agora são integradas diretamente no header usando o componente `<alc-user-menu>` dentro do `slot="user"`.
+
+---
+
+## Passo a Passo para a Migração
+
+Siga os passos abaixo para atualizar sua implementação.
+
+### Passo 1: Atualização da Estrutura Básica
+
+A primeira etapa é substituir a tag do componente e ajustar os atributos. Onde antes você usava `name` para o nome completo do sistema, agora você usará `name` para a marca principal e `description` para o nome específico do sistema.
+
+#### Antes (`alc-header-v1`)
+<CodeExample type="html" title="alc-header-v1">
+{`<alc-header home-url='/' name='Sistema XYZ'></alc-header>`}
+</CodeExample>
+
+#### Depois (`alc-header`)
+<CodeExample type="html" title="alc-header">
+{`<alc-header home-url='/' name='Sistema' description='XYZ'></alc-header>`}
+</CodeExample>
+
+### Passo 2: Remoção do Slot `link` (Mudança Crítica)
+
+A utilização de um `<a>` dentro de um `slot="link"` não é mais suportada. Se você utilizava essa abordagem, **é obrigatório refatorar** para o uso de atributos, conforme demonstrado no Passo 1.
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+  <span class="alc-alert__summary">Atenção: O slot `link` foi descontinuado.</span>
+  A nova versão do header não possui suporte ao slot `link`. Atualize seu código para usar os atributos `name` e `description` para definir o título e o link principal.
+</alc-alert>
+</Unstyled>
+
+#### Antes (`alc-header-v1` com slot)
+<CodeExample type="html" title="alc-header-v1">
+{`<alc-header>
+  <a slot="link" href="/">Sistema XYZ</a>
+</alc-header>`}
+</CodeExample>
+
+#### Depois (`alc-header`)
+<CodeExample type="html" title="alc-header">
+{`<alc-header home-url='/' name='Sistema' description='XYZ'></alc-header>`}
+</CodeExample>
+
+### Passo 3: Atualização do Painel de Navegação
+
+O novo `<alc-header>` foi projetado para integrar-se com o `<alc-nav-panel>`. Felizmente, a estrutura interna do painel é a mesma, exigindo apenas a renomeação da tag.
+
+- Substitua `<alc-sidepanel>` por `<alc-nav-panel>`.
+
+Esta alteração é transparente em relação aos componentes internos do painel.
+
+### Passo 4: Integração das Informações de Usuário
+
+As informações de usuário foram movidas do painel lateral para dentro do próprio header. Para isso, utilize o novo componente `<alc-user-menu>` dentro de um `div` com `slot="user"`.
+
+#### Antes
+As informações do usuário ficavam dentro do `<alc-sidepanel>`:
+<CodeExample type="html" title="alc-header">
+{`<alc-sidepanel>
+  <alc-nav>
+    <div slot="header">
+      <alc-user name="Machado de Assis" registration-number="P_9999"></alc-user>
+    </div>
+  <!-- Links de navegação -->
+  </alc-nav>
+</alc-sidepanel>`}
+</CodeExample>
+
+#### Depois
+Agora, elas são inseridas diretamente no `<alc-header>`:
+<CodeExample type="html" title="alc-header">
+{`<alc-header home-url='/' name='Sistema' description='XYZ'>
+    <div slot="user">
+      <alc-user-menu name="Machado de Assis" registration-number="P_9999"></alc-user-menu>
+    </div>
+</alc-header>`}
+</CodeExample>
+
+### Passo 5: Remover o componente alc-theme
+
+Anteriormente, o uso do componente `<alc-theme>` era recomendado no sidepanel. No entanto, isso não é mais necessário, pois o tema agora está integrado diretamente no componente `<alc-user-menu>`.
+
+### Passo 6: Atualização da pasta assets
+A nova versão inclui novos arquivos na pasta `assets` do Alcance. Por isso, é necessário copiar essa pasta, localizada em  `node_modules/alcance/dist/assets`, para o diretório de arquivos estáticos do seu projeto.
+
+Veja as instruções gerais de instalação e <a href="./?path=/docs/instalação-instalação--documentação#copiando-os-assets" class="alc-link">cópia dos assets</a> para mais detalhes.
+
+---
+
+## Visão Geral: Exemplo Completo
+
+Para consolidar todas as mudanças, veja abaixo um exemplo completo de "Antes" e "Depois".
+
+### Antes (Estrutura com `alc-header-v1`)
+<CodeExample type="html" title="Estrutura Antiga">
+{`<body>
+  <!-- [1] Identificação do sistema com name -->
+  <alc-header home-url='/' name='Sistema XYZ'>
+    <!-- [2, 3] Componentes auxiliares permanecem os mesmos -->
+    <alc-environment-label env="development"></alc-environment-label>
+    <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+  </alc-header>
+
+  <div class="alc-layout">
+    <!-- [4] Painel lateral antigo -->
+    <alc-sidepanel>
+      <alc-nav>
+        <!-- [5] Informação do usuário na lateral (junto à navegação) -->
+        <div slot="header">
+          <alc-user name="Machado de Assis" registration-number="P_9999"></alc-user>
+        </div>
+        <!-- [6] Links de navegação (sem alteração) -->
+      </alc-nav>
+    </alc-sidepanel>
+
+    <!-- [7] Conteúdo principal da página (sem alteração) -->
+    <main id="main-content" class="alc-layout__content">
+      <div class="container">
+        <p>Conteúdo da página.</p>
+      </div>
+    </main>
+
+  </div>
+</body>
+
+`}
+</CodeExample>
+
+### Depois (Estrutura com `alc-header`)
+<CodeExample type="html" title="Estrutura Nova">
+{`<body>
+  <!-- [1] Identificação do sistema com name e description -->
+  <alc-header home-url='/' name='Sistema' description='XYZ'>
+    <!-- [2] Componentes auxiliares permanecem os mesmos -->
+    <alc-environment-label env="development"></alc-environment-label>
+    <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+    <!-- [3] Componentes especializado em saltar para a navegação -->
+    <alc-skip-to-nav></alc-skip-to-nav>
+
+    <!-- [5] Informação do usuário no cabeçalho -->
+    <div slot="user">
+      <alc-user-menu name="Machado de Assis" registration-number="P_9999"></alc-user-menu>
+    </div>
+  </alc-header>
+
+  <div class="alc-layout">
+    <!-- [4] Novo painel de navegação -->
+    <alc-nav-panel>
+      <alc-nav>
+        <!-- [6] Links de navegação (sem alteração) -->
+      </alc-nav>
+    </alc-nav-panel>
+
+    <!-- [7] Conteúdo principal da página (sem alteração) -->
+    <main id="main-content" class="alc-layout__content">
+      <div class="container">
+        <p>Conteúdo da página.</p>
+      </div>
+    </main>
+
+  </div>
+</body>
+`}
+</CodeExample>

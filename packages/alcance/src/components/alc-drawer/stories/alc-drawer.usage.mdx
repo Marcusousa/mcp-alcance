@@ -1,0 +1,148 @@
+{/* alc-drawer.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-drawer.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## Básico
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+
+## Com Acionador
+<Canvas of={Stories.DrawerAcionador} sourceState="shown" />
+<Controls of={Stories.DrawerAcionador} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <button class="alc-button" @click="openDrawer">Abrir Drawer</button>
+
+    <alc-drawer
+      ref="drawer"
+      :is-visible="isDrawerVisible"
+      :element-to-focus="'#openButton'"
+      @alc-show="onDrawerShow"
+      @alc-hide="onDrawerHide"
+      @alc-after-show="onDrawerAfterShow"
+      @alc-after-hide="onDrawerAfterHide"
+    >
+      <p>Conteúdo do Drawer</p>
+      <button class="alc-button" @click="closeDrawer">Fechar Drawer</button>
+    </alc-drawer>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'DrawerExample',
+  data() {
+    return {
+      isDrawerVisible: false,
+    };
+  },
+  methods: {
+    openDrawer() {
+      this.isDrawerVisible = true;
+    },
+    closeDrawer() {
+      this.isDrawerVisible = false;
+    },
+    onDrawerShow() {
+      console.log('Drawer está prestes a abrir');
+    },
+    onDrawerHide() {
+      console.log('Drawer está prestes a fechar');
+    },
+    onDrawerAfterShow() {
+      console.log('Drawer foi aberto');
+    },
+    onDrawerAfterHide() {
+      console.log('Drawer foi fechado');
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <button id="openButton" class="alc-button" @click="showDrawer">Mostrar Drawer</button>
+
+    <alc-drawer
+      ref="drawer"
+      :is-visible="isVisible"
+      :element-to-focus="elementToFocus"
+      @alc-show="handleShow"
+      @alc-hide="handleHide"
+      @alc-after-show="handleAfterShow"
+      @alc-after-hide="handleAfterHide"
+    >
+      <p>Bem-vindo ao Drawer!</p>
+      <button class="alc-button" @click="hideDrawer">Esconder Drawer</button>
+    </alc-drawer>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'DrawerExampleTS',
+  setup() {
+    const isVisible = ref(false);
+    const elementToFocus = ref<HTMLElement | string>('#openButton');
+
+    const showDrawer = () => {
+      isVisible.value = true;
+    };
+
+    const hideDrawer = () => {
+      isVisible.value = false;
+    };
+
+    const handleShow = () => {
+      console.log('Drawer vai abrir');
+    };
+
+    const handleHide = () => {
+      console.log('Drawer vai fechar');
+    };
+
+    const handleAfterShow = () => {
+      console.log('Drawer abriu');
+    };
+
+    const handleAfterHide = () => {
+      console.log('Drawer fechou');
+      // Focar no elemento especificado após o Drawer fechar
+      if (typeof elementToFocus.value === 'string') {
+        const element = document.querySelector(elementToFocus.value);
+        element?.focus();
+      } else {
+        elementToFocus.value.focus();
+      }
+    };
+
+    return {
+      isVisible,
+      elementToFocus,
+      showDrawer,
+      hideDrawer,
+      handleShow,
+      handleHide,
+      handleAfterShow,
+      handleAfterHide,
+    };
+  },
+});
+</script>`
+  }}
+/>

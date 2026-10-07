@@ -1,0 +1,84 @@
+{/* alc-header-v1.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-header-v1.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Slot "link"
+Se necessitar de um link personalizado, pode-se usar o slot="link" para essa finalidade.
+
+<Canvas of={Stories.Slot} sourceState="shown" />
+<Controls of={Stories.Slot} />
+
+## Completo
+
+No exemplo completo, mostramos o `header` com a identificação do ambiente (usando <a href="./?path=/docs/componentes-environment-label--documentação" class="alc-link">Environment Label</a>) e um link direto para o conteúdo principal da página (usando <a href="./?path=/docs/componentes-skip-link--documentação" class="alc-link">Skip Link</a>).
+
+<Canvas of={Stories.Completo} sourceState="shown" />
+<Controls of={Stories.Completo} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <alc-header-v1
+      home-url="/"
+      name="HoverCat Monitor"
+      @alc-home="onHomeClick"
+    ></alc-header-v1>
+    <!-- Conteúdo adicional da página -->
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'HeaderExample',
+  methods: {
+    onHomeClick(event) {
+      // Evita a navegação para a página inicial
+      event.preventDefault();
+      // Lógica personalizada ao clicar no link da página inicial
+      alert('Você clicou no link da página inicial. Navegação impedida.');
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <alc-header-v1
+      home-url="/"
+      name="HoverCat Monitor"
+      @alc-home="handleHomeClick"
+    ></alc-header-v1>
+    <!-- Conteúdo adicional da página -->
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'HeaderExampleTS',
+  methods: {
+    handleHomeClick(event: Event) {
+      // Evita a navegação para a página inicial
+      event.preventDefault();
+      // Lógica personalizada ao clicar no link da página inicial
+      alert('Você clicou no link da página inicial. Navegação impedida.');
+    },
+  },
+});
+</script>`
+  }}
+/>

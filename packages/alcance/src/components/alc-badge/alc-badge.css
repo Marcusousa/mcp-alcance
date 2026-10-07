@@ -1,0 +1,200 @@
+/* Definição das variáveis - Setup dos temas*/
+:host {
+  display: inline-flex;
+}
+[data-alc-theme="dark"] alc-badge {
+  /**
+   * @prop --bg-color-info: Cor de fundo para info
+   * @prop --border-color-info: Cor de borda para info
+   * @prop --text-color-info: Cor de texto para info
+   */
+  --bg-color-info: var(--alc-color-info-70);
+  --border-color-info: var(--alc-color-info-60);
+  --text-color-info: var(--alc-color-text-1);
+
+  /**
+   * @prop --bg-color-warning: Cor de fundo para warning
+   * @prop --border-color-warning: Cor de borda para warning
+   * @prop --text-color-warning: Cor de texto para warning
+   */
+  --bg-color-warning: var(--alc-color-warning-60);
+  --border-color-warning: var(--alc-color-warning-50);
+  --text-color-warning: var(--alc-color-text-1);
+
+  --bg-color-error: var(--alc-color-error-70);
+  --border-color-error: var(--alc-color-error-60);
+  --text-color-error: var(--alc-color-text-1);
+
+  --bg-color-success: var(--alc-color-success-70);
+  --border-color-success: var(--alc-color-success-60);
+  --text-color-success: var(--alc-color-text-1);
+}
+
+[data-alc-theme="light"] alc-badge {
+
+  --bg-color-info: var(--alc-color-info-10);
+  --border-color-info: var(--alc-color-info-40);
+  --text-color-info: var(--alc-color-info-70);
+
+  --bg-color-warning: var(--alc-color-warning-10);
+  --border-color-warning: var(--alc-color-warning-20);
+  --text-color-warning: var(--alc-color-warning-60);
+
+  --bg-color-error: var(--alc-color-error-20);
+  --border-color-error: var(--alc-color-error-50);
+  --text-color-error: var(--alc-color-error-70);
+
+  --bg-color-success: var(--alc-color-success-10);
+  --border-color-success: var(--alc-color-success-50);
+  --text-color-success: var(--alc-color-success-70);
+}
+
+/* Contêiner para permitir o posicionamento do badge */
+.alc-badge-wrapper {
+  @apply relative inline-flex items-center;
+}
+
+/* Badge base */
+.alc-badge {
+  @apply inline-block text-xs text-center rounded-full z-10;
+}
+
+/* Cores do badge */
+.alc-badge--primary {
+  @apply bg-[--alc-color-layer-a] text-[--alc-color-text-0];
+}
+
+.alc-badge--secondary {
+  @apply bg-[--alc-color-layer-b] text-[--alc-color-text-0];
+}
+
+.alc-badge--success {
+  @apply bg-[--bg-color-success] text-[--text-color-success];
+}
+
+.alc-badge--warning {
+  @apply bg-[--bg-color-warning] text-[--text-color-warning];
+}
+
+.alc-badge--error {
+  @apply bg-[--bg-color-error] text-[--text-color-error];
+}
+
+.alc-badge--info {
+  @apply bg-[--bg-color-info] text-[--text-color-info];
+}
+
+.alc-badge--neutral {
+  @apply bg-[--alc-color-layer-c] text-[--alc-color-text-0];
+}
+
+/* Dot */
+.alc-badge--dot {
+  @apply w-2.5 h-2.5 rounded-full;
+}
+
+/* Contorno */
+.alc-badge--outlined {
+  @apply bg-transparent border;
+}
+
+.alc-badge--primary.alc-badge--outlined {
+  @apply border-[--alc-color-border] text-[--alc-color-text-0];
+}
+
+.alc-badge--secondary.alc-badge--outlined {
+  @apply border-[--alc-color-border] text-[--alc-color-text-0];
+}
+
+.alc-badge--success.alc-badge--outlined {
+  @apply border-[--border-color-success] text-[--text-color-success];
+}
+
+.alc-badge--warning.alc-badge--outlined {
+  @apply border-[--border-color-warning] text-[--text-color-warning];
+}
+
+.alc-badge--error.alc-badge--outlined {
+  @apply border-[--border-color-error] text-[--text-color-error];
+}
+
+.alc-badge--info.alc-badge--outlined {
+  @apply border-[--border-color-info] text-[--text-color-info];
+}
+
+.alc-badge--neutral.alc-badge--outlined {
+  @apply border-[--alc-color-border] text-[--alc-color-text-0];
+}
+
+/* Posicionamento do badge */
+/* Default (Topo Direito) */
+.alc-badge--default.alc-badge--dot,
+.alc-badge--default.alc-badge--count {
+  @apply absolute top-[--alc-spacing-none] right-[--alc-spacing-none] transform translate-x-1/2 -translate-y-1/2;
+}
+
+/* Floating (Topo Direito com destaque) */
+.alc-badge--floating.alc-badge--dot,
+.alc-badge--floating.alc-badge--count {
+  @apply absolute top-[--alc-spacing-none] right-[--alc-spacing-none] transform translate-x-2 -translate-y-2 shadow-lg;
+}
+
+/* Inline (Alinhado ao conteúdo) */
+.alc-badge--inline.alc-badge--dot,
+.alc-badge--inline.alc-badge--count {
+  @apply static ml-[--alc-spacing-03];
+}
+
+/* Espaçamento padrão do badge */
+.alc-badge:not(.alc-badge--dot) {
+  @apply px-[--alc-spacing-03] py-[--alc-spacing-02];
+}
+
+/* Aplica a animação de pulsação */
+.alc-badge--pulsate {
+  animation: pulse 1.5s infinite;
+}
+
+.alc-badge--pulsate.alc-badge--primary {
+  --pulse-color: var(--alc-color-layer-a);
+}
+
+.alc-badge--pulsate.alc-badge--secondary {
+  --pulse-color: var(--alc-color-layer-b);
+}
+
+.alc-badge--pulsate.alc-badge--success {
+  --pulse-color: var(--bg-color-success);
+}
+
+.alc-badge--pulsate.badge--neutral {
+  --pulse-color: var(--alc-color-layer-c);
+}
+
+.alc-badge--pulsate.alc-badge--warning {
+  --pulse-color: var(--bg-color-warning);
+}
+
+.alc-badge--pulsate.alc-badge--error {
+  --pulse-color: var(--bg-color-error);
+}
+
+.alc-badge--pulsate.alc-badge--info {
+  --pulse-color: var(--bg-color-info);
+}
+
+
+/* Configuração de pulsação */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--pulse-color);
+  }
+
+  70% {
+    box-shadow: 0 0 0 0.5rem transparent;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}

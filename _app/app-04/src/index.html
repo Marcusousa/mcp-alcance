@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-alc-theme="light">
+  <!--
+    Observe que não há nada so Alcance aqui.
+    Tudo é feito no index.js, que é o "entry point" da aplicação.
+  -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App de exemplo com Rollup</title>
+  <style>
+    alc-alert, alc-theme {
+      /* @TODO: Isso precisa ser revisto no Alcance */
+      visibility: inherit !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid">
+    <alc-alert>Mensagem de demonstração</alc-alert>
+    <!--
+      Há algums servidores de desenvolvimento que entregam, junto
+      ao .svg, um script embutido. Por isso é necessário desligar a
+      opção sanitize; caso contrário, o svg não é carregado
+      por ser considerado inseguro
+    -->
+    <alc-icon name="heart" sanitize="false"></alc-icon>
+  </div>
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>

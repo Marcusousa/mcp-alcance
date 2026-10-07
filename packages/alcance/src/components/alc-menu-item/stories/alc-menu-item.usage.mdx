@@ -1,0 +1,167 @@
+{/* alc-menu-item.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-menu-item.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Radio.name}
+
+<Canvas of={Stories.Radio} sourceState="shown" />
+<Controls of={Stories.Radio} />
+
+## {Stories.Checkbox.name}
+
+<Canvas of={Stories.Checkbox} sourceState="shown" />
+<Controls of={Stories.Checkbox} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <button class="alc-button" @click="toggleMenu">
+      Abrir Menu
+    </button>
+
+    <alc-menu v-if="showMenu">
+      <alc-menu-item
+        value="excluir"
+        @alc-select="onMenuItemSelect"
+        :disabled="false"
+        type="normal"
+      >
+        <alc-icon slot="prefix" name="trash" label="Excluir"></alc-icon>
+        Excluir
+      </alc-menu-item>
+      <alc-menu-item
+        value="prioritario"
+        @alc-select="onMenuItemSelect"
+        :checked="isPrioritario"
+        type="checkbox"
+      >
+        <alc-icon slot="prefix" name="star" label="Prioritário"></alc-icon>
+        Marcar como prioritário
+      </alc-menu-item>
+      <alc-menu-item
+        value="adiar"
+        @alc-select="onMenuItemSelect"
+        :disabled="true"
+        type="normal"
+      >
+        Adiar
+        <alc-icon slot="suffix" name="clock" label="Adiar"></alc-icon>
+      </alc-menu-item>
+    </alc-menu>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'MenuItemExample',
+  data() {
+    return {
+      showMenu: false,
+      isPrioritario: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.showMenu = !this.showMenu;
+    },
+    onMenuItemSelect(event) {
+      const value = event.currentTarget.getAttribute('value');
+      if (value === 'prioritario') {
+        this.isPrioritario = !this.isPrioritario;
+      }
+      alert('Você selecionou: ' + value);
+      // Implementar lógica adicional com base no valor selecionado
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <button class="alc-button" @click="toggleMenu">
+      Abrir Menu
+    </button>
+
+    <alc-menu v-if="isMenuVisible">
+      <alc-menu-item
+        value="editar"
+        @alc-select="handleMenuItemSelect"
+        type="normal"
+      >
+        <alc-icon slot="prefix" name="pencil" label="Editar"></alc-icon>
+        Editar
+      </alc-menu-item>
+      <alc-menu-item
+        value="remover"
+        @alc-select="handleMenuItemSelect"
+        :disabled="isRemoveDisabled"
+        type="normal"
+      >
+        Remover
+        <alc-icon slot="suffix" name="trash" label="Remover"></alc-icon>
+      </alc-menu-item>
+      <alc-menu-item
+        value="notificacoes"
+        @alc-select="handleMenuItemSelect"
+        :checked="notificationsEnabled"
+        type="checkbox"
+      >
+        <alc-icon slot="prefix" name="bell" label="Notificações"></alc-icon>
+        Ativar Notificações
+      </alc-menu-item>
+    </alc-menu>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'MenuItemExampleTS',
+  setup() {
+    const isMenuVisible = ref(false);
+    const notificationsEnabled = ref(false);
+    const isRemoveDisabled = ref(true);
+
+    const toggleMenu = () => {
+      isMenuVisible.value = !isMenuVisible.value;
+    };
+
+    const handleMenuItemSelect = (event: Event) => {
+      const target = event.currentTarget as HTMLElement;
+      const value = target.getAttribute('value');
+
+      if (value === 'notificacoes') {
+        notificationsEnabled.value = !notificationsEnabled.value;
+      }
+
+      alert('Você selecionou: ' + value);
+      // Implementar lógica adicional com base no valor selecionado
+    };
+
+    return {
+      isMenuVisible,
+      notificationsEnabled,
+      isRemoveDisabled,
+      toggleMenu,
+      handleMenuItemSelect,
+    };
+  },
+});
+</script>`
+  }}
+/>

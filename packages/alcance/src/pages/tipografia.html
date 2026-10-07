@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Tipografia</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div>
+    <!-- BANDEIRA DE AMBIENTE  -->
+    <div class="p-2 text-center text-white bg-[color:#345D96]">
+      Prototipação
+    </div>
+  
+    <!-- CABEÇALHO  -->
+    <header
+      class="bg-[color:var(--alc-color-brand-secondary)] text-white py-2 px-4 flex justify-between items-center">
+      <img src="./assets/logo_camara_peq.png" alt="Logo câmara dos deputados" class="w-8 h-8">
+      <h2 class="text-xl m-0 uppercase">
+        Gabinete digital
+      </h2>
+      <button class="alc-button alc-button-rounded hover:bg-black hover:bg-opacity-10 p-1.5">
+        <!-- @TODO Quando for estruturar o cabeçalho, encontrar solução para o tamanho da fonte (vindo do tailwind) -->
+        <alc-icon name="list" label="ícone de menu" class="text-white" style="font-size: 1.75em">
+        </alc-icon>
+      </button>
+    </header>
+  
+    <!-- REPRESENTANTE  -->
+    <div class="flex justify-between py-3 px-4 items-baseline bg-[color:var(--alc-color-surface-secondary)]">
+      <div class="flex gap-2 items-center">
+        <alc-icon name="people-fill" label="ícone de pessoas" class="text-2xl"></alc-icon>
+        <span>
+          Deputado Machado de Assis
+        </span>
+      </div>
+      <alc-icon name="chevron-right" label="" class="text-2xl"></alc-icon>
+    </div>
+
+    </div>
+
+    <!-- CONTEUDO  -->
+    <main class="container-fluid">
+
+
+    <h1>Este é o cabeçalho de nível 1 desta página</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident maxime distinctio totam quia quae molestias ratione. Illo sed similique omnis magnam quisquam officiis et! Corrupti vel modi quidem quae omnis.</p>
+
+    <h2>Este é o cabeçalho de nível 2 desta página</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident maxime distinctio totam quia quae molestias ratione. Illo sed similique omnis magnam quisquam officiis et! Corrupti vel modi quidem quae omnis.</p>
+
+    <h3>Este é o cabeçalho de nível 3 desta página</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident maxime distinctio totam quia quae molestias ratione. Illo sed similique omnis magnam quisquam officiis et! Corrupti vel modi quidem quae omnis.</p>
+
+    <h4>Este é o cabeçalho de nível 4 desta página</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident maxime distinctio totam quia quae molestias ratione. Illo sed similique omnis magnam quisquam officiis et! Corrupti vel modi quidem quae omnis.</p>
+
+    <h5>Este é o cabeçalho de nível 5 desta página</h5>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident maxime distinctio totam quia quae molestias ratione. Illo sed similique omnis magnam quisquam officiis et! Corrupti vel modi quidem quae omnis.</p>
+
+    <h6>Este é o cabeçalho de nível 6 desta página</h6>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident maxime distinctio totam quia quae molestias ratione. Illo sed similique omnis magnam quisquam officiis et! Corrupti vel modi quidem quae omnis.</p>
+
+    <hr class="my-24">
+
+    <p class="text-6xl">Um texto com o maior tamanho possível, <code>text-6xl</code>.</p>
+    <p class="text-5xl">Um texto com tamanho aumentado, <code>text-5xl</code>.</p>
+
+    <h1>Este é o cabeçalho de nível 1 desta página</h1>
+    <h2>Este é o cabeçalho de nível 2 desta página</h2>
+    <h3>Este é o cabeçalho de nível 3 desta página</h3>
+    <h4>Este é o cabeçalho de nível 4 desta página</h4>
+    <h5>Este é o cabeçalho de nível 5 desta página</h5>
+    <h6>Este é o cabeçalho de nível 6 desta página</h6>
+
+    <p>Um texto padrão, sem qualquer nível de cabeçalho ou classe utilitária.</p>
+
+    <p class="text-sm">Um texto com tamanho reduzido, <code>text-sm</code>.</p>
+    <p class="text-xs">Um texto com o menor tamanho possível, <code>text-xs</code>.</p>
+
+    <hr class="my-24">
+
+    <h1>Alcance</h1>
+    <p class="text-lg">Construa aplicações web acessíveis e mobile-first com o Alcance.</p>
+    <p class="text-sm">Versão 0.1.15</p>
+
+    <h2>Fácil de usar</h2>
+    <p>
+      O Alcance está sendo construído para ser utilizado de forma prática. Instale, configure e tenha à mão os recursos para oferecer uma boa experiência aos usuários.
+    </p>
+
+    <h2>Compatível</h2>
+    <p>
+      Nada de quebrar a cabeça para usar os componentes. O Alcance utiliza web components, pode ser usado em diversos frameworks de front-end e funciona nos navegadores modernos.
+    </p>
+
+    <h2>Moderno</h2>
+    <p>
+      Para o usuário, pensado para dispositivos móveis e com temas que respeitam suas preferências. Para o desenvolvedor, modular e extensível. O Alcance está a tom com as tecnologias atuais.
+    </p>
+
+    <hr class="my-24">
+
+    <alc-theme></alc-theme>
+
+  </main>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+.alc-drawer__overlay {
+  @apply fixed inset-[--alc-spacing-none] flex items-start justify-end bg-opacity-40 bg-gray-cool-80 z-30;
+}
+
+.alc-drawer__content {
+  @apply relative w-full max-w-md bg-skin-surface-primary h-full overflow-y-auto shadow-lg;
+}
+
+.alc-drawer__header {
+  @apply block absolute right-[--alc-spacing-none] pr-[--alc-spacing-04] pt-[--alc-spacing-04];
+}

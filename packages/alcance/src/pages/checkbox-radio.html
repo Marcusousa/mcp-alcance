@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Checkbox</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <!-- CHECKBOXES - GRUPO 1 -->
+
+    <alc-checkbox class="mb-5">
+      <input type="checkbox" />
+      <label slot="label">Você aceita os <a class="alc-link" href="#">termos de uso?</a></label>
+    </alc-checkbox>
+
+    <alc-checkbox class="mb-5" hint="Dica">
+      <input type="checkbox" id="teste1" />
+      <label slot="label" for="teste1">Você aceita os <a class="alc-link" href="#">termos de uso?</a></label>
+    </alc-checkbox>
+
+    <alc-checkbox class="mb-5" hint="Dica" error-msg="Mensagem de erro">
+      <input type="checkbox" id="teste2" />
+      <label slot="label" for="teste2">Você aceita os <a class="alc-link" href="#">termos de uso?</a></label>
+    </alc-checkbox>
+
+    <alc-checkbox hint="Dica" error-msg="Mensagem de erro" label="Pelo label">
+      <input type="checkbox" id="teste" />
+    </alc-checkbox>
+
+    <!-- RADIOS - GRUPO 2 -->
+
+    <alc-radio class="mb-5">
+      <input type="radio" id="g2-teste1" name="g2"/>
+      <label slot="label" for="g2-teste1">Item 1</label>
+    </alc-radio>
+
+    <alc-radio class="mb-5" hint="Dica">
+      <input type="radio" name="g2"/>
+      <label slot="label">Item 2</label>
+    </alc-radio>
+
+    <alc-radio class="mb-5" hint="Dica" error-msg="Mensagem de erro">
+      <input type="radio" id="g2-teste2" name="g2"/>
+      <label slot="label">Item 3</label>
+    </alc-radio>
+
+    <alc-radio class="mb-5" hint="Dica" error-msg="Mensagem de erro" label="Pelo label">
+      <input type="radio" name="g2"/>
+    </alc-radio>
+
+    <!-- CHECKBOXES - GRUPO 3 -->
+
+    <alc-fieldset legend="Termos de uso" error-msg="Escolha uma das opções!" hint="Apenas uma escolha!" required="true" class="mb-5">
+      <div class="flex flex-col gap-2">
+        <alc-checkbox>
+          <input type="checkbox" id="g3-a" />
+          <label slot="label" for="g3-a">a</label>
+        </alc-checkbox>
+        <alc-checkbox>
+          <input type="checkbox" id="g3-b" />
+          <label slot="label" for="g3-b">b</label>
+        </alc-checkbox>
+        <alc-checkbox>
+          <input type="checkbox" id="g3-c" />
+          <label slot="label" for="g3-c">c</label>
+        </alc-checkbox>
+      </div>
+    </alc-fieldset>
+
+    <!-- RADIOS - GRUPO 4 -->
+
+    <alc-fieldset legend="Itens" error-msg="Escolha uma das opções!" hint="Apenas uma escolha!" required="true" class="mt-5">
+      <div class="flex flex-col gap-2">
+        <alc-radio>
+          <input type="radio" id="g4-teste1" name="g4"/>
+          <label slot="label" for="g4-teste1">Item 1</label>
+        </alc-radio>
+
+        <alc-radio  hint="Dica">
+          <input type="radio" id="g4-teste2" name="g4"/>
+          <label slot="label" for="g4-teste2">Item 2</label>
+        </alc-radio>
+
+        <alc-radio  hint="Dica" error-msg="Mensagem de erro">
+          <input type="radio" id="g4-teste3" name="g4"/>
+          <label slot="label" for="g4-teste3">Item 3</label>
+        </alc-radio>
+      </div>
+    </alc-fieldset>
+
+    <script>
+    </script>
+</html>

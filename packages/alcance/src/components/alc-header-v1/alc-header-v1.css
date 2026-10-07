@@ -1,0 +1,41 @@
+[data-alc-theme="light"] alc-header-v1 {
+  --text-color: var(--alc-color-text-contrast);
+
+  --bg-color-gradient-from: theme('colors.mint-cool.50');
+  --bg-color-gradient-to: theme('colors.blue-cool.70v');
+  --bg-color-logo: theme('colors.cyan.60');
+}
+
+[data-alc-theme="dark"] alc-header-v1 {
+  --text-color: var(--alc-color-text-0);
+
+  --bg-color-gradient-from: theme('colors.mint-cool.80');
+  --bg-color-gradient-to: theme('colors.gray-cool.90');
+  --bg-color-logo: theme('colors.mint-cool.86');
+
+}
+
+:host {
+  display: block;
+}
+
+.alc-header-v1 {
+  @apply block md:sticky top-[--alc-spacing-none] w-full md:z-[1020];
+}
+
+.alc-header-v1__container {
+  @apply bg-gradient-to-r from-0% to-100% text-[--text-color] flex items-center min-h-[64px];
+  @apply from-[--bg-color-gradient-from] to-[--bg-color-gradient-to];
+}
+
+.alc-header-v1__logo {
+  @apply w-8 h-8 ml-[--alc-spacing-06] md:hidden;
+}
+
+.alc-header-v1__logo-full {
+  @apply bg-[--bg-color-logo] hidden md:flex w-72 min-h-[80px] justify-center items-center;
+}
+
+.alc-header-v1__title {
+  @apply text-xl m-[--alc-spacing-none] uppercase flex-grow ml-[--alc-spacing-07] mr-[--alc-spacing-09];
+}

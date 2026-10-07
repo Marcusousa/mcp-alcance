@@ -1,0 +1,44 @@
+/* Container geral do componente */
+.alc-header-id {
+  @apply flex text-[--alc-color-neutral-0];
+}
+
+/* Link que envolve tudo */
+.alc-header-id__link {
+  @apply flex items-center gap-[var(--alc-spacing-04)] rounded-[--alc-radius-default];
+  @apply focus:outline focus:outline-2 focus:outline-offset-[--alc-spacing-01] outline-[--alc-color-neutral-0];
+  @apply hover:underline;
+}
+
+/* Logo */
+.alc-header-id__logo {
+  @apply w-9 h-9;
+}
+
+/* Contêiner dos textos (nome e descrição) */
+.alc-header-id__info {
+  @apply flex flex-col uppercase;
+}
+
+/* Nome do sistema */
+.alc-header-id__name {
+  @apply text-xl/[--alc-font-line-height-xl];
+}
+
+/* Descrição do sistema */
+.alc-header-id__description {
+  @apply text-sm/[--alc-font-line-height-sm];
+}
+
+/* Responsividade: telas >= 768px (md) */
+@media (min-width: 768px) {
+  .alc-header-id__logo {
+    @apply  w-10 h-10;
+  }
+  .alc-header-id__name {
+    @apply text-2xl/[--alc-font-line-height-xl];
+  }
+  .alc-header-id__description {
+    @apply text-base/[--alc-font-line-height-sm];
+  }
+}

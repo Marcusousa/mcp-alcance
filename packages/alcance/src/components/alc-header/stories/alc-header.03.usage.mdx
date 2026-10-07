@@ -1,0 +1,24 @@
+{/* alc-header.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-header.stories';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## {Stories.Basico.name}
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Versao.name}
+
+<Canvas of={Stories.Versao} sourceState="shown" />
+<Controls of={Stories.Versao} />
+
+
+## {Stories.Completo.name}
+
+<Canvas of={Stories.Completo} sourceState="shown" />
+<Controls of={Stories.Completo} />

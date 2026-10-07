@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Pagination</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <div class="js-page border p-2">
+      Episódio 1: Êxodo (Exodus). Lançado em 23 de janeiro de 1985.
+    </div>
+    <div class="js-page border p-2 hidden">
+      Episódio 2: Aliança Profana (The Unholy Alliance). Lançado em 23 de janeiro de 1985.
+    </div>
+    <div class="js-page border p-2 hidden">
+      Episódio 3: Berbils. Lançado em 11 de setembro de 1985.
+    </div>
+    <div class="js-page border p-2 hidden">
+      Conteúdo adicional (total-pages dinâmico).
+    </div>
+    <div class="js-page border p-2 hidden">
+      Conteúdo adicional (total-pages dinâmico).
+    </div>
+    <alc-pagination total-pages="3" current-page="1"></alc-pagination> 
+    <hr class="mb-2">
+    <input class="alc-form__input" type="text" name="totalPagesD" id="totalPagesD"></input>
+
+  </div>
+
+  <script>
+  // Obtém referências aos elementos
+  let pagination = document.querySelector("alc-pagination");
+  let pages = document.querySelectorAll('.js-page');
+  // Trata o evento alc-change
+  pagination.addEventListener("alc-change", function (e) {
+    console.log(e.detail.from);
+    console.log(e.detail.to);
+    console.log(e.detail.using);
+    const index = e.detail.to ? e.detail.to - 1 : 0; // Para garantir que 'index' tenha um valor válido.
+    pages.forEach(page => page.classList.add('hidden'));
+    pages[index].classList.remove('hidden');
+  });
+
+  totalPagesD.addEventListener("change", function (e) {
+    document.querySelector("alc-pagination").totalPages = document.querySelector("#totalPagesD").value;
+  });
+  </script>
+
+</body>
+
+
+</html>

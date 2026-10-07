@@ -1,0 +1,16 @@
+{/* alc-header-notifications.mdx */}
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-header-notifications.stories';
+import HeaderNotificationsProps from './alc-header-notifications.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+O componente alc-header-notifications serve para exibir notificações no cabeçalho da aplicação. 
+Ele é utilizado para informar aos usuários sobre eventos importantes, como novas mensagens, atualizações ou alertas.
+
+Você pode utilizar como botão ou link, dependendo da necessidade do sistema. 
+Utilize link quando a notifição for levar o usuário para uma página específica, adicionando a propriedade `variant="link"` 
+e atribuindo valor à propriedade `url`. 
+
+<Markdown>{HeaderNotificationsProps}</Markdown>

@@ -1,0 +1,28 @@
+.alc-table {
+  width: 100%;
+}
+
+.alc-table__header-row {
+  /* @TODO Usar algo como sr-only aqui */
+  display: none;
+}
+
+.alc-table__row {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  border: 1px solid #999;
+}
+
+.alc-table__cell {
+  border-bottom: 1px dotted #999;
+}
+
+.alc-table__cell:last-of-type {
+  border-bottom: none;
+}
+
+.alc-table__inline-header {
+  display: block;
+  font-weight: bold;
+}

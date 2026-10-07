@@ -1,0 +1,23 @@
+.stencil/
+.idea/
+.sass-cache/
+.versions/
+$RECYCLE.BIN/
+*.log
+packages/*/lib
+packages/*/dist
+node_modules
+.claude/
+graphify-out/
+.serena/
+
+*.args.ts
+*.props.md
+
+# VSCode
+# Ignora o diretório como regra geral
+# Mas não ignora arquivos específicos que fazem sentido para o time
+# https://stackoverflow.com/a/57749909/1789013
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json

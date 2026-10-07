@@ -1,0 +1,37 @@
+[data-alc-theme="dark"] alc-dropdown {
+  --border-color: var(--alc-color-neutral-80);
+}
+
+[data-alc-theme="light"] alc-dropdown {
+  --border-color: var(--alc-color-neutral-10);
+}
+
+
+alc-dropdown {
+  @apply relative inline-block;
+}
+
+.alc-dropdown__content {
+  @apply bg-[color:var(--alc-color-surface-primary)] overflow-auto;
+  @apply drop-shadow-md shadow-black rounded border border-[color:var(--border-color)];
+  /* Vai pegar a altura máxima do pai (popup) permitindo funcionar o overflow */
+  max-height: inherit;
+
+  /* animation: Scale 100ms ease-in-out; */
+}
+
+.alc-dropdown__content--opened {
+  @apply block;
+}
+
+@keyframes Scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

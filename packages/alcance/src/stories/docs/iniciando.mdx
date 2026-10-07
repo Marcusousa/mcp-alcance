@@ -1,0 +1,241 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from '../utils/codeExample';
+
+<Meta title="Instalação/Instalação" />
+<h1> Instalação </h1>
+
+Instale e configure o Alcance com poucos passos.
+
+## Configurando a localização dos pacotes NPM
+
+Essa configuração permite que o gerenciador de pacotes localize o Alcance no repositório interno da Câmara dos Deputados.
+
+<TabsState
+  initial="npm">
+    <div id="npm" title="NPM">
+        <div>
+            Crie um arquivo `.npmrc` na raiz do projeto e adicione o seguinte código:
+            <CodeExample language="shell" title=".npmrc">
+            {`registry=https://hub.camara.gov.br/repository/npm-camara/`}
+            </CodeExample>
+        </div>
+    </div>
+
+    <div id="yarn" title="Yarn">
+        <div>
+            Crie um arquivo `.yarnrc` na raiz do projeto e adicione o seguinte código:
+            <CodeExample language="shell" title=".yarnrc">
+            {`registry=https://hub.camara.gov.br/repository/npm-camara/`}
+            </CodeExample>
+        </div>
+    </div>
+</TabsState>
+
+## Instalando o Alcance
+
+### Instalação expressa (usando NodeJS)
+Utilize a instalação expressa para instalar rapidamente o pacote Alcance e obter a cópia dos assets (ícones, imagens, fontes) para seu projeto:
+
+<CodeExample language="shell">
+{`npx alcance-init`}
+</CodeExample>
+ou
+
+<TabsState
+  initial="npmins">
+    <div id="npmins" title="NPM">
+        <div>
+            <CodeExample language="shell">
+            {`npm i -g alcance-init
+
+alcance`}
+            </CodeExample>
+        </div>
+    </div>
+    <div id="yarnins" title="Yarn">
+        <div>
+            <CodeExample language="shell">
+            {`yarn global add alcance-init
+
+alcance`}
+            </CodeExample>
+        </div>
+    </div>
+</TabsState>
+
+A instalação expressa resume rapidamente todo o processo de instalação do Alcance e dos pacotes de ícones e fotes necessários para funcionamento correto do Alcance.
+
+<Unstyled>
+<alc-alert dismissible="false">
+
+Note que essa instalação ainda não substitui a configuração necessária em qualquer framework em que for utilizado.
+
+</alc-alert>
+</Unstyled>
+
+### Instalação manual (usando NodeJS)
+Dentro do seu projeto, execute os seguintes comando:
+
+<TabsState
+  initial="npm2">
+    <div id="npm2" title="NPM">
+        <div>
+            <CodeExample language="shell">
+{`# Apenas para quando você está iniciando um novo projeto, e não tem ainda o arquivo package.json.
+npm init
+# Instala e salva o Alcance como dependência do seu projeto.
+npm install alcance --save-prod`}
+            </CodeExample>
+        </div>
+    </div>
+
+    <div id="yarn2" title="Yarn">
+        <div>
+            <CodeExample language="shell">
+{`# Apenas para quando você está iniciando um novo projeto, e não tem ainda o arquivo package.json.
+yarn init
+# Instala e salva o Alcance como dependência do seu projeto.
+yarn add alcance`}
+            </CodeExample>
+        </div>
+    </div>
+</TabsState>
+<Unstyled>
+<alc-alert dismissible="false">
+
+A instalação manual requer realizar em seguida o procedimento de <a href="#copiando-os-assets" class="alc-link" target="_self">cópia dos assets</a>.
+
+</alc-alert>
+</Unstyled>
+### Instalação manual para projetos Vue 3
+
+Caso seu projeto utilize o Vue 3, você poderá instalar a biblioteca destinada ao próprio Vue:
+
+<TabsState
+  initial="npm3">
+    <div id="npm3" title="NPM">
+        <div>
+            <CodeExample language="shell">
+            {`npm install alcance-vue-library --save-prod`}
+            </CodeExample>
+        </div>
+    </div>
+    <div id="yarn3" title="Yarn">
+        <div>
+            <CodeExample language="shell">
+            {`yarn add alcance-vue-library`}
+            </CodeExample>
+        </div>
+    </div>
+</TabsState>
+
+### Instalação manual para projetos React
+
+Caso seu projeto utilize o React, você poderá instalar a biblioteca destinada ao próprio React:
+
+<TabsState
+  initial="npm4">
+    <div id="npm4" title="NPM">
+        <div>
+            <CodeExample language="shell">
+            {`npm install alcance-react-library --save-prod`}
+            </CodeExample>
+        </div>
+    </div>
+    <div id="yarn4" title="Yarn">
+        <div>
+            <CodeExample language="shell">
+            {`yarn add alcance-react-library`}
+            </CodeExample>
+        </div>
+    </div>
+</TabsState>
+
+### Instalação manual (sem NodeJS)
+Caso seu projeto não utilize o NodeJS, é necessário baixar e extrair manualmente os arquivos do Alcance.
+
+Você poderá encontrar os arquivos em <a href="./?path=/docs/instalação-histórico-de-versões--documentação" className="alc-link">Histórico do Alcance</a>.
+
+Após o download, descompacte o arquivo e mova a pasta `package` para uma pasta onde os arquivos possam ser distribuídos na rede, exemplo: pasta `public` ou pasta `static` a depender da estrutura do seu projeto.
+
+Renomeie a pasta `package` para `alcance`.
+<Unstyled>
+<alc-alert dismissible="false">
+
+A instalação manual requer realizar em seguida o procedimento de <a href="#copiando-os-assets" class="alc-link" target="_self">cópia dos assets</a>.
+
+</alc-alert>
+</Unstyled>
+
+## Copiando os assets
+
+É necessário copiar a pasta `node_modules/alcance/dist/assets` para a pasta que serve arquivos estáticos em seu projeto.
+
+Você pode usar um simples script, conforme o exemplo abaixo, para que os assets sejam copiados para a pasta pública do seu projeto:
+
+<CodeExample
+  examples={{
+    javascript: `var fs = require('fs');
+var fse = require('fs-extra');
+
+// Se estiver usando o pacote alcance
+var sourceDir = './node_modules/alcance/dist/assets';
+// Se estiver usando o pacote alcance-vue-library
+// var sourceDir = './node_modules/alcance-vue-library/node_modules/alcance/dist/assets';
+
+var destDir = './public/assets';
+
+// se a pasta não existir crie-a
+if (!fs.existsSync(destDir)){
+    fs.mkdirSync(destDir, { recursive: true });
+}
+
+// copiar o conteúdo do diretório, incluindo subpastas
+fse.copy(sourceDir, destDir, function (err) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Assets copiados!");
+  }
+});
+`,
+    typescript: `import * as fs from 'fs';
+import * as fse from 'fs-extra';
+
+// Se estiver usando o pacote alcance
+const sourceDir = './node_modules/alcance/dist/assets';
+// Se estiver usando o pacote alcance-vue-library
+// const sourceDir = './node_modules/alcance-vue-library/node_modules/alcance/dist/assets';
+
+const destDir = './public/assets';
+
+// Se a pasta não existir, crie-a
+if (!fs.existsSync(destDir)){
+    fs.mkdirSync(destDir, { recursive: true });
+}
+
+// Copiar o conteúdo do diretório, incluindo subpastas
+fse.copy(sourceDir, destDir, (err: Error) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Assets copiados!");
+  }
+});
+`,
+  }}
+/>
+
+<Unstyled>
+<alc-alert dismissible="false">
+
+**Nota:** No caso de uso sem o NodeJS, como no guia <a href="#instala%C3%A7%C3%A3o-manual-sem-nodejs" class="alc-link" target="_self">Instalação manual (sem NodeJS)</a>, verifique se os ícones, fontes e imagens funcionam corretamente sem a necessidade da cópia da pasta `assets`.
+É possível que não seja necessário essa etapa.
+
+</alc-alert>
+</Unstyled>
+
+## Próximos passos
+
+Nos passos a seguir, você aprenderá como configurar o Alcance em seu projeto.

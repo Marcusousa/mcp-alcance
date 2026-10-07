@@ -1,0 +1,27 @@
+{/* alc-environment-label.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-environment-label.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+Para fazer uso do componente, basta adicionar o seguinte código:
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample type="html">
+{`<template>
+    <div>
+        <alc-environment-label env="development"></alc-environment-label>
+    </div>
+</template>`}
+</CodeExample>

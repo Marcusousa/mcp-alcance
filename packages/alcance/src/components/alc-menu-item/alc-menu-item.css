@@ -1,0 +1,62 @@
+alc-menu-item {
+  --text-color: var(--alc-color-text-0);
+  --text-color-disabled: var(--alc-color-text-4);
+
+  --bg-color-active: var(--alc-color-surface-secondary);
+  --bg-color-hover: var(--alc-color-surface-tertiary);
+  --bg-color-focus: var(--alc-color-surface-secondary);
+}
+
+[data-alc-theme="dark"] alc-menu-item {
+  --text-color-active: var(--alc-color-text-0);
+
+  --outline-color: var(--alc-color-action-30);
+}
+
+[data-alc-theme="light"] alc-menu-item {
+  --text-color-active: var(--alc-color-text-contrast);
+
+  --outline-color: var(--alc-color-action-60);
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+.alc-menu-item {
+  -webkit-user-select: none;
+  -webkit-user-select: none;
+
+  @apply flex items-baseline;
+  @apply text-left text-base text-[color:--text-color];
+  @apply pr-[--alc-spacing-06] py-[--alc-spacing-03] cursor-pointer;
+  @apply hover:bg-[color:--bg-color-hover];
+  @apply active:bg-[color:--bg-color-active];
+}
+
+.alc-menu-item:focus-visible {
+  @apply outline outline-2 outline-[--outline-color] -outline-offset-[--alc-spacing-03];
+  @apply bg-[color:--bg-color-focus];
+}
+
+.alc-menu-item--disabled {
+  @apply cursor-not-allowed text-[color:--text-color-disabled];
+  @apply hover:bg-[color:--bg-color-hover];
+  @apply focus-visible:bg-[color:--bg-color-focus];
+}
+
+.alc-menu-item__check {
+  @apply w-8 shrink-0 flex justify-center;
+}
+
+.alc-menu-item__label {
+  @apply flex-1;
+}
+
+.alc-menu-item__prefix:not(:empty) {
+  @apply mr-[--alc-spacing-03];
+}
+
+.alc-menu-item__suffix:not(:empty) {
+  @apply ml-[--alc-spacing-03];
+}

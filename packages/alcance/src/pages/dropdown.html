@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Dropdown</title>
+
+    <script type="module" src="/build/alcance.esm.js"></script>
+    <script nomodule src="/build/alcance.js"></script>
+    <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <alc-theme></alc-theme>
+        <hr class="mb-2">
+
+
+        <alc-dropdown hide-on="alc-select click">
+            <button slot="trigger" class="alc-button alc-button--secondary">
+                <alc-icon name="three-dots-vertical" label="Ações..."></alc-icon>
+            </button>
+            <alc-menu>
+                <alc-menu-item value="excluir">
+                    Excluir
+                </alc-menu-item>
+                <alc-menu-item value="prioritario">
+                    Marcar como prioritário
+                </alc-menu-item>
+                <alc-menu-item value="adiar">
+                    Adiar
+                </alc-menu-item>
+            </alc-menu>
+        </alc-dropdown>
+
+        <script>
+
+            const menu = document.querySelector('alc-menu');
+            const dropdown = document.querySelector('alc-dropdown');
+
+            // Evento disparado quando um item (alc-menu-item) é selecionado
+            menu.addEventListener('alc-select', e => {
+                // e.preventDefault();
+            });
+
+            // Eventos disparados pelo dropdown
+            dropdown.addEventListener('alc-show', e => {
+                // e.preventDefault();
+                console.debug('alc-show dropdown')
+            });
+            dropdown.addEventListener('alc-after-show', e => console.debug('alc-after-show dropdown'));
+
+            dropdown.addEventListener('alc-hide', e => {
+                // e.preventDefault();
+                console.debug('alc-hide dropdown')
+            });
+            dropdown.addEventListener('alc-after-hide', e => console.debug('alc-after-hide dropdown'));
+
+        </script>
+
+        <hr class="my-4">
+
+
+        <alc-dropdown>
+            <button slot="trigger" class="alc-button">Dropdown button</button>
+
+            <a href="#" class="dropdown-item"> Normal1 </a>
+            <a href="#" class="dropdown-item"> Normal2 </a>
+            <a href="#" class="dropdown-item is-active"> Normal3 Active </a>
+            <a href="#" class="dropdown-item"> Normal4 </a>
+            <hr class="dropdown-divider" />
+            <a href="#" class="dropdown-item"> Normal5 Divider </a>
+        </alc-dropdown>
+
+        <br/><br/>
+
+        <alc-dropdown>
+            <a slot="trigger" href="#" class="alc-link">Dropdown link</a>
+
+            <a href="#" class="dropdown-item"> Normal1 </a>
+            <a href="#" class="dropdown-item"> Normal2 </a>
+            <a href="#" class="dropdown-item is-active"> Normal3 Active </a>
+            <a href="#" class="dropdown-item"> Normal4 </a>
+            <hr class="dropdown-divider" />
+            <a href="#" class="dropdown-item"> Normal5 Divider </a>
+        </alc-dropdown>
+
+        <br/><br/>
+
+        <alc-dropdown is-hoverable="false">
+          <button slot="trigger" class="alc-button">
+            Dropdown button
+            <alc-icon name="chevron-down" label=""></alc-icon>
+          </button>
+
+          <a href="#" class="dropdown-item"> Normal1 </a>
+          <a href="#" class="dropdown-item"> Normal2 </a>
+          <a href="#" class="dropdown-item is-active"> Normal3 Active </a>
+          <a href="#" class="dropdown-item"> Normal4 </a>
+          <hr class="dropdown-divider" />
+          <a href="#" class="dropdown-item"> Normal5 Divider </a>
+      </alc-dropdown>
+
+      <br/><br/>
+
+      <alc-dropdown is-hoverable="false">
+          <a slot="trigger" href="#" class="alc-link">
+            Dropdown link
+            <alc-icon name="chevron-down" label=""></alc-icon>
+          </a>
+
+          <a href="#" class="dropdown-item"> Normal1 </a>
+          <a href="#" class="dropdown-item"> Normal2 </a>
+          <a href="#" class="dropdown-item is-active"> Normal3 Active </a>
+          <a href="#" class="dropdown-item"> Normal4 </a>
+          <hr class="dropdown-divider" />
+          <a href="#" class="dropdown-item"> Normal5 Divider </a>
+      </alc-dropdown>
+
+      <br/><br/>
+
+      <alc-dropdown>
+        <button slot="trigger" class="alc-button" >
+          Alterar
+          <alc-icon name="chevron-down" label=""></alc-icon>
+        </button>
+        <div class="p-4 border">
+          <form action="">
+            <span>Não focalizável</span>
+            <alc-field label="Nome">
+              <input type="text" name="nome" id="nome">
+            </alc-field>
+  
+            <button type="submit" class="alc-button alc-button--secondary mt-2">Confirmar</button>
+          </form>
+        </div>
+  
+      </alc-dropdown>
+
+      <div class="mt-4">
+
+        <button class="alc-button alc-button--secondary js-ver-modal">Ver modal</button>
+
+        <alc-modal header-text="Dropdown na modal">
+
+            <alc-dropdown>
+                <button slot="trigger" class="alc-button alc-button--secondary">
+                    <alc-icon name="three-dots-vertical" label="Ações..."></alc-icon>
+                </button>
+                <alc-menu>
+                    <alc-menu-item value="excluir">
+                        Excluir
+                    </alc-menu-item>
+                    <alc-menu-item value="prioritario">
+                        Marcar como prioritário
+                    </alc-menu-item>
+                    <alc-menu-item value="adiar">
+                        Adiar
+                    </alc-menu-item>
+                </alc-menu>
+            </alc-dropdown>
+
+        </alc-modal>
+
+        <script>
+            const button = document.querySelector('.js-ver-modal');
+            const modal = button.nextElementSibling;
+
+            button.addEventListener('click', () => {
+                modal.show();
+            });
+        </script>
+        
+
+      </div>
+
+      <hr class="my-4">
+
+      <alc-fieldset legend="Fechar dropdown ao disparar evento:" id="fieldsetCheckbox">
+        <div class="flex flex-col gap-2">
+          <alc-checkbox label="click">
+            <input type="checkbox" name="hideOn" value="click" onclick="handleHideOn(event)" />
+          </alc-checkbox>
+          <alc-checkbox label="alc-select">
+            <input type="checkbox" name="hideOn" value="alc-select" onclick="handleHideOn(event)" />
+          </alc-checkbox>
+        </div>
+      </alc-fieldset>
+
+
+    <alc-dropdown id="hide-on-dinamico" class="mt-4">
+        <button slot="trigger" class="alc-button alc-button--secondary">
+            <alc-icon name="three-dots-vertical" label="Ações..."></alc-icon>
+        </button>
+        <alc-menu>
+            <alc-menu-item value="excluir">
+                Excluir
+            </alc-menu-item>
+            <alc-menu-item value="prioritario">
+                Marcar como prioritário
+            </alc-menu-item>
+            <alc-menu-item value="adiar">
+                Adiar
+            </alc-menu-item>
+        </alc-menu>
+    </alc-dropdown>
+
+
+    <script>
+        function handleHideOn(e) {
+            const dropdown = document.getElementById('hide-on-dinamico');
+            const checkboxs = document.querySelectorAll('#fieldsetCheckbox input');
+            
+            let events = '';
+
+            checkboxs.forEach(checkbox => {
+                if(checkbox.checked) {
+                    events = events + ' ' + checkbox.value;
+                } 
+            })
+
+            dropdown.hideOn = events;
+        }
+    </script>
+</body>
+
+</html>

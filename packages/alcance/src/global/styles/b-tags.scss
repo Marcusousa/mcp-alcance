@@ -1,0 +1,88 @@
+/* Definições para tags */
+/* TODO: Ainda não está claro: isso deveria ser feito assim??? */
+
+html {
+  --input-border-width : theme('borderWidth.DEFAULT');
+  --input-border-radius: theme('borderRadius.DEFAULT');
+  --input-border-color : theme('colors.gray.30');
+  --input-shadow       : theme('boxShadow.inner');
+  --input-padding      : theme('padding.2');
+}
+
+/* Tema dark */
+
+[data-alc-theme="dark"] {
+  --body-color-text: var(--alc-color-text-1);
+  --body-color-bg  : var(--alc-color-surface-primary);
+}
+
+
+/* Tema light */
+
+[data-alc-theme="light"] {
+  --body-color-text: var(--alc-color-text-2);
+  --body-color-bg  : var(--alc-color-surface-primary);
+}
+
+/* CSS Comum a todos os temas */
+
+body,
+select,
+option {
+  color           : var(--body-color-text);
+  background-color: var(--body-color-bg);
+}
+
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="image"], [type="button"], [type="reset"], [type="submit"]),
+select,
+textarea {
+  border-width : var(--input-border-width);
+  // border-color : var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  box-shadow   : var(--input-shadow);
+  padding      : calc(var(--input-padding) - var(--input-border-width));
+}
+
+h1 {
+  @apply text-4xl mt-4 mb-2 font-semibold;
+}
+
+h2 {
+  @apply text-3xl mt-4 mb-2 font-medium;
+}
+
+h3 {
+  @apply text-2xl mt-4 mb-2 font-medium;
+}
+
+h4 {
+  @apply text-xl mt-4 mb-2 font-normal;
+}
+
+h5 {
+  @apply text-lg mt-4 mb-2 font-normal;
+}
+
+h6 {
+  @apply text-base mt-4 mb-2 font-semibold;
+}
+
+  /* BODY */
+  /* TODO: Rever esse trecho, não deveria ter dois seletores. */
+  [data-alc-theme="light"] body {
+    background-color: theme('colors.gray-cool.10') !important;
+    /* Fundo temporário da página light - variação 2 Figma */
+    background-color: theme('colors.gray-cool.4') !important;
+    /* Fundo temporário da página light - variação 1 Figma */
+    background-color: theme('colors.white') !important;
+    /* Fundo temporário da página light  - principal Figma*/
+  }
+
+  [data-alc-theme="dark"] body {
+    background-color: theme('colors.mint-cool.70') !important;
+    /* Fundo temporário da página dark - variação 2 Figma */
+    background-color: theme('colors.mint-cool.80') !important;
+    /* Fundo temporário da página dark - variação 1 Figma */
+    background-color: theme('colors.mint-cool.90') !important;
+    /* Fundo temporário da página dark  - principal Figma*/
+  }

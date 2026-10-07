@@ -1,0 +1,19 @@
+alc-tabs {
+  /**
+   * @prop --bg-color: Cor de fundo da tab ativa e seu conteúdo.
+   */
+  --bg-color: var(--alc-color-surface);
+
+  --border-color: var(--alc-color-border);
+  --border-width: var(--alc-border-width);
+
+}
+
+/* Definição das variáveis - Setup dos temas*/
+[data-alc-theme="light"] alc-tabs {
+  --outline-color: var(--alc-color-action-60);
+}
+
+[data-alc-theme="dark"] alc-tabs {
+  --outline-color: var(--alc-color-action-30);
+}

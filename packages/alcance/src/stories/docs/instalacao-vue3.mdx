@@ -1,0 +1,109 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from '../utils/codeExample';
+
+<Meta title="Instalação/Configuração no Vue 3 (Vue CLI)" />
+<h1>Configuração no Vue 3 (Vue CLI)</h1>
+
+
+## Configuração
+
+Copie a pasta `assets` do Alcance para pasta `public/assets/`, conforme o *exemplo* abaixo:
+
+<CodeExample type="js" title="scripts/process.js">
+{`var fs = require('fs');
+var fse = require('fs-extra');
+
+var sourceDir = './node_modules/alcance/dist/assets';
+var destDir = './public/assets';
+
+
+// se a pasta não existir crie-a
+if (!fs.existsSync(destDir)){
+    fs.mkdirSync(destDir, { recursive: true });
+}
+
+// copiar o conteúdo do diretório, incluindo subpastas
+fse.copy(sourceDir, destDir, function (err) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Assets copiados!");
+  }
+});`}
+</CodeExample>
+<Unstyled>
+<alc-alert dismissible="false">
+
+**Nota:** O *exemplo* acima deve ser executado juntamente com o projeto, ou seja, seve ser incorporado ao seu `package.json`.
+
+</alc-alert>
+</Unstyled>
+
+Adicione as seguintes linhas no arquivo `main.js` localizado na pasta `src` do seu projeto:
+
+<CodeExample type="js" title="src/main.js">
+{`import { createApp } from 'vue'
+import App from './App.vue'
+import { applyPolyfills, defineCustomElements } from 'alcance/loader';
+import "alcance/dist/alcance/alcance.css";
+
+// Configure o diretório onde ficam os assets de seu projeto.
+// Isso é especialmente importante para componentes do Alcance que utilizam esse
+// recurso, como o <alc-icon>
+const resourcesUrl = \`\${new URL(window.location).origin}/\`;
+
+applyPolyfills().then(() => {
+  defineCustomElements(window, {
+    resourcesUrl: resourcesUrl
+  });
+});
+
+createApp(App).mount('#app')`}
+</CodeExample>
+Essa configuração corresponde a importação do loader do Alcance, do arquivo de estilos e da definição para a pasta de resources que o Alcance irá utilizar.
+
+Modifique o `vue.config.js` para declarar os componentes como custom components:
+
+<CodeExample type="js" title="vue.config.js">
+{`const { defineConfig } = require('@vue/cli-service');
+module.exports = defineConfig({
+  transpileDependencies: true,
+  chainWebpack: config => {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap(options => {
+        options.compilerOptions = {
+          ...options.compilerOptions,
+          // A bibliotecla de componentes Alcance iniciam com "alc-"
+          isCustomElement: tag => tag.startsWith('alc-'),
+        };
+        return options;
+      });
+  },
+});`}
+</CodeExample>
+
+## Exemplo de uso
+
+<CodeExample type="html" title="/src/pages/PageAlertas.vue">
+{`<template>
+
+  <alc-alert type="info" dismissible="false">
+    <span class="alc-alert__summary">Exemplos de alerta.</span>
+    Seguem alguns exemplos. Esse alerta não pode ser fechado.
+  </alc-alert>
+
+</template>`}
+</CodeExample>
+
+### Projeto Exemplo
+<Unstyled>
+<a href="https://git.camara.gov.br/Seuso/alcance-vue-sample" class="alc-link"><alc-icon name="git" label="Git"></alc-icon> git.camara.gov.br/Seuso/alcance-vue-sample</a>
+</Unstyled>
+<CodeExample type="bash">
+{`git clone https://git.camara.gov.br/Seuso/alcance-vue-sample.git`}
+</CodeExample>
+
+Agora você já pode utilizar os componentes do Alcance em seu projeto VueJS! 😉

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Leiaute com Grid (v1)</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+
+
+  <alc-header-v1 name="Gabinete Digital">
+    <!-- BANDEIRA DE AMBIENTE  -->
+    <alc-environment-label env="prototype"></alc-environment-label>
+    <!-- SKIP-LINKS  -->
+    <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+  </alc-header-v1>
+
+
+  <!-- CORPO -->
+  <div class="alc-layout">
+
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <alc-sidepanel>
+
+      <!-- O MENU EM SI -->
+      <alc-nav>
+
+        <div slot="header">
+
+          <div class="px-5">
+            <alc-user
+              name="João Cabral de Melo Neto"
+              registration-number="P_123456"
+            ></alc-user>
+          </div>
+
+        </div>
+
+
+
+        <!-- <span data-alc-label>
+          Menu
+        </span> -->
+        <ul>
+          <li><a href="#">Institucional</a></li>
+          <li>
+            <span>Aplicações da Transformação Digital</span>
+            <div data-alc-panel>
+              <ul>
+                <li><a href="#">Gabinete Digital</a></li>
+                <li><a href="#">Liderança Digital</a></li>
+                <li><a href="#">Processo Legislativo Digital</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="#">Serviços</a></li>
+          <li>
+            <span>Documentação digital</span>
+            <div data-alc-panel>
+              <ul>
+                <li><a href="#">eDoc</a></li>
+                <li><a href="#">eDoc Forms</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="#">Equipe técnica</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+        <!-- <alc-alert class="m-2 block" dismissible="false">Use com moderação</alc-alert> -->
+        <span data-alc-label>
+          Menu de suporte
+        </span>
+        <ul>
+          <li>
+            <a href="#">
+              <alc-icon name="info-circle" label="" style="color: var(--icon-color)"></alc-icon>
+              Informações do sistema
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <alc-icon name="gear" label="" style="color: var(--icon-color)"></alc-icon>
+              Configurações
+            </a>
+          </li>
+        </ul>
+
+        <!-- @TODO Isso será modificado quando definirmos a interface definitiva para alc-theme -->
+        <div class="mx-5 mb-5">
+          <label>Tema</label>
+          <alc-theme></alc-theme>
+        </div>
+
+      </alc-nav>
+    </alc-sidepanel>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="main-content" class="alc-layout__content">
+
+      <!--
+        Daqui em diante, é necessário observar o uso de "container-fluid"
+        de acordo com as necessidades do leiaute.
+      -->
+
+      <div class="alc-layout__full-width py-1 md:py-2 bg-orange-20">
+        <div class="container">
+          Você está representando <a href="#" class="alc-link alc-link--color-text">alguém</a>.
+        </div>
+      </div>
+
+
+      <div class="container">
+        <h1>Grid</h1>
+        <alc-alert type="warning" dismissible="false">
+          Esse leiaute não está preparado para tema escuro!
+        </alc-alert>
+
+      </div>
+
+
+      <div class="container">
+        <h2>Bootstrap</h2>
+      </div>
+
+      <div class="container">
+        <h3>4 colunas - o básico</h3>
+        <div class="row">
+          <div class="col">1</div>
+          <div class="col">2</div>
+          <div class="col">3</div>
+          <div class="col">4</div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>"Sangria"</h3>
+      </div>
+      <!-- @@@ A "sangria" propriamente dita não faz parte do grid (fora do container) -->
+      <div class="alc-layout__full-width bg-skin-surface-tertiary py-2">
+        <div class="container ">
+          <div class="row">
+            <div class="col-12">
+              <p class="text-center">Filtro</p>
+            </div>
+            <div class="col-6">
+              <label for="inicio">Início</label>
+              <input class="w-full" type="text" name="inicio" id="inicio">
+            </div>
+            <div class="col-6">
+              <label for="fim">Fim</label>
+              <input class="w-full" type="text" name="fim" id="fim">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>Conteúdos relacionados (versão A)</h3>
+        <p>Retira todo o padding esquerdo de <code>col</code>, e adiciona um padding equivalente em ambos os lados do conteiner interno.</p>
+        <p>Isso é equivalente ao que o Carbon faz.</p>
+        <div class="row">
+          <div class="col-6 col-md-3   pl-0 mb-4">
+            <div class="bg-red-10v   px-4">
+              A receber: 2
+            </div>
+          </div>
+          <div class="col-6 col-md-3 pl-0 mb-4">
+            <div class="bg-green-10v px-4">
+              Em análise: 10
+            </div>
+          </div>
+          <div class="col-6 col-md-3 pl-0 mb-4">
+            <div class="bg-orange-10v px-4">
+              Suspensos: 1
+            </div>
+          </div>
+          <div class="col-6 col-md-3 pl-0 mb-4">
+            <div class="bg-blue-10v px-4">
+              A enviar: 2
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>Conteúdos relacionados (versão B)</h3>
+        <p>Retira metade do padding de <code>col</code>, e adiciona um padding equivalente em ambos os lados do conteiner interno.</p>
+        <div class="row">
+          <div class="col-6 col-md-3   px-2 mb-4">
+            <div class="bg-red-10v   px-2">
+              A receber: 2
+            </div>
+          </div>
+          <div class="col-6 col-md-3 px-2 mb-4">
+            <div class="bg-green-10v px-2">
+              Em análise: 10
+            </div>
+          </div>
+          <div class="col-6 col-md-3 px-2 mb-4">
+            <div class="bg-orange-10v px-2">
+              Suspensos: 1
+            </div>
+          </div>
+          <div class="col-6 col-md-3 px-2 mb-4">
+            <div class="bg-blue-10v px-2">
+              A enviar: 2
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>Conteúdos relacionados (versão B com mais conteúdo)</h3>
+        <p>A técnica é a mesma, somente com a inclusão de conteúdo mais elaborado.</p>
+        <div class="row">
+          <div class="col-6 col-md-3 px-2 mb-4">
+            <div class="bg-gray-5">
+              <h4 class="bg-red-10v p-2 m-0">A receber</h4>
+              <div class="text-red-80v text-center text-2xl px-2 pb-4">2</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 px-2 mb-4">
+            <div class="bg-gray-5">
+              <h4 class="bg-green-10v p-2 m-0">Em análise</h4>
+              <div class="text-green-80v text-center text-2xl px-2 pb-4">10</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 px-2 mb-4">
+            <div class="bg-gray-5">
+              <h4 class="bg-orange-10v p-2 m-0">Suspensos</h4>
+              <div class="text-orange-80v text-center text-2xl px-2 pb-4">1</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 px-2 mb-4">
+            <div class="bg-gray-5">
+              <h4 class="bg-blue-10v p-2 m-0">A enviar</h4>
+              <div class="text-blue-80v text-center text-2xl px-2 pb-4">2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container">
+        <div class="row">
+          <div class="col bg-red-20">1</div>
+          <div class="col bg-green-20">2</div>
+          <div class="col bg-gold-20">3</div>
+          <div class="col bg-indigo-20">4</div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>Elementos com borda</h3>
+        <p>As bordas "quebram" o alinhamento no grid de 8px. É um problema? Devemos ter alguma recomendação?</p>
+        <div class="row">
+          <div class="col-3">
+            <div class="border-2 border-blue-50 bg-blue-10 p-2">| 1</div>
+          </div>
+          <div class="col-3">
+            <div class="border-2 border-blue-50 bg-blue-10 p-2">| 2</div>
+          </div>
+          <div class="col-6">
+            <div class="border-2 border-blue-50 bg-blue-10 p-2">| Conteúdo</div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="container">
+        <div class="row">
+          <div class="col-3">
+            <div class="bg-blue-10 p-2">| 1</div>
+          </div>
+          <div class="col-3">
+            <div class="bg-blue-10 p-2">| 2</div>
+          </div>
+          <div class="col-6">
+            <div class="bg-blue-10 p-2">| Conteúdo</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

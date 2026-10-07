@@ -1,0 +1,157 @@
+{/* alc-loading.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-loading.stories';
+import LoadingProps from './alc-loading.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente Loading é utilizado para indicar que uma operação está em andamento, fornecendo feedback visual e auditivo aos usuários. 
+Ele suporta diferentes variações visuais para se adequar a diversas situações em sua aplicação.
+
+## Variações
+
+### Fullscreen
+
+O loading ocupa a tela inteira, bloqueando a interação do usuário com a interface.
+
+<CodeExample type="html">
+{`<alc-loading active variant="full-screen" label="Carregando dados..."></alc-loading>`}
+</CodeExample>
+
+*Uso comum*: Quando uma ação global está em andamento e nenhuma interação deve ser permitida até a conclusão.
+
+### Container
+
+O loading é exibido sobre um elemento específico, geralmente um container ou seção da página.
+
+<CodeExample type="html">
+{`<div class="relative">
+  <!-- Conteúdo do container -->
+  <alc-loading active variant="container" label="Processando..."></alc-loading>
+</div>`}
+</CodeExample>
+
+*Uso comum*: Quando uma ação específica dentro de um container está em andamento.
+
+### Inline
+
+O loading é exibido dentro de um texto, alinhado com o conteúdo.
+
+<CodeExample type="html">
+{`<p>
+  Estamos analisando seus dados
+  <alc-loading active variant="inline" label="Analisando..."></alc-loading>
+</p>`}
+</CodeExample>
+
+*Uso comum*: Para indicar processos que estão ocorrendo em segundo plano, sem interromper a leitura ou fluxo de conteúdo.
+
+### Button
+
+O loading é exibido dentro de um botão, indicando que uma ação foi iniciada e está em andamento.
+
+<CodeExample type="html">
+{`<button class="alc-button">
+  Enviar
+  <alc-loading active variant="button" label="Enviando..."></alc-loading>
+</button>`}
+</CodeExample>
+
+*Uso comum*: Quando uma ação iniciada pelo botão está em andamento, como o envio de um formulário.
+
+## Exemplo de uso
+
+<CodeExample type='html'>
+{`<template>
+  <div>
+    <!-- Full-screen -->
+    <button @click="iniciarCarregamentoFullScreen">Iniciar Loading Full-screen</button>
+    <alc-loading :active="loadingFullScreen" variant="full-screen" label="Carregando dados..."></alc-loading>
+
+    <!-- Container -->
+    <div class="container mt-4">
+      <div class="conteudo">
+        <p>Conteúdo do container</p>
+      </div>
+      <alc-loading :active="loadingContainer" variant="container" label="Processando..."></alc-loading>
+    </div>
+    <button @click="iniciarCarregamentoContainer">Iniciar Loading Container</button>
+
+    <!-- Inline -->
+    <p>
+      Estamos analisando seus dados
+      <alc-loading :active="loadingInline" variant="inline" label="Analisando..."></alc-loading>
+    </p>
+    <button @click="iniciarCarregamentoInline">Iniciar Loading Inline</button>
+
+    <!-- Button -->
+    <button class="btn" @click="enviarDados">
+      Enviar
+      <alc-loading :active="loadingButton" variant="button" label="Enviando..."></alc-loading>
+    </button>
+  </div>
+</template>
+
+<script>
+import { AlcLoading } from 'alcance-vue-library';
+
+export default {
+  components: {
+    AlcLoading,
+  },
+  data() {
+    return {
+      loadingFullScreen: false,
+      loadingContainer: false,
+      loadingInline: false,
+      loadingButton: false,
+    };
+  },
+  methods: {
+    iniciarCarregamentoFullScreen() {
+      this.loadingFullScreen = true;
+      setTimeout(() => {
+        this.loadingFullScreen = false;
+      }, 3000);
+    },
+    iniciarCarregamentoContainer() {
+      this.loadingContainer = true;
+      setTimeout(() => {
+        this.loadingContainer = false;
+      }, 3000);
+    },
+    iniciarCarregamentoInline() {
+      this.loadingInline = true;
+      setTimeout(() => {
+        this.loadingInline = false;
+      }, 3000);
+    },
+    enviarDados() {
+      this.loadingButton = true;
+      // Simula uma operação assíncrona
+      setTimeout(() => {
+        this.loadingButton = false;
+      }, 3000);
+    },
+  },
+};
+</script>`}
+</CodeExample>
+
+## Recomendações 
+
+- Deve possuir apenas um loading ativo na página.
+- Mantenha o loading no DOM e use `active` ou `show()/hide()` para controlá-lo. Evite manipular pelo DOM ou estilos, pois isso tornará inacessível para leitores de tela.
+- Ao encerrar o loading, considere mover o foco para um elemento relevante, melhorando a experiência e a acessibilidade.
+- O texto exibido durante o loading deve ser breve e descrever claramente a ação (ex.: "Processando", "Atualizando", "Salvando").
+- Mantenha label e end-msg coerentes. Se o label for "Salvando...", use o end-msg como "Salvo" ou "Concluído", mas não "Atualizado".
+- Textos de loading devem ser curtos e diretos. Prefira usar "Salvo" ao invés de frases longas como "Seu arquivo foi salvo corretamente".
+- Evite usar loading para tarefas cuja execução seja instantânea do ponto de vista do usuário, pois isso pode causar distração desnecessária.
+- Para tarefas com duração variável, aguarde 2-3 segundos antes de ativar o loading, evitando que ele apareça e desapareça rapidamente, criando ruído visual.
+
+
+<Markdown>{LoadingProps}</Markdown>

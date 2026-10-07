@@ -1,0 +1,19 @@
+{/* alc-table.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-table.stories';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+
+## Combinado
+
+<Canvas of={Stories.Combinado} sourceState="shown" />
+<Controls of={Stories.Combinado} />

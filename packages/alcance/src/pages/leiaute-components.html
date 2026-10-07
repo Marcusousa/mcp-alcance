@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Leiaute com Componentes</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+
+  <alc-header-v1 name="Gabinete Digital" home-url="#">
+    <!-- BANDEIRA DE AMBIENTE  -->
+    <alc-environment-label env="prototype"></alc-environment-label>
+    <!-- SKIP-LINKS  -->
+    <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+    <alc-skip-to-nav></alc-skip-to-nav>
+  </alc-header-v1>
+
+  <!-- CORPO -->
+  <div class="alc-layout">
+
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <alc-sidepanel>
+
+      <!-- O MENU EM SI -->
+      <alc-nav>
+
+        <div slot="header">
+
+          <div class="px-5">
+            <alc-user
+              name="João Cabral de Melo Neto"
+              registration-number="P_123456"
+            ></alc-user>
+          </div>
+
+        </div>
+
+
+
+        <!-- <span data-alc-label>
+          Menu
+        </span> -->
+        <ul>
+          <li><a href="#">Institucional</a></li>
+          <li>
+            <span>Aplicações da Transformação Digital</span>
+            <div data-alc-panel>
+              <ul>
+                <li><a href="#">Gabinete Digital</a></li>
+                <li><a href="#">Liderança Digital</a></li>
+                <li><a href="#">Processo Legislativo Digital</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="#">Serviços</a></li>
+          <li>
+            <span>Documentação digital</span>
+            <div data-alc-panel>
+              <ul>
+                <li><a href="#">eDoc</a></li>
+                <li><a href="#">eDoc Forms</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="#">Equipe técnica</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+        <!-- <alc-alert class="m-2 block" dismissible="false">Use com moderação</alc-alert> -->
+        <span data-alc-label>
+          Menu de suporte
+        </span>
+        <ul>
+          <li>
+            <a href="#">
+              <alc-icon name="info-circle" label="" style="color: var(--icon-color)"></alc-icon>
+              Informações do sistema
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <alc-icon name="gear" label="" style="color: var(--icon-color)"></alc-icon>
+              Configurações
+            </a>
+          </li>
+        </ul>
+
+        <!-- @TODO Isso será modificado quando definirmos a interface definitiva para alc-theme -->
+        <div class="mx-5 mb-5">
+          <label>Tema</label>
+          <alc-theme></alc-theme>
+        </div>
+
+      </alc-nav>
+    </alc-sidepanel>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="main-content" class="alc-layout__content">
+
+      <!--
+        Daqui em diante, é necessário observar o uso de "container"
+        de acordo com as necessidades do leiaute.
+      -->
+
+      <div class="container-fluid">
+
+        <!-- TITULO DA PAGINA -->
+        <h1 id="SIGEPA">Transferência de crédito para SIGEPA</h1>
+
+        <!-- ALERTA -->
+        <alc-alert type="success" dismissible="false">
+          Crédito de R$300,00 foi transferido. A transferencia pode ser verificado no <strong>Sistema de Gestão de Passagem
+            Área (SIGEPA)</strong> através da <strong>Ordem de serviço N 265</strong>.
+        </alc-alert>
+
+
+        <h2>
+          Essa tabela é um elemento crítico
+        </h2>
+
+        <p>Ela está aqui para que possamos sempre ver o comportamento de uma tabela larga no leiaute.</p>
+
+        <hr class="my-2">
+
+        <alc-datatable options='{"columnDefs": [{ "orderable": false, "targets": [7] }]}'>
+          <table>
+            <thead>
+              <tr>
+                <th>Sigla da Atividade</th>
+                <th>Nome da Atividade</th>
+                <th>Processo Nível 3</th>
+                <th>Processo Nível 2</th>
+                <th>Unidade</th>
+                <th>Complexidade mínima</th>
+                <th>Complexidade máxima</th>
+                <th class="w-1/12">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AtividadeTeste</td>
+                <td>Realizar Atividade de teste</td>
+                <td>Desenvolver solução digital</td>
+                <td>(processos comuns)</td>
+                <td>SECID</td>
+                <td></td>
+                <td></td>
+                <td>
+                  <a href="https://www.tablesgenerator.com/editor_tipo_atividade?ide_atividade=20">Alterar</a><br>                     <br><a href="https://www.tablesgenerator.com/html_tables#">Excluir</a>                &nbsp;&nbsp;           </td>
+              </tr>
+            </tbody>
+          </table>
+        </alc-datatable>
+
+      </div>
+
+      <div class="alc-layout__full-width bg-skin-surface-secondary py-10 ">
+
+        <div class="container">
+          <p class="text-lg">É interessante demonstrar que podemos ter um elemento fora do "container"</p>
+          <p>Observe que essa faixa com cor de fundo diferente vai de um lado a outro do espaço disponível.</p>
+          <p>Ao fazer isso, o <code>container</code> deve estar contido no elemento que define a cor de fundo.</p>
+        </div>
+      </div>
+
+      <div class="container">
+
+        <section class="mt-5">
+          <!-- TITULO DA SEÇÃO -->
+          <h2 class="text-base">
+            Deputado
+            <strong class="block text-xl">Machado de Assis</strong>
+          </h2>
+
+          <!-- CARD ORIGEM   -->
+          <div class="bg-[color:var(--alc-color-surface-secondary)] p-3 roundend">
+            <div class="p-2 rounded-full border border-[color:var(--alc-color-neutral-20)] w-max text-sm">
+              Origem
+            </div>
+            <div class="mt-3">
+              Saldo da CEAP
+              <strong class="block text-lg">R$ 125.000,00</strong>
+            </div>
+          </div>
+
+          <!-- CARD DESTINO   -->
+          <div class="bg-[color:var(--alc-color-surface-secondary)] p-3 roundend mt-2">
+            <div class="p-2 rounded-full border border-[color:var(--alc-color-neutral-20)] w-max text-sm">
+              Destino
+            </div>
+            <div class="mt-3">
+              Atualmente, não é possivel exibir o valor do saldo SIGEPA.
+            </div>
+          </div>
+
+          <!-- INFORMAÇÕES -->
+          <p class="mt-5">
+            Permite a transferência de recursos da Cota para Exercício de Atividade Parlamentar (CEAP) para o <a href="#" class="alc-link js-ceap-modal">uso como crédito</a>.
+          </p>
+
+          <!-- MODAL -->
+          <alc-modal class="js-ceap-modal" header-text="Uso da CEAP como crédito">
+            Permite aos parlamentares transferirem recursos da CEAP e usá-los como crédito, oferecendo uma flexibilidade adicional na gestão desses recursos para atividades relacionadas ao exercício de suas funções parlamentares.
+          </alc-modal>
+
+          <script>
+            trigger = document.querySelector('a.js-ceap-modal');
+            modal = document.querySelector('alc-modal.js-ceap-modal');
+
+            trigger.addEventListener('click', e => {
+              e.preventDefault();
+              modal.show();
+            });
+          </script>
+
+          <!-- INPUT DE TRANSFERENCIA -->
+          <div class="my-5">
+            <div class="row">
+              <div class="col-sm-4 col-lg-3">
+                <alc-field label="Valor da transferência">
+                  <input type="number" name="valor-transferencia" placeholder="R$ 0,00" />
+                </alc-field>
+              </div>
+            </div>
+            <button class="alc-button mt-2">Transferir crédito Aéreo</button>
+          </div>
+
+        </section>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    const header = document.querySelector('alc-header')
+    header.addEventListener("alc-home", function (e) { 
+      console.log(`alc-home `, e) 
+      e.preventDefault();
+    });
+  </script>
+
+</body>
+
+</html>

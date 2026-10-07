@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Menu Container</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+
+  <alc-header name="Alcance">
+    <!-- BANDEIRA DE AMBIENTE  -->
+    <alc-environment-label env="prototype"></alc-environment-label>
+    <!-- SKIP-LINKS  -->
+    <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+  </alc-header>
+
+  <!-- CORPO -->
+  <div class="alc-layout">
+
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <alc-sidepanel>
+
+      <alc-expander label="Conteúdo Secreto" open="false" hide-summary="true">
+        <div>
+            <alc-menu>
+                <alc-menu-item>Item</alc-menu-item>
+                <alc-menu-item type="radio">Radio</alc-menu-item>
+                <alc-menu-item type="radio" checked>Radio checked</alc-menu-item>
+                <alc-menu-item type="checkbox">Checkbox</alc-menu-item>
+                <alc-menu-item type="checkbox" checked>Checkbox checked</alc-menu-item>
+                <alc-menu-item disabled>Disabled</alc-menu-item>
+                <alc-menu-item>
+                  Prefix Icon
+                  <alc-icon name="gift" label="" slot="prefix"></alc-icon>
+                </alc-menu-item>
+                <alc-menu-item>
+                  Suffix Icon
+                  <alc-icon name="gift" label="" slot="suffix"></alc-icon>
+                </alc-menu-item>
+              </alc-menu>
+        </div>
+    </alc-expander>
+
+    </alc-sidepanel>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="main-content" class="alc-layout__content">
+
+      <!--
+        Daqui em diante, é necessário observar o uso de "container"
+        de acordo com as necessidades do leiaute.
+      -->
+
+      <div class="container">
+
+        <!-- TITULO DA PAGINA -->
+        <h1>Sidepanel</h1>
+        Conteúdo da página aqui.
+
+        <alc-alert dismissible="false">
+          Esta página implementa o salvamento do estado do sidepanel em sessionStorage.
+        </alc-alert>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+
+    document.querySelector('alc-sidepanel').addEventListener('alc-state-request', e => {
+      console.log('O estado foi requisitado');
+      e.detail.state = JSON.parse(sessionStorage.getItem('app-sidepanel'));
+    });
+
+    document.querySelector('alc-sidepanel').addEventListener('alc-state-change', e => {
+      console.log('O estado foi modificado:', e.detail.state);
+      sessionStorage.setItem('app-sidepanel', JSON.stringify(e.detail.state) );
+    });
+  </script>
+
+</body>
+
+</html>

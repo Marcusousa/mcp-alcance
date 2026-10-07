@@ -1,0 +1,157 @@
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-nav-panel.stories';
+import NavPanelProps from './alc-nav-panel.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+import { ColorHEX, Scale } from '../../../stories/utils/designRender.jsx';
+
+
+<Meta of={Stories} name="Design" />
+
+# Design de {Stories.default.name}
+
+O nav-panel é um contêiner onde ficam os elementos de navegação principal, à esquerda, na visualização desktop.
+
+Na visualização mobile, há uma junção de vários elementos de navegação, como o menu principal, a identificação do usuário e o menu de apoio.
+
+Aqui foram documentados aspectos de design de ambos os cenários, não apenas do nav-panel, mas dos elementos nele contidos.
+
+
+## Anatomia - Nav | Mobile
+
+
+<img src='./static/images/nav/anatomia-nav-mobile.svg' alt="Anatomia do nav" style={{margin: "1.5rem 0"}}/>
+
+<span style={{color: "#168092"}}>**1 - Botão para fechar o menu**</span>
+
+Deve incluir um ícone "X" e fechar ao clicar fora do menu.
+
+<span style={{color: "#168092"}}>**2 - Identificação do Usuário**</span>
+
+Exibe nome, foto, ponto (opcional) e papel do usuário logado.
+
+<span style={{color: "#168092"}}>**3 - Acionador do menu do usuário e apoio**</span>
+
+Botão (seta) que abre/fecha o menu do usuário com opções secundárias e de apoio.
+
+<span style={{color: "#168092"}}>**4 - Título da lista de itens do menu**</span>
+
+Rótulo que organiza visualmente os itens do menu em categorias.
+
+<span style={{color: "#168092"}}>**5 - Lista de itens do menu**</span>
+
+Conjunto de links ou botões que direcionam para opções do usuário ou funcionalidades de destaque do sistema.
+
+<span style={{color: "#168092"}}>**6 - Navegação multinível**</span>
+
+Painel de navegação, que quando um item é acionado, salta para outra página da aplicação ou desliza para opções adicionais relacionadas, em um segundo nível do painel.
+
+
+### Espaçamento
+
+<img src='./static/images/nav/espacamento-nav-mobile.svg' alt="Espaçamento do nav" style={{marginTop: "1.5rem"}}/>
+<img src='./static/images/nav/espacamento-nav-item-mobile.svg' alt="Espaçamento do item do nav" style={{marginTop: "1.5rem"}}/>
+
+
+### Tipografia
+
+**Font Family: ROBOTO**
+
+| Elemento              | Font/Line-height (rem) | Font/Line-height (px) | Peso    |
+|-----------------------|------------------------|-----------------------|---------|
+| Usuário               | 1 / 1.5                | 16 / 24               | Medium  |
+| Função                | 0.875 / 1              | 14 / 16               | Regular |
+| Ponto (P_999999)      | 1 / 1.5                | 16 / 24               | Regular |
+| Label botão           | 1 / 1.5                | 16 / 24               | Regular |
+| Título menu de apoio  | --                     | 12 / 24               | Bold    |
+
+
+### Ícone
+
+|Elemento             |Representação                     | px     | Rem     |
+|---------------------|:--------------------------------:|:------:|:-------:|
+| Ícone menu          | <Scale width={16} height={16} /> | 16x16  |   1     |
+| Ícone título        | <Scale width={20} height={20} /> | 20x20  |   1.25  |
+| Ícone usuário       | <Scale width={64} height={64} /> | 64x64  |   4     |
+
+
+
+## Anatomia - Nav | Desktop
+
+<span style={{color: "#168092"}}>**1 - Acionador do Menu**</span>
+
+Botão que abre o menu principal de navegação,  representado por um ícone de "hambúrguer".
+
+O abrir e fechar deve ter uma transição que mostre pra onde foi menu.
+
+<span style={{color: "#168092"}}>**2 - Desligador do Menu**</span>
+
+Área ou botão que fecha o menu principal, podendo incluir um ícone de "X" ou ser ativada ao clicar fora do menu.
+
+<span style={{color: "#168092"}}>**3 - Titulo da lista de itens do menu**</span>
+
+Rótulo que organiza visualmente os itens do menu, indicando a categoria ou seção.
+
+<span style={{color: "#168092"}}>**4 - Lista de itens do menu**</span>
+
+Conjunto de links ou botões que direcionam para as páginas ou seções principais do sistema.
+
+<span style={{color: "#168092"}}>**5 - Item de menu com submenu**</span>
+
+Elemento do menu que, ao ser acionado, revela opções adicionais relacionadas em um segundo nível do painel.
+
+<span style={{color: "#168092"}}>**6 - Barra delimitadora do menu**</span>
+
+Linha ou área visual que separa o menu do restante da interface, ajudando na organização e leitura.
+
+### Cores - Light
+
+<div style={{display: "inline-flex", gap: "1rem", justifyContent: "center", width: "100%"}}>
+    <img src='./static/images/nav/nav-mobile.svg' alt="Anatomia do nav" style={{margin: "1.5rem 0"}}/>
+    <img src='./static/images/nav/nav-desktop.svg' alt="Anatomia do nav" style={{margin: "1.5rem 0"}}/>
+</div>
+
+
+|Elemento                       |Representação                                     | HEX       | USWDS - Token |
+|-------------------------------|:------------------------------------------------:|-----------|:-------------:|
+| Texto - Usuário               | <ColorHEX theme="light" hex="2E2E2E"></ColorHEX> | #2E2E2E  | gray-80        |
+| Texto - Função                | <ColorHEX theme="light" hex="2E2E2E"></ColorHEX> | #2E2E2E  | gray-80        |
+| Texto - Título do Painel      | <ColorHEX theme="light" hex="1B1B1B"></ColorHEX> | #1B1B1B  | gray-90        |
+| Texto - Título Lista de Itens | <ColorHEX theme="light" hex="1B1B1B"></ColorHEX> | #1B1B1B  | gray-90        |
+| Texto - Item da lista         | <ColorHEX theme="light" hex="2A648A"></ColorHEX> | #2A648A  | blue-60        |
+| Ícone fechar                  | <ColorHEX theme="light" hex="2E2E2E"></ColorHEX> | #2E2E2E  | gray-80        |
+| Ícone seta (submenu)          | <ColorHEX theme="light" hex="757575"></ColorHEX> | #757575  | gray-50        |
+| Ícone seta (painel)           | <ColorHEX theme="light" hex="2A648A"></ColorHEX> | #2A648A  | blue-60        |
+| Background                    | <ColorHEX theme="light" hex="EDEFF0"></ColorHEX> | #EDEFF0  | gray-cool-5    |
+| Barra lateral                 | <ColorHEX theme="light" hex="E0F7F6"></ColorHEX> | #E0F7F6  | mint-cool-5    |
+| Sombra                        | <ColorHEX theme="light" hex="C9C9C9"></ColorHEX> | #C9C9C9  | gray-20        |
+
+Sombra: Desfoque: 4%  - Transparencia: 10%
+
+### Cores - Dark
+
+<div style={{display: "inline-flex", gap: "1rem", justifyContent: "center", width: "100%"}}>
+    <img src='./static/images/nav/nav-mobile-dark.svg' alt="Anatomia do nav" style={{margin: "1.5rem 0"}}/>
+    <img src='./static/images/nav/nav-desktop-dark.svg' alt="Anatomia do nav" style={{margin: "1.5rem 0"}}/>
+</div>
+
+
+|Elemento                       |Representação                                     | HEX       | USWDS - Token |
+|-------------------------------|:------------------------------------------------:|-----------|:-------------:|
+| Texto - Usuário               | <ColorHEX theme="dark" hex="E6E6E6"></ColorHEX> | #E6E6E6  | gray-10        |
+| Texto - Função                | <ColorHEX theme="dark" hex="E6E6E6"></ColorHEX> | #E6E6E6  | gray-10        |
+| Texto - Título do Painel      | <ColorHEX theme="dark" hex="FFFFFF"></ColorHEX> | #FFFFFF  | white          |
+| Texto - Título Lista de Itens | <ColorHEX theme="dark" hex="C9C9C9"></ColorHEX> | #C9C9C9  | gray-20        |
+| Texto - Item da lista         | <ColorHEX theme="dark" hex="28A0CB"></ColorHEX> | #28A0CB  | blue-cool-40v  |
+| Ícone fechar                  | <ColorHEX theme="dark" hex="C9C9C9"></ColorHEX> | #C9C9C9  | gray-20        |
+| Ícone seta (submenu)          | <ColorHEX theme="dark" hex="757575"></ColorHEX> | #757575  | gray-50        |
+| Ícone seta (painel)           | <ColorHEX theme="dark" hex="28A0CB"></ColorHEX> | #28A0CB  | blue-cool-40v  |
+| Background                    | <ColorHEX theme="dark" hex="000000"></ColorHEX> | #000000  | black          |
+| Barra lateral                 | <ColorHEX theme="dark" hex="2C4A4E"></ColorHEX> | #2C4A4E  | cyan-70        |
+| Sombra                        | <ColorHEX theme="dark" hex="C9C9C9"></ColorHEX> | #C9C9C9  | gray-20        |
+
+Sombra: Desfoque: 4%  - Transparência: 10%
+
+
+## Documentação completa
+
+A documentação completa está no [Guia de Estilo - Header e Navegação (PDF, 8MB)](https://drive.camara.leg.br/s/E8zaA95osPMNBja).

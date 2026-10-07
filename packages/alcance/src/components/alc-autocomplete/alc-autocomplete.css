@@ -1,0 +1,132 @@
+[data-alc-theme="light"] alc-autocomplete {
+  --bg-color: var(--alc-color-surface-primary);
+  --bg-color-footer: var(--alc-color-layer-b);
+  --bg-color-hover: var(--alc-color-layer-b);
+  --border-color: var(--alc-color-neutral-60);
+  --border-color-hover: var(--alc-color-action-60);
+  --border-color-focus : var(--alc-color-action-20);
+  --text-color: var(--alc-color-text-primary);
+}
+
+[data-alc-theme="dark"] alc-autocomplete {
+  --bg-color: var(--alc-color-surface-primary);
+  --bg-color-footer: var(--alc-color-layer-b);
+  --bg-color-hover: var(--alc-color-layer-b);
+  --border-color: var(--alc-color-neutral-60);
+  --border-color-hover: var(--alc-color-action-60);
+  --border-color-focus : var(--alc-color-action-20);
+  --text-color: var(--alc-color-text-primary);
+}
+
+alc-autocomplete {
+  @apply block;
+}
+
+.alc-autocomplete__grid.is-hidden {
+  @apply hidden;
+}
+
+.alc-autocomplete__result-cell{
+  @apply leading-6;
+}
+
+.alc-autocomplete__grid {
+  @apply min-w-64 w-full bg-[--bg-color] border border-solid border-[--border-color] p-[--alc-spacing-none] z-10;
+}
+
+.alc-autocomplete__message-row-container {
+  /* @apply min-w-64 absolute w-full; */
+  @apply w-full;
+}
+
+.alc-autocomplete__result-row {
+  @apply p-[--alc-spacing-03] cursor-default flex;
+}
+
+.alc-autocomplete__result-row:hover {
+  @apply bg-[--bg--color-hover];
+}
+
+.alc-autocomplete__result-row:hover {
+  @apply bg-[--bg-color-hover];
+}
+
+.alc-autocomplete__result-row.is-focused {
+  @apply text-[--text-color] underline border-2 border-solid border-[--border-color-hover] rounded-sm;
+}
+
+/* Rever linha abaixo */
+.alc-autocomplete__result-cell.is-focused {
+  @apply underline;
+}
+
+.alc-autocomplete__result-cell {
+  @apply text-base inline-block cursor-default m-[--alc-spacing-none] px-[--alc-spacing-02];
+}
+
+.alc-autocomplete__result-cell:nth-child(n+2) {
+  @apply text-xs font-normal text-[--text-color] leading-6;
+}
+
+.alc-autocomplete__icon {
+  @apply absolute left-[--alc-spacing-03] top-[--alc-spacing-03] pointer-events-none;
+}
+
+.alc-field__input.alc-autocomplete__input {
+  @apply pl-[--alc-spacing-07];
+}
+
+.alc-autocomplete__clear-button {
+  @apply cursor-pointer absolute right-[--alc-spacing-02];
+}
+
+.alc-autocomplete__message-row {
+  @apply p-[--alc-spacing-03] italic text-[--text-color] bg-[--bg-color-footer] border-x border-b border-solid border-[--border-color];
+}
+
+.alc-autocomplete__field .alc-field__core {
+  @apply relative;
+}
+
+.alc-field__input.alc-autocomplete__input {
+  @apply pl-[--alc-spacing-07] pr-[--alc-spacing-09] text-ellipsis;
+}
+
+.alc-autocomplete__result-row--horizontal {
+  @apply flex-row
+}
+
+.alc-autocomplete__result-row--vertical {
+  @apply flex-col
+}
+
+.alc-autocomplete__grid--vertical {
+  @apply overflow-y-scroll max-h-full;
+}
+
+.alc-autocomplete__has-an-error-indicator, .alc-autocomplete__loading-indicator {
+  @apply bg-[--bg-color-footer] font-[#000] border border-solid border-[--border-color] p-[--alc-spacing-03] -mb-[--alc-spacing-02] flex items-center;
+}
+
+.alc-autocomplete__loading-icon {
+  @apply mr-[--alc-spacing-02] animate-spin;
+}
+
+/* Centralizar o icone */
+.alc-autocomplete__loading-icon .icon-inner {
+  @apply block;
+}
+
+/* Centralizar o icone */
+.alc-autocomplete__loading-icon .alc-icon__image {
+  @apply top-[--alc-spacing-none] mt-[--alc-spacing-none] h-auto w-auto;
+}
+
+
+.alc-autocomplete__container-results {
+  @apply h-full max-h-[inherit];
+}
+
+.alc-autocomplete__results {
+  @apply h-full max-h-[inherit] flex flex-col;
+}

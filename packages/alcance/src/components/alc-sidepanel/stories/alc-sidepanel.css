@@ -1,0 +1,19 @@
+/* Define uma altura para não ficar alterando o tamanho quando abre e fecha o sidepanel */
+.sidepanel-example-container {
+    height: 20rem;
+    overflow: hidden;
+}
+
+/* Ajustes na posição do botão de hamburguer */
+.sidepanel-example-container .alc-sidepanel__desktop-container .alc-button {
+    margin-left: 0.5rem;
+}
+
+.sidepanel-example-container .alc-sidepanel__mobile-container .alc-button {
+    margin-right: 0.5rem;
+}
+
+/* Esconder o sombreamento inferior do drawer */
+.sidepanel-example-container .alc-drawer__overlay {
+    overflow: hidden;
+}

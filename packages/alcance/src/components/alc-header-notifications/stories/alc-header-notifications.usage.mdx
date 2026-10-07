@@ -1,0 +1,29 @@
+{/* alc-header-notifications.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-header-notifications.stories';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.name}
+Por padrão o componente é um botão.
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## {Stories.Link.name}
+Quando a notificação leva o usuário para uma página específica, utilize o componente como link.
+<Canvas of={Stories.Link} sourceState="shown" />
+<Controls of={Stories.Link} />
+
+## {Stories.ExceedsValue.name}
+Quando a quantidade de notificações for 0, o badge numérico não será exibido e se a notificação 
+passa de 99, o componente exibe o valor como "99+".
+<Canvas of={Stories.ExceedsValue} sourceState="shown" />
+<Controls of={Stories.ExceedsValue} />
+
+## {Stories.Dropdown.name}
+Você pode utilizar com o componente dropdown, exibindo uma lista de notificações.
+<Canvas of={Stories.Dropdown} sourceState="shown" />
+<Controls of={Stories.Dropdown} />

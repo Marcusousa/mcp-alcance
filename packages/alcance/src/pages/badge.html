@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Badge</title>
+
+    <script type="module" src="/build/alcance.esm.js"></script>
+    <script nomodule src="/build/alcance.js"></script>
+    <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <alc-theme></alc-theme>
+        <hr class="mb-2">
+        <!-- Exemplo com posição floating e pulsação -->
+        <alc-badge position="floating" color="success" dot="true" pulsate="true">
+            <alc-icon name="heart" label="Coração"></alc-icon>
+        </alc-badge>
+
+        <!-- Exemplo com posição default sem pulsação -->
+        <alc-badge position="default" color="success" dot="true">
+            <alc-icon name="heart" label="Coração"></alc-icon>
+        </alc-badge>
+
+        <!-- Exemplo badge simples -->
+        <alc-badge color="error" label="Error"></alc-badge>
+
+        <!-- Exemplo badge simples outlined -->
+        <alc-badge color="error" label="Error" outlined="true"></alc-badge>      
+        
+        <!-- Exemplo com posição default em botão -->
+        <alc-badge position="default" color="error" dot="true">
+            <button class="alc-button">Texto</button>
+        </alc-badge>
+
+        <!-- Exemplo com posição floating em botão -->
+        <alc-badge position="floating" color="error" dot="true">
+            <button class="alc-button">Texto</button>
+        </alc-badge>
+
+        <!-- Exemplo com posição default em botão e pulsação -->
+        <alc-badge position="default" color="error" dot="true" pulsate="true">
+            <button class="alc-button">Texto</button>
+        </alc-badge>
+
+        <!-- Exemplo com posição default em botão com pulsação e count -->
+        <alc-badge position="default" color="error" label="99+" count="true" pulsate="true">
+            <button class="alc-button">Texto</button>
+        </alc-badge>
+
+        <!-- Exemplo com posição inline em link com pulsação e count -->
+        <alc-badge position="inline" color="error" label="99+" count="true" pulsate="true">
+            <a class="alc-link"> Link </a>
+        </alc-badge>
+
+         <!-- Exemplo com posição floating em link com pulsação e count -->
+         <alc-badge position="floating" color="error" label="99+" count="true" pulsate="true">
+            <a class="alc-button"> Link </a>
+        </alc-badge>             
+        
+    
+    </div>
+</body>
+
+</html>

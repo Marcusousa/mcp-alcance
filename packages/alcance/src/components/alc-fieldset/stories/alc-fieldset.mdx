@@ -1,0 +1,16 @@
+{/* alc-fieldset.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-fieldset.stories';
+
+import FieldsetProps from './alc-fieldset.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente Fieldset serve para agrupar inputs relacionados. Isso torna os formulários mais compreensiveis para os usuários
+pois fica mais fácil de identificar e se concentrar.
+
+<Markdown>{FieldsetProps}</Markdown>

@@ -1,0 +1,39 @@
+alc-icon {
+  /* @apply flex-none w-4 text-center; */
+  @apply inline-block;
+}
+
+/* @TODO Rever o nome dessa classe */
+.icon-inner {
+  @apply inline-flex items-center;
+}
+
+alc-icon.size-x-small {
+  @apply text-xs;
+}
+
+alc-icon.size-small {
+  @apply text-sm;
+}
+
+alc-icon.size-medium {
+  @apply text-base;
+}
+
+alc-icon.size-large {
+  @apply text-lg;
+}
+
+alc-icon.size-x-large {
+  @apply text-xl;
+}
+
+alc-icon.size-xx-large {
+  @apply text-2xl;
+}
+
+.alc-icon__image {
+  /* Medidas em 'em' para poder variar de acordo com o tamanho do texto
+     que no qual está inserido. */
+  @apply w-[1em] h-[1em] -mt-[0.125em] top-[0.125em] relative;
+}

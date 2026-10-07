@@ -1,0 +1,194 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from '../utils/codeExample';
+
+<Meta title="Instalação/Configuração no React" />
+<h1>Configuração no React</h1>
+
+<Unstyled>
+<alc-alert dismissible="false">
+
+Há duas formas de utilizar a biblioteca de componentes do Alcance em um projeto React: *custom elements* do HTML ou componentes React.
+
+</alc-alert>
+</Unstyled>
+
+<TabsState
+  initial="alc">
+    <div id="alc" title="Custom elements">
+        <div>
+<br />
+## Configuração
+
+Para importar o Alcance em um projeto React, adicione as seguintes linhas no arquivo `index.js` localizado na pasta `src` do seu projeto.
+
+<CodeExample type="js" title="src/main.jsx">
+{`import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './Home/App';
+import Alertas from './Alertas';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+import { applyPolyfills, defineCustomElements } from 'alcance/loader';
+
+// Configure o diretório onde ficam os assets de seu projeto.
+// Isso é especialmente importante para componentes do Alcance que utilizam esse
+// recurso, como o <alc-icon>
+const resourcesUrl = \`\${new URL(window.location.href).origin}/assets/\`;
+
+applyPolyfills().then(() => {
+  defineCustomElements(window, {
+    resourcesUrl: resourcesUrl
+    });
+});
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <nav>
+      <Link to="/">Home</Link> |
+      <Link to="/interna/alertas"> Alertas</Link>
+    </nav>
+    <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/interna/alertas" element={<Alertas />} />
+    </Routes>
+  </BrowserRouter>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+`}
+</CodeExample>
+
+Agora faremos a importação dos estilos do Alcance. Vá até o `index.css` que é o estilo global padrão do React e adicione a seguinte linha:
+
+<CodeExample type="css" title="src/index.css">
+{`@import 'alcance/dist/alcance/alcance.css'`}
+</CodeExample>
+
+<Unstyled>
+<alc-alert dismissible="false">
+
+**Nota:** O **import** pode ser feito no arquivo global de sua preferência, caso não utilize o padrão do React.
+
+</alc-alert>
+</Unstyled>
+
+## Exemplo de uso
+
+<CodeExample type="js" title="/src/Home/App.js">
+{`import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <alc-alert>
+        Esse projeto mostra como os componentes do Alcance se comportam no React e como você deve 
+        inseri-los no seu projeto <alc-icon name="heart"></alc-icon>
+        </alc-alert>
+      </header>
+    </div>
+  );
+}
+
+export default App;`}
+</CodeExample>
+</div>
+</div>
+    <div id="alc-r" title="Componentes React">
+        <div>
+<br />
+## Configuração
+
+Faça a instalação do pacote Alcance React Library.
+
+
+<TabsState
+  initial="npm">
+    <div id="npm" title="NPM">
+        <div>
+            <CodeExample type="bash">
+            {`npm i alcance-react-library`}
+            </CodeExample>
+        </div>
+    </div>
+    <div id="yarn" title="Yarn">
+        <div>
+            <CodeExample type="bash">
+            {`yarn add alcance-react-library`}
+            </CodeExample>
+        </div>
+    </div>
+</TabsState>
+
+Adicione as seguintes linhas no arquivo `main.jsx` localizado na pasta `src` do seu projeto:
+
+<CodeExample type="js" title="src/main.jsx">
+{`import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+
+// Importação da biblioteca de componentes
+import { ComponentLibrary } from 'alcance-react-library';
+
+// Defina o endereço onde ficam os assets de seu projeto.
+const resourcesUrl = "public";
+
+// Informe o valor do parâmetro resourcesUrl para o que o Alcance encontre os assets.
+ComponentLibrary({
+  resourcesUrl: resourcesUrl
+})
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+`}
+
+</CodeExample>
+## Exemplo de uso
+
+Em sua *página `.jsx`*, adicione o componente que você deseja utilizar, como no exemplo abaixo:
+
+<CodeExample type="jsx" title="src/App.jsx">
+{`import { AlcAlert, AlcIcon } from 'alcance-react-library'
+import './App.css'
+
+function App() {
+
+  return (
+    <>
+      <AlcAlert>
+        Esse projeto mostra como os componentes do Alcance se comportam no React e como inseri-los no seu projeto 
+        <AlcIcon label="coraçao" name="heart"></AlcIcon>
+      </AlcAlert>
+    </>
+  )
+}
+
+export default App
+
+`}
+</CodeExample>
+</div>
+</div>
+
+</TabsState>
+
+### Projeto Exemplo
+<Unstyled>
+<a href="https://git.camara.gov.br/Seuso/alcance-react-typescript" class="alc-link"><alc-icon name="git" label="Git"></alc-icon> git.camara.gov.br/Seuso/alcance-react-typescript</a>
+</Unstyled>
+<CodeExample type="bash">
+{`git clone gogs@git.camara.gov.br:Seuso/alcance-react-typescript.git`}
+</CodeExample>
+
+Agora você já pode utilizar os componentes do Alcance em seu projeto React! 😉

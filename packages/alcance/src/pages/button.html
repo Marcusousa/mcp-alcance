@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Button</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <button class="alc-button">Texto</button>
+    <button class="alc-button alc-button--sm">Texto SM</button>
+    <button class="alc-button alc-button--lg">Texto LG</button>
+    <button class="alc-button alc-button--secondary">Texto</button>
+    <button class="alc-button alc-button--secondary alc-button--sm">Texto SM</button>
+    <button class="alc-button alc-button--secondary alc-button--lg">Texto LG</button>
+    <button class="alc-button" disabled>Texto</button>
+    <button class="alc-button alc-button-rounded">
+      <alc-icon name="x" label=""></alc-icon>
+    </button>
+    <button class="alc-button alc-button-rounded alc-button-rounded--info">
+      <alc-icon name="x" label=""></alc-icon>
+    </button>
+    <button class="alc-button alc-button-rounded alc-button-rounded--warning">
+      <alc-icon name="x" label=""></alc-icon>
+    </button>
+    <button class="alc-button alc-button-rounded alc-button-rounded--error">
+      <alc-icon name="x" label=""></alc-icon>
+    </button>
+    <button class="alc-button alc-button-rounded alc-button-rounded--success">
+      <alc-icon name="x" label=""></alc-icon>
+    </button>
+
+    <button class="alc-button alc-button-rounded" disabled>
+      <alc-icon name="x" label=""></alc-icon>
+    </button>
+
+  <div class="bg-skin-surface-secondary py-4 mt-2">
+    <div class="container-fluid">
+      <button class="alc-button">Texto</button>
+      <button class="alc-button alc-button--secondary">Texto</button>
+      <button class="alc-button" disabled>Texto</button>
+    </div>
+  </div>
+
+  <div class="bg-skin-surface-tertiary py-4">
+    <div class="container-fluid">
+      <button class="alc-button">Texto</button>
+      <button class="alc-button alc-button--secondary">Texto</button>
+      <button class="alc-button" disabled>Texto</button>
+    </div>
+  </div>
+
+  <div class="py-4 bg-mint-cool-50">
+    <div class="container-fluid">
+      <button class="alc-header-button">
+        <alc-icon icon="question-circle" label="" class="alc-header-button__icon"></alc-icon>
+        <span class="alc-header-button__label">Ajuda</span>
+      </button>
+      <button class="alc-header-button">
+        <alc-icon icon="envelope" label="" class="alc-header-button__icon"></alc-icon>
+        <span class="alc-header-button__label">Contato</span>
+      </button>
+      <button class="alc-header-button">
+        <alc-icon icon="search" label="Busca" class="alc-header-button__icon"></alc-icon>
+      </button>
+    </div>
+  </div>
+  <div class="py-4 bg-mint-cool-80">
+    <div class="container-fluid">
+      <button class="alc-header-button">
+        <alc-icon icon="question-circle" label="" class="alc-header-button__icon"></alc-icon>
+        <span class="alc-header-button__label">Ajuda</span>
+      </button>
+      <button class="alc-header-button">
+        <alc-icon icon="envelope" label="" class="alc-header-button__icon"></alc-icon>
+        <span class="alc-header-button__label">Contato</span>
+      </button>
+      <button class="alc-header-button">
+        <alc-icon icon="search" label="Busca" class="alc-header-button__icon"></alc-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-2">
+    <h2>Button e inputs</h2>
+    <button class="alc-button">Texto</button>
+    <input type="submit" class="alc-button" value="Texto" />
+    <input type="reset"  class="alc-button" value="Texto" />
+    <input type="button" class="alc-button" value="Texto"/>
+  </div>
+  <div class="container-fluid mt-2">
+    <h2>Button e inputs (secondary)</h2>
+    <button class="alc-button alc-button--secondary">Button (button)</button>
+    <input type="submit" class="alc-button alc-button--secondary" value="Submit" />
+    <input type="reset"  class="alc-button alc-button--secondary" value="Reset" />
+    <input type="button" class="alc-button alc-button--secondary" value="Button (input)" />
+  </div>
+  <div class="container-fluid mt-2">
+    <h2>Button e inputs (disabled)</h2>
+    <button class="alc-button" disabled>Texto</button>
+    <input type="submit" class="alc-button" disabled value="Texto" />
+    <input type="reset"  class="alc-button" disabled value="Texto" />
+    <input type="button" class="alc-button" disabled value="Texto"/>
+  </div>
+  <div class="container-fluid mt-2">
+    <h2>Button e inputs (disabled / secondary)</h2>
+    <button class="alc-button alc-button--secondary" disabled>Button (button)</button>
+    <input type="submit" class="alc-button alc-button--secondary" disabled value="Submit" />
+    <input type="reset"  class="alc-button alc-button--secondary" disabled value="Reset" />
+    <input type="button" class="alc-button alc-button--secondary" disabled value="Button (input)" />
+  </div>
+  <div class="container-fluid mt-2">
+    <h2>Input image</h2>
+    <alc-alert type="warning" dismissible="false">
+      O uso de <code>input type=image</code> é uma situação muito específica que talvez nem deva estar contemplada
+      como algo a ser tratado no Alcance.
+    </alc-alert>
+    <button class="alc-button">Button</button>
+    <input type="image" class="alc-button" value="Texto" alt="Texto" style="vertical-align: bottom;" src="https://placehold.co/40x24/png?text=Texto"/>
+    <input type="image" class="alc-button alc-button--secondary" value="Image" alt="Image" style="vertical-align: bottom;" src="https://placehold.co/40x24/png?text=Image"/>
+    <input type="image" class="alc-button" disabled value="Texto" alt="Texto" style="vertical-align: bottom;" src="https://placehold.co/40x24/png?text=Texto"/>
+    <input type="image" class="alc-button alc-button--secondary" disabled value="Image" alt="Image" style="vertical-align: bottom;" src="https://placehold.co/40x24/png?text=Image"/>
+  </div>
+
+</div>
+</body>
+
+</html>

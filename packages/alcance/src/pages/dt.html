@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Datatables lab</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.css" />
+  <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <alc-alert type="warning" dismissible="false">Como o CSS do datatables.net está aplicado aqui, o visual das tabelas pode ficar prejudicado pela interferência das folhas de estilo.</alc-alert>
+
+<h2>Datatable Alcance - Processing True</h2>
+<alc-datatable options=''>
+  <table>
+    <thead>
+      <tr>
+        <!-- Defina os cabeçalhos das colunas aqui -->
+        <th>Título</th>
+        <th>Número</th>
+        <th>Data</th>
+        <th>Resumo</th>
+        <!-- <th>Personagens</th>
+        <th>Antagonistas</th>
+        <th>Locais</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <!-- O conteúdo do tbody será preenchido pelos dados recebidos via AJAX -->
+    </tbody>
+  </table>
+</alc-datatable>
+<br />
+<h2>Datatable Puro - Processing False</h2>
+
+  <table id="puro" class="display">
+    <thead>
+      <tr>
+        <!-- Defina os cabeçalhos das colunas aqui -->
+        <th>Título</th>
+        <th>Número</th>
+        <th>Data</th>
+        <th>Resumo</th>
+        <!-- <th>Personagens</th>
+        <th>Antagonistas</th>
+        <th>Locais</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <!-- O conteúdo do tbody será preenchido pelos dados recebidos via AJAX -->
+    </tbody>
+  </table>
+
+<script>
+  const dt = document.querySelector('alc-datatable');
+
+  dt.options = {
+    "serverSide": true,
+    "processing": true,
+    // Ajax com parâmetros start, length, columns... serviria para simular o datatable client-side, só obtendo os dados do servidor.
+    // "ajax": "http://localhost:8765/data?start=0&length=10&columns[0][data]=titulo&order[0][column]=0&order[0][dir]=asc&draw=2&delay=5000",
+    // O parâmetro "delay" define quantos milissegundos o servidor vai aguardar para responder cada requisição
+    // Isso foi feito para poder observar melhor o comportamento do datatable quando há uma demora em responder.
+    "ajax": "http://localhost:8765/data?delay=5000",
+    "columns": [
+    { "data": "titulo" },
+    { "data": "numero" },
+    { "data": "data_exibicao" },
+    { "data": "resumo" },
+    ]
+  }
+
+  dt.addEventListener('alc-processing', function (e) {
+    const processing = e.detail.processing;
+    console.log({processing});
+  });
+  dt.addEventListener('alc-draw', function (e) {
+    console.log(e);
+  });
+
+  // setTimeout(async () => {
+  //   const api = await dt.getApi();
+  //   api.processing(true);
+  // }, 6000);
+
+  let table = new DataTable('#puro', {
+    "serverSide": true,
+    "processing": false,
+    // Ajax com parâmetros start, length, columns... serviria para simular o datatable client-side, só obtendo os dados do servidor.
+    // "ajax": "http://localhost:8765/data?start=0&length=10&columns[0][data]=titulo&order[0][column]=0&order[0][dir]=asc&draw=2&delay=5000",
+    // O parâmetro "delay" define quantos milissegundos o servidor vai aguardar para responder cada requisição
+    // Isso foi feito para poder observar melhor o comportamento do datatable quando há uma demora em responder.
+    "ajax": "http://localhost:8765/data?delay=5000",
+    "columns": [
+    { "data": "titulo" },
+    { "data": "numero" },
+    { "data": "data_exibicao" },
+    { "data": "resumo" },
+    ]
+  });
+</script>
+
+</html>

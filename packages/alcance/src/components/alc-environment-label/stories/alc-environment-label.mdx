@@ -1,0 +1,30 @@
+{/* alc-environment-label.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-environment-label.stories';
+
+import EnvironmentLabelProps from './alc-environment-label.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+Environment Label é um rótulo para identificar o ambiente em que se encontra o sistema com o qual o usuário está interagindo.
+
+## Tipos de ambientes
+São cinco os ambientes reconhecidos:
+
+- prototype (Protótipo)
+- development (Desenvolvimento)
+- testing (Teste)
+- homologation (Homologação)
+- production (Produção)
+
+No caso do `ambiente de Produção`, não será mostrada nenhuma marca visível para o usuário.
+
+<alc-alert dismissible="false" type="warning">Se o valor informado for inválido, ou não for informado nenhum valor, o ambiente será identificado, para o usuário, como **Não reconhecido**.</alc-alert>
+
+{/* Margin não estava funcionando no alert, então fiz uma div para dar um espaçamento entre alert e propriedades */}
+<div style={{marginBottom: '1.5rem'}}></div>
+
+<Markdown>{EnvironmentLabelProps}</Markdown>

@@ -1,0 +1,99 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from '../utils/codeExample';
+
+<Meta title="Instalação/Configuração básica" />
+<h1>Configuração básica</h1>
+
+A forma padrão de utilizar o Alcance é, nas páginas de seu projeto, fazer referência direta aos arquivos `.js` e `.css` fornecidos na instalação.
+Faça dessa forma se você não estiver utilizando um framework de front-end.
+
+Seguindo o exemplo, os componentes já ficam disponíveis para uso na página.
+<Unstyled>
+<alc-alert dismissible="false">
+  <span className="alc-alert__summary">É necessário usar um servidor HTTP.</span>
+  O exemplo abaixo não funcionará se você abrir o <code>index.html</code> pelo sistema de arquivos. É necessário usar um servidor HTTP.
+</alc-alert>
+</Unstyled>
+
+<CodeExample type="html" title="index.html">
+{`<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha aplicação</title>
+
+    <!-- Faça referência aos scripts do Alcance -->
+    <!-- Caso vá usar um bundler (como Webpack ou Rollup), use os recursos dele
+         para não precisar fazer referência direta a node_modules -->
+    <script type="module" src="<caminho-do-alcance>/alcance/dist/alcance/alcance.esm.js"></script>
+    <script nomodule src="<caminho-do-alcance>/alcance/dist/alcance/alcance.js"></script>
+    <!-- Faça referência também ao CSS do Alcance -->
+    <!-- Caso vá usar um bundler (como Webpack ou Rollup), use os recursos dele
+         para não precisar fazer referência direta a node_modules -->
+    <link rel="stylesheet" href="<caminho-do-alcance>/alcance/dist/alcance/alcance.css">
+  </head>
+
+  <body>
+    <h1>Página inicial</h1>
+    <!-- Um componente do Alcance já vai funcionar aqui -->
+    <alc-alert>Estamos funcionando.</alc-alert>
+  </body>
+</html>`}
+</CodeExample>
+
+A depender do seu projeto, `<caminho-do-alcance>` poderá corresponder:
+* A `node_modules`, se tiver sido baixado com gerenciadores de pacotes (npm, yarn).
+* Ao diretório `alcance` foi colocado ao descompactar, se tiver sido baixado manualmente.
+* A outro caminho qualquer, de acordo com a configuração de seu projeto, se estiver usando um bundler (Webpack, Rollup).
+
+## Servidores HTTP
+
+Você pode utilizar o servidor HTTP de sua preferência para ver o `index.html` funcionando.
+
+Apenas como exemplo, citamos o <a href="https://www.npmjs.com/package/http-server" className="alc-link">http-server</a>
+e a extensão <a href="https://github.com/ritwickdey/vscode-live-server" className="alc-link">Liver Server</a> do VSCode.
+
+### Executando com http-server
+Instale o http-server executando o comando abaixo.
+
+<TabsState
+  initial="npm">
+    <div id="npm" title="NPM">
+        <div>
+            <CodeExample language="shell">
+            {`npm install -g http-server`}
+            </CodeExample>
+        </div>
+    </div>
+
+    <div id="yarn" title="Yarn">
+        <div>
+            <CodeExample language="shell">
+            {`yarn global add http-server`}
+            </CodeExample>
+        </div>
+    </div>
+</TabsState>
+
+Em seguida, na pasta onde está o `index.html`, execute o comando:
+<CodeExample language="shell">
+{`http-server .`}
+</CodeExample>
+
+Por padrão, o servidor é executado na porta 8080.
+
+### Executando com a extensão Live Server
+Para utilizar a extensão Live Server, instale-a dentro do VSCode.
+
+No arquivo `index.html`, clique com o botão direito e selecione "Open with live server". Após uns instante, uma aba do navegador vai abrir o projeto.
+
+### Projeto Exemplo
+<Unstyled>
+<a href="https://git.camara.gov.br/Seuso/alcance-html" class="alc-link"><alc-icon name="git" label="Git"></alc-icon> git.camara.gov.br/Seuso/alcance-html</a>
+</Unstyled>
+<CodeExample language="bash">
+{`git clone https://git.camara.gov.br/Seuso/alcance-html.git`}
+</CodeExample>

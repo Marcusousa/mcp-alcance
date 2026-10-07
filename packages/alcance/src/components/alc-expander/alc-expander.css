@@ -1,0 +1,30 @@
+/* Container principal: transparente e com largura total */
+.alc-expander {
+  @apply bg-transparent w-full border-none m-[--alc-spacing-none] p-[--alc-spacing-none];
+}
+
+/* Summary padrão: alinhado à direita */
+.alc-expander__summary {
+  @apply flex items-center justify-end cursor-pointer list-none w-full p-[--alc-spacing-03] bg-transparent border-none dark:shadow-[0px_4px_4px_0px_rgba(255,255,255,0.20)] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)];;
+}
+
+/* Quando o summary deve centralizar o chevron (hideSummary true) */
+.alc-expander__summary--center {
+  @apply justify-center;
+}
+
+/* Container do label no summary */
+.alc-expander__label-container {
+  /* Mantém o alinhamento à esquerda quando o label é exibido */
+  @apply mr-auto;
+}
+
+/* Chevrons: renderizados inline */
+.alc-expander__chevron {
+  @apply h-6 shrink-0;
+}
+
+/* Conteúdo do expander */
+.alc-expander__content {
+  @apply bg-transparent w-full dark:shadow-[0px_4px_4px_0px_rgba(255,255,255,0.20)] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)];
+}

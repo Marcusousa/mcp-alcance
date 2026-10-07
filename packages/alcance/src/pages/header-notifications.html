@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Header notifications</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <alc-menu>
+      <alc-menu-item-theme></alc-menu-item-theme>
+    </alc-menu>
+
+    <hr class="mb-2">
+
+    <div class="p-4 bg-mint-80">
+      <!-- Zero -->
+      <alc-header-notifications
+        notifications="0"
+      ></alc-header-notifications>
+      <!-- 10 -->
+      <alc-header-notifications
+        notifications="10"
+      ></alc-header-notifications>
+      <!-- 1000 -->
+      <alc-header-notifications
+        notifications="1000"
+      ></alc-header-notifications>
+      <!-- Valor dinâmico -->
+      <alc-header-notifications
+        id="dynamic"
+        notifications="0"
+      ></alc-header-notifications>
+
+    </div>
+
+    <div>
+      <alc-field label="Notificações" class="inline-block">
+        <input type="text" name="notification-number" id="number">
+      </alc-field>
+      <button id="apply-btn" class="alc-button alc-button--secondary mt-2">
+        Aplicar
+      </button>
+    </div>
+
+    <script>
+      const notifications = document.querySelector('#dynamic');
+      const apply = document.querySelector('#apply-btn');
+      const number = document.querySelector('#number');
+
+      apply.addEventListener('click', () => {
+        notifications.notifications = number.value;
+      });
+    </script>
+
+    <div class="mt-4 p-4 bg-mint-80">
+
+      <!-- Exemplo ilustrativo -->
+      <style>
+        .my-notification {
+          border-top: 1px solid;
+          border-color: var(--alc-color-border);
+          padding-top: var(--alc-spacing-03);
+
+          &:first-child {
+            border-top: none;
+            padding-top: 0;
+          }
+          & a {
+            float: right;
+            font-size: var(--alc-font-size-sm);
+            line-height: var(--alc-font-line-height-sm);
+          }
+        }
+      </style>
+
+      <alc-dropdown hide-on="alc-select click">
+        <alc-header-notifications
+          slot="trigger"
+          notifications="1"
+        ></alc-header-notifications>
+        <div class="p-3 flex flex-col gap-2">
+          <div class="my-notification">
+            <p>Notificação mais recente (não lida)</p>
+            <p>
+              <a href="#" class="alc-link">ver detalhes</a>
+            </p>
+          </div>
+          <div class="my-notification">
+            <p>Penúltima notificação</p>
+            <p>
+              <a href="#" class="alc-link">ver detalhes</a>
+            </p>
+          </div>
+          <div class="my-notification">
+            <p>Antepenúltima notificação</p>
+            <p>
+              <a href="#" class="alc-link">ver detalhes</a>
+            </p>
+          </div>
+        </div>
+      </alc-dropdown>
+    </div>
+
+    <div class="mt-4 p-4 bg-mint-80">
+      <!-- Link -->
+      <alc-header-notifications
+        notifications="0"
+        variant="link"
+        url="https://google.com.br"
+      ></alc-header-notifications>
+
+      <alc-header-notifications
+        notifications="10"
+        variant="link"
+        url="https://google.com.br"
+      ></alc-header-notifications>
+
+      <alc-header-notifications
+        notifications="1000"
+        variant="link"
+        url="https://google.com.br"
+      ></alc-header-notifications>
+
+    </div>
+
+
+</html>

@@ -1,0 +1,37 @@
+{/* alc-theme.mdx */}
+
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+
+import * as Stories from './alc-theme.stories';
+
+import ThemeProps from './alc-theme.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+  Seguindo o padrão atual do Alcance, o controle de seleção de tema está disponível no componente <a href="./?path=/docs/componentes-user-menu--documentação" className="alc-link">alc-user-menu</a>.
+  Visite o <a href="./?path=/docs/componentes-header-v1--guia-de-migração" className="alc-link">Guia de Migração</a> para instruções de como migrar para o novo componente.
+</alc-alert>
+</Unstyled>
+
+
+
+Apesar de que esse componente continua funcional, a recomendação é que o mecanismo de seleção de tema
+seja fornecido com o uso `alc-user-menu`.
+
+---
+
+O componente alc-theme permite que os usuários selecionem o tema da aplicação: Claro, Escuro ou seguir o padrão Do Sistema. Ele gerencia a preferência do usuário, aplicando o tema escolhido e salvando essa preferência para usos futuros.
+
+
+<Unstyled>
+    <alc-alert dismissible="false">
+    **Importante**: Por conta da limitação nesse ambiente de documentação, que implementa seu próprio tema (e não usa os temas do Alcance), o `alc-theme` **não funciona** aqui.
+    </alc-alert>
+</Unstyled>
+
+<Markdown>{ThemeProps}</Markdown>

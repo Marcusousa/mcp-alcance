@@ -1,0 +1,218 @@
+/* Definição de variáveis globais */
+
+/* Cores semânticas de notificação
+    - info
+    - warning
+    - error
+    - success
+*/
+/* Podemos compartilhar valores entre os temas */
+html {
+  --alc-color-info-10: theme('colors.blue-cool.10v');
+  --alc-color-info-20: theme('colors.blue-cool.20v');
+  --alc-color-info-30: theme('colors.blue-cool.30v');
+  --alc-color-info-40: theme('colors.blue.40');
+  --alc-color-info-50: theme('colors.blue-cool.50v');
+  --alc-color-info-60: theme('colors.blue-cool.60');
+  --alc-color-info-70: theme('colors.blue-cool.70');
+  --alc-color-info-80: theme('colors.blue-cool.80v');
+
+  --alc-color-warning-10: theme('colors.yellow.10');
+  --alc-color-warning-20: theme('colors.yellow.20');
+  --alc-color-warning-30: theme('colors.yellow.30v');
+  --alc-color-warning-40: theme('colors.yellow.40v');
+  --alc-color-warning-50: theme('colors.yellow.50v');
+  --alc-color-warning-60: theme('colors.yellow.60v');
+  --alc-color-warning-80: theme('colors.yellow.80');
+
+  --alc-color-error-20: theme('colors.red-cool.20');
+  --alc-color-error-30: theme('colors.red-cool.30');
+  --alc-color-error-40: theme('colors.red-cool.40');
+  --alc-color-error-45: theme('colors.red.40v');
+  --alc-color-error-50: theme('colors.red.50v');
+  --alc-color-error-55: theme('colors.red.50');
+  --alc-color-error-60: theme('colors.red.60');
+  --alc-color-error-70: theme('colors.red.70');
+  --alc-color-error-80: theme('colors.red.80');
+
+  --alc-color-success-10: theme('colors.green.10');
+  --alc-color-success-20: theme('colors.green.20');
+  --alc-color-success-30: theme('colors.green.30');
+  --alc-color-success-50: theme('colors.green-cool.50');
+  --alc-color-success-55: theme('colors.green.50v');
+  --alc-color-success-60: theme('colors.green.60v');
+  --alc-color-success-70: theme('colors.green.70v');
+  --alc-color-success-80: theme('colors.green.80');
+
+  --alc-color-action-5: theme('colors.blue-cool.5v');
+  --alc-color-action-10: theme('colors.blue-cool.10');
+  --alc-color-action-20: theme('colors.blue-cool.20');
+  --alc-color-action-30: theme('colors.blue-cool.30v');
+  --alc-color-action-40: theme('colors.blue-cool.40v');
+  --alc-color-action-50: theme('colors.blue-cool.50v');
+  --alc-color-action-60: theme('colors.blue-cool.60v');
+  --alc-color-action-70: theme('colors.blue-cool.70v');
+  --alc-color-action-80: theme('colors.blue-cool.80');
+  --alc-color-action-90: theme('colors.blue-cool.80v');
+
+  --alc-color-neutral-0: theme('colors.white');
+  --alc-color-neutral-5: theme('colors.gray.5');
+  --alc-color-neutral-10: theme('colors.gray.10');
+  --alc-color-neutral-20: theme('colors.gray.20');
+  --alc-color-neutral-30: theme('colors.gray.30');
+  --alc-color-neutral-40: theme('colors.gray.40');
+  --alc-color-neutral-50: theme('colors.gray.50');
+  --alc-color-neutral-60: theme('colors.gray.60');
+  --alc-color-neutral-70: theme('colors.gray.70');
+  --alc-color-neutral-80: theme('colors.gray.80');
+  --alc-color-neutral-90: theme('colors.gray.90');
+  --alc-color-neutral-100: theme('colors.black');
+
+  --alc-color-label-development: theme('colors.red.60');
+  --alc-color-label-prototype: theme('colors.blue-warm.60');
+  --alc-color-label-testing: theme('colors.yellow.50v');
+  --alc-color-label-homologation: theme('colors.orange.50v');
+  --alc-color-label-undefined: theme('colors.gray.50');
+
+  --alc-border-width: theme('borderWidth.DEFAULT');
+}
+
+[data-alc-theme="dark"] {
+  color-scheme: dark;
+
+  --alc-color-text-success: theme('colors.green-cool.40v');
+  --alc-color-text-warning: theme('colors.yellow.40v');
+  --alc-color-text-error: theme('colors.red.40v');
+
+  --alc-color-surface-primary  : theme('colors.mint-cool.90');
+  --alc-color-surface-secondary: theme('colors.gray-cool.90');
+  --alc-color-surface-tertiary : theme('colors.gray-cool.86');
+
+  --alc-color-brand-primary: theme('colors.mint-cool.80');
+  --alc-color-brand-secondary: theme('colors.mint-cool.70');
+
+  --alc-color-text-0: var(--alc-color-neutral-0);
+  --alc-color-text-1: var(--alc-color-neutral-10);
+  --alc-color-text-2: var(--alc-color-neutral-20);
+  --alc-color-text-3: var(--alc-color-neutral-30);
+  --alc-color-text-4: var(--alc-color-neutral-40);
+  --alc-color-text-contrast: var(--alc-color-neutral-100);
+
+}
+
+[data-alc-theme="light"] {
+
+  color-scheme: light;
+
+  --alc-color-text-success: theme('colors.green-cool.50v');
+  --alc-color-text-warning: theme('colors.yellow.50v');
+  --alc-color-text-error: theme('colors.red.50v');
+
+  --alc-color-surface-primary  : theme('colors.white');
+  --alc-color-surface-secondary: theme('colors.gray-cool.3');
+  --alc-color-surface-tertiary : theme('colors.gray-cool.5');
+
+  --alc-color-brand-primary: theme('colors.gray-cool.3');
+  --alc-color-brand-secondary: theme('colors.mint-cool.50');
+
+  --alc-color-text-0: var(--alc-color-neutral-100);
+  --alc-color-text-1: var(--alc-color-neutral-90);
+  --alc-color-text-2: var(--alc-color-neutral-80);
+  --alc-color-text-3: var(--alc-color-neutral-70);
+  --alc-color-text-4: var(--alc-color-neutral-60);
+  --alc-color-text-contrast: var(--alc-color-neutral-0);
+}
+
+/* **********************************************
+ * DAQUI EM DIANTE
+ * Tokens que fazem parte da API do Alcance
+ * Ou seja, estão publicados na documentação
+ * **********************************************/
+
+html {
+  // RADIUS
+  --alc-radius-none: theme('borderRadius.none');
+  --alc-radius-default: theme('borderRadius.DEFAULT');
+  --alc-radius-md: theme('borderRadius.md');
+  --alc-radius-lg: theme('borderRadius.lg');
+  --alc-radius-xl: theme('borderRadius.xl');
+  --alc-radius-full: theme('borderRadius.full');
+
+  // SPACING = NEW TOKENS (Decisão de design escala semântica própria)
+  --alc-spacing-none: 0rem;
+  --alc-spacing-px: 1px;
+  --alc-spacing-01: 0.125rem;
+  --alc-spacing-02: 0.25rem;
+  --alc-spacing-03: 0.5rem;
+  --alc-spacing-04: 0.75rem;
+  --alc-spacing-05: 1rem;
+  --alc-spacing-06: 1.5rem;
+  --alc-spacing-07: 2rem;
+  --alc-spacing-08: 2.5rem;
+  --alc-spacing-09: 3rem;
+  --alc-spacing-10: 4rem;
+  --alc-spacing-11: 5rem;
+  --alc-spacing-12: 6rem;
+  --alc-spacing-13: 10rem;
+
+  // FONT-SIZE + LINE-HEIGHT (escala tipográfica pareada)
+  --alc-font-size-xs: theme('fontSize.xs[0]');
+  --alc-font-line-height-xs: theme('fontSize.xs[1]');
+  --alc-font-size-sm: theme('fontSize.sm[0]');
+  --alc-font-line-height-sm: theme('fontSize.sm[1]');
+  --alc-font-size-base: theme('fontSize.base[0]');
+  --alc-font-line-height-base: theme('fontSize.base[1]');
+  --alc-font-size-lg: theme('fontSize.lg[0]');
+  --alc-font-line-height-lg: theme('fontSize.lg[1]');
+  --alc-font-size-xl: theme('fontSize.xl[0]');
+  --alc-font-line-height-xl: theme('fontSize.xl[1]');
+  --alc-font-size-2xl: theme('fontSize.2xl[0]');
+  --alc-font-line-height-2xl: theme('fontSize.2xl[1]');
+  --alc-font-size-3xl: theme('fontSize.3xl[0]');
+  --alc-font-line-height-3xl: theme('fontSize.3xl[1]');
+  --alc-font-size-4xl: theme('fontSize.4xl[0]');
+  --alc-font-line-height-4xl: theme('fontSize.4xl[1]');
+  --alc-font-size-5xl: theme('fontSize.5xl[0]');
+  --alc-font-line-height-5xl: theme('fontSize.5xl[1]');
+  --alc-font-size-6xl: theme('fontSize.6xl[0]');
+  --alc-font-line-height-6xl: theme('fontSize.6xl[1]');
+
+  // FONT WEIGHT
+  --font-weight-regular: theme('fontWeight.regular');
+  --font-weight-medium: theme('fontWeight.medium');
+  --font-weight-semibold: theme('fontWeight.semibold');
+  --font-weight-bold: theme('fontWeight.bold');
+}
+
+[data-alc-theme="dark"] {
+
+  --alc-color-link-text: var(--alc-color-action-40);
+
+  --alc-color-text-primary: theme('colors.white');
+  --alc-color-text-secondary: theme('colors.gray.10');
+  --alc-color-text-subtle: theme('colors.gray.40');
+
+  --alc-color-surface: theme('colors.mint-cool.90');
+
+  --alc-color-layer-a: theme('colors.gray-cool.90');
+  --alc-color-layer-b: theme('colors.gray-cool.86');
+  --alc-color-layer-c: theme('colors.mint-cool.90');
+  --alc-color-border: theme('colors.gray.30');
+}
+
+[data-alc-theme="light"] {
+
+  --alc-color-link-text: var(--alc-color-action-60);
+
+  --alc-color-text-primary: theme('colors.black');
+  --alc-color-text-secondary: theme('colors.gray.90');
+  --alc-color-text-subtle: theme('colors.gray.60');
+
+  --alc-color-surface: theme('colors.white');
+
+  --alc-color-layer-a: theme('colors.gray-cool.3');
+  --alc-color-layer-b: theme('colors.gray-cool.5');
+  --alc-color-layer-c: theme('colors.white');
+
+  --alc-color-border: theme('colors.gray.20');
+}

@@ -1,0 +1,62 @@
+{/* alc-nav-panel.mdx */}
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-nav-panel.stories';
+import NavPanelProps from './alc-nav-panel.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+
+<Meta of={Stories} name="Visão Geral" />
+
+# {Stories.default.name}
+
+O nav-panel foi projetado para exibir a navegação principal do sistema nas páginas que seguem o padrão visual definido pela aplicação.
+
+Ele apresenta seu conteúdo de forma conveniente, permitindo ao usuário mostrar ou esconder conforme necessário. A interface do nav-panel inclui um botão de acionamento para controlar sua visibilidade.
+
+## Comportamento Responsivo
+- **Modo desktop:** o nav-panel é exibido à esquerda do conteúdo e empurra o conteúdo principal para o lado ao ser aberto, aproveitando melhor o espaço da tela.
+- **Modo tablet:** o nav-panel é exibido de forma sobreposta à esquerda, cobrindo temporariamente o conteúdo da página.
+- **Modo mobile:** o nav-panel atua junto com o componente header e seu conteúdo passa a ser apresentado como um drawer, na lateral direita, sobreposto ao conteúdo.
+
+
+<Unstyled>
+    <alc-alert type="info" dismissible="false">
+        O nav-panel tem uma forte relação com a estrutura da página. É fundamental que o componente seja posicionado corretamente na estrutura 
+        definida pelo Alcance para sua correta exibição e funcionamento.
+    </alc-alert>
+</Unstyled>
+
+## Estados do nav-panel
+No modo desktop, o nav-panel deve preservar seu estado (aberto ou fechado) enquanto o usuário navega pela aplicação. 
+Ou seja, se o usuário deixar o painel aberto, ele deve continuar aberto até que o usuário o feche manualmente — mesmo se navegar entre páginas.
+
+A responsabilidade de manter esse estado é da aplicação. Um método recomendado para isso é o uso do `sessionStorage`, mas outras estratégias podem ser
+utilizadas, como `localStorage`.
+
+### Exemplo com sessionStorage
+
+<CodeExample type="js">
+{`document.querySelector('alc-nav-panel').addEventListener('alc-state-request', e => {
+  console.log('O estado foi requisitado');
+    e.detail.state = JSON.parse(sessionStorage.getItem('app-nav-panel'));
+});
+
+document.querySelector('alc-nav-panel').addEventListener('alc-state-change', e => {
+  console.log('O estado foi modificado:', e.detail.state);
+    sessionStorage.setItem('app-nav-panel', JSON.stringify(e.detail.state) );
+});`}
+</CodeExample>
+
+<Unstyled>
+    <alc-alert dismissible="false">
+    <p className="alc-alert__summary">Sempre que o usuário "chegar" à aplicação (uma nova sessão de uso), o nav-panel deve estar visível.</p>
+    Esconder a navegação em desktop gera confusão e frustração no usuário, segundo pesquisas de usabilidade. Por isso o nav-panel deve estar inicialmente visível. O usuário sempre vai ter a possibilidade de, a seu critério, ocultá-lo.
+    </alc-alert>
+
+    <alc-alert dismissible="false">
+    <p className="alc-alert__summary">O estado não é utilizado no modo tablet.</p>
+    Em tablet, o nav-panel sempre inicia oculto, já que sobrepõe-se ao conteúdo da página. O estado é ignorado pelo componente nessa situação. A aplicação, portanto, precisa manter o estado mas não precisa preocupar-se em diferenciar desktop de mobile.
+    </alc-alert>
+</Unstyled>
+
+<Markdown>{NavPanelProps}</Markdown>

@@ -1,0 +1,39 @@
+.alc-layout {
+  @apply flex;
+}
+
+.alc-layout__content {
+  // 1. overflow-x-auto permite que os elementos contidos no layout possam ter suas próprias
+  //    rolagens horizontais. Um exemplo importante é alc-datatable
+  // 2. grow faz com que o flex item correspondente ao conteúdo principal ocupe toda a largura
+  //    disponível, mesmo se o conteúdo for pequeno ou vazio
+  @apply overflow-x-auto grow;
+}
+
+// ALC-SIDEPANEL
+:where(.alc-sidepanel-visible) .alc-layout__content {
+  // Ajusta o padding junto ao sidepanel quando ele está visível,
+  // para que o conteúdo todo tenha o devido espaçamento em relação ao sidepanel.
+  @apply pl-4;
+}
+
+// O elemento `full-width` permite que haja conteúdo dentro do leiaute que
+// ocupe toda a largura (do sidepanel ao fim da tela à direita).
+// Deve ser usado somente para definir cor ou imagem de fundo.
+:where(.alc-sidepanel-visible) .alc-layout__full-width {
+  @apply -ml-4 pl-4;
+}
+
+// ALC-NAV-PANEL
+// Diferente do sidepanel que só deveria tratar esses paddings quando está visível
+// no navpanel será tratado sempre desde que seja modo tablet para cima
+// pois no navpanel o botão de abrir e fechar ficará sempre visível
+// e o conteúdo não deve ficar colado no botão
+// O padding do conteúdo deve ser o tamanho do botão, totalizando 1.5rem (24px)
+:where(.alc-navpanel) .alc-layout__content {
+  @apply pl-6;
+}
+
+:where(.alc-navpanel) .alc-layout__full-width {
+  @apply -ml-6 pl-6;
+}

@@ -1,0 +1,17 @@
+/* Link */
+
+/* Comum a todos os temas */
+.alc-link {
+  @apply underline text-[--alc-color-link-text];
+}
+
+.alc-link--color-text {
+  /* Modifica a cor do link para que tenha a mesma cor do texto em que está inserido.
+      Isso é útil quando há um link em um fundo que não seja da cor padrão do tema,
+      como por exemplo em uma caixa de alerta.
+      Se o texto possui contraste com o fundo, o link também vai possuir.
+      É importante considerar que deve haver outros elementos visuais (como o sublinhado)
+      que diferenciem o link do texto.
+    */
+  color: currentColor;
+}

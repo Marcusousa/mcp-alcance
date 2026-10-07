@@ -1,0 +1,29 @@
+{/* alc-tab-button.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-tab-button.stories';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+<Unstyled>
+    <alc-alert dismissible="false" type="warning">
+    **Importante**: Este exemplo Básico é apenas demonstrativo. O uso de uma única aba não é recomendado, pois contradiz a proposta do componente de oferecer navegação entre seções.
+    </alc-alert>
+</Unstyled>
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Selecionado
+
+<Canvas of={Stories.Selecionado} sourceState="shown" />
+<Controls of={Stories.Selecionado} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+O uso avançado com Vue encontra-se na <a href="./?path=/docs/componentes-alfa-tabs--exemplos">documentação do componente alc-tabs.</a>

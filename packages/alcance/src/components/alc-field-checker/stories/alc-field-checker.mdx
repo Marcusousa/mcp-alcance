@@ -1,0 +1,14 @@
+{/* alc-field-checker.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-field-checker.stories';
+import FieldCheckerProps from './alc-field-checker.props.md?raw';
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente Field Checker é responsável por verificar campos de formulários e exibir mensagens de erro quando necessário, verificando todos os campos de input [alc-field](/docs/componentes-field--documentação) e buscando pela propriedade `error-msg` para listar quais campos estão com erro. Ele pode ser configurado para realizar essa verificação de forma contínua ou apenas no momento da submissão do formulário.
+
+
+<Markdown>{FieldCheckerProps}</Markdown>

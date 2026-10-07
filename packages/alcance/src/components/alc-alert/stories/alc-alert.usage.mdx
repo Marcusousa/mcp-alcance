@@ -1,0 +1,107 @@
+{/* alc-alert.usage.mdx */}
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-alert.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos
+
+## {Stories.Basico.name}
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+
+## {Stories.Sumario.name}
+<Canvas of={Stories.Sumario} sourceState="shown" />
+<Controls of={Stories.Sumario} />
+
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <button @click="showAlert">Exibir Alerta</button>
+    <alc-alert
+      :visible="isVisible"
+      :dismissible="true"
+      type="info"
+      @alc-after-hide="afterHide"
+      @alc-hide="onHide"
+    >
+      Este é um alerta informativo!
+    </alc-alert>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      isVisible: false,
+    };
+  },
+  methods: {
+    showAlert() {
+      this.isVisible = true;
+    },
+    afterHide() {
+      console.log('O alerta foi completamente ocultado.');
+      this.isVisible = false;
+    },
+    onHide() {
+      console.log('O alerta está sendo ocultado.');
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <button @click="showAlert">Exibir Alerta</button>
+    <alc-alert
+      :visible="isVisible"
+      :dismissible="true"
+      type="error"
+      @alc-after-hide="afterHide"
+      @alc-hide="onHide"
+    >
+      Este é um alerta de erro!
+    </alc-alert>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'AlertExample',
+  setup() {
+    const isVisible = ref<boolean>(false);
+
+    const showAlert = () => {
+      isVisible.value = true;
+    };
+
+    const afterHide = () => {
+      console.log('O alerta foi completamente ocultado.');
+      isVisible.value = false;
+    };
+
+    const onHide = () => {
+      console.log('O alerta está sendo ocultado.');
+    };
+
+    return {
+      isVisible,
+      showAlert,
+      afterHide,
+      onHide,
+    };
+  },
+});
+</script>`
+  }}
+/>

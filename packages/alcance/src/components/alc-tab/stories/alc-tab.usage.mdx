@@ -1,0 +1,36 @@
+{/* alc-tab.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-tab.stories';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+<Unstyled>
+    <alc-alert dismissible="false" type="warning">
+    **Importante**: Este exemplo Básico é apenas demonstrativo. O uso de uma única aba não é recomendado, pois contradiz a proposta do componente de oferecer navegação entre seções.
+    </alc-alert>
+</Unstyled>
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Múltipas Abas
+
+<Canvas of={Stories.MultiplasAbas} sourceState="shown" />
+<Controls of={Stories.MultiplasAbas} />
+
+## Foco no Conteúdo
+A propriedade `content-focus` facilita a navegação por teclado ao permitir que o foco seja automaticamente direcionado a um elemento dentro do conteúdo da aba ativa. 
+Ao ativar ou desativar essa propriedade, você pode observar como o comportamento do foco no conteúdo da aba muda durante a navegação por teclado, oferecendo uma experiência mais acessível para usuários que dependem de teclas para navegação.
+
+<Canvas of={Stories.ComFoco} sourceState="shown" />
+<Controls of={Stories.ComFoco} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+O uso avançado com Vue encontra-se na <a href="./?path=/docs/componentes-alfa-tabs--exemplos">documentação do componente alc-tabs.</a>

@@ -1,0 +1,7 @@
+alc-skip-link {
+  @apply sr-only focus-within:not-sr-only z-10;
+}
+
+alc-skip-link:focus-within {
+  @apply absolute p-[--alc-spacing-05] w-full text-center top-[--alc-spacing-none] bg-skin-surface-secondary;
+}

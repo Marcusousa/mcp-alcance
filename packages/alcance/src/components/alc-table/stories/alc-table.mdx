@@ -1,0 +1,35 @@
+{/* alc-table.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-table.stories';
+import TableProps from './alc-table.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+O componente `alc-table` é responsável por renderizar uma tabela simples.
+
+## Exemplo
+
+<CodeExample type="html">
+{`<alc-table>
+  <table>
+    <thead>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+      </tr>
+    </tbody>
+  </table>
+</alc-table>`}
+</CodeExample>
+
+<Markdown>{TableProps}</Markdown>

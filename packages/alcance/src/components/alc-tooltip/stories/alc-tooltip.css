@@ -1,0 +1,11 @@
+.example-basic__container {
+    @apply flex items-center p-2 gap-16;
+}
+
+.example-placement__container {
+    @apply flex items-center justify-center p-2;
+}
+
+.example-strategy__container {
+    @apply overflow-auto border border-gray-cool-70 flex items-center h-20 p-2 gap-10;
+}

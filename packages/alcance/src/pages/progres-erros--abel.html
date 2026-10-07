@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Erros de importação &mdash; Sistema Progres</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+</head>
+
+<body>
+
+  <alc-header-v1 name="Progres">
+    <!-- BANDEIRA DE AMBIENTE  -->
+    <alc-environment-label env="prototype"></alc-environment-label>
+    <!-- SKIP-LINKS  -->
+    <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+  </alc-header-v1>
+
+
+  <!-- CORPO  -->
+  <div class="alc-layout">
+
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <alc-sidepanel>
+
+      <!-- O MENU EM SI -->
+      <alc-nav>
+
+        <div slot="header">
+
+          <div class="px-5">
+            <alc-user
+              name="João Cabral de Melo Neto"
+              registration-number="P_123456"
+            ></alc-user>
+          </div>
+
+        </div>
+
+        <!-- <span data-alc-label>
+          Menu
+        </span> -->
+        <ul>
+          <li><a href="progres-index.html">Tarefas</a></li>
+          <li><a href="progres-erros--abel.html">Erros de importação</a></li>
+          <li><a href="#">Painel</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Aprovações
+        </span>
+        <ul>
+          <li><a href="#">Aprovação supervisor</a></li>
+          <li><a href="#">Aprovação coordenador</a></li>
+          <li><a href="#">Relatório DRH</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Planejamentos
+        </span>
+        <ul>
+          <li><a href="#">Tipos de portfólio</a></li>
+          <li><a href="#">Portfólios</a></li>
+          <li><a href="#">Itens de portfólios</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Processos
+        </span>
+        <ul>
+          <li><a href="progres-repertorio.html">Repertório de atividades</a></li>
+          <li><a href="#">Lista de processos</a></li>
+        </ul>
+
+        <span data-alc-label>
+          Administrativo
+        </span>
+        <ul>
+          <li><a href="#">Afastamentos</a></li>
+          <li><a href="#">Lotações</a></li>
+          <li><a href="#">Colaboradores</a></li>
+          <li><a href="#">Unidades</a></li>
+        </ul>
+
+        <div slot="footer">
+          <!-- @TODO Isso será modificado quando definirmos a interface definitiva para alc-theme -->
+          <div class="mx-5 mb-5">
+            <label>Tema</label>
+            <alc-theme></alc-theme>
+          </div>
+        </div>
+
+      </alc-nav>
+    </alc-sidepanel>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="main-content" class="alc-layout__content">
+
+      <div class="container-fluid">
+
+        <!-- TITULO DA PAGINA -->
+        <h1>Erros de importação do colaborador P_1111 - Abel Augusto para o mês 05/2023</h1>
+
+        <alc-datatable options='{"columnDefs": [{ "orderable": false, "targets": [4] }]}'>
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Ferramenta</th>
+                <th>Quadro</th>
+                <th>Ticket</th>
+                <th>Mensagem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>30/04/2023</td>
+                <td>kanban_cainf</td>
+                <td>Sepic/Seuso</td>
+                <td><a
+                    href="https://kanban-cainf.camara.leg.br/?controller=TaskViewController&amp;action=show&amp;task_id=4351&amp;project_id=38"
+                    target="_blank" class="alc-link">4351</a></td>
+                <td>A tarefa kanban_cainf:#4351 apresentou atividade não reconhecida</td>
+              </tr>
+              <tr>
+                <td>01/05/2023</td>
+                <td>kanban_cainf</td>
+                <td>Sepic/Seuso</td>
+                <td><a
+                    href="https://kanban-cainf.camara.leg.br/?controller=TaskViewController&amp;action=show&amp;task_id=4351&amp;project_id=38"
+                    target="_blank" class="alc-link">4333</a></td>
+                <td>A tarefa kanban_cainf:#4333 apresentou atividade não reconhecida</td>
+              </tr>
+              <tr>
+                <td>02/05/2023</td>
+                <td>kanban_cainf</td>
+                <td>Sepic/Seuso</td>
+                <td><a
+                    href="https://kanban-cainf.camara.leg.br/?controller=TaskViewController&amp;action=show&amp;task_id=4351&amp;project_id=38"
+                    target="_blank" class="alc-link">4222</a></td>
+                <td>A tarefa kanban_cainf:#4222 apresentou atividade não reconhecida</td>
+              </tr>
+              <tr>
+                <td>11/05/2023</td>
+                <td>kanban_cainf</td>
+                <td>Sepic/Seuso</td>
+                <td><a
+                    href="https://kanban-cainf.camara.leg.br/?controller=TaskViewController&amp;action=show&amp;task_id=4354&amp;project_id=38"
+                    target="_blank" class="alc-link">4354</a></td>
+                <td>A tarefa kanban_cainf:#4354 apresentou atividade não reconhecida</td>
+              </tr>
+            </tbody>
+          </table>
+        </alc-datatable>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>User</title>
+
+  <script type="module" src="/build/alcance.esm.js"></script>
+  <script nomodule src="/build/alcance.js"></script>
+  <link rel="stylesheet" href="/build/alcance.css">
+
+  <style type="text/css">
+    .deputado .alc-user__image {
+      object-fit: cover;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <alc-theme></alc-theme>
+    <hr class="mb-2">
+
+    <!-- Observe o uso do slot default -->
+    <alc-user
+      name="Sebastião Neiva Filho"
+      registration-number="P_5242"
+      img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242"
+      >
+        <em>Diretor</em>
+    </alc-user>
+  
+    <br>
+  
+    <!-- Classe CSS específica para essa instância -->
+    <alc-user
+      class="deputado"
+      name="Dep. Diego Garcia"
+      registration-number="D_57447"
+      img-src="https://www.camara.leg.br/internet/deputado/bandep/178929.jpg"
+      >
+    </alc-user>
+
+    <h2>Diferentes tamanhos de imagens</h2>
+
+    <div class="flex gap-10 flex-wrap">
+      <!-- Os tamanhos menores que 56 fica em baixa resolução mas não fica "distorcido" -->
+      <alc-user
+        name="60x30"
+        registration-number="P_000000"
+        img-src="https://source.unsplash.com/random/60x30?profile"
+      >
+      </alc-user>
+
+      <alc-user
+        name="30x60"
+        registration-number="P_000000"
+        img-src="https://source.unsplash.com/random/30x60?profile"
+      >
+      </alc-user>
+
+      <alc-user
+        name="30x30"
+        registration-number="P_000000"
+        img-src="https://source.unsplash.com/random/30x30?profile"
+      >
+      </alc-user>
+
+      <alc-user
+        name="56x56"
+        registration-number="P_000000"
+        img-src="https://source.unsplash.com/random/56x56?profile"
+        >
+      </alc-user>
+
+      <alc-user
+        class="deputado"
+        name="300x500"
+        registration-number="P_000000"
+        img-src="https://source.unsplash.com/random/300x500?profile"
+        >
+      </alc-user>
+
+      <alc-user
+        name="500x300"
+        registration-number="P_000000"
+        img-src="https://source.unsplash.com/random/500x300?profile"
+        >
+      </alc-user>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

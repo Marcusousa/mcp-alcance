@@ -1,0 +1,170 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { TabsState, } from "storybook/internal/components";
+import CodeExample from '../../utils/codeExample';
+
+<Meta title="Template/Layout e container" />
+<h1> Layout e container </h1>
+
+É necessário seguir a estrutura definida pelo Alcance para o correto posicionamento dos elementos nas páginas de sua aplicação.
+
+Todas as páginas devem conter:
+
+- Um único elemento com a classe `alc-layout`
+- Um único elemento com a classe `alc-layout__content`
+- Ao menos um elemento "container" (usando uma das <a href="https://getbootstrap.com/docs/5.2/layout/containers/" class="alc-link">classes de container do Bootstrap</a>, como `container`, `container-sm`, `container-fluid` etc.)
+
+<CodeExample type="html">
+{`<body>
+  <alc-header> ... </alc-header>
+  <div class="alc-layout">
+    <alc-nav-panel> ... </alc-nav-panel>
+    <main class="alc-layout__content">
+
+      <div class="container">
+        <p>Aqui vai o conteúdo da página</p>
+      </div>
+      
+    </main>
+  </div>
+</body>`}
+</CodeExample>
+
+## Anatomia do layout
+<img src="./static/images/anatomia-layout-1.png" alt="Anatomia do layout com nav-panel aberto"></img>
+<img src="./static/images/anatomia-layout-2.png" alt="Anatomia do layout com nav-panel fechado"></img>
+
+## Classes de container
+Todo conteúdo específico de sua página deve estar contido em um elemento "container".
+
+Considere como elemento "container" um elemento que possui uma das <a href="https://getbootstrap.com/docs/5.2/layout/containers/" class="alc-link">classes de container do Bootstrap</a>.
+
+Recomendamos, por padrão, o uso da classe `container`. Tipicamente, esse elemento deve ser suficiente.
+
+Use uma classe com especificação de breakpoint (como `container-sm` ou `container-xxl`) para atender a necessidades específicas do seu layout.
+
+A classe `container-fluid` pode ser utilizada em situações específicas, em que o conteúdo fica melhor ajustado se ocupar toda a largura disponível, *mesmo em telas muito largas*.
+
+### Usando mais de um container na página
+É possível usar mais de um elemento container na página.
+
+Entretanto, o uso de classes de container diferentes (por exemplo, `container` e `container-fluid`) na mesma página deve ser feito com muito critério,
+visto que pode resultar em um visual estranho ou confuso para os usuários da página.
+
+## Sangria (usando alc-layout__full-width)
+
+Caso você precise criar uma divisão visual entre conteúdos de sua página, aplicando uma cor de fundo diferente, que ocupe toda a largura disponível,
+utilize a classe `alc-layout__full-width`.
+
+Essa classe deve ser usada em um elemento pai do seu container.
+
+<CodeExample type="html">
+{`<div class="alc-layout">
+
+    <main class="alc-layout__content">
+
+      <div class="container">
+        <p>Conteúdo inicial da página.</p>
+      </div>
+
+      <!-- Observe o uso de alc-layout__full-width junto a uma classe que define uma cor de background -->
+      <div class="alc-layout__full-width background-color-example">
+        <!-- O container fica aqui dentro -->
+        <div class="container">
+          <p>Conteúdo separado por uma cor de fundo diferente.</p>
+        </div>
+      </div>
+
+    </main>
+</div>`}
+</CodeExample>
+
+## Anatomia do container
+<img src="./static/images/anatomia-container-1.png" alt="Anatomia do container com nav-panel aberto"></img>
+<img src="./static/images/anatomia-container-2.png" alt="Anatomia do container com nav-panel fechado"></img>
+
+## Exemplos
+
+### Uma página simples
+
+<CodeExample type="html">
+{`<!DOCTYPE html>
+<html lang="pt-BR">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha aplicação</title>
+    <script type="module" src="node_modules/alcance/dist/alcance/alcance.esm.js"></script>
+    <script nomodule src="node_modules/alcance/dist/alcance/alcance.js"></script>
+    <link rel="stylesheet" href="node_modules/alcance/dist/alcance/alcance.css">
+  </head>
+
+  <body>
+    <alc-header name="Minha aplicação">
+      <alc-environment-label env="prototype"></alc-environment-label>
+      <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+    </alc-header>
+    <div class="alc-layout">
+      <alc-nav-panel>
+        <!-- Conteúdo do nav-panel. -->
+      </alc-nav-panel>
+      <main id="main-content" class="alc-layout__content">
+        <div class="container">
+          <p>Conteúdo da página.</p>
+        </div>
+      </main>
+    </div>
+  </body>
+
+</html>`}
+</CodeExample>
+
+### Uma página com "sangria"
+
+<CodeExample type="html">
+{`<!DOCTYPE html>
+<html lang="pt-BR">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha aplicação</title>
+    <script type="module" src="node_modules/alcance/dist/alcance/alcance.esm.js"></script>
+    <script nomodule src="node_modules/alcance/dist/alcance/alcance.js"></script>
+    <link rel="stylesheet" href="node_modules/alcance/dist/alcance/alcance.css">
+    <style>
+      .background-color-example {
+        background-color: var(--alc-color-layer-a);
+      }
+    </style>
+  </head>
+
+  <body>
+    <alc-header name="Minha aplicação">
+      <alc-environment-label env="prototype"></alc-environment-label>
+      <alc-skip-link anchor="main-content">conteúdo</alc-skip-link>
+    </alc-header>
+    <div class="alc-layout">
+      <alc-nav-panel>
+        <!-- Conteúdo do nav-panel. -->
+      </alc-nav-panel>
+      <main id="main-content" class="alc-layout__content">
+        <div class="container">
+          <p>Conteúdo 1</p>
+        </div>
+        <div class="alc-layout__full-width background-color-example">
+          <div class="container">
+            <p>Conteúdo 2 (sobre cor de fundo diferente)</p>
+          </div>
+        </div>
+        <div class="container">
+          <p>Conteúdo 3</p>
+        </div>
+      </main>
+    </div>
+  </body>
+
+</html>`}
+</CodeExample>

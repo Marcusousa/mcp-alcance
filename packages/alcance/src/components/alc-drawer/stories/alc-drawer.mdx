@@ -1,0 +1,59 @@
+{/* alc-drawer.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-drawer.stories';
+import DrawerProps from './alc-drawer.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+
+O componente `alc-drawer` é um elemento de interface do usuário que cria uma área deslizante a partir das bordas da tela, onde conteúdo adicional pode ser apresentado. Ele pode ser utilizado para mostrar menus, formulários, ou qualquer outro tipo de conteúdo que deve ser acessível sem sair da tela principal. 
+
+Este componente oferece métodos e eventos para controlar sua visibilidade e interatividade.
+
+## Uso
+
+### Exemplo básico
+
+<CodeExample type="html">
+{`<alc-drawer is-visible='true' element-to-focus="elementoId">
+  <p>Conteúdo do Drawer</p>
+</alc-drawer>`}
+</CodeExample>
+
+### Abertura e Fechamento do Drawer
+
+O drawer pode ser aberto e fechado programaticamente usando os métodos `show()` e `hide()`:
+
+<CodeExample type="js">
+{`const drawer = document.querySelector('alc-drawer');
+
+// Abrir o drawer
+drawer.show();
+
+// Fechar o drawer
+drawer.hide();`}
+</CodeExample>
+
+### Manipulação de Eventos
+
+Você pode adicionar listeners para os eventos emitidos pelo drawer, como:
+
+<CodeExample type="js">
+{`drawer.addEventListener('alc-show', () => {
+  console.log('Drawer está abrindo');
+});
+
+drawer.addEventListener('alc-after-hide', () => {
+  console.log('Drawer foi fechado');
+});`}
+</CodeExample>
+
+## Considerações Finais
+
+O `alc-drawer` é uma solução flexível para implementar um drawer em sua aplicação. Com suporte para eventos, acessibilidade e controle total sobre a visibilidade, ele pode ser adaptado para diversas necessidades de interface de usuário.
+
+<Markdown>{DrawerProps}</Markdown>

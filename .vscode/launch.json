@@ -1,0 +1,170 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug Stencil Dev",
+      "url": "http://localhost:4444",
+      "sourceMaps": true,
+      "webRoot": "${workspaceFolder}/packages/alcance/www",
+      "sourceMapPathOverrides": {
+        "./src/*": "${workspaceFolder}/packages/alcance/src/*",
+      },
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Spec Test (all)",
+      "cwd": "${workspaceFolder}/packages/alcance",
+      "program": "${workspaceFolder}/packages/alcance/node_modules/.bin/stencil",
+      "args": ["test", "--spec"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/packages/alcance/node_modules/@stencil/core/bin/stencil"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Spec Test (current file)",
+      "cwd": "${workspaceFolder}/packages/alcance",
+      "program": "${workspaceFolder}/packages/alcance/node_modules/.bin/stencil",
+      "args": ["test", "--spec", "--watch", "${fileBasename}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/packages/alcance/node_modules/@stencil/core/bin/stencil"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "E2E Test (all)",
+      "cwd": "${workspaceFolder}/packages/alcance",
+      "program": "${workspaceFolder}/packages/alcance/node_modules/.bin/stencil",
+      "args": ["test", "--e2e"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "autoAttachChildProcesses": false,
+      "windows": {
+        "program": "${workspaceFolder}/packages/alcance/node_modules/@stencil/core/bin/stencil"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "E2E Screenshot Visual Diff Test (all)",
+      "cwd": "${workspaceFolder}/packages/alcance",
+      "program": "${workspaceFolder}/packages/alcance/node_modules/.bin/stencil",
+      "args": ["test", "--e2e",  "--screenshot"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "autoAttachChildProcesses": false,
+      "windows": {
+        "program": "${workspaceFolder}/packages/alcance/node_modules/@stencil/core/bin/stencil"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "E2E Test (current file)",
+      "cwd": "${workspaceFolder}/packages/alcance",
+      "program": "${workspaceFolder}/packages/alcance/node_modules/.bin/stencil",
+      "args": ["test", "--e2e", "--watch", "${fileBasename}", "--devtools"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "autoAttachChildProcesses": false,
+      "outFiles": [
+        "${workspaceFolder}/packages/alcance/**/*.js",
+        "!**/node_modules/**"
+      ],
+      "skipFiles": [
+          "${workspaceFolder}/packages/alcance/node_modules/**/*.js",
+          "<node_internals>/**/*.js"
+      ],
+      "windows": {
+        "program": "${workspaceFolder}/packages/alcance/node_modules/@stencil/core/bin/stencil"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "E2E Screenshot Visual Diff Test (current file)",
+      "cwd": "${workspaceFolder}/packages/alcance",
+      "program": "${workspaceFolder}/packages/alcance/node_modules/.bin/stencil",
+      "args": ["test", "--e2e", "--screenshot", "${fileBasename}", "--devtools"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "autoAttachChildProcesses": false,
+      "outFiles": [
+        "${workspaceFolder}/packages/alcance/**/*.js",
+        "!**/node_modules/**"
+      ],
+      "skipFiles": [
+          "${workspaceFolder}/packages/alcance/node_modules/**/*.js",
+          "<node_internals>/**/*.js"
+      ],
+      "windows": {
+        "program": "${workspaceFolder}/packages/alcance/node_modules/@stencil/core/bin/stencil"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "E2E Test (current file) headless",
+      "cwd": "${workspaceFolder}/packages/alcance",
+      "program": "${workspaceFolder}/packages/alcance/node_modules/.bin/stencil",
+      "args": ["test", "--e2e", "--headless=new", "--watch", "--", "--maxWorkers=0", "${fileBasename}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "autoAttachChildProcesses": false,
+      "outFiles": [
+        "${workspaceFolder}/packages/alcance/**/*.js",
+        "!**/node_modules/**"
+      ],
+      "skipFiles": [
+          "${workspaceFolder}/packages/alcance/node_modules/**/*.js",
+          "<node_internals>/**/*.js"
+      ],
+      "windows": {
+        "program": "${workspaceFolder}/packages/alcance/node_modules/@stencil/core/bin/stencil"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "E2E Screenshot Visual Diff Test Test (current file) headless",
+      "cwd": "${workspaceFolder}/packages/alcance",
+      "program": "${workspaceFolder}/packages/alcance/node_modules/.bin/stencil",
+      "args": ["test", "--e2e", "--headless=new", "--screenshot", "--", "--maxWorkers=0", "${fileBasename}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "autoAttachChildProcesses": false,
+      "outFiles": [
+        "${workspaceFolder}/packages/alcance/**/*.js",
+        "!**/node_modules/**"
+      ],
+      "skipFiles": [
+          "${workspaceFolder}/packages/alcance/node_modules/**/*.js",
+          "<node_internals>/**/*.js"
+      ],
+      "windows": {
+        "program": "${workspaceFolder}/packages/alcance/node_modules/@stencil/core/bin/stencil"
+      }
+    }
+  ]
+}

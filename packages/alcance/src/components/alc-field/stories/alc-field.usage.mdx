@@ -1,0 +1,165 @@
+{/* alc-field.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown, Source } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-field.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Input obrigatório
+Adicione a propriedade `required="true"` no component alc-field.
+
+Essa propriedade é apenas indicação visual, o tratamento deve ser feito pela aplicação.
+
+<Canvas of={Stories.Obrigatorio} sourceState="shown" />
+<Controls of={Stories.Obrigatorio} />
+
+## Input com texto de ajuda
+Adicione a propriedade `hint="mensagem de ajuda"` no component alc-field.
+
+<Canvas of={Stories.TextoAjuda} sourceState="shown" />
+<Controls of={Stories.TextoAjuda} />
+
+## Input com error
+Adicione a propriedade `error-msg="mensagem de erro"` no component alc-field.
+
+Adicione essa propriedade apenas quando você quer ter o estado de erro no input. Para voltar ao estado padrão é so remover a propriedade.
+
+<Canvas of={Stories.Erro} sourceState="shown" />
+<Controls of={Stories.Erro} />
+
+## Input desabilitado
+Adicione a propriedade `disabled` no `input` dentro do `alc-field`.
+
+<Canvas of={Stories.Desabilitado} sourceState="shown" />
+<Controls of={Stories.Desabilitado} />
+
+## Personalização dos labels
+
+O componente permite personalizar o label ao utilizar o `slot="label"` e adicionar
+classes adicionais para a personalização.
+
+### Formulário inline
+No exemplo abaixo, utilizamos `alc-field` personalizado para que fique alinhado
+em telas maiores e com a aparência padrão (label na parte superior do input) em telas pequenas.
+
+Experimente fazer resize da tela para ver a mudança do field personalizado:
+
+<Canvas of={Stories.FormularioInline} sourceState="shown" />
+<Controls of={Stories.FormularioInline} />
+
+### Label com ícone
+Neste exemplo, adicionamos um `alc-icon` para exemplificar que também é possível adicionar ícones.
+
+<Canvas of={Stories.FormularioComIcone} sourceState="shown" />
+<Controls of={Stories.FormularioComIcone} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <alc-field
+      label="Nome"
+      :required="true"
+      hint="Digite seu nome completo."
+      :error-msg="nameError"
+    >
+      <input type="text" v-model="name" name="nome" id="id-para-nome" />
+    </alc-field>
+
+    <alc-field label="Logradouro" hint="Endereço residencial.">
+      <input type="text" v-model="address" name="logradouro" id="id-para-logradouro" />
+    </alc-field>
+
+    <button class="alc-button" @click="submitForm">Enviar</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'FormExample',
+  data() {
+    return {
+      name: '',
+      address: '',
+      nameError: '',
+    };
+  },
+  methods: {
+    submitForm() {
+      if (this.name.trim() === '') {
+        this.nameError = 'O campo Nome é obrigatório.';
+      } else {
+        this.nameError = '';
+        // Processar o formulário
+        alert('Formulário enviado com sucesso!');
+      }
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <alc-field :label="emailLabel" :required="true" :error-msg="emailError">
+      <input type="email" v-model="email" name="email" id="id-para-email" />
+    </alc-field>
+
+    <alc-field>
+      <!-- Usando o slot 'label' para personalizar o label -->
+      <label slot="label" for="id-para-mensagem">Mensagem Personalizada</label>
+      <textarea v-model="message" name="mensagem" id="id-para-mensagem"></textarea>
+    </alc-field>
+
+    <button class="alc-button" @click="sendMessage">Enviar Mensagem</button>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'FieldExampleTS',
+  setup() {
+    const email = ref('');
+    const message = ref('');
+    const emailLabel = ref('E-mail');
+    const emailError = ref('');
+
+    const sendMessage = () => {
+      if (email.value.trim() === '') {
+        emailError.value = 'O campo e-mail é obrigatório.';
+      } else if (!validateEmail(email.value)) {
+        emailError.value = 'Por favor, insira um e-mail válido.';
+      } else {
+        emailError.value = '';
+        // Processar a mensagem
+        alert('Mensagem enviada com sucesso!');
+      }
+    };
+
+    const validateEmail = (email: string) => {
+      const re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    };
+
+    return {
+      email,
+      message,
+      emailLabel,
+      emailError,
+      sendMessage,
+    };
+  },
+});
+</script>`
+  }}
+/>

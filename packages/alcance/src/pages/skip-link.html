@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Skip Link</title>
+
+    <script type="module" src="/build/alcance.esm.js"></script>
+    <script nomodule src="/build/alcance.js"></script>
+    <link rel="stylesheet" href="/build/alcance.css">
+</head>
+
+<body>
+
+    <alc-header name="Gabinete Digital" description="Plataforma digital de trabalho do Deputado" home-url="#">
+        <div slot="support">
+            <alc-header-action id="support-ajuda" icon-name="question-circle" onclick="console.log('clicou ajuda')"
+                variant="button">Ajuda</alc-header-action>
+            <alc-header-action icon-name="envelope" onclick="console.log('clicou contato')"
+                variant="button">Contato</alc-header-action>
+            <alc-header-action icon-name="google" variant="link" url="http://google.com">Google</alc-header-action>
+        </div>
+        <div slot="user">
+            <alc-user-menu variation="desktop" name="Sebastião Neiva Filho" registration-number="P_5242"
+                img-src="https://ditec-chat.camara.leg.br/avatar/sebastiao.neiva.filho.p_5242">
+                Revisor representando o Dep. Adail Filho (REPUBLICANOS-AM)
+            </alc-user-menu>
+        </div>
+
+        <alc-environment-label env="prototype"></alc-environment-label>
+
+        <!-- <alc-skip-link anchor="all-content">Todo o conteúdo</alc-skip-link>
+        <alc-skip-link anchor="block-content">Bloco de conteúdo</alc-skip-link> -->
+        <alc-skip-link anchor="title-content">Título do conteúdo</alc-skip-link>
+        <alc-skip-to-nav></alc-skip-to-nav>
+
+    </alc-header>
+
+    <div class="alc-layout">
+
+        <alc-nav-panel>
+            <alc-nav>
+                <ul>
+                    <li><a href="#">Institucional</a></li>
+                    <li>
+                        <span>Aplicações da Transformação Digital</span>
+                        <div data-alc-panel>
+                            <ul>
+                                <li><a href="#">Gabinete Digital</a></li>
+                                <li><a href="#">Liderança Digital</a></li>
+                                <li><a href="#">Processo Legislativo Digital</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#">Serviços</a></li>
+                    <li>
+                        <span>Documentação digital</span>
+                        <div data-alc-panel>
+                            <ul>
+                                <li><a href="#">eDoc</a></li>
+                                <li><a href="#">eDoc Forms</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#">Equipe técnica</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+
+            </alc-nav>
+        </alc-nav-panel>
+
+        <div class="alc-layout__content" id="all-content">
+            <main class="container">
+                <h2>Welcome to my website!</h2>
+                <button class="alc-button">Click me!</button>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sodales pretium scelerisque. Quisque
+                    iaculis
+                    libero neque, et iaculis nisl laoreet sit amet. Maecenas tempor massa in volutpat mollis. Aliquam
+                    facilisis
+                    condimentum leo vitae sodales. Fusce quis congue quam. Duis vitae convallis velit. Phasellus libero
+                    ex, dapibus
+                    vel efficitur et, sagittis sed enim. Cras eu condimentum purus. Nunc pharetra elit quis tempor
+                    sollicitudin.
+                    Duis at nulla sit amet nisl pharetra varius in nec metus. In interdum, erat at feugiat ornare, lorem
+                    diam
+                    gravida diam, sit amet aliquam lorem nisi in nulla.
+
+                    Donec faucibus sem nec tellus vehicula, nec ullamcorper lacus venenatis. Fusce sit amet lacus a
+                    massa lacinia
+                    placerat. Morbi viverra lacus orci, non pharetra ipsum sollicitudin in. Donec orci enim, convallis
+                    quis purus
+                    at, malesuada malesuada lacus. Pellentesque vehicula tellus non enim laoreet, id finibus sapien
+                    mollis. Sed sit
+                    amet nunc metus. Aenean scelerisque diam vel malesuada tincidunt. Nullam convallis et mi vitae
+                    blandit.
+
+                    Donec nisl massa, viverra ut diam ac, fermentum placerat justo. In nulla mi, consectetur sed
+                    vehicula et,
+                    dignissim id magna. Morbi sed sem at massa lacinia pretium. Cras eget justo a erat rhoncus commodo
+                    ac ut nisl.
+                    Vestibulum sed gravida nisi. Nullam eget nulla fermentum, tempus lacus at, pharetra felis. Class
+                    aptent taciti
+                    sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque dictum nec odio
+                    facilisis
+                    maximus. Quisque nisl ex, lacinia volutpat posuere aliquet, cursus vel nulla. Mauris risus enim,
+                    consectetur
+                    quis auctor nec, euismod quis mi. Cras nisl augue, semper nec rutrum eu, congue at nunc. Aenean leo
+                    nunc,
+                    accumsan id aliquet vel, dapibus nec ex. Aenean odio magna, scelerisque ac porta in, cursus eu odio.
+                    Sed
+                    placerat lectus at libero dignissim auctor.
+
+                    Donec volutpat et turpis at dapibus. Sed quis augue et lorem eleifend consequat a et leo. Proin
+                    accumsan varius
+                    magna. Pellentesque sagittis sapien vel magna cursus, eget tempus est tempor. In pharetra tellus
+                    diam, ac
+                    fringilla lacus ullamcorper at. Cras purus dui, viverra et quam in, mattis ornare metus. Vestibulum
+                    rutrum dui
+                    in malesuada finibus. Nam semper diam feugiat erat fermentum ornare. Nulla efficitur urna quis
+                    congue ultrices.
+                    Nullam finibus volutpat nulla vitae posuere.
+
+                    Nulla ut lectus lobortis, pharetra est quis, cursus elit. Proin luctus arcu eu pharetra eleifend.
+                    Donec maximus
+                    finibus massa, sit amet dignissim metus placerat ultricies. Aenean quis massa sed libero scelerisque
+                    finibus in
+                    eu erat. Fusce sapien lacus, lacinia vel dui ac, interdum bibendum est. Sed auctor in neque in
+                    luctus. Integer
+                    consectetur egestas nisl, id convallis urna varius facilisis. Nulla fermentum ornare lectus, ac
+                    scelerisque enim
+                    condimentum nec.
+                </p>
+            </main>
+
+
+            <div id="block-content" class="container">
+                <h2 id="title-content">More content here</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sodales pretium scelerisque. Quisque
+                    iaculis libero neque, et iaculis nisl laoreet sit amet. Maecenas tempor massa in volutpat mollis.
+                    Aliquam facilisis condimentum leo vitae sodales. Fusce quis congue quam. Duis vitae convallis velit.
+                    Phasellus libero ex, dapibus vel efficitur et, sagittis sed enim. Cras eu condimentum purus. Nunc
+                    pharetra elit quis tempor sollicitudin. Duis at nulla sit amet nisl pharetra varius in nec metus. In
+                    interdum, erat at feugiat ornare, lorem diam gravida diam, sit amet aliquam lorem nisi in nulla.
+
+                    Donec faucibus sem nec tellus vehicula, nec ullamcorper lacus venenatis. Fusce sit amet lacus a
+                    massa lacinia placerat. Morbi viverra lacus orci, non pharetra ipsum sollicitudin in. Donec orci
+                    enim, convallis quis purus at, malesuada malesuada lacus. Pellentesque vehicula tellus non enim
+                    laoreet, id finibus sapien mollis. Sed sit amet nunc metus. Aenean scelerisque diam vel malesuada
+                    tincidunt. Nullam convallis et mi vitae blandit.
+
+                    Donec nisl massa, viverra ut diam ac, fermentum placerat justo. In nulla mi, consectetur sed
+                    vehicula et, dignissim id magna. Morbi sed sem at massa lacinia pretium. Cras eget justo a erat
+                    rhoncus commodo ac ut nisl. Vestibulum sed gravida nisi. Nullam eget nulla fermentum, tempus lacus
+                    at, pharetra felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+                    himenaeos. Pellentesque dictum nec odio facilisis maximus. Quisque nisl ex, lacinia volutpat posuere
+                    aliquet, cursus vel nulla. Mauris risus enim, consectetur quis auctor nec, euismod quis mi. Cras
+                    nisl augue, semper nec rutrum eu, congue at nunc. Aenean leo nunc, accumsan id aliquet vel, dapibus
+                    nec ex. Aenean odio magna, scelerisque ac porta in, cursus eu odio. Sed placerat lectus at libero
+                    dignissim auctor.
+
+                    Donec volutpat et turpis at dapibus. Sed quis augue et lorem eleifend consequat a et leo. Proin
+                    accumsan varius magna. Pellentesque sagittis sapien vel magna cursus, eget tempus est tempor. In
+                    pharetra tellus diam, ac fringilla lacus ullamcorper at. Cras purus dui, viverra et quam in, mattis
+                    ornare metus. Vestibulum rutrum dui in malesuada finibus. Nam semper diam feugiat erat fermentum
+                    ornare. Nulla efficitur urna quis congue ultrices. Nullam finibus volutpat nulla vitae posuere.
+
+                    Nulla ut lectus lobortis, pharetra est quis, cursus elit. Proin luctus arcu eu pharetra eleifend.
+                    Donec maximus finibus massa, sit amet dignissim metus placerat ultricies. Aenean quis massa sed
+                    libero scelerisque finibus in eu erat. Fusce sapien lacus, lacinia vel dui ac, interdum bibendum
+                    est. Sed auctor in neque in luctus. Integer consectetur egestas nisl, id convallis urna varius
+                    facilisis. Nulla fermentum ornare lectus, ac scelerisque enim condimentum nec.
+                </p>
+            </div>
+
+            <div class="container">
+                <h2>More content here</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sodales pretium scelerisque. Quisque
+                    iaculis libero neque, et iaculis nisl laoreet sit amet. Maecenas tempor massa in volutpat mollis.
+                    Aliquam facilisis condimentum leo vitae sodales. Fusce quis congue quam. Duis vitae convallis velit.
+                    Phasellus libero ex, dapibus vel efficitur et, sagittis sed enim. Cras eu condimentum purus. Nunc
+                    pharetra elit quis tempor sollicitudin. Duis at nulla sit amet nisl pharetra varius in nec metus. In
+                    interdum, erat at feugiat ornare, lorem diam gravida diam, sit amet aliquam lorem nisi in nulla.
+
+                    Donec faucibus sem nec tellus vehicula, nec ullamcorper lacus venenatis. Fusce sit amet lacus a
+                    massa lacinia placerat. Morbi viverra lacus orci, non pharetra ipsum sollicitudin in. Donec orci
+                    enim, convallis quis purus at, malesuada malesuada lacus. Pellentesque vehicula tellus non enim
+                    laoreet, id finibus sapien mollis. Sed sit amet nunc metus. Aenean scelerisque diam vel malesuada
+                    tincidunt. Nullam convallis et mi vitae blandit.
+
+                    Donec nisl massa, viverra ut diam ac, fermentum placerat justo. In nulla mi, consectetur sed
+                    vehicula et, dignissim id magna. Morbi sed sem at massa lacinia pretium. Cras eget justo a erat
+                    rhoncus commodo ac ut nisl. Vestibulum sed gravida nisi. Nullam eget nulla fermentum, tempus lacus
+                    at, pharetra felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+                    himenaeos. Pellentesque dictum nec odio facilisis maximus. Quisque nisl ex, lacinia volutpat posuere
+                    aliquet, cursus vel nulla. Mauris risus enim, consectetur quis auctor nec, euismod quis mi. Cras
+                    nisl augue, semper nec rutrum eu, congue at nunc. Aenean leo nunc, accumsan id aliquet vel, dapibus
+                    nec ex. Aenean odio magna, scelerisque ac porta in, cursus eu odio. Sed placerat lectus at libero
+                    dignissim auctor.
+
+                    Donec volutpat et turpis at dapibus. Sed quis augue et lorem eleifend consequat a et leo. Proin
+                    accumsan varius magna. Pellentesque sagittis sapien vel magna cursus, eget tempus est tempor. In
+                    pharetra tellus diam, ac fringilla lacus ullamcorper at. Cras purus dui, viverra et quam in, mattis
+                    ornare metus. Vestibulum rutrum dui in malesuada finibus. Nam semper diam feugiat erat fermentum
+                    ornare. Nulla efficitur urna quis congue ultrices. Nullam finibus volutpat nulla vitae posuere.
+
+                    Nulla ut lectus lobortis, pharetra est quis, cursus elit. Proin luctus arcu eu pharetra eleifend.
+                    Donec maximus finibus massa, sit amet dignissim metus placerat ultricies. Aenean quis massa sed
+                    libero scelerisque finibus in eu erat. Fusce sapien lacus, lacinia vel dui ac, interdum bibendum
+                    est. Sed auctor in neque in luctus. Integer consectetur egestas nisl, id convallis urna varius
+                    facilisis. Nulla fermentum ornare lectus, ac scelerisque enim condimentum nec.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</html>

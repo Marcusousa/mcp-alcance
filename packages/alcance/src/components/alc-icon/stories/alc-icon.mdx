@@ -1,0 +1,79 @@
+{/* alc-icon.mdx */}
+
+import { Canvas, Meta, Controls, Markdown, Unstyled } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-icon.stories';
+import IconProps from './alc-icon.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+
+Os ícones de Alcance utilizam a biblioteca <a href="https://icons.getbootstrap.com/" class="alc-link">Boostrap Icons</a> sempre em sua última versão. 
+Entretanto, a utilização desse componente, diferente dos outros componentes do Alcance, depende que a biblioteca dos ícones esteja na pasta pública do seu projeto. 
+Siga a instalação abaixo para que os ícones funcionem corretamente em sua aplicação.
+
+## Instalação
+É necessário copiar a pasta `node_modules/alcance/dist/assets` para a pasta que serve arquivos estáticos em seu projeto.
+
+É importante que `icons` continue existindo. Por exemplo: `<meu-projeto>/<pasta-de-arquivos-estaticos>/assets/icons`.
+
+Você pode usar um simples script, conforme o exemplo abaixo, para que os ícones sejam copiados para a pasta pública do seu projeto:
+
+<CodeExample type="js">
+{`var fs = require('fs');
+var fse = require('fs-extra');
+
+// Se estiver usando o pacote alcance
+var sourceDir = './node_modules/alcance/dist/assets';
+// Se estiver usando o pacote alcance-vue-library
+// var sourceDir = './node_modules/alcance-vue-library/node_modules/alcance/dist/assets';
+
+var destDir = './public/assets';
+
+
+// se a pasta não existir crie-a
+if (!fs.existsSync(destDir)){
+    fs.mkdirSync(destDir, { recursive: true });
+}
+
+// copiar o conteúdo do diretório, incluindo subpastas
+fse.copy(sourceDir, destDir, function (err) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Assets copiados!");
+  }
+});`}
+</CodeExample>
+
+<Unstyled>
+<alc-alert type="warning" dismissible="false">
+    <span class="alc-alert__summary">Importante</span>
+    Os ícones deverão sempre estar na pasta ***icons*** para que o componente os encontre!
+</alc-alert>
+</Unstyled>
+
+Informe ao Alcance qual é sua pasta de assets, exemplo:
+
+<CodeExample type="js">
+{`const resourcesUrl = \`\${new URL(window.location).origin}/alcance/static\`;
+
+applyPolyfills().then(() => {
+    defineCustomElements(window, {
+    resourcesUrl: resourcesUrl
+    });
+});`}
+</CodeExample>
+<Unstyled>
+<alc-alert dismissible="false">
+    **Nota:** Verifique os guias de instalação para aplicar corretamente essa configuração.
+    As localizações dos assets podem variar conforme o uso de cada pacote. 
+</alc-alert>
+</Unstyled>
+
+## Ícones disponíveis
+Você poderá consultar os ícones diponíveis em <a href="https://icons.getbootstrap.com/" class="alc-link">Boostrap Icons</a>. Os ícones sempre estão de acordo com a última versão disponível.
+
+
+<Markdown>{IconProps}</Markdown>

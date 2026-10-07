@@ -1,0 +1,66 @@
+@import '../functional/table-base.css';
+
+alc-table {
+  /* Cor de fundo padrão para tudo na tabela */
+  --bg-color: var(--alc-color-surface-primary);
+}
+
+/* Definição das variáveis - Setup dos temas*/
+[data-alc-theme="light"] alc-table {
+  --border-color: theme('colors.gray.10');
+  --bg-color-odd: theme('colors.gray.1');
+}
+
+[data-alc-theme="dark"] alc-table {
+  --border-color: theme('colors.gray.70');
+  --bg-color-odd: theme('colors.gray.90');
+}
+
+/* CSS COMUM a todos os temas */
+.alc-table__header-row {
+  @apply text-left;
+  /* md */
+  @apply md:table-row;
+}
+
+.alc-table__row {
+  @apply border border-b-0;
+  border-color: var(--border-color);
+  background-color: var(--bg-color);
+  /* md */
+  @apply md:table-row;
+}
+.alc-table__row:last-child {
+  @apply border-b;
+}
+
+.alc-table__row:nth-child(2n + 1) {
+  background-color: var(--bg-color-odd);
+}
+
+.alc-table__header-cell {
+  /* md */
+  @apply md:p-[--alc-spacing-03] md:border md:border-solid md:border-b-4;
+  border-color: var(--border-color);
+}
+
+.alc-table__cell {
+  @apply border-none p-[--alc-spacing-03];
+  /* sm */
+  @apply sm:flex;
+  /* md */
+  @apply md:table-cell md:border md:border-solid;
+  border-color: var(--border-color);
+}
+
+.alc-table__inline-header {
+  /* sm */
+  @apply sm:basis-1/3;
+  /* md */
+  @apply md:hidden;
+}
+
+.alc-table__cell-content {
+  /* sm */
+  @apply sm:basis-2/3;
+}

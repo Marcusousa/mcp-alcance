@@ -1,0 +1,36 @@
+{/* alc-field.mdx */}
+
+import { Canvas, Meta, Controls, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-field.stories';
+import FieldProps from './alc-field.props.md?raw';
+import CodeExample from '../../../stories/utils/codeExample'
+
+<Meta of={Stories} name="Documentação" />
+
+# {Stories.default.name}
+O componente Field é usado para criar controles interativos para receber dados do usuário.
+
+O componente aceita `textarea`, `select` e `input`s em geral, exceto checkbox e radio.
+
+## O uso de `id` nos controles de formulário
+
+O componente não exige que seja definido o `id` para o campo de entrada,
+pois ele mesmo gera automaticamente esse `id` conforme a necessidade.
+
+Entretanto, se a aplicação precisar que o campo tenha um `id` definido,
+previamente conhecido, é possível fazer isso sem problema. Nesse caso,
+esteja atento para não repetir o `id`. _Cada campo deve ter um `id` único na página_.
+
+
+<CodeExample type="html">
+{`<div className="flex flex-col gap-2">
+  <alc-field label="Nome">
+    <input type="text" name="nome" id="id-para-nome" />
+  </alc-field>
+  <alc-field label="Logradouro">
+    <input type="text" name="logradouro" id="id-para-logradouro" />
+  </alc-field>
+</div>`}
+</CodeExample>
+
+<Markdown>{FieldProps}</Markdown>

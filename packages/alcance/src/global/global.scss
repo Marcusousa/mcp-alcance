@@ -1,0 +1,60 @@
+/* ===========
+ * FONTS
+ * ===========
+ */
+@import './styles/f-face.scss';
+
+/* ===========
+ * BASE
+ * ===========
+ */
+@tailwind base;
+
+@import './styles/b-fouc.scss';
+@import './styles/b-globalvars.scss';
+@import './styles/b-tags.scss';
+//@import './styles/b-containers.scss';
+
+
+/* ===========
+ * COMPONENTS
+ * ===========
+ */
+@tailwind components;
+
+@import './styles/c-link.scss';
+@import './styles/c-button.scss';
+@import './styles/c-form.scss';
+@import './styles/c-layout.scss';
+@import './styles/c-card.scss';
+
+
+/* BOOSTRAP */
+
+// Required
+@import "~bootstrap/scss/functions";
+
+$grid-gutter-width: 2rem; // Default = 1.5rem
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark"; // Requerido a partir da 5.3.x
+
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+
+// Optional
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+
+
+/* ===========
+ * UTILITIES
+ * ===========
+ */
+@tailwind utilities;
+
+/* ===========
+ * VARIANTS
+ * ===========
+ */
+@tailwind variants;

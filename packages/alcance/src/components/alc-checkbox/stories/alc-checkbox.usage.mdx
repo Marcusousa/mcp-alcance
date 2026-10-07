@@ -1,0 +1,126 @@
+{/* alc-checkbox.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-checkbox.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+Há duas maneiras de criar o componente o checkbox: adicionando elemento label com slot nomeado ou adicionando a propriedade label no componente.
+
+### Básico usando propriedade label
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+### Básico usando slot label
+<Canvas of={Stories.BasicoSlot} sourceState="shown" />
+<Controls of={Stories.BasicoSlot} />
+
+## Texto de ajuda
+Adicione a propriedade `hint="mensagem de ajuda"` no component alc-checkbox.
+
+<Canvas of={Stories.Hint} sourceState="shown" />
+<Controls of={Stories.Hint} />
+
+## Mensagem de erro
+Adicione a propriedade `error-msg="mensagem de erro"` no component alc-checkbox.
+
+Adicione essa propriedade apenas quando você quiser indicar um erro no checkbox. Para voltar ao estado padrão é so remover a propriedade.
+
+<Canvas of={Stories.Erro} sourceState="shown" />
+<Controls of={Stories.Erro} />
+
+## Desabilitado
+Adicione a propriedade `disabled` no input dentro do alc-checkbox.
+
+<Canvas of={Stories.Desabilitado} sourceState="shown" />
+<Controls of={Stories.Desabilitado} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <alc-checkbox
+      label="Aceito os termos e condições"
+      hint="Por favor, leia e aceite os termos."
+      :error-msg="errorMessage"
+    >
+      <!-- Slot default para o input checkbox -->
+      <input type="checkbox" v-model="isChecked" />
+    </alc-checkbox>
+    <button @click="submit">Enviar</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'CheckboxExample',
+  data() {
+    return {
+      isChecked: false,
+      errorMessage: '',
+    };
+  },
+  methods: {
+    submit() {
+      if (!this.isChecked) {
+        this.errorMessage = 'Você deve aceitar os termos para continuar.';
+      } else {
+        this.errorMessage = '';
+        // Processar o formulário ou ação desejada
+        alert('Formulário enviado com sucesso!');
+      }
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <alc-checkbox :label="checkboxLabel" :hint="checkboxHint">
+      <!-- Slot default para o input checkbox -->
+      <input type="checkbox" v-model="newsletterSubscription" />
+    </alc-checkbox>
+    <button @click="subscribe">Inscrever-se</button>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: 'CheckboxExampleTS',
+  setup() {
+    const newsletterSubscription = ref(false);
+    const checkboxLabel = ref('Desejo receber newsletters');
+    const checkboxHint = ref('Você pode cancelar a inscrição a qualquer momento.');
+    const errorMessage = ref('');
+
+    const subscribe = () => {
+      if (!newsletterSubscription.value) {
+        errorMessage.value = 'Você precisa marcar o checkbox para se inscrever.';
+      } else {
+        errorMessage.value = '';
+        // Ação de inscrição ou processamento
+        alert('Obrigado por se inscrever!');
+      }
+    };
+
+    return {
+      newsletterSubscription,
+      checkboxLabel,
+      checkboxHint,
+      errorMessage,
+      subscribe,
+    };
+  },
+});
+</script>`
+  }}
+/>

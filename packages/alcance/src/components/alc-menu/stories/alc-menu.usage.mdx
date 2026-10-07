@@ -1,0 +1,83 @@
+{/* alc-menu.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-menu.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <h2>Menu de Ações</h2>
+    <alc-menu>
+      <alc-menu-item value="excluir" @click="onMenuItemClick">
+        Excluir
+      </alc-menu-item>
+      <alc-menu-item value="prioritario" @click="onMenuItemClick">
+        Marcar como prioritário
+      </alc-menu-item>
+      <alc-menu-item value="adiar" @click="onMenuItemClick">
+        Adiar
+      </alc-menu-item>
+    </alc-menu>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'MenuExample',
+  methods: {
+    onMenuItemClick(event) {
+      const value = event.currentTarget.getAttribute('value');
+      alert('Você selecionou: ' + value);
+      // Implementar lógica adicional com base no valor selecionado
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <h2>Menu de Opções</h2>
+    <alc-menu>
+      <alc-menu-item value="editar" @click="handleMenuItemClick">
+        Editar
+      </alc-menu-item>
+      <alc-menu-item value="remover" @click="handleMenuItemClick">
+        Remover
+      </alc-menu-item>
+      <alc-menu-item value="compartilhar" @click="handleMenuItemClick">
+        Compartilhar
+      </alc-menu-item>
+    </alc-menu>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'MenuExampleTS',
+  methods: {
+    handleMenuItemClick(event: Event) {
+      const target = event.currentTarget as HTMLElement;
+      const value = target.getAttribute('value');
+      alert('Você selecionou: ' + value);
+      // Implementar lógica adicional com base no valor selecionado
+    },
+  },
+});
+</script>`
+  }}
+/>

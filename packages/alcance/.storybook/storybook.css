@@ -1,0 +1,86 @@
+/** CSS DE MODIFICAÇÕES NO PREVIEW **/
+
+/* .sbdocs.sbdocs-preview {
+    background: var(--alc-color-surface-primary);
+} */
+
+[data-alc-theme=light] {
+    color: var(--alc-color-text-2);
+}
+
+[data-alc-theme=dark] {
+    color: var(--alc-color-text-1);
+}
+
+table {
+    table-layout: fixed;  /* Força as colunas a terem um tamanho fixo */
+    width: 100%;  /* Faz com que a tabela ocupe 100% do espaço disponível */
+}
+
+td {
+    overflow-wrap: break-word;  /* Garante que o texto dentro da célula quebre em palavras */
+}
+
+td code {
+    white-space: pre-wrap !important;  /* Permite a quebra de linha dentro do <code> */
+    word-wrap: break-word;  /* Força a quebra da palavra quando necessário */
+}
+
+/* Ajustes no componente colorPallete */
+
+/* Titulos (Name e Swatches) */
+.docblock-colorpalette > div:first-child {
+    color: #5c5c5c;
+}
+
+/* Name - Informação secundária do nome */
+.docblock-colorpalette > div:not(:first-child) > div:first-child > div:nth-child(2) {
+    color: #5c5c5c;
+}
+
+/* Swatches - Informações das cores */
+.docblock-colorpalette > div [title] {
+  color: #5c5c5c;
+}
+
+/* Cor dos comentários dos códigos dos stories  */
+.sbdocs pre.prismjs .token.comment {
+    color: #98afd2; /* blue-warm-30*/
+}
+
+/* table of content (lista de navegação "Nesta página") */
+.toc-list-item.is-active-li .toc-link.is-active-link {
+    color: #2A648A; /* blue-60 */
+}
+
+/* Cor dos tabs */
+.sb-bar .tabbutton {
+    border-bottom-color: transparent;
+    color: var(--alc-color-text-secondary);
+}
+
+.sb-bar .tabbutton.tabbutton-active {
+    color: #2A648A; /* blue-60 */
+    border-bottom-color: #2A648A; /* blue-60 */
+}
+
+.sb-bar .tabbutton:hover {
+    color: #2A648A; /* blue-60 */
+}
+
+.sb-bar .tabbutton:focus {
+    border-bottom-color: #2A648A; /* blue-60 */
+}
+
+
+/* 
+* A classe alc-link esta sendo sobreescrevido pelo storybook por isso foi adicionado aqui 
+* A cor do link definida pelo storybook não tem contraste suficiente com o fundo claro
+*/
+a.alc-link {
+  @apply underline text-[--alc-color-link-text];
+}
+
+a.alc-link--color-text {
+  color: currentColor;
+}

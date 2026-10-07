@@ -1,0 +1,177 @@
+{/* alc-input-file.usage.mdx */}
+
+import { Canvas, Meta, Controls, Unstyled, Markdown } from '@storybook/addon-docs/blocks';
+import * as Stories from './alc-input-file.stories';
+import CodeExample from '../../../stories/utils/codeExample';
+
+<Meta of={Stories} name="Exemplos" />
+
+# Exemplos de {Stories.default.name}
+
+## Básico
+<Canvas of={Stories.Basico} sourceState="shown" />
+<Controls of={Stories.Basico} />
+
+## Seleção Múltipla
+<Canvas of={Stories.Multiplo} sourceState="shown" />
+<Controls of={Stories.Multiplo} />
+
+## Modo Input
+<Canvas of={Stories.ModoInput} sourceState="shown" />
+<Controls of={Stories.ModoInput} />
+
+## Modo Dropzone
+<Canvas of={Stories.ModoDropzone} sourceState="shown" />
+<Controls of={Stories.ModoDropzone} />
+
+## Tipos Específicos
+<Canvas of={Stories.TiposEspecificos} sourceState="shown" />
+<Controls of={Stories.TiposEspecificos} />
+
+## Desabilitado
+<Canvas of={Stories.Desabilitado} sourceState="shown" />
+<Controls of={Stories.Desabilitado} />
+
+## Com AlcField
+<Canvas of={Stories.ComAlcField} sourceState="shown" />
+<Controls of={Stories.ComAlcField} />
+
+## Botão Secundário
+<Canvas of={Stories.BotaoSecundario} sourceState="shown" />
+<Controls of={Stories.BotaoSecundario} />
+
+## Ícone Personalizado
+<Canvas of={Stories.IconePersonalizado} sourceState="shown" />
+<Controls of={Stories.IconePersonalizado} />
+
+## Exemplos Avançados
+### Uso no Vue
+
+<CodeExample 
+  examples={{
+    javascript: `<template>
+  <div>
+    <alc-input-file
+      ref="inputFile"
+      id-input="seletorInput"
+      mode="input"
+      icon-name="upload"
+      accept=".png, .jpg, .jpeg"
+      :multiple="true"
+      @alc-file-selected="onFileSelected"
+    ></alc-input-file>
+
+    <button class="alc-button" @click="getSelectedFiles">Obter Arquivos Selecionados</button>
+
+    <div v-if="files.length">
+      <h3>Arquivos Selecionados:</h3>
+      <ul>
+        <li v-for="(file, index) in files" :key="index">
+          {{ file.name }} ({{ file.size }} bytes)
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'InputFileExample',
+  data() {
+    return {
+      files: [],
+    };
+  },
+  methods: {
+    async getSelectedFiles() {
+      try {
+        const selectedFiles = await this.$refs.inputFile.getFiles();
+        if (selectedFiles && selectedFiles.length > 0) {
+          this.files = selectedFiles.map((fileObj) => ({
+            name: fileObj.file.name,
+            size: fileObj.file.size,
+          }));
+        } else {
+          this.files = [];
+        }
+      } catch (error) {
+        console.error('Erro ao obter os arquivos:', error);
+      }
+    },
+    onFileSelected() {
+      // Atualizar os arquivos imediatamente após a seleção
+      this.getSelectedFiles();
+    },
+  },
+};
+</script>`,
+    typescript: `<template>
+  <div>
+    <alc-input-file
+      ref="inputFile"
+      id-input="fileSelector"
+      mode="dropzone"
+      icon-name="upload"
+      accept=".pdf, .docx"
+      :multiple="false"
+      @alc-file-selected="handleFileSelected"
+    ></alc-input-file>
+
+    <button class="alc-button" @click="uploadFile">Enviar Arquivo</button>
+
+    <div v-if="selectedFile">
+      <h3>Arquivo Selecionado:</h3>
+      <p>{{ selectedFile.name }} ({{ selectedFile.size }} bytes)</p>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+
+interface AlcFileWithContent {
+  content: ArrayBuffer | string;
+  file: File;
+}
+
+export default defineComponent({
+  name: 'InputFileExampleTS',
+  setup() {
+    const inputFile = ref<any>(null);
+    const selectedFile = ref<{ name: string; size: number } | null>(null);
+
+    const handleFileSelected = async () => {
+      try {
+        const files: AlcFileWithContent[] = await inputFile.value.getFiles();
+        if (files && files.length > 0) {
+          const fileObj = files[0];
+          selectedFile.value = {
+            name: fileObj.file.name,
+            size: fileObj.file.size,
+          };
+        }
+      } catch (error) {
+        console.error('Erro ao obter os arquivos:', error);
+      }
+    };
+
+    const uploadFile = () => {
+      if (selectedFile.value) {
+        // Implementar lógica de envio do arquivo
+        alert('Enviando arquivo: ' + selectedFile.value.name);
+      } else {
+        alert('Nenhum arquivo selecionado.');
+      }
+    };
+
+    return {
+      inputFile,
+      selectedFile,
+      handleFileSelected,
+      uploadFile,
+    };
+  },
+});
+</script>`
+  }}
+/>
